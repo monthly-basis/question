@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Answer\Delete\Queue;
+namespace MonthlyBasis\Question\Model\Service\Answer\Delete\Queue;
 
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\User\Model\Factory as UserFactory;
 
 class Approve

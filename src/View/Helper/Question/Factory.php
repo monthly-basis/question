@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\Question\View\Helper\Question;
+namespace MonthlyBasis\Question\View\Helper\Question;
 
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use Laminas\View\Helper\AbstractHelper;
 
 class Factory extends AbstractHelper

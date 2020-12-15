@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Table\Answer;
+namespace MonthlyBasis\Question\Model\Table\Answer;
 
 use DateTime;
 use Laminas\Db\Adapter\Adapter;

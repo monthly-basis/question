@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Answer\Edit;
+namespace MonthlyBasis\Question\Model\Service\Answer\Edit;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\User\Model\Entity as UserEntity;
 
 class Queue

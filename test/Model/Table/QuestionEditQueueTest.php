@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Table;
+namespace MonthlyBasis\QuestionTest\Model\Table;
 
 use Generator;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
-use LeoGalleguillos\QuestionTest\TableTestCase;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
+use MonthlyBasis\QuestionTest\TableTestCase;
 use Laminas\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 

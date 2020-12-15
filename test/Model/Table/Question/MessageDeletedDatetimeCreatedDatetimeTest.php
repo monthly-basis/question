@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Table\Question;
+namespace MonthlyBasis\QuestionTest\Model\Table\Question;
 
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
 
 class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase

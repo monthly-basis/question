@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Answer;
+namespace MonthlyBasis\Question\Model\Service\Answer;
 
 use DateTime;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class Duplicate
 {

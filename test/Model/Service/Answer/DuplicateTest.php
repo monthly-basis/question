@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Service\Answer;
+namespace MonthlyBasis\QuestionTest\Model\Service\Answer;
 
-use LeoGalleguillos\Question\Model\Service as QuestionService;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use PHPUnit\Framework\TestCase;
 
 class DuplicateTest extends TestCase

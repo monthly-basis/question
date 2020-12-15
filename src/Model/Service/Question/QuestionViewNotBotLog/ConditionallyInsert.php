@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question\QuestionViewNotBotLog;
+namespace MonthlyBasis\Question\Model\Service\Question\QuestionViewNotBotLog;
 
 use Laminas\Db as LaminasDb;
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 
 class ConditionallyInsert

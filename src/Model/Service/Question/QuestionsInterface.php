@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question;
+namespace MonthlyBasis\Question\Model\Service\Question;
 
 use Generator;
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 interface QuestionsInterface
 {

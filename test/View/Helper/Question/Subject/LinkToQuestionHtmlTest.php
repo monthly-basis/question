@@ -1,10 +1,10 @@
 <?php
 namespace MonthlyBasis\StringTest\View\Helper;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\String\Model\Service as StringService;
-use LeoGalleguillos\Question\View\Helper as QuestionHelper;
+use MonthlyBasis\Question\View\Helper as QuestionHelper;
 use MonthlyBasis\ContentModeration\Model\Service as ContentModerationService;
 use PHPUnit\Framework\TestCase;
 

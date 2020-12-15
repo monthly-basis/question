@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Table\Question;
+namespace MonthlyBasis\QuestionTest\Model\Table\Question;
 
 use Generator;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
 
 class SubjectTest extends TableTestCase

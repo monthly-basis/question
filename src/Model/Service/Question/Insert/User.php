@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question\Insert;
+namespace MonthlyBasis\Question\Model\Service\Question\Insert;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\User\Model\Entity as UserEntity;
 
 class User

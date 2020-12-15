@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Service\Answer\Delete\Queue;
+namespace MonthlyBasis\QuestionTest\Model\Service\Answer\Delete\Queue;
 
-use LeoGalleguillos\Question\Model\Service as QuestionService;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use PHPUnit\Framework\TestCase;
 
 class ApproveTest extends TestCase

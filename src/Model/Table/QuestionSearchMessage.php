@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Table;
+namespace MonthlyBasis\Question\Model\Table;
 
 use Laminas\Db as LaminasDb;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;

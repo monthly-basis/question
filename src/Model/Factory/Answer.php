@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Factory;
+namespace MonthlyBasis\Question\Model\Factory;
 
 use DateTime;
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\User\Model\Factory as UserFactory;
 use MonthlyBasis\User\Model\Service as UserService;
 use TypeError;

@@ -4,10 +4,10 @@ return [
     'modules' => [
         'Laminas\Db',
         'Laminas\Router',
-        'LeoGalleguillos\Question',
         'MonthlyBasis\ContentModeration',
         'MonthlyBasis\Flash',
         'MonthlyBasis\Memcached',
+        'MonthlyBasis\Question',
         'MonthlyBasis\String',
         'MonthlyBasis\Superglobal',
         'MonthlyBasis\User',

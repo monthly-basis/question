@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question;
+namespace MonthlyBasis\Question\Model\Service\Question;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Service as QuestionService;
 
 class Url
 {

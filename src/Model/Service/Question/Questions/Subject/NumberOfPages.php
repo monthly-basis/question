@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question\Questions\Subject;
+namespace MonthlyBasis\Question\Model\Service\Question\Questions\Subject;
 
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class NumberOfPages
 {

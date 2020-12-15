@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Table\Answer;
+namespace MonthlyBasis\Question\Model\Table\Answer;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class AnswerId
 {

@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question;
+namespace MonthlyBasis\Question\Model\Service\Question;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\String\Model\Service as StringService;
 
 class Title

@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\QuestionTest;
+namespace MonthlyBasis\QuestionTest;
 
-use LeoGalleguillos\Question\Module;
+use MonthlyBasis\Question\Module;
 use MonthlyBasis\LaminasTest\ModuleTestCase;
 
 class ModuleTest extends ModuleTestCase

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "819489e54b7bf339f0f4e57c7fac7005",
+    "content-hash": "0454a7aab48f21db5bcc6ec3d33360d4",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -2240,16 +2240,16 @@
         },
         {
             "name": "monthly-basis/superglobal",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/superglobal.git",
-                "reference": "c97330500a60ac7500fbf75140526f20f0ad0169"
+                "reference": "7097c51fad9ec7432c7ca8e5de237c3cf938fd36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/superglobal/zipball/c97330500a60ac7500fbf75140526f20f0ad0169",
-                "reference": "c97330500a60ac7500fbf75140526f20f0ad0169",
+                "url": "https://api.github.com/repos/monthly-basis/superglobal/zipball/7097c51fad9ec7432c7ca8e5de237c3cf938fd36",
+                "reference": "7097c51fad9ec7432c7ca8e5de237c3cf938fd36",
                 "shasum": ""
             },
             "require": {
@@ -2267,7 +2267,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-12-08T08:41:04+00:00"
+            "time": "2020-12-08T20:09:44+00:00"
         },
         {
             "name": "monthly-basis/user",
@@ -2410,16 +2410,16 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
-                "reference": "726c026815142e4f8677b7cb7f2249c9ffb7ecae"
+                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/version/zipball/726c026815142e4f8677b7cb7f2249c9ffb7ecae",
-                "reference": "726c026815142e4f8677b7cb7f2249c9ffb7ecae",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/e4782611070e50613683d2b9a57730e9a3ba5451",
+                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451",
                 "shasum": ""
             },
             "require": {
@@ -2453,7 +2453,7 @@
                 }
             ],
             "description": "Library for handling version information and constraints",
-            "time": "2020-11-30T09:21:21+00:00"
+            "time": "2020-12-13T23:18:30+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

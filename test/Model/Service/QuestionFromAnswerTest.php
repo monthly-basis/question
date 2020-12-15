@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Service\Question;
+namespace MonthlyBasis\QuestionTest\Model\Service\Question;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Service as QuestionService;
 use PHPUnit\Framework\TestCase;
 
 class QuestionFromAnswerTest extends TestCase

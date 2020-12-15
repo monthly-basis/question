@@ -1,10 +1,10 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Service\Question\Questions\Search;
+namespace MonthlyBasis\QuestionTest\Model\Service\Question\Questions\Search;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
 

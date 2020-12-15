@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Table\Answer;
+namespace MonthlyBasis\QuestionTest\Model\Table\Answer;
 
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\LaminasTest\TableTestCase;
 

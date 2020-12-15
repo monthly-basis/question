@@ -1,11 +1,11 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Service;
+namespace MonthlyBasis\QuestionTest\Model\Service;
 
 use Generator;
 use Laminas\Db as LaminasDb;
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use PHPUnit\Framework\TestCase;
 
 class YearTest extends TestCase

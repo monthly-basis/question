@@ -1,11 +1,11 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Table\Answer;
+namespace MonthlyBasis\QuestionTest\Model\Table\Answer;
 
 use ArrayObject;
 use Exception;
 use Generator;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
-use LeoGalleguillos\QuestionTest\TableTestCase;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
+use MonthlyBasis\QuestionTest\TableTestCase;
 use Laminas\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 

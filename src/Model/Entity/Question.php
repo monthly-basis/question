@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Entity;
+namespace MonthlyBasis\Question\Model\Entity;
 
 use DateTime;
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 
 class Question
 {

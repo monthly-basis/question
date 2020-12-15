@@ -1,10 +1,10 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question\Questions;
+namespace MonthlyBasis\Question\Model\Service\Question\Questions;
 
 use Generator;
 use Laminas\Db as LaminasDb;
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class Year
 {

@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Question\Delete\Queue;
+namespace MonthlyBasis\Question\Model\Service\Question\Delete\Queue;
 
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class Approve
 {

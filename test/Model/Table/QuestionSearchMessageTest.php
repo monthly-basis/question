@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Table;
+namespace MonthlyBasis\QuestionTest\Model\Table;
 
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
 
 class QuestionSearchMessageTest extends TableTestCase

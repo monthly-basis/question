@@ -1,8 +1,8 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Table\Answer;
+namespace MonthlyBasis\Question\Model\Table\Answer;
 
 use Generator;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use Laminas\Db\Adapter\Adapter;
 
 class DeletedUserId

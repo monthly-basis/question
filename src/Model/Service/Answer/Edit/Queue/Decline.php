@@ -1,7 +1,7 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Answer\Edit\Queue;
+namespace MonthlyBasis\Question\Model\Service\Answer\Edit\Queue;
 
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class Decline
 {

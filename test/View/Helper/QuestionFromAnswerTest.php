@@ -1,9 +1,9 @@
 <?php
 namespace MonthlyBasis\StringTest\View\Helper;
 
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
-use LeoGalleguillos\Question\View\Helper as QuestionHelper;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\View\Helper as QuestionHelper;
 use PHPUnit\Framework\TestCase;
 
 class QuestionFromAnswerTest extends TestCase

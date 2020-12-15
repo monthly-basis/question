@@ -1,10 +1,10 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Table;
+namespace MonthlyBasis\QuestionTest\Model\Table;
 
 use Generator;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
 use TypeError;
 

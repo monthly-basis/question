@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\QuestionTest\Model\Service\Question\QuestionViewNotBotLog;
+namespace MonthlyBasis\QuestionTest\Model\Service\Question\QuestionViewNotBotLog;
 
 use Laminas\Db as LaminasDb;
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 use PHPUnit\Framework\TestCase;
 

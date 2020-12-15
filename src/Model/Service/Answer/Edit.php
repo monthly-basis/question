@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Answer;
+namespace MonthlyBasis\Question\Model\Service\Answer;
 
 use Exception;
-use LeoGalleguillos\Question\Model\Entity as QuestionEntity;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use TypeError;
 use Laminas\Db\Adapter\Adapter;
 

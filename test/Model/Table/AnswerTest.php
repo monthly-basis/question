@@ -1,7 +1,7 @@
 <?php
 namespace LeoGalleguillos\AnswerTest\Model\Table;
 
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
 
 class AnswerTest extends TableTestCase

@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Question\Model\Service\Answer\Answers;
+namespace MonthlyBasis\Question\Model\Service\Answer\Answers;
 
 use Generator;
-use LeoGalleguillos\Question\Model\Factory as QuestionFactory;
-use LeoGalleguillos\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class Newest
 {
