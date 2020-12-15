@@ -105,7 +105,6 @@ class AnswerTest extends TestCase
             ->setCreatedName('i am foo')
             ->setMessage($array['message'])
             ->setQuestionId($array['question_id'])
-            ->setUserId($array['user_id'])
             ;
 
         $this->assertEquals(

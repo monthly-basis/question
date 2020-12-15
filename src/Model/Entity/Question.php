@@ -19,11 +19,6 @@ class Question
     protected $questionId;
     protected $subject;
 
-    /**
-     * @deprecated Use ::createdUserId property instead
-     */
-    protected $userId;
-
     protected $views;
 
     public function getAnswers(): array
@@ -84,14 +79,6 @@ class Question
     public function getSubject(): string
     {
         return $this->subject;
-    }
-
-    /**
-     * @deprecated Use ::getCreatedUserId() instead
-     */
-    public function getUserId(): int
-    {
-        return $this->userId;
     }
 
     public function getViews(): int
@@ -168,15 +155,6 @@ class Question
     public function setSubject(string $subject): QuestionEntity\Question
     {
         $this->subject = $subject;
-        return $this;
-    }
-
-    /**
-     * @deprecated Use ::setCreatedUserId() instead
-     */
-    public function setUserId(int $userId): QuestionEntity\Question
-    {
-        $this->userId = $userId;
         return $this;
     }
 

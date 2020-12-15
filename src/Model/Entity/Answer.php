@@ -18,11 +18,6 @@ class Answer
     protected $message;
     protected $questionId;
 
-    /**
-     * @deprecated Use ::createdUserId property instead
-     */
-    protected $userId;
-
     protected $views;
 
     public function getAnswerId(): int
@@ -78,14 +73,6 @@ class Answer
     public function getQuestionId(): int
     {
         return $this->questionId;
-    }
-
-    /**
-     * @deprecated Use ::getCreatedUserId() instead
-     */
-    public function getUserId(): int
-    {
-        return $this->userId;
     }
 
     public function getViews(): int
@@ -156,15 +143,6 @@ class Answer
     public function setQuestionId(int $questionId): QuestionEntity\Answer
     {
         $this->questionId = $questionId;
-        return $this;
-    }
-
-    /**
-     * @deprecated Use ::setCreatedUserId() instead
-     */
-    public function setUserId(int $userId): QuestionEntity\Answer
-    {
-        $this->userId = $userId;
         return $this;
     }
 

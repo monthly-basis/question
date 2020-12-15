@@ -100,7 +100,6 @@ class QuestionTest extends TestCase
             ->setCreatedUserId((int) $array['user_id'])
             ->setQuestionId((int) $array['question_id'])
             ->setSubject($array['subject'])
-            ->setUserId((int) $array['user_id'])
             ->setViews((int) $array['views'])
             ;
         $this->assertEquals(
