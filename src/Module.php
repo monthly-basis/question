@@ -365,6 +365,12 @@ class Module
                         $sm->get(QuestionTable\Question::class)
                     );
                 },
+                QuestionService\Question\Questions\Newest::class => function ($sm) {
+                    return new QuestionService\Question\Questions\Newest(
+                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionTable\Question\DeletedDatetimeCreatedDatetime::class)
+                    );
+                },
                 QuestionService\Question\Questions\Newest\CreatedName::class => function ($sm) {
                     return new QuestionService\Question\Questions\Newest\CreatedName(
                         $sm->get(QuestionFactory\Question::class),
