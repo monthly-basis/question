@@ -17,7 +17,7 @@ class DeletedDatetimeCreatedDatetime
         $this->questionTable = $questionTable;
     }
 
-    public function selectWhereDeletedDatetimeIsNullOrderByCreatedDatetimeAsc(
+    public function selectWhereDeletedDatetimeIsNullOrderByCreatedDatetimeDesc(
         int $limitOffset,
         int $limitRowCount
     ): Generator {
@@ -26,7 +26,7 @@ class DeletedDatetimeCreatedDatetime
               FROM `question`
              WHERE `question`.`deleted_datetime` IS NULL
              ORDER
-                BY `question`.`created_datetime` ASC
+                BY `question`.`created_datetime` DESC
              LIMIT ?, ?
                  ;
         ';
