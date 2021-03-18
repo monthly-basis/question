@@ -91,16 +91,16 @@
         },
         {
             "name": "laminas/laminas-cache",
-            "version": "2.10.0",
+            "version": "2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cache.git",
-                "reference": "060b2a71d42b12122a3546594727e7d4b870abd5"
+                "reference": "c0c24cb12f6180c4025eaabe092f63309876c2a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-cache/zipball/060b2a71d42b12122a3546594727e7d4b870abd5",
-                "reference": "060b2a71d42b12122a3546594727e7d4b870abd5",
+                "url": "https://api.github.com/repos/laminas/laminas-cache/zipball/c0c24cb12f6180c4025eaabe092f63309876c2a9",
+                "reference": "c0c24cb12f6180c4025eaabe092f63309876c2a9",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 "psr-16",
                 "psr-6"
             ],
-            "time": "2020-11-08T13:01:19+00:00"
+            "time": "2021-02-25T20:03:34+00:00"
         },
         {
             "name": "laminas/laminas-cache-storage-adapter-apc",
@@ -273,16 +273,16 @@
         },
         {
             "name": "laminas/laminas-cache-storage-adapter-blackhole",
-            "version": "1.0.1",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cache-storage-adapter-blackhole.git",
-                "reference": "5f2cb437160fbc01d7f216b11e4f1ff4c9b95c49"
+                "reference": "8d6c5741e46c4797e332d05b9eb53e743fe0c073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-cache-storage-adapter-blackhole/zipball/5f2cb437160fbc01d7f216b11e4f1ff4c9b95c49",
-                "reference": "5f2cb437160fbc01d7f216b11e4f1ff4c9b95c49",
+                "url": "https://api.github.com/repos/laminas/laminas-cache-storage-adapter-blackhole/zipball/8d6c5741e46c4797e332d05b9eb53e743fe0c073",
+                "reference": "8d6c5741e46c4797e332d05b9eb53e743fe0c073",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
             },
             "require-dev": {
                 "laminas/laminas-cache": "^2.10",
-                "laminas/laminas-cache-storage-adapter-test": "^1.0@dev",
+                "laminas/laminas-cache-storage-adapter-test": "^1.0.2",
                 "laminas/laminas-coding-standard": "~1.0.0",
                 "squizlabs/php_codesniffer": "^2.7"
             },
@@ -315,7 +315,7 @@
                 "cache",
                 "laminas"
             ],
-            "time": "2020-10-12T16:07:07+00:00"
+            "time": "2021-02-26T08:20:16+00:00"
         },
         {
             "name": "laminas/laminas-cache-storage-adapter-dba",
@@ -1008,20 +1008,21 @@
                 "console",
                 "laminas"
             ],
+            "abandoned": "laminas/laminas-cli",
             "time": "2019-12-31T16:31:45+00:00"
         },
         {
             "name": "laminas/laminas-db",
-            "version": "2.11.3",
+            "version": "2.11.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-db.git",
-                "reference": "6c4238918b9204db1eb8cafae2c1940d40f4c007"
+                "reference": "5b59413b8dd5d79e3fe58c2650c60b1730989f36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-db/zipball/6c4238918b9204db1eb8cafae2c1940d40f4c007",
-                "reference": "6c4238918b9204db1eb8cafae2c1940d40f4c007",
+                "url": "https://api.github.com/repos/laminas/laminas-db/zipball/5b59413b8dd5d79e3fe58c2650c60b1730989f36",
+                "reference": "5b59413b8dd5d79e3fe58c2650c60b1730989f36",
                 "shasum": ""
             },
             "require": {
@@ -1046,10 +1047,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "2.11.x-dev",
-                    "dev-develop": "2.12.x-dev"
-                },
                 "laminas": {
                     "component": "Laminas\\Db",
                     "config-provider": "Laminas\\Db\\ConfigProvider"
@@ -1070,7 +1067,7 @@
                 "db",
                 "laminas"
             ],
-            "time": "2020-03-29T12:08:51+00:00"
+            "time": "2021-02-20T18:52:15+00:00"
         },
         {
             "name": "laminas/laminas-dom",
@@ -2044,16 +2041,16 @@
         },
         {
             "name": "monthly-basis/content-moderation",
-            "version": "v0.11.0",
+            "version": "v0.11.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/content-moderation.git",
-                "reference": "a441bf01f4337bf0c6ec1971697fdb2d6c9d2615"
+                "reference": "e545ae93ae8e25fcd1733ca972bef954152b00d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/a441bf01f4337bf0c6ec1971697fdb2d6c9d2615",
-                "reference": "a441bf01f4337bf0c6ec1971697fdb2d6c9d2615",
+                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/e545ae93ae8e25fcd1733ca972bef954152b00d9",
+                "reference": "e545ae93ae8e25fcd1733ca972bef954152b00d9",
                 "shasum": ""
             },
             "require": {
@@ -2073,7 +2070,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2021-01-29T19:10:28+00:00"
+            "time": "2021-03-12T19:37:22+00:00"
         },
         {
             "name": "monthly-basis/flash",
@@ -2169,20 +2166,21 @@
         },
         {
             "name": "monthly-basis/re-captcha",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/re-captcha.git",
-                "reference": "a257b841a99fb2da2ba228230570cb6e0f595acc"
+                "reference": "2a9a94f099a012d44412f7aae4caa834f07d48d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/re-captcha/zipball/a257b841a99fb2da2ba228230570cb6e0f595acc",
-                "reference": "a257b841a99fb2da2ba228230570cb6e0f595acc",
+                "url": "https://api.github.com/repos/monthly-basis/re-captcha/zipball/2a9a94f099a012d44412f7aae4caa834f07d48d9",
+                "reference": "2a9a94f099a012d44412f7aae4caa834f07d48d9",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-test": "^3.1",
+                "monthly-basis/laminas-test": "^2.0",
                 "monthly-basis/string": "^3.0"
             },
             "type": "library",
@@ -2196,20 +2194,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-11-26T18:24:04+00:00"
+            "time": "2021-02-24T19:35:57+00:00"
         },
         {
             "name": "monthly-basis/string",
-            "version": "v3.0.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/string.git",
-                "reference": "4a98c479856a005a40b12ff813dd02d527cf4a8f"
+                "reference": "43637c05bafcec7e3cbd093e705f967dbc28ea5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/string/zipball/4a98c479856a005a40b12ff813dd02d527cf4a8f",
-                "reference": "4a98c479856a005a40b12ff813dd02d527cf4a8f",
+                "url": "https://api.github.com/repos/monthly-basis/string/zipball/43637c05bafcec7e3cbd093e705f967dbc28ea5f",
+                "reference": "43637c05bafcec7e3cbd093e705f967dbc28ea5f",
                 "shasum": ""
             },
             "require": {
@@ -2226,7 +2224,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-11-19T06:15:40+00:00"
+            "time": "2021-03-12T19:44:03+00:00"
         },
         {
             "name": "monthly-basis/superglobal",
@@ -2261,16 +2259,16 @@
         },
         {
             "name": "monthly-basis/user",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/user.git",
-                "reference": "0a52bcbe706719d88c7709c6ac443b4da6cb0988"
+                "reference": "5f71fb6f3094ffba0aac8d2b40c98b2c1a74e854"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/user/zipball/0a52bcbe706719d88c7709c6ac443b4da6cb0988",
-                "reference": "0a52bcbe706719d88c7709c6ac443b4da6cb0988",
+                "url": "https://api.github.com/repos/monthly-basis/user/zipball/5f71fb6f3094ffba0aac8d2b40c98b2c1a74e854",
+                "reference": "5f71fb6f3094ffba0aac8d2b40c98b2c1a74e854",
                 "shasum": ""
             },
             "require": {
@@ -2292,7 +2290,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-12-01T00:17:24+00:00"
+            "time": "2021-02-24T19:59:21+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2400,16 +2398,16 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.0.4",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451"
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/version/zipball/e4782611070e50613683d2b9a57730e9a3ba5451",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/bae7c545bef187884426f042434e561ab1ddb182",
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182",
                 "shasum": ""
             },
             "require": {
@@ -2443,7 +2441,7 @@
                 }
             ],
             "description": "Library for handling version information and constraints",
-            "time": "2020-12-13T23:18:30+00:00"
+            "time": "2021-02-23T14:00:09+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2593,16 +2591,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.12.2",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "245710e971a030f42e08f4912863805570f23d39"
+                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/245710e971a030f42e08f4912863805570f23d39",
-                "reference": "245710e971a030f42e08f4912863805570f23d39",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/be1996ed8adc35c3fd795488a653f4b518be70ea",
+                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea",
                 "shasum": ""
             },
             "require": {
@@ -2652,7 +2650,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-12-19T10:15:11+00:00"
+            "time": "2021-03-17T13:42:18+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2909,16 +2907,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.14",
+            "version": "8.5.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c25f79895d27b6ecd5abfa63de1606b786a461a3"
+                "reference": "038d4196d8e8cb405cd5e82cedfe413ad6eef9ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c25f79895d27b6ecd5abfa63de1606b786a461a3",
-                "reference": "c25f79895d27b6ecd5abfa63de1606b786a461a3",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/038d4196d8e8cb405cd5e82cedfe413ad6eef9ef",
+                "reference": "038d4196d8e8cb405cd5e82cedfe413ad6eef9ef",
                 "shasum": ""
             },
             "require": {
@@ -2988,7 +2986,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2021-01-17T07:37:30+00:00"
+            "time": "2021-03-17T07:27:54+00:00"
         },
         {
             "name": "psr/cache",
@@ -3038,27 +3036,22 @@
         },
         {
             "name": "psr/container",
-            "version": "1.0.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
-                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+                "reference": "8622567409010282b7aeebe4bb841fe98b58dcaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
-                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/8622567409010282b7aeebe4bb841fe98b58dcaf",
+                "reference": "8622567409010282b7aeebe4bb841fe98b58dcaf",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=7.2.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Psr\\Container\\": "src/"
@@ -3071,7 +3064,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common Container Interface (PHP FIG PSR-11)",
@@ -3083,7 +3076,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-02-14T16:28:37+00:00"
+            "time": "2021-03-05T17:36:06+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -3750,7 +3743,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.22.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -3901,30 +3894,35 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.9.1",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
+                "reference": "6964c76c7804814a842473e0c8fd15bab0f18e25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
-                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/6964c76c7804814a842473e0c8fd15bab0f18e25",
+                "reference": "6964c76c7804814a842473e0c8fd15bab0f18e25",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0 || ^8.0",
+                "php": "^7.2 || ^8.0",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
                 "phpstan/phpstan": "<0.12.20",
-                "vimeo/psalm": "<3.9.1"
+                "vimeo/psalm": "<4.6.1 || 4.6.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.36 || ^7.5.13"
+                "phpunit/phpunit": "^8.5.13"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Webmozart\\Assert\\": "src/"
@@ -3946,7 +3944,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-07-08T17:02:28+00:00"
+            "time": "2021-03-09T10:59:23+00:00"
         }
     ],
     "packages-dev": [],
