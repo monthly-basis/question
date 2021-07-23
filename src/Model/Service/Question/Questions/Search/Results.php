@@ -1,6 +1,8 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\Questions\Search;
 
+use Laminas\Db\Adapter\Driver\Pdo\Result;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
@@ -28,14 +30,7 @@ class Results
             16
         );
 
-        $result = $this->questionSearchMessageTable
-            ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
-                $query,
-                ($page - 1) * 100,
-                100,
-                0,
-                100
-            );
+        $result = $this->getPdoResult($query, $page);
 
         foreach ($result as $array) {
             $questionEntity = $this->questionFactory->buildFromQuestionId($array['question_id']);
@@ -48,6 +43,23 @@ class Results
             }
 
             yield $questionEntity;
+        }
+    }
+
+    protected function getPdoResult(string $query, int $page): Result
+    {
+        try {
+            return $this->questionSearchMessageTable
+                ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
+                    $query,
+                    ($page - 1) * 100,
+                    100,
+                    0,
+                    100
+                );
+        } catch (InvalidQueryException $invalidQueryException) {
+            sleep(1);
+            return $this->getPdoResult($query, $page);
         }
     }
 }
