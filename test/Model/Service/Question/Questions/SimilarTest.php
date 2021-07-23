@@ -2,7 +2,6 @@
 namespace MonthlyBasis\QuestionTest\Model\Service;
 
 use Exception;
-use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
