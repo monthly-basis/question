@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\Questions\Search;
 
+use Exception;
 use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
@@ -11,6 +12,8 @@ use TypeError;
 
 class Results
 {
+    protected int $recursionIteration = 0;
+
     public function __construct(
         QuestionFactory\Question $questionFactory,
         QuestionTable\Question $questionTable,
@@ -60,6 +63,10 @@ class Results
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             sleep(1);
+            $this->recursionIteration++;
+            if ($this->recursionIteration >= 5) {
+                throw new Exception('Unable to get PDO result.');
+            }
             return $this->getPdoResult($query, $page);
         }
     }

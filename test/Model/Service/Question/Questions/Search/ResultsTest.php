@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Service\Question\Questions\Search;
 
+use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
@@ -46,7 +47,7 @@ class ResultsTest extends TestCase
         );
     }
 
-    public function test_getPdoResult_tableModelThrowsExceptions_resultAfterRecursiveCalls()
+    public function test_getPdoResult_tableModelThrows2Exceptions_resultAfterRecursiveCalls()
     {
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
@@ -69,5 +70,42 @@ class ResultsTest extends TestCase
         $method = $class->getMethod('getPdoResult');
         $method->setAccessible(true);
         $method->invokeArgs($this->resultsService, ['the amazing search query', 7]);
+    }
+
+    public function test_getPdoResult_tableModelThrows5Exceptions_exceptionAfterRecursiveCalls()
+    {
+        $this->questionSearchMessageTableMock
+             ->expects($this->exactly(5))
+             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->withConsecutive(
+                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100, 0, 100],
+             )
+             ->will(
+                 $this->onConsecutiveCalls(
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                 )
+             )
+             ;
+
+        try {
+            $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results::class);
+            $method = $class->getMethod('getPdoResult');
+            $method->setAccessible(true);
+            $method->invokeArgs($this->resultsService, ['the amazing search query', 7]);
+            $this->fail();
+        } catch (Exception $exception) {
+            $this->assertSame(
+                'Unable to get PDO result.',
+                $exception->getMessage(),
+            );
+        }
     }
 }
