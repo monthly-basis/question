@@ -46,7 +46,7 @@ class ResultsTest extends TestCase
         );
     }
 
-    public function test_getPdoResult_tableModelThrowsException_resultAfterRecursiveCall()
+    public function test_getPdoResult_tableModelThrowsExceptions_resultAfterRecursiveCalls()
     {
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
