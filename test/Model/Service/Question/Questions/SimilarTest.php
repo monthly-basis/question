@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Service;
 
+use Exception;
 use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
@@ -275,7 +276,7 @@ class SimilarTest extends TestCase
         );
     }
 
-    public function test_getPdoResult_tableModelThrowsExceptions_resultAfterRecursiveCalls()
+    public function test_getPdoResult_tableModelThrows2Exceptions_resultAfterRecursiveCalls()
     {
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
@@ -301,5 +302,46 @@ class SimilarTest extends TestCase
             $this->similarService,
             ['the query is the message field of the question entity', 12]
         );
+    }
+
+    public function test_getPdoResult_tableModelThrows5Exceptions_exceptionAfterRecursiveCalls()
+    {
+        $this->questionSearchMessageTableMock
+             ->expects($this->exactly(5))
+             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->withConsecutive(
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+             )
+             ->will(
+                 $this->onConsecutiveCalls(
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                 )
+             )
+             ;
+
+        $class = new \ReflectionClass(QuestionService\Question\Questions\Similar::class);
+        $method = $class->getMethod('getPdoResult');
+        $method->setAccessible(true);
+
+        try {
+            $method->invokeArgs(
+                $this->similarService,
+                ['the query is the message field of the question entity', 12]
+            );
+            $this->fail();
+        } catch (Exception $exception) {
+            $this->assertSame(
+                'Unable to get PDO result.',
+                $exception->getMessage(),
+            );
+        }
     }
 }
