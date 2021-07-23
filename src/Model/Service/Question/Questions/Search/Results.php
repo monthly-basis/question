@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\Questions\Search;
 
+use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
@@ -22,7 +23,7 @@ class Results
         $this->keepFirstWordsService      = $keepFirstWordsService;
     }
 
-    public function getResults(string $query, int $page)
+    public function getResults(string $query, int $page): Generator
     {
         $query = strtolower($query);
         $query = $this->keepFirstWordsService->keepFirstWords(
