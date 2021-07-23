@@ -51,6 +51,11 @@ class ResultsTest extends TestCase
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
              ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->withConsecutive(
+                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100, 0, 100],
+             )
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),
@@ -63,6 +68,6 @@ class ResultsTest extends TestCase
         $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results::class);
         $method = $class->getMethod('getPdoResult');
         $method->setAccessible(true);
-        $method->invokeArgs($this->resultsService, ['query', 7]);
+        $method->invokeArgs($this->resultsService, ['the amazing search query', 7]);
     }
 }
