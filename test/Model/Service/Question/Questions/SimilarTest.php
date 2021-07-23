@@ -3,6 +3,7 @@ namespace MonthlyBasis\QuestionTest\Model\Service;
 
 use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
@@ -268,6 +269,34 @@ class SimilarTest extends TestCase
         $this->assertSame(
             12,
             count(iterator_to_array($generator))
+        );
+    }
+
+    public function test_getPdoResult_tableModelThrowsExceptions_resultAfterRecursiveCalls()
+    {
+        $this->questionSearchMessageTableMock
+             ->expects($this->exactly(3))
+             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->withConsecutive(
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 0, 100, 0, 13],
+             )
+             ->will(
+                 $this->onConsecutiveCalls(
+                     $this->throwException(new InvalidQueryException()),
+                     $this->throwException(new InvalidQueryException()),
+                     new Result()
+                 )
+             )
+             ;
+
+        $class = new \ReflectionClass(QuestionService\Question\Questions\Similar::class);
+        $method = $class->getMethod('getPdoResult');
+        $method->setAccessible(true);
+        $method->invokeArgs(
+            $this->similarService,
+            ['the query is the message field of the question entity', 12]
         );
     }
 }
