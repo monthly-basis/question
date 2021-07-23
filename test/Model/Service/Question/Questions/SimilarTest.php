@@ -97,7 +97,8 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $this->questionEntity
+            $this->questionEntity,
+            12
         );
         $this->assertSame(
             2,
@@ -161,7 +162,8 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $this->questionEntity
+            $this->questionEntity,
+            12
         );
         $this->assertSame(
             5,
@@ -264,7 +266,8 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $this->questionEntity
+            $this->questionEntity,
+            12
         );
         $this->assertSame(
             12,

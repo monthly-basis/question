@@ -21,12 +21,9 @@ class Similar
         $this->questionSearchMessageTable = $questionSearchMessageTable;
     }
 
-    /**
-     * @todo Make $maxResults a required parameter
-     */
     public function getSimilar(
         QuestionEntity\Question $questionEntity,
-        int $maxResults = 12
+        int $maxResults
     ): Generator {
         $query = $questionEntity->getMessage();
         $query = strip_tags($query);
