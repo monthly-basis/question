@@ -1,9 +1,9 @@
 <?php
 namespace MonthlyBasis\Question\Model\Table;
 
-use Laminas\Db as LaminasDb;
-use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 
 class QuestionSearchMessage
 {
@@ -21,7 +21,7 @@ class QuestionSearchMessage
         int $questionSearchMessageLimitRowCount,
         int $outerLimitOffset,
         int $outerLimitRowCount
-    ): LaminasDb\Adapter\Driver\Pdo\Result {
+    ): Result {
         $sql = '
             SELECT `question_id`
               FROM (
