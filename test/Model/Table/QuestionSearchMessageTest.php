@@ -36,4 +36,18 @@ class QuestionSearchMessageTest extends TableTestCase
             iterator_to_array($result)
         );
     }
+
+    public function test_selectCountWhereMatchMessageAgainst()
+    {
+        $result = $this->questionSearchMessageTable
+            ->selectCountWhereMatchMessageAgainst(
+                'the search query'
+            );
+        $this->assertSame(
+            [
+                'COUNT(*)' => '0',
+            ],
+            $result->current()
+        );
+    }
 }

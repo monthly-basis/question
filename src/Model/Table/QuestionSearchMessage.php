@@ -72,4 +72,18 @@ class QuestionSearchMessage
         $this->memcachedService->setForDays($cacheKey, $count, 28);
         return (int) $row['count'];
     }
+
+    public function selectCountWhereMatchMessageAgainst(string $query): Result
+    {
+        $sql = '
+            SELECT COUNT(*)
+              FROM `question_search_message`
+             WHERE MATCH (`message`) AGAINST (?)
+                 ;
+        ';
+        $parameters = [
+            $query,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
 }
