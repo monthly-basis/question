@@ -53,6 +53,9 @@ class QuestionSearchMessage
         return $this->adapter->query($sql)->execute($parameters);
     }
 
+    /**
+     * @deprecated Use ::selectCountWhereMatchMessageAgainst() instead
+     */
     public function selectCountWhereMatchAgainst(string $query): int
     {
         $cacheKey = md5(__METHOD__ . $query);
