@@ -13,5 +13,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - In UserTable\QuestionSearchMessage, we deprecated ::selectCountWhereMatchAgainst() in favor of ::selectCountWhereMatchMessageAgainst()
 
-[unreleased]: https://github.com/monthly-basis/user/compare/v2.3.0...HEAD
-[v2.3.0]: https://github.com/monthly-basis/user/compare/v2.2.1...v2.3.0
+[unreleased]: https://github.com/monthly-basis/question/compare/v2.3.0...HEAD
+[v2.3.0]: https://github.com/monthly-basis/question/compare/v2.2.1...v2.3.0
