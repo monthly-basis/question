@@ -392,6 +392,12 @@ class Module
                         $sm->get(StringService\KeepFirstWords::class)
                     );
                 },
+                QuestionService\Question\Questions\Search\Results\Count::class => function ($sm) {
+                    return new QuestionService\Question\Questions\Search\Results\Count(
+                        $sm->get(QuestionTable\QuestionSearchMessage::class),
+                        $sm->get(StringService\KeepFirstWords::class)
+                    );
+                },
                 QuestionService\Question\Questions\Similar::class => function ($sm) {
                     return new QuestionService\Question\Questions\Similar(
                         $sm->get(QuestionFactory\Question::class),
