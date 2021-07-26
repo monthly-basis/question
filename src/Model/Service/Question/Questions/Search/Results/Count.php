@@ -1,11 +1,16 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\Questions\Search\Results;
 
+use Exception;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
 
 class Count
 {
+    protected int $recursionIteration = 0;
+
     public function __construct(
         QuestionTable\QuestionSearchMessage $questionSearchMessage,
         StringService\KeepFirstWords $keepFirstWordsService
@@ -22,9 +27,24 @@ class Count
             16
         );
 
-        $result = $this->questionSearchMessage->selectCountWhereMatchMessageAgainst(
-            $query
-        );
+        $result = $this->getPdoResult($query);
+
         return $result->current()['COUNT(*)'];
+    }
+
+    protected function getPdoResult(string $query): Result
+    {
+        try {
+            return $result = $this->questionSearchMessage->selectCountWhereMatchMessageAgainst(
+                $query
+            );
+        } catch (InvalidQueryException $invalidQueryException) {
+            sleep(1);
+            $this->recursionIteration++;
+            if ($this->recursionIteration >= 5) {
+                throw new Exception('Unable to get PDO result.');
+            }
+            return $this->getPdoResult($query);
+        }
     }
 }
