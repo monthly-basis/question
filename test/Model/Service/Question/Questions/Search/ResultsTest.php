@@ -23,9 +23,6 @@ class ResultsTest extends TestCase
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
-        $this->questionTableMock = $this->createMock(
-            QuestionTable\Question::class
-        );
         $this->questionSearchMessageTableMock = $this->createMock(
             QuestionTable\QuestionSearchMessage::class
         );
@@ -36,7 +33,6 @@ class ResultsTest extends TestCase
         $this->resultsService = new QuestionService\Question\Questions\Search\Results(
             $this->configEntity,
             $this->questionFactoryMock,
-            $this->questionTableMock,
             $this->questionSearchMessageTableMock,
             $this->keepFirstWordsServiceMock
         );

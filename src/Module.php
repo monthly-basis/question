@@ -394,7 +394,6 @@ class Module
                     return new QuestionService\Question\Questions\Search\Results(
                         $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionFactory\Question::class),
-                        $sm->get(QuestionTable\Question::class),
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
                         $sm->get(StringService\KeepFirstWords::class)
                     );
