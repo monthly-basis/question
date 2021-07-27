@@ -15,10 +15,12 @@ class Similar
     protected int $recursionIteration = 0;
 
     public function __construct(
+        QuestionEntity\Config $configEntity,
         QuestionFactory\Question $questionFactory,
         QuestionTable\Question $questionTable,
         QuestionTable\QuestionSearchMessage $questionSearchMessageTable
     ) {
+        $this->configEntity               = $configEntity;
         $this->questionFactory            = $questionFactory;
         $this->questionTable              = $questionTable;
         $this->questionSearchMessageTable = $questionSearchMessageTable;
@@ -78,7 +80,7 @@ class Similar
                     $maxResults + 1
                 );
         } catch (InvalidQueryException $invalidQueryException) {
-            sleep(1);
+            sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
             $this->recursionIteration++;
             if ($this->recursionIteration >= 5) {
                 throw new Exception('Unable to get PDO result.');

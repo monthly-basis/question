@@ -15,6 +15,11 @@ class SimilarTest extends TestCase
 {
     protected function setUp(): void
     {
+        $configPath  = __DIR__ . '/../../../../../config/autoload/local.php';
+        $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
+        $this->configEntity = new QuestionEntity\Config(
+            $configArray
+        );
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
@@ -25,6 +30,7 @@ class SimilarTest extends TestCase
             QuestionTable\QuestionSearchMessage::class
         );
         $this->similarService = new QuestionService\Question\Questions\Similar(
+            $this->configEntity,
             $this->questionFactoryMock,
             $this->questionTableMock,
             $this->questionSearchMessageTableMock
