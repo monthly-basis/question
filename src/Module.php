@@ -392,6 +392,7 @@ class Module
                 },
                 QuestionService\Question\Questions\Search\Results::class => function ($sm) {
                     return new QuestionService\Question\Questions\Search\Results(
+                        $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionFactory\Question::class),
                         $sm->get(QuestionTable\Question::class),
                         $sm->get(QuestionTable\QuestionSearchMessage::class),

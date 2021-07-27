@@ -15,6 +15,11 @@ class ResultsTest extends TestCase
 {
     protected function setUp(): void
     {
+        $configPath  = __DIR__ . '/../../../../../../config/autoload/local.php';
+        $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
+        $this->configEntity = new QuestionEntity\Config(
+            $configArray
+        );
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
@@ -29,6 +34,7 @@ class ResultsTest extends TestCase
         );
 
         $this->resultsService = new QuestionService\Question\Questions\Search\Results(
+            $this->configEntity,
             $this->questionFactoryMock,
             $this->questionTableMock,
             $this->questionSearchMessageTableMock,

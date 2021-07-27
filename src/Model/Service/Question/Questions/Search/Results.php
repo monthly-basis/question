@@ -5,6 +5,7 @@ use Exception;
 use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
@@ -15,11 +16,13 @@ class Results
     protected int $recursionIteration = 0;
 
     public function __construct(
+        QuestionEntity\Config $configEntity,
         QuestionFactory\Question $questionFactory,
         QuestionTable\Question $questionTable,
         QuestionTable\QuestionSearchMessage $questionSearchMessageTable,
         StringService\KeepFirstWords $keepFirstWordsService
     ) {
+        $this->configEntity               = $configEntity;
         $this->questionFactory            = $questionFactory;
         $this->questionTable              = $questionTable;
         $this->questionSearchMessageTable = $questionSearchMessageTable;
@@ -62,7 +65,7 @@ class Results
                     100
                 );
         } catch (InvalidQueryException $invalidQueryException) {
-            sleep(1);
+            sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
             $this->recursionIteration++;
             if ($this->recursionIteration >= 5) {
                 throw new Exception('Unable to get PDO result.');
