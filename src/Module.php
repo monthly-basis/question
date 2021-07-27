@@ -401,6 +401,7 @@ class Module
                 },
                 QuestionService\Question\Questions\Search\Results\Count::class => function ($sm) {
                     return new QuestionService\Question\Questions\Search\Results\Count(
+                        $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
                         $sm->get(StringService\KeepFirstWords::class)
                     );

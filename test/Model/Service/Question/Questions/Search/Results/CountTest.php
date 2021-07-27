@@ -5,6 +5,7 @@ use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\LaminasTest\Hydrator as LaminasTestHydrator;
+use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
@@ -14,6 +15,11 @@ class CountTest extends TestCase
 {
     protected function setUp(): void
     {
+        $configPath  = __DIR__ . '/../../../../../../../config/autoload/local.php';
+        $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
+        $this->configEntity = new QuestionEntity\Config(
+            $configArray
+        );
         $this->questionSearchMessageTableMock = $this->createMock(
             QuestionTable\QuestionSearchMessage::class
         );
@@ -22,6 +28,7 @@ class CountTest extends TestCase
         );
 
         $this->countService = new QuestionService\Question\Questions\Search\Results\Count(
+            $this->configEntity,
             $this->questionSearchMessageTableMock,
             $this->keepFirstWordsServiceMock
         );
