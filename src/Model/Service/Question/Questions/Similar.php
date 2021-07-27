@@ -17,12 +17,10 @@ class Similar
     public function __construct(
         QuestionEntity\Config $configEntity,
         QuestionFactory\Question $questionFactory,
-        QuestionTable\Question $questionTable,
         QuestionTable\QuestionSearchMessage $questionSearchMessageTable
     ) {
         $this->configEntity               = $configEntity;
         $this->questionFactory            = $questionFactory;
-        $this->questionTable              = $questionTable;
         $this->questionSearchMessageTable = $questionSearchMessageTable;
     }
 

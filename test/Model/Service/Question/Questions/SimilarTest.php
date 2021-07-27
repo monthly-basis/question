@@ -23,16 +23,12 @@ class SimilarTest extends TestCase
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
-        $this->questionTableMock = $this->createMock(
-            QuestionTable\Question::class
-        );
         $this->questionSearchMessageTableMock = $this->createMock(
             QuestionTable\QuestionSearchMessage::class
         );
         $this->similarService = new QuestionService\Question\Questions\Similar(
             $this->configEntity,
             $this->questionFactoryMock,
-            $this->questionTableMock,
             $this->questionSearchMessageTableMock
         );
 
