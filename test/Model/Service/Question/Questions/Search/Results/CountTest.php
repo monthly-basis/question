@@ -43,6 +43,10 @@ class CountTest extends TestCase
 
     public function test_getCount_searchQuery_intFromTableModel()
     {
+        $aLongSearchQuery = 'this is a long search query with more than 16 words '
+                          . 'and it should be shortened before being passed';
+        $shortenedQuery   = 'this is a long search query with more than 16 words '
+                          . 'and it should be shortened';
         $resultMock = $this->createMock(
             Result::class
         );
@@ -64,13 +68,13 @@ class CountTest extends TestCase
         $this->keepFirstWordsServiceMock
              ->expects($this->once())
              ->method('keepFirstWords')
-             ->with('the search query', 16)
-             ->willReturn('a search query with no more than 16 words')
+             ->with($aLongSearchQuery, 16)
+             ->willReturn($shortenedQuery)
              ;
         $this->questionSearchMessageTableMock
              ->expects($this->once())
              ->method('selectCountWhereMatchMessageAgainst')
-             ->with('a search query with no more than 16 words')
+             ->with($shortenedQuery)
              ->willReturn($resultMock)
              ;
         $this->memcachedServiceMock
@@ -85,7 +89,7 @@ class CountTest extends TestCase
 
         $this->assertSame(
             2718,
-            $this->countService->getCount('the search query'),
+            $this->countService->getCount($aLongSearchQuery),
         );
     }
 
