@@ -4,6 +4,7 @@ namespace MonthlyBasis\Question\Model\Service\Question\Questions\Search\Results;
 use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
@@ -13,10 +14,12 @@ class Count
     protected int $recursionIteration = 0;
 
     public function __construct(
+        MemcachedService\Memcached $memcachedService,
         QuestionEntity\Config $configEntity,
         QuestionTable\QuestionSearchMessage $questionSearchMessage,
         StringService\KeepFirstWords $keepFirstWordsService
     ) {
+        $this->memcachedService      = $memcachedService;
         $this->configEntity          = $configEntity;
         $this->questionSearchMessage = $questionSearchMessage;
         $this->keepFirstWordsService = $keepFirstWordsService;
@@ -24,6 +27,11 @@ class Count
 
     public function getCount(string $query): int
     {
+        $cacheKey = md5($_SERVER['DOCUMENT_ROOT'] . __METHOD__ . $query);
+        if (null !== ($count = $this->memcachedService->get($cacheKey))) {
+            return $count;
+        }
+
         $query = strtolower($query);
         $query = $this->keepFirstWordsService->keepFirstWords(
             $query,
@@ -32,7 +40,9 @@ class Count
 
         $result = $this->getPdoResult($query);
 
-        return $result->current()['COUNT(*)'];
+        $count = intval($result->current()['COUNT(*)']);
+        $this->memcachedService->setForDays($cacheKey, $count, 7);
+        return $count;
     }
 
     protected function getPdoResult(string $query): Result

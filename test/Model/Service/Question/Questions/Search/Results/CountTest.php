@@ -5,6 +5,7 @@ use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\LaminasTest\Hydrator as LaminasTestHydrator;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
@@ -15,6 +16,9 @@ class CountTest extends TestCase
 {
     protected function setUp(): void
     {
+        $this->memcachedServiceMock = $this->createMock(
+            MemcachedService\Memcached::class
+        );
         $configPath  = __DIR__ . '/../../../../../../../config/autoload/local.php';
         $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
         $this->configEntity = new QuestionEntity\Config(
@@ -28,6 +32,7 @@ class CountTest extends TestCase
         );
 
         $this->countService = new QuestionService\Question\Questions\Search\Results\Count(
+            $this->memcachedServiceMock,
             $this->configEntity,
             $this->questionSearchMessageTableMock,
             $this->keepFirstWordsServiceMock
@@ -36,7 +41,7 @@ class CountTest extends TestCase
         $this->countableIteratorHydrator = new LaminasTestHydrator\CountableIterator();
     }
 
-    public function test_getCount_searchQuery_int()
+    public function test_getCount_searchQuery_intFromTableModel()
     {
         $resultMock = $this->createMock(
             Result::class
@@ -49,11 +54,34 @@ class CountTest extends TestCase
                 ],
             ]
         );
+
+        $this->memcachedServiceMock
+             ->expects($this->once())
+             ->method('get')
+             ->with($this->isType('string'))
+             ->willReturn(null)
+             ;
+        $this->keepFirstWordsServiceMock
+             ->expects($this->once())
+             ->method('keepFirstWords')
+             ->with('the search query', 16)
+             ->willReturn('a search query with no more than 16 words')
+             ;
         $this->questionSearchMessageTableMock
-            ->expects($this->once())
-            ->method('selectCountWhereMatchMessageAgainst')
-            ->willReturn($resultMock)
-            ;
+             ->expects($this->once())
+             ->method('selectCountWhereMatchMessageAgainst')
+             ->with('a search query with no more than 16 words')
+             ->willReturn($resultMock)
+             ;
+        $this->memcachedServiceMock
+             ->expects($this->once())
+             ->method('setForDays')
+             ->with($this->matchesRegularExpression(
+                 '/^\w{32}$/'),
+                 2718,
+                 7
+             )
+             ;
 
         $this->assertSame(
             2718,
