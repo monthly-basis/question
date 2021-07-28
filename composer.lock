@@ -66,16 +66,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.185.21",
+            "version": "3.186.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "58a64da8f232913842f08ce93e62f3a5961664b3"
+                "reference": "50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/58a64da8f232913842f08ce93e62f3a5961664b3",
-                "reference": "58a64da8f232913842f08ce93e62f3a5961664b3",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731",
+                "reference": "50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731",
                 "shasum": ""
             },
             "require": {
@@ -150,9 +150,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.21"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.1"
             },
-            "time": "2021-07-26T18:15:01+00:00"
+            "time": "2021-07-28T18:14:43+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -3407,16 +3407,16 @@
         },
         {
             "name": "monthly-basis/user",
-            "version": "v2.7.5",
+            "version": "v2.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/user.git",
-                "reference": "defd1a56eacdf87af5b4e175dc1916c2eb060e36"
+                "reference": "0715bc28aaa420d22ae36fabac76a622d47025d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/user/zipball/defd1a56eacdf87af5b4e175dc1916c2eb060e36",
-                "reference": "defd1a56eacdf87af5b4e175dc1916c2eb060e36",
+                "url": "https://api.github.com/repos/monthly-basis/user/zipball/0715bc28aaa420d22ae36fabac76a622d47025d2",
+                "reference": "0715bc28aaa420d22ae36fabac76a622d47025d2",
                 "shasum": ""
             },
             "require": {
@@ -3445,9 +3445,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/user/issues",
-                "source": "https://github.com/monthly-basis/user/tree/v2.7.5"
+                "source": "https://github.com/monthly-basis/user/tree/v2.7.6"
             },
-            "time": "2021-07-25T07:09:11+00:00"
+            "time": "2021-07-27T20:33:28+00:00"
         },
         {
             "name": "monthly-basis/website",
@@ -6709,16 +6709,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "75a63c33a8577608444246075ea0af0d052e452a"
+                "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/75a63c33a8577608444246075ea0af0d052e452a",
-                "reference": "75a63c33a8577608444246075ea0af0d052e452a",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/34a41e998c2183e22995f158c581e7b5e755ab9e",
+                "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e",
                 "shasum": ""
             },
             "require": {
@@ -6747,7 +6747,7 @@
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "support": {
                 "issues": "https://github.com/theseer/tokenizer/issues",
-                "source": "https://github.com/theseer/tokenizer/tree/master"
+                "source": "https://github.com/theseer/tokenizer/tree/1.2.1"
             },
             "funding": [
                 {
@@ -6755,7 +6755,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-12T23:59:07+00:00"
+            "time": "2021-07-28T10:34:58+00:00"
         },
         {
             "name": "webimpress/safe-writer",
