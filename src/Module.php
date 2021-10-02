@@ -2,6 +2,7 @@
 namespace MonthlyBasis\Question;
 
 use Laminas\Db as LaminasDb;
+use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
@@ -86,6 +87,11 @@ class Module
                 'laminas-db-table-gateway-table-gateway-question_view_not_bot_log' => function ($sm) {
                     return new LaminasDb\TableGateway\TableGateway(
                         'question_view_not_bot_log',
+                        $sm->get('question')
+                    );
+                },
+                QuestionDb\Sql::class => function ($sm) {
+                    return new QuestionDb\Sql(
                         $sm->get('question')
                     );
                 },
