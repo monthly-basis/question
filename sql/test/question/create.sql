@@ -19,7 +19,7 @@ CREATE TABLE `question` (
     `deleted_reason` varchar(255) default null,
     PRIMARY KEY (`question_id`),
     KEY `user_id` (`user_id`),
-    KEY `user_id_deleted_datetime_created_datetime` (`user_id`, `deleted_datetime`, `created_datetime`),
+    KEY `user_id_deleted_datetime_created_datetime_question_id` (`user_id`, `deleted_datetime`, `created_datetime`, `question_id`),
     KEY `created_datetime_deleted_datetime_views_not_bot_one_month` (`created_datetime`, `deleted_datetime`, `views_not_bot_one_month`),
     KEY `created_name_deleted_datetime_created_datetime` (`created_name`, `deleted_datetime`, `created_datetime`),
     KEY `created_name_deleted_datetime_views_not_bot_one_month` (`created_name`, `deleted_datetime`, `views_not_bot_one_month`),

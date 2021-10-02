@@ -15,9 +15,9 @@ CREATE TABLE `answer` (
     PRIMARY KEY (`answer_id`),
     KEY `question_id_deleted_datetime_created_datetime` (`question_id`, `deleted_datetime`, `created_datetime`),
     KEY `user_id` (`user_id`),
+    KEY `user_id_deleted_datetime_created_datetime_answer_id` (`user_id`, `deleted_datetime`, `created_datetime`, `answer_id`),
     KEY `created_name_deleted_datetime_created_datetime` (`created_name`, `deleted_datetime`, `created_datetime`),
     KEY `created_ip_created_datetime` (`created_ip`, `created_datetime`),
     KEY `deleted_datetime_created_datetime` (`deleted_datetime`, `created_datetime`),
-    KEY `deleted_user_id_deleted_datetime` (`deleted_user_id`, `deleted_datetime`),
-    KEY `user_id_deleted_datetime_created_datetime` (`user_id`, `deleted_datetime`, `created_datetime`)
+    KEY `deleted_user_id_deleted_datetime` (`deleted_user_id`, `deleted_datetime`)
 ) CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
