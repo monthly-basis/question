@@ -65,7 +65,12 @@ class Post
                  LIMIT 0, 100
                 )
 
-            ) AS `post` ORDER BY `created_datetime` DESC LIMIT 0, 100;
+            ) AS `post`
+
+             ORDER
+                BY `created_datetime` DESC
+             LIMIT 0, 100
+                 ;
         ";
         $parameters = [
             'userId' => $userId,

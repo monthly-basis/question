@@ -234,6 +234,13 @@ class Module
                         $sm->get(QuestionTable\Answer\AnswerId::class)
                     );
                 },
+                QuestionService\Post\Posts\Newest\User::class => function ($sm) {
+                    return new QuestionService\Post\Posts\Newest\User(
+                        $sm->get(QuestionFactory\Answer::class),
+                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionTable\Post::class),
+                    );
+                },
                 QuestionService\Question\Edit::class => function ($sm) {
                     return new QuestionService\Question\Edit(
                         $sm->get('question'),
