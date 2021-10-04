@@ -560,6 +560,11 @@ class Module
                         $sm->get('question')
                     );
                 },
+                QuestionTable\Post::class => function ($sm) {
+                    return new QuestionTable\Post(
+                        $sm->get(QuestionDb\Sql::class)
+                    );
+                },
                 QuestionTable\Question::class => function ($sm) {
                     return new QuestionTable\Question(
                         $sm->get('question')
