@@ -26,6 +26,7 @@ class Post
                      , `question_id`
                      , `user_id`
                      , `subject`
+                     , `message`
                      , `created_datetime`
                   FROM `question`
 
@@ -47,6 +48,7 @@ class Post
                      , `answer`.`question_id`
                      , `answer`.`user_id`
                      , NULL AS `subject`
+                     , `answer`.`message`
                      , `answer`.`created_datetime`
 
                   FROM `answer`

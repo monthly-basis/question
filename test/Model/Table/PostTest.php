@@ -75,19 +75,17 @@ class PostTest extends TableTestCase
             $result
         );
         $array = $result->current();
+        unset($array['created_datetime']);
         $this->assertSame(
             [
                 'entity_type' => 'question',
                 'answer_id'   => null,
                 'question_id' => '2',
                 'user_id'     => '123',
+                'subject'     => 'subject for question 2',
+                'message'     => 'message for question 2',
             ],
-            [
-                'entity_type' => $array['entity_type'],
-                'answer_id'   => $array['answer_id'],
-                'question_id' => $array['question_id'],
-                'user_id'     => $array['user_id'],
-            ]
+            $array,
         );
     }
 }
