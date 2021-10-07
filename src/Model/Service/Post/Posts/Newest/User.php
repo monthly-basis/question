@@ -24,7 +24,7 @@ class User
      */
     public function getNewestPosts(UserEntity\User $userEntity): Generator
     {
-        $result = $this->postTable->selectFromAnswerUnionQuestion(
+        $result = $this->postTable->selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc(
             $userEntity->getUserId()
         );
 

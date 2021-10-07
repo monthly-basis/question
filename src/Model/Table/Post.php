@@ -14,7 +14,7 @@ class Post
         $this->sql = $sql;
     }
 
-    public function selectFromAnswerUnionQuestion(
+    public function selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc(
         int $userId
     ): Result {
         $sql = "

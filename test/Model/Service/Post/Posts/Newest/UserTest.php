@@ -1,5 +1,5 @@
 <?php
-namespace MonthlyBasis\QuestionTest\Model\Service\Question\Questions;
+namespace MonthlyBasis\QuestionTest\Model\Service\Post\Posts\Newest;
 
 use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
@@ -65,7 +65,7 @@ class UserTest extends TestCase
 
         $this->postTableMock
              ->expects($this->once())
-             ->method('selectFromAnswerUnionQuestion')
+             ->method('selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc')
              ->with(54321)
              ->willReturn($resultMock)
              ;
@@ -145,7 +145,7 @@ class UserTest extends TestCase
 
         $this->postTableMock
              ->expects($this->once())
-             ->method('selectFromAnswerUnionQuestion')
+             ->method('selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc')
              ->with(54321)
              ->willReturn($resultMock)
              ;

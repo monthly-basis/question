@@ -26,9 +26,9 @@ class PostTest extends TableTestCase
         $this->dropAndCreateTables(['answer', 'question']);
     }
 
-    public function test_selectFromAnswerUnionQuestion()
+    public function test_selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc()
     {
-        $result = $this->postTable->selectFromAnswerUnionQuestion(123);
+        $result = $this->postTable->selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc(123);
         $this->assertEmpty($result);
 
         $this->questionTable->insert(
@@ -69,7 +69,7 @@ class PostTest extends TableTestCase
             'foul language'
         );
 
-        $result = $this->postTable->selectFromAnswerUnionQuestion(123);
+        $result = $this->postTable->selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc(123);
         $this->assertCount(
             3,
             $result
