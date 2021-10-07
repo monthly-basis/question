@@ -10,9 +10,4 @@ class ModuleTest extends ModuleTestCase
     {
         $this->module = new Module();
     }
-
-    public function testInstance()
-    {
-        $this->assertInstanceOf(Module::class, $this->module);
-    }
 }
