@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AnswerTest\Model\Table;
+namespace MonthlyBasis\QuestionTest\Model\Table;
 
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;

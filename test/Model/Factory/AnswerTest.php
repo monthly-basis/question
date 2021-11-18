@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AnswerTest\Model\Factory;
+namespace MonthlyBasis\QuestionTest\Model\Factory;
 
 use DateTime;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
