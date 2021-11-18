@@ -71,4 +71,9 @@ class Answer
 
         return $answerEntity;
     }
+
+    protected function getNewInstance(): QuestionEntity\Answer
+    {
+        return new QuestionEntity\Answer();
+    }
 }

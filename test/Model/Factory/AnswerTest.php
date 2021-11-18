@@ -9,6 +9,7 @@ use MonthlyBasis\User\Model\Entity as UserEntity;
 use MonthlyBasis\User\Model\Factory as UserFactory;
 use MonthlyBasis\User\Model\Service as UserService;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 class AnswerTest extends TestCase
 {
@@ -110,6 +111,18 @@ class AnswerTest extends TestCase
         $this->assertEquals(
             $answerEntity,
             $this->answerFactory->buildFromAnswerId(1)
+        );
+    }
+
+    public function test_getNewInstance_void_answerEntity()
+    {
+        $reflectionClass = new ReflectionClass(QuestionFactory\Answer::class);
+        $method = $reflectionClass->getMethod('getNewInstance');
+        $method->setAccessible(true);
+
+        $this->assertInstanceOf(
+            QuestionEntity\Answer::class,
+            $method->invoke($this->answerFactory)
         );
     }
 }
