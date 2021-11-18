@@ -23,10 +23,11 @@ class Answer
     public function buildFromArray(
         array $array
     ): QuestionEntity\Answer {
-        $answerEntity = new QuestionEntity\Answer();
-        $answerEntity->setAnswerId($array['answer_id'])
-                     ->setCreatedDateTime(new DateTime($array['created_datetime']))
-                     ->setMessage($array['message']);
+        $answerEntity = $this->getNewInstance()
+            ->setAnswerId($array['answer_id'])
+            ->setCreatedDateTime(new DateTime($array['created_datetime']))
+            ->setMessage($array['message'])
+            ;
 
         if (isset($array['created_ip'])) {
             $answerEntity->setCreatedIp($array['created_ip']);

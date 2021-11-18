@@ -51,9 +51,7 @@ class AnswerTest extends TestCase
             'question_id'      => 1,
             'user_id'          => null,
         ];
-
-        $answerEntity = new QuestionEntity\Answer();
-        $answerEntity
+        $answerEntity = (new QuestionEntity\Answer())
             ->setAnswerId($array['answer_id'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
