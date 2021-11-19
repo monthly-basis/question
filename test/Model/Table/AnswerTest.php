@@ -9,6 +9,7 @@ class AnswerTest extends TableTestCase
     protected function setUp(): void
     {
         $this->dropAndCreateTable('answer');
+
         $this->answerTable = new QuestionTable\Answer(
             $this->getAdapter()
         );
@@ -93,6 +94,49 @@ class AnswerTest extends TableTestCase
         $generator = $this->answerTable->selectWhereQuestionId(12345);
         $this->assertEmpty(
             iterator_to_array($generator)
+        );
+    }
+
+    public function test_selectWhereQuestionIdAndDeletedDatetimeIsNullOrderByCreatedDateTimeAsc_result()
+    {
+        $result = $this->answerTable->selectWhereQuestionIdAndDeletedDatetimeIsNullOrderByCreatedDateTimeAsc(12345);
+
+        $this->assertEmpty($result);
+
+        $this->answerTable->insert(
+            12345,
+            2,
+            'first message',
+            null,
+            '1.2.3.4',
+        );
+        $this->answerTable->insertDeleted(
+            12345,
+            null,
+            'second message',
+            'name',
+            '1.2.3.4',
+            '0',
+            'deletion reason',
+        );
+        $this->answerTable->insert(
+            12345,
+            6,
+            'third message',
+            'another name',
+            '5.6.7.8',
+        );
+        $result = $this->answerTable->selectWhereQuestionIdAndDeletedDatetimeIsNullOrderByCreatedDateTimeAsc(12345);
+
+        $arrays = iterator_to_array($result);
+        $this->assertCount(2, $arrays);
+        $this->assertSame(
+            'first message',
+            $arrays[0]['message'],
+        );
+        $this->assertSame(
+            'third message',
+            $arrays[1]['message'],
         );
     }
 

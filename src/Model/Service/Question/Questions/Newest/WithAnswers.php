@@ -28,11 +28,11 @@ class WithAnswers
 
         foreach ($questionEntities as $questionEntity) {
             $answerEntities = [];
-            $answerArrays = $this->answerTable
+            $result = $this->answerTable
                 ->selectWhereQuestionIdAndDeletedDatetimeIsNullOrderByCreatedDateTimeAsc(
                     $questionEntity->getQuestionId()
                 );
-            foreach ($answerArrays as $answerArray) {
+            foreach ($result as $answerArray) {
                 $answerEntities[] = $this->answerFactory->buildFromArray($answerArray);
             }
             $questionEntity->setAnswers($answerEntities);

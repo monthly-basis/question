@@ -20,10 +20,10 @@ class Answers
     public function getAnswers(
         QuestionEntity\Question $questionEntity
     ) : Generator {
-        $arrays = $this->answerTable->selectWhereQuestionIdAndDeletedDatetimeIsNullOrderByCreatedDateTimeAsc(
+        $result = $this->answerTable->selectWhereQuestionIdAndDeletedDatetimeIsNullOrderByCreatedDateTimeAsc(
             $questionEntity->getQuestionId()
         );
-        foreach ($arrays as $array) {
+        foreach ($result as $array) {
             yield $this->answerFactory->buildFromArray($array);
         }
     }

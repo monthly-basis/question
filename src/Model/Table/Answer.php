@@ -169,8 +169,7 @@ class Answer
 
     public function selectWhereQuestionIdAndDeletedDatetimeIsNullOrderByCreatedDateTimeAsc(
         int $questionId
-    ): Generator {
-
+    ): Result {
         $sql = $this->getSelect()
              . '
               FROM `answer`
@@ -183,9 +182,7 @@ class Answer
         $parameters = [
             $questionId,
         ];
-        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
-            yield $array;
-        }
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function selectWhereUserId(
