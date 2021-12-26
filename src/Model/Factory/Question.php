@@ -64,6 +64,9 @@ class Question
         return $questionEntity;
     }
 
+    /**
+     * @deprecated Use QuestionFactory\Question\FromQuestionId::buildFromQuestionId
+     */
     public function buildFromQuestionId(
         int $questionId
     ): QuestionEntity\Question {
