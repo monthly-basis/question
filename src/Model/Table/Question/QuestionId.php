@@ -7,10 +7,7 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class QuestionId
 {
-    /**
-     * @var Adapter
-     */
-    protected $adapter;
+    protected Adapter $adapter;
 
     public function __construct(
         Adapter $adapter,
