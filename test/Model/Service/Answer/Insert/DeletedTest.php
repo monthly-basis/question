@@ -29,7 +29,7 @@ class DeletedTest extends TestCase
     /**
      * @runInSeparateProcess
      */
-    public function test_insert()
+    public function test_insert_defaultReason_answerEntity()
     {
         $_POST = [
             'message'     => 'message',
@@ -65,6 +65,48 @@ class DeletedTest extends TestCase
         $this->assertSame(
             $answerEntity,
             $this->deletedService->insert(),
+        );
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function test_insert_customReason_answerEntity()
+    {
+        $_POST = [
+            'message'     => 'message',
+            'name'        => 'name',
+            'question-id' => '12345',
+        ];
+        $_SERVER = [
+            'REMOTE_ADDR' => '1.2.3.4',
+        ];
+
+        $this->answerTableMock
+            ->expects($this->once())
+            ->method('insertDeleted')
+            ->with(
+                '12345',
+                null,
+                'message',
+                'name',
+                '1.2.3.4',
+                0,
+                'custom reason'
+            )
+            ->willReturn(54321)
+            ;
+        $answerEntity = new QuestionEntity\Answer();
+        $this->answerFactoryMock
+             ->expects($this->once())
+             ->method('buildFromAnswerId')
+             ->with(54321)
+             ->willReturn($answerEntity)
+             ;
+
+        $this->assertSame(
+            $answerEntity,
+            $this->deletedService->insert('custom reason'),
         );
     }
 }
