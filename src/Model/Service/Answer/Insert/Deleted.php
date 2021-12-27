@@ -15,7 +15,8 @@ class Deleted
         $this->answerTable   = $answerTable;
     }
 
-    public function insert(): QuestionEntity\Answer {
+    public function insert(): QuestionEntity\Answer
+    {
         $answerId = $this->answerTable->insertDeleted(
             $_POST['question-id'],
             null,
