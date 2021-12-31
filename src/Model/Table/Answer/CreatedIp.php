@@ -1,8 +1,10 @@
 <?php
 namespace MonthlyBasis\Question\Model\Table\Answer;
 
+use DateTime;
 use Generator;
 use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 
 class CreatedIp
 {
@@ -37,5 +39,29 @@ class CreatedIp
         foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
             yield $array['answer_id'];
         }
+    }
+
+    public function selectCountWhereCreatedIpDeletedDateTimeGreaterThanDeletedUserIdDeletedReason(
+        string $createdIp,
+        DateTime $deletedDatetimeMin,
+        int $deletedUserId,
+        string $deletedReason
+    ): Result {
+        $sql = '
+            SELECT COUNT(*)
+              FROM `answer`
+             WHERE `created_ip` = ?
+               AND `deleted_datetime` > ?
+               AND `deleted_user_id` = ?
+               AND `deleted_reason` = ?
+                 ;
+        ';
+        $parameters = [
+            $createdIp,
+            $deletedDatetimeMin->format('Y-m-d H:i:s'),
+            $deletedUserId,
+            $deletedReason,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 }
