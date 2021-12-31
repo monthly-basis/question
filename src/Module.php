@@ -247,6 +247,12 @@ class Module
                         $sm->get(QuestionTable\Post::class),
                     );
                 },
+                QuestionService\Post\Posts\NumberOfPostsRecentlyDeletedForFoulLanguage::class => function ($sm) {
+                    return new QuestionService\Post\Posts\NumberOfPostsRecentlyDeletedForFoulLanguage(
+                        $sm->get(QuestionTable\Answer\CreatedIp::class),
+                        $sm->get(QuestionTable\Question\CreatedIp::class),
+                    );
+                },
                 QuestionService\Question\Edit::class => function ($sm) {
                     return new QuestionService\Question\Edit(
                         $sm->get('question'),
