@@ -15,7 +15,9 @@ class Deleted
         $this->questionTable   = $questionTable;
     }
 
-    public function insert(): QuestionEntity\Question {
+    public function insert(
+        string $reason = 'foul language'
+    ): QuestionEntity\Question {
         $questionId = $this->questionTable->insertDeleted(
             null,
             $_POST['subject'],
@@ -23,7 +25,7 @@ class Deleted
             $_POST['name'],
             $_SERVER['REMOTE_ADDR'],
             0,
-            'foul language'
+            $reason,
         );
 
         return $this->questionFactory->buildFromQuestionId($questionId);
