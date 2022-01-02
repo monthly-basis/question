@@ -1,5 +1,5 @@
 <?php
-namespace MonthlyBasis\QuestionTest\Model\Service\Answer;
+namespace MonthlyBasis\QuestionTest\Model\Service\Answer\Insert;
 
 use Exception;
 use MonthlyBasis\Flash\Model\Service as FlashService;
