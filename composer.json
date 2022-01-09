@@ -10,7 +10,7 @@
     "require": {
         "laminas/laminas-db": "^2.9",
         "laminas/laminas-test": "^3.1",
-        "monthly-basis/content-moderation": "^0.12",
+        "monthly-basis/content-moderation": "^0.13",
         "monthly-basis/flash": "^2.0",
         "monthly-basis/laminas-test": "^2.0",
         "monthly-basis/memcached": "^2.0",
