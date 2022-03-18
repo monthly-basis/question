@@ -147,4 +147,31 @@ class AnswerReport
             ;
         return $this->sql->prepareStatementForSqlObject($update)->execute();
     }
+
+    public function updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        int $reportStatusId,
+        int $questionId
+    ): Result {
+        $sql = '
+            UPDATE `answer_report`
+
+              JOIN `answer`
+             USING (`answer_id`)
+
+              JOIN `question`
+             USING (`question_id`)
+
+               SET `answer_report`.`report_status_id` = ?
+
+             WHERE `question`.`question_id` = ?
+               AND `answer_report`.`report_status_id` = 0
+                 ;
+        ';
+        $parameters = [
+            $reportStatusId,
+            $questionId,
+        ];
+
+        return $this->adapter->query($sql)->execute($parameters);
+    }
 }

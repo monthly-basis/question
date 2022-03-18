@@ -17,6 +17,9 @@ class AnswerReportTest extends TableTestCase
         $this->answerTable = new QuestionTable\Answer(
             $this->getAdapter()
         );
+        $this->questionTable = new QuestionTable\Question(
+            $this->getAdapter()
+        );
         $this->answerReportTable = new QuestionTable\AnswerReport(
             $this->sql
         );
@@ -169,6 +172,101 @@ class AnswerReportTest extends TableTestCase
         $this->assertSame(
             1,
             $result->getAffectedRows()
+        );
+    }
+
+    public function test_updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()
+    {
+        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+            -4,
+            1,
+        );
+        $this->assertSame(
+            0,
+            $result->getAffectedRows()
+        );
+
+        $this->questionTable->insert(
+            null,
+            'subject for question 1',
+            'message for question 1',
+            'created name',
+            'created ip',
+        );
+        $this->questionTable->insert(
+            null,
+            'subject for question 2',
+            'message for question 2',
+            'created name',
+            'created ip',
+        );
+        $this->answerTable->insert(
+            1,
+            null,
+            'message: answer to question 1',
+            'created name',
+            'created IP',
+        );
+        $this->answerTable->insert(
+            2,
+            null,
+            'message: answer to question 2',
+            'created name',
+            'created IP',
+        );
+
+        $this->answerReportTable->insertIgnore(
+            1,
+            null,
+            'reason',
+            '1.1.1.1',
+        );
+        $this->answerReportTable->insertIgnore(
+            2,
+            null,
+            'reason',
+            '2.2.2.2',
+        );
+        $this->answerReportTable->insertIgnore(
+            2,
+            null,
+            'reason',
+            '3.3.3.3',
+        );
+        $this->answerReportTable->insertIgnore(
+            2,
+            null,
+            'reason',
+            '4.4.4.4',
+        );
+        $this->answerReportTable->updateSetReportStatusIdWhereAnswerReportId(
+            1,
+            3,
+        );
+
+        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+            -4,
+            2,
+        );
+        $this->assertSame(
+            2,
+            $result->getAffectedRows(),
+        );
+
+        $result = $this->answerReportTable->selectWhereAnswerReportId(1);
+        $this->assertSame(
+            '0',
+            $result->current()['report_status_id']
+        );
+        $result = $this->answerReportTable->selectWhereAnswerReportId(2);
+        $this->assertSame(
+            '-4',
+            $result->current()['report_status_id']
+        );
+        $result = $this->answerReportTable->selectWhereAnswerReportId(3);
+        $this->assertSame(
+            '1',
+            $result->current()['report_status_id']
         );
     }
 }
