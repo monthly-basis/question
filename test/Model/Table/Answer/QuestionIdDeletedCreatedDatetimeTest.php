@@ -16,8 +16,9 @@ class QuestionIdDeletedCreatedDatetimeTest extends TableTestCase
             $this->getAdapter()
         );
 
-        $this->dropTable('answer');
-        $this->createTable('answer');
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTable('answer');
+        $this->setForeignKeyChecks(1);
     }
 
     public function testSelectCountWhereQuestionIdCreatedDatetimeGreaterThanAndMessageEquals()

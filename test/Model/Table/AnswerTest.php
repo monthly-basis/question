@@ -8,7 +8,9 @@ class AnswerTest extends TableTestCase
 {
     protected function setUp(): void
     {
+        $this->setForeignKeyChecks(0);
         $this->dropAndCreateTable('answer');
+        $this->setForeignKeyChecks(1);
 
         $this->answerTable = new QuestionTable\Answer(
             $this->getAdapter()

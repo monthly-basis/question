@@ -1,9 +1,9 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Table\Answer;
 
-use MonthlyBasis\Question\Model\Table as QuestionTable;
-use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\LaminasTest\TableTestCase;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class AnswerIdTest extends TableTestCase
 {
@@ -17,7 +17,9 @@ class AnswerIdTest extends TableTestCase
             $this->answerTable
         );
 
+        $this->setForeignKeyChecks(0);
         $this->dropAndCreateTable('answer');
+        $this->setForeignKeyChecks(1);
     }
 
     public function test_selectWhereAnswerId()

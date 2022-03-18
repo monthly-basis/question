@@ -23,7 +23,9 @@ class PostTest extends TableTestCase
             $this->getAdapter()
         );
 
+        $this->setForeignKeyChecks(0);
         $this->dropAndCreateTables(['answer', 'question']);
+        $this->setForeignKeyChecks(1);
     }
 
     public function test_selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc()

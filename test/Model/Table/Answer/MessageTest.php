@@ -4,55 +4,24 @@ namespace MonthlyBasis\QuestionTest\Model\Table\Answer;
 use ArrayObject;
 use Exception;
 use Generator;
+use MonthlyBasis\LaminasTest\TableTestCase;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
-use MonthlyBasis\QuestionTest\TableTestCase;
 use Laminas\Db\Adapter\Adapter;
-use PHPUnit\Framework\TestCase;
 
 class MessageTest extends TableTestCase
 {
-    /**
-     * @var string
-     */
-    protected $sqlPath;
-
     protected function setUp(): void
     {
-        $this->sqlPath = $_SERVER['PWD'] . '/sql/test/answer/';
-
-        $configArray   = require($_SERVER['PWD'] . '/config/autoload/local.php');
-        $configArray   = $configArray['db']['adapters']['test'];
-        $this->adapter = new Adapter($configArray);
-
         $this->answerTable = new QuestionTable\Answer(
-            $this->adapter
+            $this->getAdapter()
         );
         $this->answerMessageTable = new QuestionTable\Answer\Message(
-            $this->adapter
+            $this->getAdapter()
         );
 
-        $this->dropTable();
-        $this->createTable();
-    }
-
-    protected function dropTable()
-    {
-        $sql = file_get_contents($this->sqlPath . 'drop.sql');
-        $result = $this->adapter->query($sql)->execute();
-    }
-
-    protected function createTable()
-    {
-        $sql = file_get_contents($this->sqlPath . 'create.sql');
-        $result = $this->adapter->query($sql)->execute();
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            QuestionTable\Answer\Message::class,
-            $this->answerMessageTable
-        );
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTable('answer');
+        $this->setForeignKeyChecks(1);
     }
 
     public function testSelectWhereMessageRegularExpression()
