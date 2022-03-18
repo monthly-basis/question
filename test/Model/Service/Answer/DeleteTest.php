@@ -16,8 +16,13 @@ class DeleteTest extends TestCase
         $this->answerIdTableMock = $this->createMock(
             QuestionTable\Answer\AnswerId::class
         );
+        $this->answerReportTableMock = $this->createMock(
+            QuestionTable\AnswerReport::class
+        );
+
         $this->deleteService = new QuestionService\Answer\Delete(
-            $this->answerIdTableMock
+            $this->answerIdTableMock,
+            $this->answerReportTableMock
         );
     }
 

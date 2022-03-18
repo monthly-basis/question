@@ -8,16 +8,26 @@ use MonthlyBasis\User\Model\Entity as UserEntity;
 class Delete
 {
     public function __construct(
-        QuestionTable\Answer\AnswerId $answerIdTable
+        QuestionTable\Answer\AnswerId $answerIdTable,
+        QuestionTable\AnswerReport $answerReportTable
     ) {
-        $this->answerIdTable = $answerIdTable;
+        $this->answerIdTable     = $answerIdTable;
+        $this->answerReportTable = $answerReportTable;
     }
 
+    /**
+     * @todo Calls to table models should occur within a single transaction.
+     */
     public function delete(
         UserEntity\User $userEntity,
         string $reason,
         QuestionEntity\Answer $answerEntity
     ): bool {
+        $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+            -5,
+            $answerEntity->getAnswerId()
+        );
+
         return (bool) $this->answerIdTable->updateSetDeletedColumnsWhereAnswerId(
             $userEntity->getUserId(),
             $reason,
