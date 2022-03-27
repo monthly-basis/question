@@ -7,7 +7,7 @@ use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 use PHPUnit\Framework\TestCase;
 
-class UrlTest extends TestCase
+class ConditionallyInsertTest extends TestCase
 {
     protected function setUp(): void
     {
