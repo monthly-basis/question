@@ -1,7 +1,7 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Service\Question\QuestionViewNotBotLog;
 
-use Laminas\Db as LaminasDb;
+use Laminas\Db\TableGateway\TableGateway;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
@@ -12,7 +12,7 @@ class UrlTest extends TestCase
     protected function setUp(): void
     {
         $this->questionViewNotBotLogTableGatewayMock = $this->createMock(
-            LaminasDb\TableGateway\TableGateway::class
+            TableGateway::class
         );
         $this->botServiceMock = $this->createMock(
             SuperglobalService\Server\HttpUserAgent\Bot::class
@@ -24,7 +24,7 @@ class UrlTest extends TestCase
         );
     }
 
-    public function test_conditionallyInsert_isBot_noInsert()
+    public function test_conditionallyInsert_isBot_false()
     {
         $this->botServiceMock
             ->expects($this->once())
@@ -42,7 +42,7 @@ class UrlTest extends TestCase
         $this->assertFalse($result);
     }
 
-    public function test_conditionallyInsert_isNotBot_insert()
+    public function test_conditionallyInsert_isNotBot_true()
     {
         $this->botServiceMock
             ->expects($this->once())

@@ -1,22 +1,23 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\QuestionViewNotBotLog;
 
-use Laminas\Db as LaminasDb;
+use Laminas\Db\TableGateway\TableGateway;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 
 class ConditionallyInsert
 {
     public function __construct(
-        LaminasDb\TableGateway\TableGateway $questionViewNotBotLogTableGateway,
+        TableGateway $questionViewNotBotLogTableGateway,
         SuperglobalService\Server\HttpUserAgent\Bot $botService
     ) {
         $this->questionViewNotBotLogTableGateway = $questionViewNotBotLogTableGateway;
         $this->botService                        = $botService;
     }
 
-    public function conditionallyInsert(QuestionEntity\Question $questionEntity): bool
-    {
+    public function conditionallyInsert(
+        QuestionEntity\Question $questionEntity
+    ): bool {
         if (!$this->botService->isBot()) {
             $this->questionViewNotBotLogTableGateway
                 ->insert([
