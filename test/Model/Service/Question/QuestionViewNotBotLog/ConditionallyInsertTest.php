@@ -2,6 +2,7 @@
 namespace MonthlyBasis\QuestionTest\Model\Service\Question\QuestionViewNotBotLog;
 
 use Laminas\Db\TableGateway\TableGateway;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
@@ -18,6 +19,8 @@ class ConditionallyInsertTest extends TestCase
             SuperglobalService\Server\HttpUserAgent\Bot::class
         );
 
+        $_SERVER['REMOTE_ADDR'] = '1.2.3.4';
+
         $this->conditionallyInsertService = new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
             $this->questionViewNotBotLogTableGatewayMock,
             $this->botServiceMock
@@ -29,35 +32,36 @@ class ConditionallyInsertTest extends TestCase
         $this->botServiceMock
             ->expects($this->once())
             ->method('isBot')
-            ->willReturn(true);
+            ->willReturn(true)
+            ;
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->exactly(0))
-            ->method('insert');
-        $_SERVER['REMOTE_ADDR'] = '1.2.3.4';
-        $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(12345);
+            ->method('insert')
+            ;
         $result = $this->conditionallyInsertService->conditionallyInsert(
-            $questionEntity
+            (new QuestionEntity\Question())
         );
         $this->assertFalse($result);
     }
 
     public function test_conditionallyInsert_isNotBot_true()
     {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ;
         $this->botServiceMock
             ->expects($this->once())
             ->method('isBot')
-            ->willReturn(false);
+            ->willReturn(false)
+            ;
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->once())
             ->method('insert')
             ->with([
                 'question_id' => 12345,
                 'ip' => '1.2.3.4',
-            ]);
-        $_SERVER['REMOTE_ADDR'] = '1.2.3.4';
-        $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(12345);
+            ])
+            ;
         $result = $this->conditionallyInsertService->conditionallyInsert(
             $questionEntity
         );
