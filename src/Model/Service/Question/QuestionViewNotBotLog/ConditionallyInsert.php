@@ -18,15 +18,15 @@ class ConditionallyInsert
     public function conditionallyInsert(
         QuestionEntity\Question $questionEntity
     ): bool {
-        if (!$this->botService->isBot()) {
-            $this->questionViewNotBotLogTableGateway
-                ->insert([
-                    'question_id' => $questionEntity->getQuestionId(),
-                    'ip' => $_SERVER['REMOTE_ADDR'],
-                ]);
-            return true;
+        if ($this->botService->isBot()) {
+            return false;
         }
 
-        return false;
+        $this->questionViewNotBotLogTableGateway
+            ->insert([
+                'question_id' => $questionEntity->getQuestionId(),
+                'ip' => $_SERVER['REMOTE_ADDR'],
+            ]);
+        return true;
     }
 }
