@@ -116,16 +116,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.216.2",
+            "version": "3.216.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9e09386c3a5b313eeb324490beff4eb843ed339d"
+                "reference": "5ec2b55c7e2afdaf173348841440076c8e2d2acb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9e09386c3a5b313eeb324490beff4eb843ed339d",
-                "reference": "9e09386c3a5b313eeb324490beff4eb843ed339d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5ec2b55c7e2afdaf173348841440076c8e2d2acb",
+                "reference": "5ec2b55c7e2afdaf173348841440076c8e2d2acb",
                 "shasum": ""
             },
             "require": {
@@ -201,9 +201,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.216.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.216.3"
             },
-            "time": "2022-03-25T18:17:03+00:00"
+            "time": "2022-03-28T18:16:18+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -3067,16 +3067,16 @@
         },
         {
             "name": "monthly-basis/content-moderation",
-            "version": "v0.14.22",
+            "version": "v0.14.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/content-moderation.git",
-                "reference": "7d4c7f324671e98ec553e3a9eb5d6a5cc4df7b07"
+                "reference": "fe2dfc7792afb04beb458e263400ae77b53ce7ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/7d4c7f324671e98ec553e3a9eb5d6a5cc4df7b07",
-                "reference": "7d4c7f324671e98ec553e3a9eb5d6a5cc4df7b07",
+                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/fe2dfc7792afb04beb458e263400ae77b53ce7ec",
+                "reference": "fe2dfc7792afb04beb458e263400ae77b53ce7ec",
                 "shasum": ""
             },
             "require": {
@@ -3099,9 +3099,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/content-moderation/issues",
-                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.14.22"
+                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.14.23"
             },
-            "time": "2022-03-26T06:03:31+00:00"
+            "time": "2022-03-27T17:25:39+00:00"
         },
         {
             "name": "monthly-basis/flash",
