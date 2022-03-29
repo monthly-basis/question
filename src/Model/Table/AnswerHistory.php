@@ -38,12 +38,14 @@ class AnswerHistory
                       `answer_id`
                     , `name`
                     , `message`
+                    , `modified_user_id`
                     , `modified_reason`
                     , `created`
                  )
             SELECT `answer`.`answer_id`
                  , `answer`.`created_name`
                  , `answer`.`message`
+                 , `answer`.`modified_user_id`
                  , `answer`.`modified_reason`
                  , UTC_TIMESTAMP()
               FROM `answer`
