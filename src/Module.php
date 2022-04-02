@@ -700,6 +700,11 @@ class Module
                         $sm->get('question')
                     );
                 },
+                QuestionTable\QuestionReport::class => function ($sm) {
+                    return new QuestionTable\QuestionReport(
+                        $sm->get(QuestionDb\Sql::class)
+                    );
+                },
                 QuestionTable\QuestionSearchMessage::class => function ($sm) {
                     return new QuestionTable\QuestionSearchMessage(
                         $sm->get(MemcachedService\Memcached::class),
