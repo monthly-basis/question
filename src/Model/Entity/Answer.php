@@ -4,7 +4,7 @@ namespace MonthlyBasis\Question\Model\Entity;
 use DateTime;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 
-class Answer
+class Answer extends QuestionEntity\Post
 {
     protected $answerId;
     protected $createdDateTime;
