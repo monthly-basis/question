@@ -10,7 +10,9 @@ class CreatedIpTest extends TableTestCase
 {
     protected function setUp(): void
     {
+        $this->setForeignKeyChecks(0);
         $this->dropAndCreateTable('question');
+        $this->setForeignKeyChecks(1);
 
         $this->questionTable = new QuestionTable\Question(
             $this->getAdapter()
