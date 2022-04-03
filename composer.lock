@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34ea078013e809b9e2f694509767766d",
+    "content-hash": "48cace4d1efbfbcbe450fc9d50ff8bf8",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3136,6 +3136,43 @@
                 "source": "https://github.com/monthly-basis/flash/tree/v2.0.1"
             },
             "time": "2021-05-08T20:21:23+00:00"
+        },
+        {
+            "name": "monthly-basis/group",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/group.git",
+                "reference": "cdf992d22f7f3ddffd0173890536aa8c227976ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/group/zipball/cdf992d22f7f3ddffd0173890536aa8c227976ef",
+                "reference": "cdf992d22f7f3ddffd0173890536aa8c227976ef",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-db": "^2.9",
+                "laminas/laminas-test": "^3.1",
+                "monthly-basis/laminas-test": "^2.0",
+                "monthly-basis/user": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\Group\\": "src/",
+                    "MonthlyBasis\\GroupTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/monthly-basis/group/issues",
+                "source": "https://github.com/monthly-basis/group/tree/v2.3.0"
+            },
+            "time": "2022-04-02T22:55:54+00:00"
         },
         {
             "name": "monthly-basis/laminas-test",
