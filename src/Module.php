@@ -24,6 +24,7 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
+                    'canBeUndeleted' => QuestionHelper\Post\CanBeUndeleted::class,
                     'getAnswerFactory' => QuestionHelper\Answer\Factory::class,
                     'getLinkToQuestionHtml' => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionFactory' => QuestionHelper\Question\Factory::class,
@@ -36,6 +37,11 @@ class Module
                     QuestionHelper\Answer\Factory::class => function($sm) {
                         return new QuestionHelper\Answer\Factory(
                             $sm->get(QuestionFactory\Answer::class)
+                        );
+                    },
+                    QuestionHelper\Post\CanBeUndeleted::class => function($sm) {
+                        return new QuestionHelper\Post\CanBeUndeleted(
+                            $sm->get(QuestionService\Post\CanBeUndeleted::class)
                         );
                     },
                     QuestionHelper\Question\Factory::class => function($sm) {
