@@ -2,6 +2,7 @@
 namespace MonthlyBasis\Question;
 
 use Laminas\Db as LaminasDb;
+use MonthlyBasis\Group\Model\Service as GroupService;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
@@ -239,6 +240,13 @@ class Module
                 QuestionService\Answer\Undelete::class => function ($sm) {
                     return new QuestionService\Answer\Undelete(
                         $sm->get(QuestionTable\Answer\AnswerId::class)
+                    );
+                },
+                QuestionService\Post\CanBeUndeleted::class => function ($sm) {
+                    return new QuestionService\Post\CanBeUndeleted(
+                        $sm->get(GroupService\LoggedInUserInGroupName::class),
+                        $sm->get(StringService\Contains\CaseInsensitive::class),
+                        $sm->get(UserService\LoggedIn::class),
                     );
                 },
                 QuestionService\Post\Posts\Newest\User::class => function ($sm) {

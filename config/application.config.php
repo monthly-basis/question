@@ -6,6 +6,7 @@ return [
         'Laminas\Router',
         'MonthlyBasis\ContentModeration',
         'MonthlyBasis\Flash',
+        'MonthlyBasis\Group',
         'MonthlyBasis\Memcached',
         'MonthlyBasis\Question',
         'MonthlyBasis\String',
