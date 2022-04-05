@@ -114,6 +114,12 @@ class Module
                         $sm->get(UserService\DisplayNameOrUsername::class)
                     );
                 },
+                QuestionFactory\Answer\FromAnswerId::class => function ($sm) {
+                    return new QuestionFactory\Answer\FromAnswerId(
+                        $sm->get(QuestionFactory\Answer::class),
+                        $sm->get(QuestionTable\Answer::class),
+                    );
+                },
                 QuestionFactory\Question::class => function ($sm) {
                     return new QuestionFactory\Question(
                         $sm->get(QuestionTable\Question::class),
