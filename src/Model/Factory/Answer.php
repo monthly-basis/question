@@ -63,6 +63,9 @@ class Answer
         return $answerEntity;
     }
 
+    /**
+     * @deprecated Use QuestionFactory\Answer\FromAnswerId::buildFromAnswerId instead.
+     */
     public function buildFromAnswerId(
         int $answerId
     ): QuestionEntity\Answer {
