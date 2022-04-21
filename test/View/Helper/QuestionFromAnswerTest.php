@@ -1,5 +1,5 @@
 <?php
-namespace MonthlyBasis\StringTest\View\Helper;
+namespace MonthlyBasis\QuestionTest\View\Helper;
 
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
@@ -13,28 +13,27 @@ class QuestionFromAnswerTest extends TestCase
         $this->questionFromAnswerServiceMock = $this->createMock(
             QuestionService\QuestionFromAnswer::class
         );
+
         $this->questionFromAnswerHelper = new QuestionHelper\QuestionFromAnswer(
             $this->questionFromAnswerServiceMock
         );
     }
 
-    public function testInitialize()
+    public function test___invoke()
     {
-        $this->assertInstanceOf(
-            QuestionHelper\QuestionFromAnswer::class,
-            $this->questionFromAnswerHelper
-        );
-    }
+        $questionEntity = new QuestionEntity\Question();
+        $answerEntity   = new QuestionEntity\Answer();
 
-    public function testInvoke()
-    {
-        $answerEntity = new QuestionEntity\Answer();
-        $questionEntity = $this->questionFromAnswerHelper->__invoke(
-            $answerEntity
-        );
-        $this->assertInstanceOf(
-            QuestionEntity\Question::class,
-            $questionEntity
+        $this->questionFromAnswerServiceMock
+            ->expects($this->once())
+            ->method('getQuestionFromAnswer')
+            ->with($answerEntity)
+            ->willReturn($questionEntity)
+            ;
+
+        $this->assertSame(
+            $questionEntity,
+            $this->questionFromAnswerHelper->__invoke($answerEntity)
         );
     }
 }
