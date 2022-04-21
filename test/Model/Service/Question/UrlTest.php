@@ -18,7 +18,7 @@ class UrlTest extends TestCase
         );
     }
 
-    public function testGetModifiedTitle()
+    public function test_getUrl()
     {
         $_SERVER['HTTP_HOST'] = 'www.test.com';
         $questionEntity = new QuestionEntity\Question();
