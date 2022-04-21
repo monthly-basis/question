@@ -12,27 +12,23 @@ class UrlTest extends TestCase
         $this->rootRelativeUrlServiceMock = $this->createMock(
             QuestionService\Question\RootRelativeUrl::class
         );
+
         $this->urlService = new QuestionService\Question\Url(
             $this->rootRelativeUrlServiceMock
-        );
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            QuestionService\Question\Url::class,
-            $this->urlService
         );
     }
 
     public function testGetModifiedTitle()
     {
         $_SERVER['HTTP_HOST'] = 'www.test.com';
-        $this->rootRelativeUrlServiceMock->method('getRootRelativeUrl')->willReturn(
-            '/questions/12345/My-Question-Title'
-        );
-
         $questionEntity = new QuestionEntity\Question();
+
+        $this->rootRelativeUrlServiceMock
+            ->expects($this->once())
+            ->method('getRootRelativeUrl')
+            ->with($questionEntity)
+            ->willReturn('/questions/12345/My-Question-Title')
+            ;
 
         $this->assertSame(
             'https://www.test.com/questions/12345/My-Question-Title',
