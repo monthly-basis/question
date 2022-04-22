@@ -10,7 +10,8 @@ class QuestionReport
 
     public function __construct(MonthlyBasisDb\Sql $sql)
     {
-        $this->sql = $sql;
+        $this->sql     = $sql;
+        $this->adapter = $sql->getAdapter();
     }
 
     public function getColumns(): array
@@ -60,6 +61,24 @@ class QuestionReport
             ])
             ;
         return $this->sql->prepareStatementForSqlObject($select)->execute();
+    }
+
+    public function selectQuestionIdCountGroupByQuestionId(): Result
+    {
+        $sql = "
+            SELECT `question_report`.`question_id`
+                 , COUNT(*)
+              FROM `question_report`
+             WHERE `question_report`.`report_status_id` = 0
+             GROUP
+                BY `question_report`.`question_id`
+             ORDER
+                BY `COUNT(*)` DESC
+             LIMIT 100
+                 ;
+        ";
+
+        return $this->adapter->query($sql)->execute();
     }
 
     public function selectWhereQuestionReportId(

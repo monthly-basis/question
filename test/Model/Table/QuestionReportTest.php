@@ -46,4 +46,55 @@ class QuestionReportTest extends TableTestCase
             $result->getGeneratedValue()
         );
     }
+
+    public function test_selectQuestionIdCountGroupByQuestionId()
+    {
+        $this->questionTable->insert(
+            null,
+            'subject 1',
+            'message 1',
+            'created name 1',
+            'created ip 1',
+        );
+        $this->questionTable->insert(
+            null,
+            'subject 2',
+            'message 2',
+            'created name 2',
+            'created ip 2',
+        );
+        $result = $this->questionReportTable->insertIgnore(
+            2,
+            null,
+            'reason',
+            '1.2.3.4',
+        );
+        $result = $this->questionReportTable->insertIgnore(
+            2,
+            null,
+            'reason',
+            '5.6.7.8',
+        );
+        $result = $this->questionReportTable->insertIgnore(
+            1,
+            null,
+            'reason',
+            '5.6.7.8',
+        );
+        $result = $this->questionReportTable->selectQuestionIdCountGroupByQuestionId();
+        $array  = iterator_to_array($result);
+        $this->assertSame(
+            [
+                [
+                    'question_id' => '2',
+                    'COUNT(*)'  => '2',
+                ],
+                [
+                    'question_id' => '1',
+                    'COUNT(*)'  => '1',
+                ]
+            ],
+            $array
+        );
+    }
 }
