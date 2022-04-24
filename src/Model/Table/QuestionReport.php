@@ -111,6 +111,24 @@ class QuestionReport
         return $this->sql->prepareStatementForSqlObject($select)->execute();
     }
 
+    public function updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        int $reportStatusId,
+        int $questionId
+    ): Result {
+        $update = $this->sql
+            ->update()
+            ->table('question_report')
+            ->set([
+                'report_status_id' => $reportStatusId,
+            ])
+            ->where([
+                'question_id'      => $questionId,
+                'report_status_id' => 0,
+            ])
+            ;
+        return $this->sql->prepareStatementForSqlObject($update)->execute();
+    }
+
     public function updateSetReportStatusIdWhereQuestionReportId(
         int $reportStatusId,
         int $questionReportId

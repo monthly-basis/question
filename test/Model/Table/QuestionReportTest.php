@@ -97,4 +97,74 @@ class QuestionReportTest extends TableTestCase
             $array
         );
     }
+
+    public function test_updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()
+    {
+        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+            5,
+            1,
+        );
+        $this->assertSame(
+            0,
+            $result->getAffectedRows()
+        );
+
+        $this->questionTable->insert(
+            null,
+            'subject',
+            'message',
+            'created name',
+            'created IP',
+        );
+        $this->questionReportTable->insertIgnore(
+            1,
+            null,
+            'reason',
+            '1.2.3.4',
+        );
+        $this->questionReportTable->insertIgnore(
+            1,
+            null,
+            'reason',
+            '5.6.7.8',
+        );
+
+        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+            5,
+            1,
+        );
+        $this->assertSame(
+            2,
+            $result->getAffectedRows()
+        );
+        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+            -1,
+            1,
+        );
+        $this->assertSame(
+            0,
+            $result->getAffectedRows()
+        );
+
+        $result = $this->questionReportTable->selectWhereQuestionReportId(1);
+        $this->assertSame(
+            '5',
+            $result->current()['report_status_id'],
+        );
+
+        $this->questionReportTable->insertIgnore(
+            1,
+            null,
+            'reason',
+            '9.10.11.12',
+        );
+        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+            -1,
+            1,
+        );
+        $this->assertSame(
+            1,
+            $result->getAffectedRows()
+        );
+    }
 }
