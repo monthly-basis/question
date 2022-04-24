@@ -5,6 +5,9 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\User\Model\Entity as UserEntity;
 
+/**
+ * @todo Write unit test(s) for this class.
+ */
 class Delete
 {
     public function __construct(
@@ -23,6 +26,10 @@ class Delete
         string $reason,
         QuestionEntity\Question $questionEntity
     ): bool {
+        $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+            -4,
+            $questionEntity->getQuestionId()
+        );
         $this->answerReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
             -4,
             $questionEntity->getQuestionId()
