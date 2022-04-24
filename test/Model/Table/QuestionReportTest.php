@@ -89,10 +89,6 @@ class QuestionReportTest extends TableTestCase
                     'question_id' => '2',
                     'COUNT(*)'  => '2',
                 ],
-                [
-                    'question_id' => '1',
-                    'COUNT(*)'  => '1',
-                ]
             ],
             $array
         );

@@ -72,6 +72,7 @@ class QuestionReport
              WHERE `question_report`.`report_status_id` = 0
              GROUP
                 BY `question_report`.`question_id`
+            HAVING `COUNT(*)` >= 2
              ORDER
                 BY `COUNT(*)` DESC
              LIMIT 100
