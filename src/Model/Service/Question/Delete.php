@@ -12,10 +12,12 @@ class Delete
 {
     public function __construct(
         QuestionTable\AnswerReport $answerReportTable,
-        QuestionTable\Question\QuestionId $questionIdTable
+        QuestionTable\Question\QuestionId $questionIdTable,
+        QuestionTable\QuestionReport $questionReportTable
     ) {
-        $this->answerReportTable = $answerReportTable;
-        $this->questionIdTable   = $questionIdTable;
+        $this->answerReportTable   = $answerReportTable;
+        $this->questionIdTable     = $questionIdTable;
+        $this->questionReportTable = $questionReportTable;
     }
 
     /**

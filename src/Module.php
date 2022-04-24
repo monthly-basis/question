@@ -354,7 +354,8 @@ class Module
                 QuestionService\Question\Delete::class => function ($sm) {
                     return new QuestionService\Question\Delete(
                         $sm->get(QuestionTable\AnswerReport::class),
-                        $sm->get(QuestionTable\Question\QuestionId::class)
+                        $sm->get(QuestionTable\Question\QuestionId::class),
+                        $sm->get(QuestionTable\QuestionReport::class),
                     );
                 },
                 QuestionService\Question\Delete\Queue\Add::class => function ($sm) {
