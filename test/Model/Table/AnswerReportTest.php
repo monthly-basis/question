@@ -137,6 +137,7 @@ class AnswerReportTest extends TableTestCase
             'reason',
             '5.6.7.8',
         );
+
         $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
             5,
             1,
@@ -153,6 +154,7 @@ class AnswerReportTest extends TableTestCase
             0,
             $result->getAffectedRows()
         );
+
         $result = $this->answerReportTable->selectWhereAnswerReportId(1);
         $this->assertSame(
             '5',
