@@ -16,6 +16,7 @@ CREATE TABLE `answer` (
     KEY `question_id_deleted_datetime_created_datetime` (`question_id`, `deleted_datetime`, `created_datetime`),
     KEY `user_id` (`user_id`),
     KEY `user_id_deleted_datetime_created_datetime_answer_id` (`user_id`, `deleted_datetime`, `created_datetime`, `answer_id`),
+    KEY `created_datetime_and_4_more_columns` (`created_datetime`,`created_ip`,`deleted_datetime`,`deleted_user_id`,`deleted_reason`),
     KEY `created_name_deleted_datetime_created_datetime` (`created_name`, `deleted_datetime`, `created_datetime`),
     KEY `created_ip_created_datetime` (`created_ip`, `created_datetime`),
     KEY `created_ip_and_3_more_columns` (`created_ip`, `deleted_datetime`, `deleted_user_id`, `deleted_reason`),
