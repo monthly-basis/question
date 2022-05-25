@@ -116,16 +116,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.222.16",
+            "version": "3.222.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "23b31a966ea85e7ec8e76062a072695f832a0b96"
+                "reference": "22fcdfcc7ed0f267512aa5c38bc00c12eaed51b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/23b31a966ea85e7ec8e76062a072695f832a0b96",
-                "reference": "23b31a966ea85e7ec8e76062a072695f832a0b96",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/22fcdfcc7ed0f267512aa5c38bc00c12eaed51b6",
+                "reference": "22fcdfcc7ed0f267512aa5c38bc00c12eaed51b6",
                 "shasum": ""
             },
             "require": {
@@ -201,9 +201,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.222.16"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.222.19"
             },
-            "time": "2022-05-19T18:27:39+00:00"
+            "time": "2022-05-24T18:16:51+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -320,16 +320,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.4.2",
+            "version": "7.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "ac1ec1cd9b5624694c3a40be801d94137afb12b4"
+                "reference": "74a8602c6faec9ef74b7a9391ac82c5e65b1cdab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ac1ec1cd9b5624694c3a40be801d94137afb12b4",
-                "reference": "ac1ec1cd9b5624694c3a40be801d94137afb12b4",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/74a8602c6faec9ef74b7a9391ac82c5e65b1cdab",
+                "reference": "74a8602c6faec9ef74b7a9391ac82c5e65b1cdab",
                 "shasum": ""
             },
             "require": {
@@ -424,7 +424,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.4.2"
+                "source": "https://github.com/guzzle/guzzle/tree/7.4.3"
             },
             "funding": [
                 {
@@ -440,7 +440,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-20T14:16:28+00:00"
+            "time": "2022-05-25T13:24:33+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -3037,16 +3037,16 @@
         },
         {
             "name": "monthly-basis/content-moderation",
-            "version": "v0.14.34",
+            "version": "v0.14.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/content-moderation.git",
-                "reference": "9bdb4fb27eecabb580a09cd7ab2736dfc63962cf"
+                "reference": "49e342ac3a0863ae2f33a80619b99af497470979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/9bdb4fb27eecabb580a09cd7ab2736dfc63962cf",
-                "reference": "9bdb4fb27eecabb580a09cd7ab2736dfc63962cf",
+                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/49e342ac3a0863ae2f33a80619b99af497470979",
+                "reference": "49e342ac3a0863ae2f33a80619b99af497470979",
                 "shasum": ""
             },
             "require": {
@@ -3069,9 +3069,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/content-moderation/issues",
-                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.14.34"
+                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.14.35"
             },
-            "time": "2022-05-05T11:01:51+00:00"
+            "time": "2022-05-24T02:28:23+00:00"
         },
         {
             "name": "monthly-basis/flash",
