@@ -549,6 +549,11 @@ class Module
                         $sm->get(QuestionTable\Answer::class)
                     );
                 },
+                QuestionTable\Answer\CreatedDatetime::class => function ($sm) {
+                    return new QuestionTable\Answer\CreatedDatetime(
+                        $sm->get(QuestionDb\Sql::class)
+                    );
+                },
                 QuestionTable\Answer\CreatedName::class => function ($sm) {
                     return new QuestionTable\Answer\CreatedName(
                         $sm->get('question'),
