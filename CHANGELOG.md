@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.12.1
+
+- ALTER TABLE `answer_report` CHANGE `modified` `modified_datetime` datetime DEFAULT NULL;
+
 ## v2.8.3
 
 - ALTER TABLE `answer_history` ADD COLUMN `modified_user_id` int unsigned DEFAULT NULL AFTER `message`;
