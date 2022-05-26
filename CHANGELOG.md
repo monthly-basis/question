@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.12.2
+
+- Replace calls to `updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0()` method with `updateWhereAnswerIdAndReportStatusIdEquals0()`
+
 ## v2.12.1
 
 - ALTER TABLE `answer_report` CHANGE `modified` `modified_datetime` datetime DEFAULT NULL;
