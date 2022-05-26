@@ -23,7 +23,7 @@ class AnswerReport
             'reason',
             'created_datetime',
             'report_status_id',
-            'modified',
+            'modified_datetime',
         ];
     }
 
