@@ -107,9 +107,9 @@ class AnswerReportTest extends TableTestCase
         );
     }
 
-    public function test_updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0()
+    public function test_updateWhereAnswerIdAndReportStatusIdEquals0()
     {
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
             5,
             1,
         );
@@ -138,7 +138,7 @@ class AnswerReportTest extends TableTestCase
             '5.6.7.8',
         );
 
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
             5,
             1,
         );
@@ -146,7 +146,7 @@ class AnswerReportTest extends TableTestCase
             2,
             $result->getAffectedRows()
         );
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
             -1,
             1,
         );
@@ -167,7 +167,7 @@ class AnswerReportTest extends TableTestCase
             'reason',
             '9.10.11.12',
         );
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
             -1,
             1,
         );
@@ -179,7 +179,7 @@ class AnswerReportTest extends TableTestCase
 
     public function test_updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()
     {
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
             -4,
             1,
         );
@@ -246,7 +246,7 @@ class AnswerReportTest extends TableTestCase
             3,
         );
 
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
             -4,
             2,
         );

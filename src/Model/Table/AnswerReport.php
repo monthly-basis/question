@@ -130,7 +130,7 @@ class AnswerReport
         return $this->sql->prepareStatementForSqlObject($update)->execute();
     }
 
-    public function updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+    public function updateWhereAnswerIdAndReportStatusIdEquals0(
         int $reportStatusId,
         int $answerId
     ): Result {

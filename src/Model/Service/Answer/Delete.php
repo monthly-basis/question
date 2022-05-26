@@ -23,7 +23,7 @@ class Delete
         string $reason,
         QuestionEntity\Answer $answerEntity
     ): bool {
-        $this->answerReportTable->updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0(
+        $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
             -5,
             $answerEntity->getAnswerId()
         );
