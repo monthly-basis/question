@@ -57,10 +57,7 @@ class NumberOfPostsRecentlyDeletedForFoulLanguageTest extends TestCase
             ->method('selectCountWhereCreatedIpDeletedDateTimeGreaterThanDeletedUserIdDeletedReason')
             ->with(
                 '1.2.3.4',
-                $this->callback(function ($value) {
-                    $this->assertInstanceOf(DateTime::class, $value);
-                    return true;
-                }),
+                $this->isInstanceOf(DateTime::class),
                 0,
                 'foul language',
             )
@@ -71,10 +68,7 @@ class NumberOfPostsRecentlyDeletedForFoulLanguageTest extends TestCase
             ->method('selectCountWhereCreatedIpDeletedDateTimeGreaterThanDeletedUserIdDeletedReason')
             ->with(
                 '1.2.3.4',
-                $this->callback(function ($value) {
-                    $this->assertInstanceOf(DateTime::class, $value);
-                    return true;
-                }),
+                $this->isInstanceOf(DateTime::class),
                 0,
                 'foul language',
             )
@@ -120,10 +114,7 @@ class NumberOfPostsRecentlyDeletedForFoulLanguageTest extends TestCase
             ->method('selectCountWhereCreatedIpDeletedDateTimeGreaterThanDeletedUserIdDeletedReason')
             ->with(
                 '1.2.3.4',
-                $this->callback(function ($value) {
-                    $this->assertInstanceOf(DateTime::class, $value);
-                    return true;
-                }),
+                $this->isInstanceOf(DateTime::class),
                 0,
                 'foul language',
             )
@@ -134,10 +125,7 @@ class NumberOfPostsRecentlyDeletedForFoulLanguageTest extends TestCase
             ->method('selectCountWhereCreatedIpDeletedDateTimeGreaterThanDeletedUserIdDeletedReason')
             ->with(
                 '1.2.3.4',
-                $this->callback(function ($value) {
-                    $this->assertInstanceOf(DateTime::class, $value);
-                    return true;
-                }),
+                $this->isInstanceOf(DateTime::class),
                 0,
                 'foul language',
             )
