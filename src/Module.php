@@ -273,6 +273,11 @@ class Module
                         $sm->get(UserService\LoggedIn::class),
                     );
                 },
+                QuestionService\Post\Duplicate::class => function ($sm) {
+                    return new QuestionService\Post\Duplicate(
+                        $sm->get(QuestionTable\Answer\CreatedDatetime::class),
+                    );
+                },
                 QuestionService\Post\Posts\Newest\User::class => function ($sm) {
                     return new QuestionService\Post\Posts\Newest\User(
                         $sm->get(QuestionFactory\Answer::class),
