@@ -9,7 +9,9 @@ class AnswerReportTest extends TableTestCase
 {
     protected function setUp(): void
     {
-        $this->dropAndCreateTable('answer_report');
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTables(['answer','answer_report', 'question']);
+        $this->setForeignKeyChecks(1);
 
         $this->sql = new QuestionDb\Sql(
             $this->getAdapter()
@@ -179,9 +181,9 @@ class AnswerReportTest extends TableTestCase
 
     public function test_updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()
     {
-        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
             -4,
-            1,
+            2,
         );
         $this->assertSame(
             0,
@@ -246,7 +248,7 @@ class AnswerReportTest extends TableTestCase
             3,
         );
 
-        $result = $this->answerReportTable->updateWhereAnswerIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
             -4,
             2,
         );
@@ -268,6 +270,11 @@ class AnswerReportTest extends TableTestCase
         $result = $this->answerReportTable->selectWhereAnswerReportId(3);
         $this->assertSame(
             '1',
+            $result->current()['report_status_id']
+        );
+        $result = $this->answerReportTable->selectWhereAnswerReportId(4);
+        $this->assertSame(
+            '-4',
             $result->current()['report_status_id']
         );
     }
