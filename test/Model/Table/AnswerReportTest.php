@@ -1,9 +1,9 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Table;
 
+use MonthlyBasis\LaminasTest\TableTestCase;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
-use MonthlyBasis\LaminasTest\TableTestCase;
 
 class AnswerReportTest extends TableTestCase
 {
