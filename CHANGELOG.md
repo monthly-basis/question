@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.12.3
+
+- Replace calls to `updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()` method with `updateWhereQuestionIdAndReportStatusIdEquals0()`
+
 ## v2.12.2
 
 - Replace calls to `updateSetReportStatusIdWhereAnswerIdAndReportStatusIdEquals0()` method with `updateWhereAnswerIdAndReportStatusIdEquals0()`
