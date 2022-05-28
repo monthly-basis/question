@@ -28,11 +28,11 @@ class Delete
         string $reason,
         QuestionEntity\Question $questionEntity
     ): bool {
-        $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $this->questionReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             -4,
             $questionEntity->getQuestionId()
         );
-        $this->answerReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $this->answerReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             -4,
             $questionEntity->getQuestionId()
         );

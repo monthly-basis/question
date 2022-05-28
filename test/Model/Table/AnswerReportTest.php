@@ -179,9 +179,9 @@ class AnswerReportTest extends TableTestCase
         );
     }
 
-    public function test_updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()
+    public function test_updateWhereQuestionIdAndReportStatusIdEquals0()
     {
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             -4,
             2,
         );
@@ -248,7 +248,7 @@ class AnswerReportTest extends TableTestCase
             3,
         );
 
-        $result = $this->answerReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $result = $this->answerReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             -4,
             2,
         );

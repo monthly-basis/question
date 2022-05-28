@@ -148,7 +148,7 @@ class AnswerReport
         return $this->adapter->query($sql)->execute($parameters);
     }
 
-    public function updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+    public function updateWhereQuestionIdAndReportStatusIdEquals0(
         int $reportStatusId,
         int $questionId
     ): Result {

@@ -94,9 +94,9 @@ class QuestionReportTest extends TableTestCase
         );
     }
 
-    public function test_updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()
+    public function test_updateWhereQuestionIdAndReportStatusIdEquals0()
     {
-        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $result = $this->questionReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             5,
             1,
         );
@@ -125,7 +125,7 @@ class QuestionReportTest extends TableTestCase
             '5.6.7.8',
         );
 
-        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $result = $this->questionReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             5,
             1,
         );
@@ -133,7 +133,7 @@ class QuestionReportTest extends TableTestCase
             2,
             $result->getAffectedRows()
         );
-        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $result = $this->questionReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             -1,
             1,
         );
@@ -154,7 +154,7 @@ class QuestionReportTest extends TableTestCase
             'reason',
             '9.10.11.12',
         );
-        $result = $this->questionReportTable->updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0(
+        $result = $this->questionReportTable->updateWhereQuestionIdAndReportStatusIdEquals0(
             -1,
             1,
         );
