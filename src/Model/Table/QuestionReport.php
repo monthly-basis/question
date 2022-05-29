@@ -69,7 +69,8 @@ class QuestionReport
             SELECT `question_report`.`question_id`
                  , COUNT(*)
               FROM `question_report`
-             WHERE `question_report`.`report_status_id` = 0
+             WHERE `question_report`.`reason` != 'Honor Code Violation'
+               AND `question_report`.`report_status_id` = 0
              GROUP
                 BY `question_report`.`question_id`
             HAVING `COUNT(*)` >= 2
