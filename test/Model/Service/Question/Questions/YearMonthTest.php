@@ -30,7 +30,7 @@ class YearMonthTest extends TestCase
 
     public function test_getQuestions()
     {
-        $generator = $this->yearMonthService->getQuestions(2017, 7);
+        $generator = $this->yearMonthService->getQuestions(2017, 2);
         $this->assertInstanceOf(
             Generator::class,
             $generator

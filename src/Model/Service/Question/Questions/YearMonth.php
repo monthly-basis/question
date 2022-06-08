@@ -27,16 +27,11 @@ class YearMonth
     ): Generator {
         $monthPadded = sprintf('%02d', $month);
 
-        $dateTimeMin = new DateTime(
-            "$year-$month-01",
-            new DateTimeZone('America/New_York')
-        );
+        $dateTimeMin = new DateTime("$year-$monthPadded-01");
         $dateTimeMax = clone($dateTimeMin);
         $dateTimeMax->add(new DateInterval('P1M'))
-            ->sub(new DateInterval('PT1S'));
-
-        $dateTimeMin->setTimezone(new DateTimeZone('UTC'));
-        $dateTimeMax->setTimezone(new DateTimeZone('UTC'));
+            ->sub(new DateInterval('PT1S'))
+            ;
 
         $select = $this->sql
             ->select('question')
