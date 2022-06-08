@@ -21,6 +21,7 @@ class YearTest extends TestCase
         $this->questionTableMock = $this->createMock(
             QuestionTable\Question::class
         );
+
         $this->yearService = new QuestionService\Question\Questions\Year(
             $this->sqlMock,
             $this->questionFactoryMock,

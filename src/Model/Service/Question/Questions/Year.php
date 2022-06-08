@@ -21,8 +21,8 @@ class Year
     public function getQuestions(
         int $year
     ): Generator {
-        $betweenMin = "$year-01-01 05:00:00";
-        $betweenMax = ($year + 1) . "-01-01 04:59:59";
+        $betweenMin = "$year-01-01 00:00:00";
+        $betweenMax = "$year-12-31 23:59:59";
 
         $select = $this->sql
             ->select('question')
