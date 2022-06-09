@@ -38,7 +38,8 @@ class QuestionSearchMessage
               JOIN `question`
              USING (`question_id`)
              ORDER
-                BY `question`.`views_not_bot_one_month` DESC
+                BY `question`.`views_not_bot_one_week` DESC
+                 , `question`.`views_not_bot_one_month` DESC
                  , `question_search_message`.`score` DESC
              LIMIT :outerLimitOffset, :outerLimitRowCount
                  ;
