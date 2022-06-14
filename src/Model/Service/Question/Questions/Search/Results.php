@@ -55,12 +55,10 @@ class Results
     {
         try {
             return $this->questionSearchMessageTable
-                ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
+                ->selectQuestionIdWhereMatchAgainstOrderByScoreDesc(
                     $query,
                     ($page - 1) * 100,
                     100,
-                    0,
-                    100
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);

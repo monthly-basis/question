@@ -53,17 +53,17 @@ class ResultsTest extends TestCase
     {
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
-             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->method('selectQuestionIdWhereMatchAgainstOrderByScoreDesc')
              ->withConsecutive(
-                ['the amazing search query', 600, 100, 0, 100],
-                ['the amazing search query', 600, 100, 0, 100],
-                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100],
+                ['the amazing search query', 600, 100],
+                ['the amazing search query', 600, 100],
              )
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),
                      $this->throwException(new InvalidQueryException()),
-                     new Result()
+                     new Result(),
                  )
              )
              ;
@@ -78,13 +78,13 @@ class ResultsTest extends TestCase
     {
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(5))
-             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->method('selectQuestionIdWhereMatchAgainstOrderByScoreDesc')
              ->withConsecutive(
-                ['the amazing search query', 600, 100, 0, 100],
-                ['the amazing search query', 600, 100, 0, 100],
-                ['the amazing search query', 600, 100, 0, 100],
-                ['the amazing search query', 600, 100, 0, 100],
-                ['the amazing search query', 600, 100, 0, 100],
+                ['the amazing search query', 600, 100],
+                ['the amazing search query', 600, 100],
+                ['the amazing search query', 600, 100],
+                ['the amazing search query', 600, 100],
+                ['the amazing search query', 600, 100],
              )
              ->will(
                  $this->onConsecutiveCalls(
