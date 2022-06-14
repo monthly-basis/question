@@ -22,6 +22,19 @@ class QuestionSearchMessageTest extends TableTestCase
         $this->setForeignKeyChecks(1);
     }
 
+    public function test_selectQuestionIdWhereMatchAgainstOrderByScoreDesc()
+    {
+        $result = $this->questionSearchMessageTable
+            ->selectQuestionIdWhereMatchAgainstOrderByScoreDesc(
+                'the search query',
+                0,
+                100,
+            );
+        $this->assertEmpty(
+            iterator_to_array($result)
+        );
+    }
+
     public function test_selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc()
     {
         $result = $this->questionSearchMessageTable

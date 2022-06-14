@@ -15,6 +15,29 @@ class QuestionSearchMessage
         $this->adapter   = $adapter;
     }
 
+    public function selectQuestionIdWhereMatchAgainstOrderByScoreDesc(
+        string $query,
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
+        $sql = '
+            SELECT `question_id`
+                   , MATCH (`message`) AGAINST (:query) AS `score`
+              FROM `question_search_message`
+             WHERE MATCH (`message`) AGAINST (:query)
+             ORDER
+                BY `score` DESC
+             LIMIT :limitOffset, :limitRowCount
+                 ;
+        ';
+        $parameters = [
+            'query'         => $query,
+            'limitOffset'   => $limitOffset,
+            'limitRowCount' => $limitRowCount,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
         string $query,
         int $questionSearchMessageLimitOffset,
