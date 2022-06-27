@@ -22,25 +22,40 @@ class RootRelativeUrlTest extends TestCase
         );
     }
 
-    public function testInitialize()
+    public function test_getRootRelativeUrl_includeQuestionsDirectory_expectedString()
     {
-        $this->assertInstanceOf(
-            QuestionService\Question\RootRelativeUrl::class,
-            $this->rootRelativeUrlService
-        );
-    }
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ->setSubject('My Amazing Question\'s Subject (Is Great)');
 
-    public function testGetModifiedTitle()
-    {
-        $questionEntity            = new QuestionEntity\Question();
-        $questionEntity->setQuestionId(12345);
-        $questionEntity->setSubject('My Amazing Question\'s Subject (Is Great)');
-
-        $this->urlFriendlyServiceMock->method('getUrlFriendly')->willReturn('My-Question-Title');
+        $this->urlFriendlyServiceMock
+            ->method('getUrlFriendly')
+            ->willReturn('My-Question-Title')
+        ;
 
         $this->assertSame(
             '/questions/12345/My-Question-Title',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
+        );
+    }
+
+    public function test_getRootRelativeUrl_doNotIncludeQuestionsDirectory_expectedString()
+    {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ->setSubject('My Amazing Question\'s Subject (Is Great)');
+
+        $this->urlFriendlyServiceMock
+            ->method('getUrlFriendly')
+            ->willReturn('My-Question-Title')
+        ;
+
+        $this->assertSame(
+            '/12345/My-Question-Title',
+            $this->rootRelativeUrlService->getRootRelativeUrl(
+                $questionEntity,
+                false
+            )
         );
     }
 }

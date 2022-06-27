@@ -15,19 +15,21 @@ class RootRelativeUrl
         $this->urlFriendlyService = $urlFriendlyService;
     }
 
-    /**
-     * Get root-relative URL.
-     *
-     * @param QuestionEntity\Question $questionEntity
-     * @return string
-     */
-    public function getRootRelativeUrl($questionEntity) : string
-    {
+    public function getRootRelativeUrl(
+        QuestionEntity\Question $questionEntity,
+        bool $includeQuestionsDirectory = true
+    ): string {
         $title = $this->titleService->getTitle($questionEntity);
 
-        return '/questions/'
-             . $questionEntity->getQuestionId()
-             . '/'
-             . $this->urlFriendlyService->getUrlFriendly($title);
+        $rootRelativeUrl = '/'
+            . $questionEntity->getQuestionId()
+            . '/'
+            . $this->urlFriendlyService->getUrlFriendly($title);
+
+        if ($includeQuestionsDirectory) {
+            $rootRelativeUrl = '/questions' . $rootRelativeUrl;
+        }
+
+        return $rootRelativeUrl;
     }
 }
