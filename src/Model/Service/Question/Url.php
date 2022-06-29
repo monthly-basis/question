@@ -13,14 +13,10 @@ class Url
     }
 
     public function getUrl(
-        QuestionEntity\Question $questionEntity,
-        bool $includeQuestionsDirectory = true
+        QuestionEntity\Question $questionEntity
     ): string {
         return 'https://'
              . $_SERVER['HTTP_HOST']
-             . $this->rootRelativeUrlService->getRootRelativeUrl(
-                 $questionEntity,
-                 $includeQuestionsDirectory,
-             );
+             . $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity);
     }
 }
