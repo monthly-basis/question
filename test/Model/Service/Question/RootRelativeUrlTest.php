@@ -10,6 +10,11 @@ class RootRelativeUrlTest extends TestCase
 {
     protected function setUp(): void
     {
+        $configPath  = $_SERVER['PWD'] . '/config/autoload/local.php';
+        $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
+        $this->configEntity = new QuestionEntity\Config(
+            $configArray
+        );
         $this->titleServiceMock = $this->createMock(
             QuestionService\Question\Title::class
         );
@@ -17,12 +22,13 @@ class RootRelativeUrlTest extends TestCase
             StringService\UrlFriendly::class
         );
         $this->rootRelativeUrlService = new QuestionService\Question\RootRelativeUrl(
+            $this->configEntity,
             $this->titleServiceMock,
             $this->urlFriendlyServiceMock
         );
     }
 
-    public function test_getRootRelativeUrl_includeQuestionsDirectory_expectedString()
+    public function test_getRootRelativeUrl_useLocalConfig_expectedString()
     {
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
@@ -34,13 +40,40 @@ class RootRelativeUrlTest extends TestCase
         ;
 
         $this->assertSame(
-            '/questions/12345/My-Question-Title',
+            '/path/before/question-id/12345/My-Question-Title',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }
 
-    public function test_getRootRelativeUrl_doNotIncludeQuestionsDirectory_expectedString()
+    public function test_getRootRelativeUrl_configIsNotSet_expectedString()
     {
+        $this->configEntity->offsetUnset('question');
+
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ->setSubject('My Amazing Question\'s Subject (Is Great)');
+
+        $this->urlFriendlyServiceMock
+            ->method('getUrlFriendly')
+            ->willReturn('My-Question-Title')
+        ;
+
+        $this->assertSame(
+            '/questions/12345/My-Question-Title',
+            $this->rootRelativeUrlService->getRootRelativeUrl(
+                $questionEntity
+            )
+        );
+    }
+
+    public function test_getRootRelativeUrl_configValueIsEmptyString_expectedString()
+    {
+        $this->configEntity['question'] = [
+            'root-relative-url' => [
+                'path-before-question-id' => '',
+            ],
+        ];
+
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
             ->setSubject('My Amazing Question\'s Subject (Is Great)');
@@ -53,8 +86,32 @@ class RootRelativeUrlTest extends TestCase
         $this->assertSame(
             '/12345/My-Question-Title',
             $this->rootRelativeUrlService->getRootRelativeUrl(
-                $questionEntity,
-                false
+                $questionEntity
+            )
+        );
+    }
+
+    public function test_getRootRelativeUrl_customConfig_expectedString()
+    {
+        $this->configEntity['question'] = [
+            'root-relative-url' => [
+                'path-before-question-id' => '/my/custom/path',
+            ],
+        ];
+
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ->setSubject('My Amazing Question\'s Subject (Is Great)');
+
+        $this->urlFriendlyServiceMock
+            ->method('getUrlFriendly')
+            ->willReturn('My-Question-Title')
+        ;
+
+        $this->assertSame(
+            '/my/custom/path/12345/My-Question-Title',
+            $this->rootRelativeUrlService->getRootRelativeUrl(
+                $questionEntity
             )
         );
     }
