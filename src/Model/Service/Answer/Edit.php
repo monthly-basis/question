@@ -2,19 +2,19 @@
 namespace MonthlyBasis\Question\Model\Service\Answer;
 
 use Exception;
+use Laminas\Db\Adapter\Driver\Pdo\Connection;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use TypeError;
-use Laminas\Db\Adapter\Adapter;
 
 class Edit
 {
     public function __construct(
-        Adapter $adapter,
+        Connection $connection,
         QuestionTable\Answer $answerTable,
         QuestionTable\AnswerHistory $answerHistoryTable
     ) {
-        $this->adapter            = $adapter;
+        $this->connection         = $connection;
         $this->answerTable        = $answerTable;
         $this->answerHistoryTable = $answerHistoryTable;
     }
@@ -37,7 +37,7 @@ class Edit
             }
         }
 
-        $this->adapter->getDriver()->getConnection()->beginTransaction();
+        $this->connection->beginTransaction();
         $this->answerHistoryTable->insertSelectFromAnswer(
             $answerEntity->getAnswerId()
         );
@@ -48,6 +48,6 @@ class Edit
             $modifiedReason,
             $answerEntity->getAnswerId()
         );
-        $this->adapter->getDriver()->getConnection()->commit();
+        $this->connection->commit();
     }
 }

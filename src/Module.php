@@ -202,7 +202,7 @@ class Module
                 },
                 QuestionService\Answer\Edit::class => function ($sm) {
                     return new QuestionService\Answer\Edit(
-                        $sm->get('question'),
+                        $sm->get('question')->getDriver()->getConnection(),
                         $sm->get(QuestionTable\Answer::class),
                         $sm->get(QuestionTable\AnswerHistory::class)
                     );
@@ -293,7 +293,7 @@ class Module
                 },
                 QuestionService\Question\Edit::class => function ($sm) {
                     return new QuestionService\Question\Edit(
-                        $sm->get('question'),
+                        $sm->get('question')->getDriver()->getConnection(),
                         $sm->get(QuestionTable\Question::class),
                         $sm->get(QuestionTable\QuestionHistory::class)
                     );
