@@ -5,6 +5,7 @@ use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Connection;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
+use Throwable;
 use TypeError;
 
 class Edit
@@ -37,17 +38,21 @@ class Edit
             }
         }
 
-        $this->connection->beginTransaction();
-        $this->answerHistoryTable->insertSelectFromAnswer(
-            $answerEntity->getAnswerId()
-        );
-        $this->answerTable->updateWhereAnswerId(
-            $name,
-            $message,
-            $modifiedUserId,
-            $modifiedReason,
-            $answerEntity->getAnswerId()
-        );
-        $this->connection->commit();
+        try {
+            $this->connection->beginTransaction();
+            $this->answerHistoryTable->insertSelectFromAnswer(
+                $answerEntity->getAnswerId()
+            );
+            $this->answerTable->updateWhereAnswerId(
+                $name,
+                $message,
+                $modifiedUserId,
+                $modifiedReason,
+                $answerEntity->getAnswerId()
+            );
+            $this->connection->commit();
+        } catch (Throwable $throwable) {
+            $this->connection->rollback();
+        }
     }
 }
