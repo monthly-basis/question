@@ -517,6 +517,12 @@ class Module
                         $sm->get(StringService\UrlFriendly::class)
                     );
                 },
+                QuestionService\Question\Slug::class => function ($sm) {
+                    return new QuestionService\Question\Slug(
+                        $sm->get(QuestionService\Question\Title::class),
+                        $sm->get(StringService\UrlFriendly::class)
+                    );
+                },
                 QuestionService\Question\Submit::class => function ($sm) {
                     return new QuestionService\Question\Submit(
                         $sm->get(FlashService\Flash::class),
