@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48cace4d1efbfbcbe450fc9d50ff8bf8",
+    "content-hash": "15aebfb4493281a67391b37f78ac63c5",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -116,16 +116,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.228.5",
+            "version": "3.231.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "8b6e626e02c42310c3ce8615acc7b2c992e48c97"
+                "reference": "6222f9e77df8142ec1cbf60337871ef73859bea9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8b6e626e02c42310c3ce8615acc7b2c992e48c97",
-                "reference": "8b6e626e02c42310c3ce8615acc7b2c992e48c97",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6222f9e77df8142ec1cbf60337871ef73859bea9",
+                "reference": "6222f9e77df8142ec1cbf60337871ef73859bea9",
                 "shasum": ""
             },
             "require": {
@@ -143,6 +143,7 @@
                 "andrewsville/php-token-reflection": "^1.4",
                 "aws/aws-php-sns-message-validator": "~1.0",
                 "behat/behat": "~3.0",
+                "composer/composer": "^1.10.22",
                 "doctrine/cache": "~1.4",
                 "ext-dom": "*",
                 "ext-openssl": "*",
@@ -201,22 +202,22 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.228.5"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.231.0"
             },
-            "time": "2022-06-28T18:13:37+00:00"
+            "time": "2022-07-06T18:15:37+00:00"
         },
         {
             "name": "brick/varexporter",
-            "version": "0.3.6",
+            "version": "0.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/varexporter.git",
-                "reference": "3361a8a30e807c0841a7ca98e5c72b6bffc73463"
+                "reference": "3e263cd718d242594c52963760fee2059fd5833c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/varexporter/zipball/3361a8a30e807c0841a7ca98e5c72b6bffc73463",
-                "reference": "3361a8a30e807c0841a7ca98e5c72b6bffc73463",
+                "url": "https://api.github.com/repos/brick/varexporter/zipball/3e263cd718d242594c52963760fee2059fd5833c",
+                "reference": "3e263cd718d242594c52963760fee2059fd5833c",
                 "shasum": ""
             },
             "require": {
@@ -244,7 +245,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/varexporter/issues",
-                "source": "https://github.com/brick/varexporter/tree/0.3.6"
+                "source": "https://github.com/brick/varexporter/tree/0.3.7"
             },
             "funding": [
                 {
@@ -252,7 +253,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-15T23:51:29+00:00"
+            "time": "2022-06-29T23:37:57+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -2784,16 +2785,16 @@
         },
         {
             "name": "laminas/laminas-validator",
-            "version": "2.20.0",
+            "version": "2.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-validator.git",
-                "reference": "ba665f5a52763dda5a747c4ad826d2adf1510486"
+                "reference": "90304417929a51e42999b115907a39f4b658c131"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-validator/zipball/ba665f5a52763dda5a747c4ad826d2adf1510486",
-                "reference": "ba665f5a52763dda5a747c4ad826d2adf1510486",
+                "url": "https://api.github.com/repos/laminas/laminas-validator/zipball/90304417929a51e42999b115907a39f4b658c131",
+                "reference": "90304417929a51e42999b115907a39f4b658c131",
                 "shasum": ""
             },
             "require": {
@@ -2867,7 +2868,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-06-14T12:31:18+00:00"
+            "time": "2022-07-01T07:39:15+00:00"
         },
         {
             "name": "laminas/laminas-view",
@@ -3040,16 +3041,16 @@
         },
         {
             "name": "monthly-basis/content-moderation",
-            "version": "v0.14.37",
+            "version": "v0.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/content-moderation.git",
-                "reference": "86eabf43fbfa7f6cab39681c241997adce2aaff7"
+                "reference": "ce2ad73884083e71645097b58a6f814bb86eb4c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/86eabf43fbfa7f6cab39681c241997adce2aaff7",
-                "reference": "86eabf43fbfa7f6cab39681c241997adce2aaff7",
+                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/ce2ad73884083e71645097b58a6f814bb86eb4c2",
+                "reference": "ce2ad73884083e71645097b58a6f814bb86eb4c2",
                 "shasum": ""
             },
             "require": {
@@ -3072,9 +3073,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/content-moderation/issues",
-                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.14.37"
+                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.15.0"
             },
-            "time": "2022-06-14T23:32:36+00:00"
+            "time": "2022-07-07T04:34:45+00:00"
         },
         {
             "name": "monthly-basis/flash",
@@ -3219,16 +3220,16 @@
         },
         {
             "name": "monthly-basis/re-captcha",
-            "version": "v3.0.1",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/re-captcha.git",
-                "reference": "2a9a94f099a012d44412f7aae4caa834f07d48d9"
+                "reference": "6b0244d25a6514a7e7e0c933f0a9bdbcbc1aced0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/re-captcha/zipball/2a9a94f099a012d44412f7aae4caa834f07d48d9",
-                "reference": "2a9a94f099a012d44412f7aae4caa834f07d48d9",
+                "url": "https://api.github.com/repos/monthly-basis/re-captcha/zipball/6b0244d25a6514a7e7e0c933f0a9bdbcbc1aced0",
+                "reference": "6b0244d25a6514a7e7e0c933f0a9bdbcbc1aced0",
                 "shasum": ""
             },
             "require": {
@@ -3249,9 +3250,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/re-captcha/issues",
-                "source": "https://github.com/monthly-basis/re-captcha/tree/v3.0.1"
+                "source": "https://github.com/monthly-basis/re-captcha/tree/v3.1.0"
             },
-            "time": "2021-02-24T19:35:57+00:00"
+            "time": "2022-07-05T22:52:33+00:00"
         },
         {
             "name": "monthly-basis/simple-email-service",
