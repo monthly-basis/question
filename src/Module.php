@@ -513,8 +513,7 @@ class Module
                 QuestionService\Question\RootRelativeUrl::class => function ($sm) {
                     return new QuestionService\Question\RootRelativeUrl(
                         $sm->get(QuestionEntity\Config::class),
-                        $sm->get(QuestionService\Question\Title::class),
-                        $sm->get(StringService\UrlFriendly::class)
+                        $sm->get(QuestionService\Question\Slug::class),
                     );
                 },
                 QuestionService\Question\Slug::class => function ($sm) {

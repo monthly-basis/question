@@ -15,16 +15,13 @@ class RootRelativeUrlTest extends TestCase
         $this->configEntity = new QuestionEntity\Config(
             $configArray
         );
-        $this->titleServiceMock = $this->createMock(
-            QuestionService\Question\Title::class
+        $this->slugServiceMock = $this->createMock(
+            QuestionService\Question\Slug::class
         );
-        $this->urlFriendlyServiceMock   = $this->createMock(
-            StringService\UrlFriendly::class
-        );
+
         $this->rootRelativeUrlService = new QuestionService\Question\RootRelativeUrl(
             $this->configEntity,
-            $this->titleServiceMock,
-            $this->urlFriendlyServiceMock
+            $this->slugServiceMock,
         );
     }
 
@@ -32,15 +29,18 @@ class RootRelativeUrlTest extends TestCase
     {
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)');
+            ->setSubject('My Amazing Question\'s Subject (Is Great)')
+            ;
 
-        $this->urlFriendlyServiceMock
-            ->method('getUrlFriendly')
-            ->willReturn('My-Question-Title')
-        ;
+        $this->slugServiceMock
+            ->expects($this->once())
+            ->method('getSlug')
+            ->with($questionEntity)
+            ->willReturn('my-question-title')
+            ;
 
         $this->assertSame(
-            '/path/before/question-id/12345/My-Question-Title',
+            '/path/before/question-id/12345/my-question-title',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }
@@ -51,18 +51,19 @@ class RootRelativeUrlTest extends TestCase
 
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)');
+            ->setSubject('My Amazing Question\'s Subject (Is Great)')
+            ;
 
-        $this->urlFriendlyServiceMock
-            ->method('getUrlFriendly')
-            ->willReturn('My-Question-Title')
-        ;
+        $this->slugServiceMock
+            ->expects($this->once())
+            ->method('getSlug')
+            ->with($questionEntity)
+            ->willReturn('my-question-title')
+            ;
 
         $this->assertSame(
-            '/questions/12345/My-Question-Title',
-            $this->rootRelativeUrlService->getRootRelativeUrl(
-                $questionEntity
-            )
+            '/questions/12345/my-question-title',
+            $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }
 
@@ -76,18 +77,19 @@ class RootRelativeUrlTest extends TestCase
 
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)');
+            ->setSubject('My Amazing Question\'s Subject (Is Great)')
+            ;
 
-        $this->urlFriendlyServiceMock
-            ->method('getUrlFriendly')
-            ->willReturn('My-Question-Title')
-        ;
+        $this->slugServiceMock
+            ->expects($this->once())
+            ->method('getSlug')
+            ->with($questionEntity)
+            ->willReturn('my-question-title')
+            ;
 
         $this->assertSame(
-            '/12345/My-Question-Title',
-            $this->rootRelativeUrlService->getRootRelativeUrl(
-                $questionEntity
-            )
+            '/12345/my-question-title',
+            $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }
 
@@ -101,18 +103,19 @@ class RootRelativeUrlTest extends TestCase
 
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)');
+            ->setSubject('My Amazing Question\'s Subject (Is Great)')
+            ;
 
-        $this->urlFriendlyServiceMock
-            ->method('getUrlFriendly')
-            ->willReturn('My-Question-Title')
-        ;
+        $this->slugServiceMock
+            ->expects($this->once())
+            ->method('getSlug')
+            ->with($questionEntity)
+            ->willReturn('my-question-title')
+            ;
 
         $this->assertSame(
-            '/my/custom/path/12345/My-Question-Title',
-            $this->rootRelativeUrlService->getRootRelativeUrl(
-                $questionEntity
-            )
+            '/my/custom/path/12345/my-question-title',
+            $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }
 }
