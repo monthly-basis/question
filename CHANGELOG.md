@@ -2,7 +2,7 @@
 
 ## v2.12.18
 
-- ALTER TABLE `question_view_not_bot_log` ADD COLUMN `server_http_referer` varchar(255) DEFAULT NULL AFTER `ip`;
+- ALTER TABLE `question_view_not_bot_log` ADD COLUMN `server_http_accept_language` varchar(255) DEFAULT NULL AFTER `ip`;
 
 ## v2.12.14
 
