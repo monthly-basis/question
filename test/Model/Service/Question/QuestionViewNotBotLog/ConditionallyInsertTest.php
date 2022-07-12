@@ -19,16 +19,21 @@ class ConditionallyInsertTest extends TestCase
             SuperglobalService\Server\HttpUserAgent\Bot::class
         );
 
-        $_SERVER['REMOTE_ADDR'] = '1.2.3.4';
-
         $this->conditionallyInsertService = new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
             $this->questionViewNotBotLogTableGatewayMock,
             $this->botServiceMock
         );
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function test_conditionallyInsert_isBot_false()
     {
+        $_SERVER = [
+            'REMOTE_ADDR' => '1.2.3.4',
+        ];
+
         $this->botServiceMock
             ->expects($this->once())
             ->method('isBot')
@@ -44,8 +49,73 @@ class ConditionallyInsertTest extends TestCase
         $this->assertFalse($result);
     }
 
-    public function test_conditionallyInsert_invalidQueryExceptionThrown_false()
+    /**
+     * @runInSeparateProcess
+     */
+    public function test_conditionallyInsert_isNotBotRefererIsNotSet_false()
     {
+        $_SERVER = [
+            'REMOTE_ADDR'  => '1.2.3.4',
+        ];
+
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ;
+        $this->botServiceMock
+            ->expects($this->once())
+            ->method('isBot')
+            ->willReturn(false)
+            ;
+        $this->questionViewNotBotLogTableGatewayMock
+            ->expects($this->exactly(0))
+            ->method('insert')
+            ;
+
+        $result = $this->conditionallyInsertService->conditionallyInsert(
+            $questionEntity
+        );
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function test_conditionallyInsert_isNotBotRefererIsNotGoogle_false()
+    {
+        $_SERVER = [
+            'HTTP_REFERER' => 'https://www.bing.com/search?q=hello+world',
+            'REMOTE_ADDR'  => '1.2.3.4',
+        ];
+
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ;
+        $this->botServiceMock
+            ->expects($this->once())
+            ->method('isBot')
+            ->willReturn(false)
+            ;
+        $this->questionViewNotBotLogTableGatewayMock
+            ->expects($this->exactly(0))
+            ->method('insert')
+            ;
+
+        $result = $this->conditionallyInsertService->conditionallyInsert(
+            $questionEntity
+        );
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function test_conditionallyInsert_isNotBotRefererIsGoogleInvalidQueryExceptionThrown_false()
+    {
+        $_SERVER = [
+            'HTTP_REFERER' => 'google.com',
+            'REMOTE_ADDR'  => '1.2.3.4',
+        ];
+
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
             ;
@@ -70,8 +140,16 @@ class ConditionallyInsertTest extends TestCase
         $this->assertFalse($result);
     }
 
-    public function test_conditionallyInsert_isNotBotAndNoExceptionThrown_true()
+    /**
+     * @runInSeparateProcess
+     */
+    public function test_conditionallyInsert_isNotBotRefererIsGoogleNoExceptionThrown_true()
     {
+        $_SERVER = [
+            'HTTP_REFERER' => 'https://www.google.com/search?q=hello+world',
+            'REMOTE_ADDR'  => '1.2.3.4',
+        ];
+
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
             ;

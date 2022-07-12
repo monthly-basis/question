@@ -23,6 +23,11 @@ class ConditionallyInsert
             return false;
         }
 
+        $referer = $_SERVER['HTTP_REFERER'] ?? '';
+        if (strpos($referer, 'google.com') === false) {
+            return false;
+        }
+
         try {
             $this->questionViewNotBotLogTableGateway
                 ->insert([
