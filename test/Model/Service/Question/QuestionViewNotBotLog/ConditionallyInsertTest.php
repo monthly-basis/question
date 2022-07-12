@@ -5,6 +5,7 @@ use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use Laminas\Db\TableGateway\TableGateway;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 use PHPUnit\Framework\TestCase;
 
@@ -15,13 +16,17 @@ class ConditionallyInsertTest extends TestCase
         $this->questionViewNotBotLogTableGatewayMock = $this->createMock(
             TableGateway::class
         );
+        $this->startsWithServiceMock = $this->createMock(
+            StringService\StartsWith::class
+        );
         $this->botServiceMock = $this->createMock(
             SuperglobalService\Server\HttpUserAgent\Bot::class
         );
 
         $this->conditionallyInsertService = new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
             $this->questionViewNotBotLogTableGatewayMock,
-            $this->botServiceMock
+            $this->startsWithServiceMock,
+            $this->botServiceMock,
         );
     }
 
@@ -39,6 +44,10 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('isBot')
             ->willReturn(true)
+            ;
+        $this->startsWithServiceMock
+            ->expects($this->exactly(0))
+            ->method('startsWith')
             ;
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->exactly(0))
@@ -67,6 +76,10 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('isBot')
             ->willReturn(false)
+            ;
+        $this->startsWithServiceMock
+            ->expects($this->exactly(0))
+            ->method('startsWith')
             ;
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->exactly(0))
@@ -98,6 +111,10 @@ class ConditionallyInsertTest extends TestCase
             ->method('isBot')
             ->willReturn(false)
             ;
+        $this->startsWithServiceMock
+            ->expects($this->exactly(0))
+            ->method('startsWith')
+            ;
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->exactly(0))
             ->method('insert')
@@ -112,7 +129,43 @@ class ConditionallyInsertTest extends TestCase
     /**
      * @runInSeparateProcess
      */
-    public function test_conditionallyInsert_isNotBotRefererIsGoogleInvalidQueryExceptionThrown_false()
+    public function test_conditionallyInsert_isNotBotRefererIsGoogleDoesNotStartWithEnUs_false()
+    {
+        $_SERVER = [
+            'HTTP_ACCEPT_LANGUAGE' => 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+            'HTTP_REFERER'         => 'https://www.google.com/',
+            'REMOTE_ADDR'          => '1.2.3.4',
+        ];
+
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(12345)
+            ;
+        $this->botServiceMock
+            ->expects($this->once())
+            ->method('isBot')
+            ->willReturn(false)
+            ;
+        $this->startsWithServiceMock
+            ->expects($this->once())
+            ->method('startsWith')
+            ->with('ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7', 'en-US')
+            ->willReturn(false)
+            ;
+        $this->questionViewNotBotLogTableGatewayMock
+            ->expects($this->exactly(0))
+            ->method('insert')
+            ;
+
+        $result = $this->conditionallyInsertService->conditionallyInsert(
+            $questionEntity
+        );
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function test_conditionallyInsert_isNotBotRefererIsGoogleStartsWithEnUsInvalidQueryExceptionThrown_false()
     {
         $_SERVER = [
             'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
@@ -127,6 +180,12 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('isBot')
             ->willReturn(false)
+            ;
+        $this->startsWithServiceMock
+            ->expects($this->once())
+            ->method('startsWith')
+            ->with('en-US,en;q=0.9', 'en-US')
+            ->willReturn(true)
             ;
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->once())
@@ -149,7 +208,7 @@ class ConditionallyInsertTest extends TestCase
     /**
      * @runInSeparateProcess
      */
-    public function test_conditionallyInsert_isNotBotRefererIsGoogleNoExceptionThrown_true()
+    public function test_conditionallyInsert_isNotBotRefererIsGoogleStartsWithEnUsNoExceptionThrown_true()
     {
         $_SERVER = [
             'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
@@ -164,6 +223,12 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('isBot')
             ->willReturn(false)
+            ;
+        $this->startsWithServiceMock
+            ->expects($this->once())
+            ->method('startsWith')
+            ->with('en-US,en;q=0.9', 'en-US')
+            ->willReturn(true)
             ;
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->once())

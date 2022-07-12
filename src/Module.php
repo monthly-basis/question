@@ -342,6 +342,7 @@ class Module
                 QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert::class => function ($sm) {
                     return new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
                         $sm->get('laminas-db-table-gateway-table-gateway-question_view_not_bot_log'),
+                        $sm->get(StringService\StartsWith::class),
                         $sm->get(SuperglobalService\Server\HttpUserAgent\Bot::class)
                     );
                 },
