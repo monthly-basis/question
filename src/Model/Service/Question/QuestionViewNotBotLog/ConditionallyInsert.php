@@ -23,11 +23,24 @@ class ConditionallyInsert
             return false;
         }
 
+        /*
+         * Only insert if referer is exactly:
+         * https://www.google.com/
+         *
+         * International traffic can come from other Google domains, e.g.:
+         * https://www.google.com.bd/
+         * https://www.google.com.do/
+         * https://www.google.com.pa/
+         * https://www.google.com.ph/
+         * https://www.google.com.vn/
+         *
+         * Therefore you cannot simply match 'google.com'. Instead, you must
+         * match the entire 'https://www.google.com/' string.
+         */
         $referer = $_SERVER['HTTP_REFERER'] ?? '';
-        if (strpos($referer, 'google.com') === false) {
+        if ($referer != 'https://www.google.com/') {
             return false;
         }
-        $referer = substr($referer, 0, 255);
 
         try {
             $this->questionViewNotBotLogTableGateway
