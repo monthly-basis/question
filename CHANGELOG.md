@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- ALTER TABLE `question_view_not_bot_log` ADD COLUMN `server_http_referer` varchar(255) DEFAULT NULL AFTER `ip`;
+
 ## v2.12.3
 
 - Replace calls to `updateSetReportStatusIdWhereQuestionIdAndReportStatusIdEquals0()` method with `updateWhereQuestionIdAndReportStatusIdEquals0()`
