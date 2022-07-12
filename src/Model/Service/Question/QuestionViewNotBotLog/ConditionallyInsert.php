@@ -37,8 +37,8 @@ class ConditionallyInsert
          * Therefore you cannot simply match 'google.com'. Instead, you must
          * match the entire 'https://www.google.com/' string.
          */
-        $referer = $_SERVER['HTTP_REFERER'] ?? '';
-        if ($referer != 'https://www.google.com/') {
+        $serverHttpReferer = $_SERVER['HTTP_REFERER'] ?? '';
+        if ($serverHttpReferer != 'https://www.google.com/') {
             return false;
         }
 
@@ -47,7 +47,7 @@ class ConditionallyInsert
                 ->insert([
                     'question_id'         => $questionEntity->getQuestionId(),
                     'ip'                  => $_SERVER['REMOTE_ADDR'],
-                    'server_http_referer' => $referer,
+                    'server_http_referer' => $serverHttpReferer,
                 ]);
         } catch (InvalidQueryException $invalidQueryException) {
             return false;
