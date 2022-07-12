@@ -42,12 +42,16 @@ class ConditionallyInsert
             return false;
         }
 
+        $serverHttpAcceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
+        $serverHttpAcceptLanguage = substr($serverHttpAcceptLanguage, 0, 255);
+
         try {
             $this->questionViewNotBotLogTableGateway
                 ->insert([
-                    'question_id'         => $questionEntity->getQuestionId(),
-                    'ip'                  => $_SERVER['REMOTE_ADDR'],
-                    'server_http_referer' => $serverHttpReferer,
+                    'question_id'                 => $questionEntity->getQuestionId(),
+                    'ip'                          => $_SERVER['REMOTE_ADDR'],
+                    'server_http_accept_language' => $serverHttpAcceptLanguage,
+                    'server_http_referer'         => $serverHttpReferer,
                 ]);
         } catch (InvalidQueryException $invalidQueryException) {
             return false;

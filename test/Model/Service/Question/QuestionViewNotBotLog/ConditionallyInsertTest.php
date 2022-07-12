@@ -31,7 +31,8 @@ class ConditionallyInsertTest extends TestCase
     public function test_conditionallyInsert_isBot_false()
     {
         $_SERVER = [
-            'REMOTE_ADDR' => '1.2.3.4',
+            'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
+            'REMOTE_ADDR'          => '1.2.3.4',
         ];
 
         $this->botServiceMock
@@ -55,7 +56,8 @@ class ConditionallyInsertTest extends TestCase
     public function test_conditionallyInsert_isNotBotRefererIsNotSet_false()
     {
         $_SERVER = [
-            'REMOTE_ADDR'  => '1.2.3.4',
+            'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
+            'REMOTE_ADDR'          => '1.2.3.4',
         ];
 
         $questionEntity = (new QuestionEntity\Question())
@@ -83,8 +85,9 @@ class ConditionallyInsertTest extends TestCase
     public function test_conditionallyInsert_isNotBotRefererIsNotGoogle_false()
     {
         $_SERVER = [
-            'HTTP_REFERER' => 'https://www.bing.com/search?q=hello+world',
-            'REMOTE_ADDR'  => '1.2.3.4',
+            'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
+            'HTTP_REFERER'         => 'https://www.bing.com/search?q=hello+world',
+            'REMOTE_ADDR'          => '1.2.3.4',
         ];
 
         $questionEntity = (new QuestionEntity\Question())
@@ -112,8 +115,9 @@ class ConditionallyInsertTest extends TestCase
     public function test_conditionallyInsert_isNotBotRefererIsGoogleInvalidQueryExceptionThrown_false()
     {
         $_SERVER = [
-            'HTTP_REFERER' => 'https://www.google.com/',
-            'REMOTE_ADDR'  => '1.2.3.4',
+            'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
+            'HTTP_REFERER'         => 'https://www.google.com/',
+            'REMOTE_ADDR'          => '1.2.3.4',
         ];
 
         $questionEntity = (new QuestionEntity\Question())
@@ -128,9 +132,10 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('insert')
             ->with([
-                'question_id'         => 12345,
-                'ip'                  => '1.2.3.4',
-                'server_http_referer' => 'https://www.google.com/',
+                'question_id'                 => 12345,
+                'ip'                          => '1.2.3.4',
+                'server_http_accept_language' => 'en-US,en;q=0.9',
+                'server_http_referer'         => 'https://www.google.com/',
             ])
             ->will($this->throwException(new InvalidQueryException()))
             ;
@@ -147,8 +152,9 @@ class ConditionallyInsertTest extends TestCase
     public function test_conditionallyInsert_isNotBotRefererIsGoogleNoExceptionThrown_true()
     {
         $_SERVER = [
-            'HTTP_REFERER' => 'https://www.google.com/',
-            'REMOTE_ADDR'  => '1.2.3.4',
+            'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
+            'HTTP_REFERER'         => 'https://www.google.com/',
+            'REMOTE_ADDR'          => '1.2.3.4',
         ];
 
         $questionEntity = (new QuestionEntity\Question())
@@ -163,9 +169,10 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('insert')
             ->with([
-                'question_id'         => 12345,
-                'ip'                  => '1.2.3.4',
-                'server_http_referer' => 'https://www.google.com/',
+                'question_id'                 => 12345,
+                'ip'                          => '1.2.3.4',
+                'server_http_accept_language' => 'en-US,en;q=0.9',
+                'server_http_referer'         => 'https://www.google.com/',
             ])
             ;
 
