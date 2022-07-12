@@ -128,8 +128,9 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('insert')
             ->with([
-                'question_id' => 12345,
-                'ip' => '1.2.3.4',
+                'question_id'         => 12345,
+                'ip'                  => '1.2.3.4',
+                'server_http_referer' => 'google.com',
             ])
             ->will($this->throwException(new InvalidQueryException()))
             ;
@@ -146,7 +147,7 @@ class ConditionallyInsertTest extends TestCase
     public function test_conditionallyInsert_isNotBotRefererIsGoogleNoExceptionThrown_true()
     {
         $_SERVER = [
-            'HTTP_REFERER' => 'https://www.google.com/search?q=hello+world',
+            'HTTP_REFERER' => 'https://www.google.com/search?q=hello+world&extra=add+really+long+query+string+to+make+sure+url+is+truncated+to+only+first+255+characters+since+the+varchar+in+mysql+is+only+256+characters+in+length+otherwise+the+script+may+fail+i+hope+you+didnt+read+this+far',
             'REMOTE_ADDR'  => '1.2.3.4',
         ];
 
@@ -162,8 +163,9 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->once())
             ->method('insert')
             ->with([
-                'question_id' => 12345,
-                'ip' => '1.2.3.4',
+                'question_id'         => 12345,
+                'ip'                  => '1.2.3.4',
+                'server_http_referer' => 'https://www.google.com/search?q=hello+world&extra=add+really+long+query+string+to+make+sure+url+is+truncated+to+only+first+255+characters+since+the+varchar+in+mysql+is+only+256+characters+in+length+otherwise+the+script+may+fail+i+hope+you+didnt+read+this+',
             ])
             ;
 

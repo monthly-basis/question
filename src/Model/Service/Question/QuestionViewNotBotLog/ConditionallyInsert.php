@@ -27,12 +27,14 @@ class ConditionallyInsert
         if (strpos($referer, 'google.com') === false) {
             return false;
         }
+        $referer = substr($referer, 0, 255);
 
         try {
             $this->questionViewNotBotLogTableGateway
                 ->insert([
-                    'question_id' => $questionEntity->getQuestionId(),
-                    'ip' => $_SERVER['REMOTE_ADDR'],
+                    'question_id'         => $questionEntity->getQuestionId(),
+                    'ip'                  => $_SERVER['REMOTE_ADDR'],
+                    'server_http_referer' => $referer,
                 ]);
         } catch (InvalidQueryException $invalidQueryException) {
             return false;
