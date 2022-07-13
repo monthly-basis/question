@@ -9,10 +9,8 @@ use TypeError;
 
 class Question
 {
-    /**
-     * @var Adapter
-     */
-    protected $adapter;
+    protected Adapter $adapter;
+    protected QuestionDb\Sql $sql;
 
     public function __construct(
         QuestionDb\Sql $sql
