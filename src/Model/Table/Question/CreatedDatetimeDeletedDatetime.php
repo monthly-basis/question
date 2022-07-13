@@ -17,16 +17,18 @@ class CreatedDatetimeDeletedDatetime
         $this->questionTable = $questionTable;
     }
 
-    public function selectWhereCreatedDatetimeIsBetweenAndDeletedDatetimeIsNull(
+    public function selectWhereCreatedDatetimeIsBetweenAndDeletedDatetimeIsNullAndViewsNotBotGreaterThan0(
         string $createdDatetimeMin,
         string $createdDatetimeMax
     ): Generator {
         $sql = $this->questionTable->getSelect()
              . '
               FROM `question`
+               USE INDEX (`created_datetime_deleted_datetime_views_not_bot_one_month`)
              WHERE `question`.`created_datetime` >= ?
                AND `question`.`created_datetime` < ?
                AND `question`.`deleted_datetime` IS NULL
+               AND `question`.`views_not_bot_one_month` > 0
              ORDER
                 BY `question`.`created_datetime` ASC
                  ;
