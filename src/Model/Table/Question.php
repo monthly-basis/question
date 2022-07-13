@@ -2,9 +2,10 @@
 namespace MonthlyBasis\Question\Model\Table;
 
 use Generator;
-use TypeError;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
+use MonthlyBasis\Question\Model\Db as QuestionDb;
+use TypeError;
 
 class Question
 {
@@ -14,9 +15,10 @@ class Question
     protected $adapter;
 
     public function __construct(
-        Adapter $adapter
+        QuestionDb\Sql $sql
     ) {
-        $this->adapter = $adapter;
+        $this->sql     = $sql;
+        $this->adapter = $this->sql->getAdapter();
     }
 
     public function getSelect(): string

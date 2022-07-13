@@ -1,26 +1,24 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Table\Question;
 
-use MonthlyBasis\Memcached\Model\Service as MemcachedService;
-use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
+use MonthlyBasis\Question\Model\Db as QuestionDb;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class DeletedTest extends TableTestCase
 {
-    /**
-     * @var string
-     */
-    protected $sqlPath;
-
     protected function setUp(): void
     {
         $this->memcachedServiceMock = $this->createMock(
             MemcachedService\Memcached::class
         );
+        $this->sql = new QuestionDb\Sql(
+            $this->getAdapter()
+        );
 
         $this->questionTable = new QuestionTable\Question(
-            $this->getAdapter(),
-            $this->memcachedServiceMock
+            $this->sql
         );
         $this->questionDeletedTable = new QuestionTable\Question\Deleted(
             $this->getAdapter(),

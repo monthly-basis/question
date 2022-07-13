@@ -4,6 +4,7 @@ namespace MonthlyBasis\QuestionTest\Model\Table;
 use Generator;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
+use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
 use TypeError;
@@ -17,8 +18,11 @@ class QuestionHistoryTest extends TableTestCase
 
     protected function setUp(): void
     {
-        $this->questionTable = new QuestionTable\Question(
+        $this->sql = new QuestionDb\Sql(
             $this->getAdapter()
+        );
+        $this->questionTable = new QuestionTable\Question(
+            $this->sql
         );
         $this->questionHistoryTable = new QuestionTable\QuestionHistory(
             $this->getAdapter()

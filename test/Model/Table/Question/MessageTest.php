@@ -2,19 +2,22 @@
 namespace MonthlyBasis\QuestionTest\Model\Table\Question;
 
 use Generator;
+use Laminas\Db\Adapter\Adapter;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
+use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
-use Laminas\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 
 class MessageTest extends TableTestCase
 {
     protected function setUp(): void
     {
+        $this->sql = new QuestionDb\Sql(
+            $this->getAdapter()
+        );
         $this->questionTable = new QuestionTable\Question(
-            $this->getAdapter(),
-            new MemcachedService\Memcached()
+            $this->sql
         );
         $this->questionMessageTable = new QuestionTable\Question\Message(
             $this->getAdapter(),

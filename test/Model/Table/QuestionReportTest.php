@@ -15,7 +15,7 @@ class QuestionReportTest extends TableTestCase
             $this->getAdapter()
         );
         $this->questionTable = new QuestionTable\Question(
-            $this->getAdapter()
+            $this->sql
         );
         $this->questionReportTable = new QuestionTable\QuestionReport(
             $this->sql

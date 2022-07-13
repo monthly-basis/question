@@ -2,9 +2,10 @@
 namespace MonthlyBasis\QuestionTest\Model\Table\Question;
 
 use DateTime;
-use MonthlyBasis\Question\Model\Table as QuestionTable;
-use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\LaminasTest\TableTestCase;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
+use MonthlyBasis\Question\Model\Db as QuestionDb;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class CreatedIpTest extends TableTestCase
 {
@@ -14,8 +15,11 @@ class CreatedIpTest extends TableTestCase
         $this->dropAndCreateTable('question');
         $this->setForeignKeyChecks(1);
 
-        $this->questionTable = new QuestionTable\Question(
+        $this->sql = new QuestionDb\Sql(
             $this->getAdapter()
+        );
+        $this->questionTable = new QuestionTable\Question(
+            $this->sql,
         );
         $this->createdIpTable = new QuestionTable\Question\CreatedIp(
             $this->getAdapter(),

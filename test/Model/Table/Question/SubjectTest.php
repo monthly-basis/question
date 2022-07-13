@@ -3,6 +3,7 @@ namespace MonthlyBasis\QuestionTest\Model\Table\Question;
 
 use Generator;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
+use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
 
@@ -10,12 +11,11 @@ class SubjectTest extends TableTestCase
 {
     protected function setUp(): void
     {
-        $this->memcachedServiceMock = $this->createMock(
-            MemcachedService\Memcached::class
+        $this->sql = new QuestionDb\Sql(
+            $this->getAdapter()
         );
         $this->questionTable = new QuestionTable\Question(
-            $this->getAdapter(),
-            $this->memcachedServiceMock
+            $this->sql
         );
         $this->questionSubjectTable = new QuestionTable\Question\Subject(
             $this->adapter,

@@ -2,25 +2,28 @@
 namespace MonthlyBasis\QuestionTest\Model\Table;
 
 use Generator;
+use Laminas\Db\Adapter\Adapter;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
-use Laminas\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 
 class PostTest extends TableTestCase
 {
     protected function setUp(): void
     {
+        $this->sql = new QuestionDb\Sql(
+            $this->getAdapter()
+        );
         $this->postTable = new QuestionTable\Post(
-            new QuestionDb\Sql($this->getAdapter())
+            $this->sql
         );
 
         $this->answerTable = new QuestionTable\Answer(
             $this->getAdapter()
         );
         $this->questionTable = new QuestionTable\Question(
-            $this->getAdapter()
+            $this->sql
         );
 
         $this->setForeignKeyChecks(0);
