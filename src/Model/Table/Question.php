@@ -4,16 +4,14 @@ namespace MonthlyBasis\Question\Model\Table;
 use Generator;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
+use Laminas\Db\Sql\Sql;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use TypeError;
 
 class Question
 {
     protected Adapter $adapter;
-    /*
-     * Comment out for now because child class has different $sql object.
-     * protected QuestionDb\Sql $sql;
-     */
+    protected Sql $sql;
 
     public function __construct(
         QuestionDb\Sql $sql
