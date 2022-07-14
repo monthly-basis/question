@@ -16,6 +16,9 @@ class Question extends QuestionEntity\Post
     protected $deletedReason;
     protected $history;
     protected $message;
+    protected DateTime $modifiedDateTime;
+    protected string $modifiedReason;
+    protected int $modifiedUserId;
     protected $questionId;
     protected $subject;
 
@@ -69,6 +72,21 @@ class Question extends QuestionEntity\Post
     public function getMessage(): string
     {
         return $this->message;
+    }
+
+    public function getModifiedDateTime(): DateTime
+    {
+        return $this->modifiedDateTime;
+    }
+
+    public function getModifiedReason(): string
+    {
+        return $this->modifiedReason;
+    }
+
+    public function getModifiedUserId(): int
+    {
+        return $this->modifiedUserId;
     }
 
     public function getQuestionId(): int
@@ -143,6 +161,24 @@ class Question extends QuestionEntity\Post
     public function setMessage(string $message): QuestionEntity\Question
     {
         $this->message = $message;
+        return $this;
+    }
+
+    public function setModifiedDateTime(DateTime $modifiedDateTime): QuestionEntity\Question
+    {
+        $this->modifiedDateTime = $modifiedDateTime;
+        return $this;
+    }
+
+    public function setModifiedReason(string $modifiedReason): QuestionEntity\Question
+    {
+        $this->modifiedReason = $modifiedReason;
+        return $this;
+    }
+
+    public function setModifiedUserId(int $modifiedUserId): QuestionEntity\Question
+    {
+        $this->modifiedUserId = $modifiedUserId;
         return $this;
     }
 

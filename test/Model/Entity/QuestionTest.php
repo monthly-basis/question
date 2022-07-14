@@ -12,15 +12,7 @@ class QuestionTest extends TestCase
         $this->questionEntity = new QuestionEntity\Question();
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            QuestionEntity\Question::class,
-            $this->questionEntity
-        );
-    }
-
-    public function testGettersAndSetters()
+    public function test_settersAndGetters()
     {
         $createdDateTime = new DateTime();
         $this->questionEntity->setCreatedDateTime($createdDateTime);
@@ -67,6 +59,36 @@ class QuestionTest extends TestCase
         $this->assertSame(
             $deletedReason,
             $this->questionEntity->getDeletedReason()
+        );
+
+        $modifiedDateTime = new DateTime();
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setModifiedDateTime($modifiedDateTime)
+        );
+        $this->assertSame(
+            $modifiedDateTime,
+            $this->questionEntity->getModifiedDateTime()
+        );
+
+        $modifiedReason = 'modified reason';
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setModifiedReason($modifiedReason)
+        );
+        $this->assertSame(
+            $modifiedReason,
+            $this->questionEntity->getModifiedReason()
+        );
+
+        $modifiedUserId = 54321;
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setModifiedUserId($modifiedUserId)
+        );
+        $this->assertSame(
+            $modifiedUserId,
+            $this->questionEntity->getModifiedUserId()
         );
     }
 }
