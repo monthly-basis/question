@@ -132,6 +132,22 @@ class Answer
         return (int) $row['count'];
     }
 
+    public function selectMaxCreatedDatetimeWhereQuestionId(
+        int $questionId
+    ): Result {
+        $sql = '
+            SELECT MAX(`answer`.`created_datetime`)
+              FROM `answer`
+             WHERE `answer`.`question_id` = ?
+               AND `answer`.`deleted_datetime` IS NULL
+                 ;
+        ';
+        $parameters = [
+            $questionId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     /**
      * @deprecated Use QuestionTable\Answer\AnswerId::selectWhereAnswerId instead
      */

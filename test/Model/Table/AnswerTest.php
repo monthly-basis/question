@@ -69,6 +69,22 @@ class AnswerTest extends TableTestCase
         );
     }
 
+    public function test_selectMaxCreatedDatetimeWhereQuestionId()
+    {
+        $result = $this->answerTable->selectMaxCreatedDatetimeWhereQuestionId(
+            12345
+        );
+
+        $this->assertSame(
+            [
+                [
+                    'MAX(`answer`.`created_datetime`)' => null,
+                ],
+            ],
+            iterator_to_array($result)
+        );
+    }
+
     public function testSelectWhereAnswerId()
     {
         $this->answerTable->insert(
