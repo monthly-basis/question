@@ -10,7 +10,10 @@ use TypeError;
 class Question
 {
     protected Adapter $adapter;
-    protected QuestionDb\Sql $sql;
+    /*
+     * Comment out for now because child class has different $sql object.
+     * protected QuestionDb\Sql $sql;
+     */
 
     public function __construct(
         QuestionDb\Sql $sql
