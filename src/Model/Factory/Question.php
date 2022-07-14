@@ -48,6 +48,15 @@ class Question
         if (isset($array['deleted_reason'])) {
             $questionEntity->setDeletedReason($array['deleted_reason']);
         }
+        if (isset($array['modified_datetime'])) {
+            $questionEntity->setModifiedDateTime(new DateTime($array['modified_datetime']));
+        }
+        if (isset($array['modified_reason'])) {
+            $questionEntity->setModifiedReason($array['modified_reason']);
+        }
+        if (isset($array['modified_user_id'])) {
+            $questionEntity->setModifiedUserId(intval($array['modified_user_id']));
+        }
         if (isset($array['user_id'])) {
             $questionEntity->setCreatedUserId((int) $array['user_id']);
 

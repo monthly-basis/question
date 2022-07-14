@@ -42,20 +42,26 @@ class QuestionTest extends TestCase
             ->method('getDisplayNameOrUsername')
             ;
         $array = [
-            'created_name'     => 'name',
-            'created_datetime' => '2018-03-12 22:12:23',
-            'created_ip'       => '5.6.7.8',
-            'deleted_datetime' => '2018-09-17 21:42:45',
-            'message'          => 'message',
-            'question_id'      => 1,
-            'subject'          => 'subject',
-            'user_id'          => null,
+            'created_name'      => 'name',
+            'created_datetime'  => '2018-03-12 22:12:23',
+            'created_ip'        => '5.6.7.8',
+            'deleted_datetime'  => '2018-09-17 21:42:45',
+            'message'           => 'message',
+            'modified_datetime' => '2022-07-13 20:25:11',
+            'modified_user_id'  => '54321',
+            'modified_reason'   => 'modified reason',
+            'question_id'       => 1,
+            'subject'           => 'subject',
+            'user_id'           => null,
         ];
         $questionEntity = new QuestionEntity\Question();
         $questionEntity
             ->setCreatedName($array['created_name'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
+            ->setModifiedDateTime(new DateTime($array['modified_datetime']))
+            ->setModifiedUserId(intval($array['modified_user_id']))
+            ->setModifiedReason($array['modified_reason'])
             ->setDeletedDateTime(new DateTime($array['deleted_datetime']))
             ->setMessage($array['message'])
             ->setQuestionId($array['question_id'])
