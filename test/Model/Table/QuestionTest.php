@@ -61,6 +61,15 @@ class QuestionTest extends TableTestCase
         );
     }
 
+    /**
+     * @todo Update unit test to use actual data.
+     */
+    public function test_selectQuestionIdOrderByViewsNotBotOneHour_result()
+    {
+        $result = $this->questionTable->selectQuestionIdOrderByViewsNotBotOneHour();
+        $this->assertEmpty($result);
+    }
+
     public function testSelectWhereQuestionId()
     {
         $this->questionTable->insert(

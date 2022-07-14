@@ -139,6 +139,31 @@ class Question
             ->getGeneratedValue();
     }
 
+    public function selectQuestionIdOrderByViewsNotBotOneHour(): Result {
+        $sql = '
+            SELECT `question_id`
+              FROM (
+                       SELECT `question`.`question_id`
+                         FROM `question`
+                        WHERE `question`.`deleted_datetime` IS NULL
+                        ORDER
+                           BY `question`.`views_not_bot_one_hour` DESC
+                        LIMIT 100
+                   ) AS `question_sub_query`
+
+              JOIN `question` USING (`question_id`)
+
+             ORDER
+                BY `question`.`views_not_bot_one_hour` DESC
+                 , `question`.`views_not_bot_one_day` DESC
+                 , `question`.`views_not_bot_one_week` DESC
+                 , `question`.`views_not_bot_one_month` DESC
+                 , `question`.`views` DESC
+                 ;
+        ';
+        return $this->adapter->query($sql)->execute();
+    }
+
     public function selectWhereDeletedDatetimeIsNullOrderByCreatedDateTimeDesc(
         int $limitOffset,
         int $limitRowCount
