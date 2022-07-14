@@ -30,6 +30,7 @@ class Module
                     'getLinkToQuestionHtml'      => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionFactory'         => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'      => QuestionHelper\QuestionFromAnswer::class,
+                    'getQuestionLastmod'         => QuestionHelper\Question\Sitemap\Lastmod::class,
                     'getQuestionRootRelativeUrl' => QuestionHelper\Question\RootRelativeUrl::class,
                     'getQuestionTitle'           => QuestionHelper\Question\Title::class,
                     'getQuestionUrl'             => QuestionHelper\Question\Url::class,
@@ -53,6 +54,11 @@ class Module
                     QuestionHelper\Question\Factory::class => function($sm) {
                         return new QuestionHelper\Question\Factory(
                             $sm->get(QuestionFactory\Question::class)
+                        );
+                    },
+                    QuestionHelper\Question\Sitemap\Lastmod::class => function($sm) {
+                        return new QuestionHelper\Question\Sitemap\Lastmod(
+                            $sm->get(QuestionTable\Answer::class)
                         );
                     },
                     QuestionHelper\Question\RootRelativeUrl::class => function($sm) {
