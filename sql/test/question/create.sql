@@ -2,7 +2,9 @@ CREATE TABLE `question` (
     `question_id` int(10) unsigned auto_increment,
     `user_id` int(10) unsigned default null, #@todo Rename column to `created_user_id`
     `subject` varchar(255) not null,
+    `headline` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `message` text,
+    `details` text COLLATE utf8mb4_unicode_ci,
     `views` int(10) unsigned NOT NULL DEFAULT '0',
     `views_not_bot_one_month` int(10) unsigned NOT NULL DEFAULT '0',
     `views_not_bot_one_week` int(10) unsigned NOT NULL DEFAULT '0',
