@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question;
 
+use Error;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\String\Model\Service as StringService;
 
@@ -15,6 +16,12 @@ class Title
     public function getTitle(
         QuestionEntity\Question $questionEntity
     ): string {
+        try {
+            return $questionEntity->getHeadline();
+        } catch (Error $error) {
+            // Do nothing.
+        }
+
         return $this->stripTagsAndShortenService->stripTagsAndShorten(
             $questionEntity->getMessage(),
             90

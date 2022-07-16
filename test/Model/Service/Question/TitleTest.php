@@ -17,7 +17,18 @@ class TitleTest extends TestCase
         );
     }
 
-    public function testGetTitle()
+    public function test_getTitle_headlineIsSet()
+    {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setHeadline('The Headline');
+
+        $this->assertSame(
+            'The Headline',
+            $this->titleService->getTitle($questionEntity)
+        );
+    }
+
+    public function test_getTitle_headlineIsNotSet()
     {
         $questionEntity = new QuestionEntity\Question();
 
