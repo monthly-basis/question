@@ -26,13 +26,13 @@ class SlugTest extends TestCase
     public function test_getSlug_headlineIsSet_urlFriendlyHeadline()
     {
         $questionEntity = (new QuestionEntity\Question())
-            ->setHeadline('The Question Headline')
+            ->setHeadline('The Headline')
             ;
 
         $this->urlFriendlyServiceMock
             ->expects($this->once())
             ->method('getUrlFriendly')
-            ->with('The Question Headline')
+            ->with('The Headline')
             ->willReturn('url-friendly-version-of-question-headline')
             ;
         $this->titleServiceMock
@@ -54,12 +54,12 @@ class SlugTest extends TestCase
             ->expects($this->once())
             ->method('getTitle')
             ->with($questionEntity)
-            ->willReturn('The Question Title')
+            ->willReturn('The Title')
             ;
         $this->urlFriendlyServiceMock
             ->expects($this->once())
             ->method('getUrlFriendly')
-            ->with('The Question Title')
+            ->with('The Title')
             ->willReturn('url-friendly-version-of-question-title')
             ;
 

@@ -27,6 +27,7 @@ class Module
                     'canBeUndeleted'             => QuestionHelper\Post\CanBeUndeleted::class,
                     'getAnswerFactory'           => QuestionHelper\Answer\Factory::class,
                     'getAnswerUrl'               => QuestionHelper\Answer\Url::class,
+                    'getQuestionH1Html'          => QuestionHelper\Question\Html\H1::class,
                     'getLinkToQuestionHtml'      => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionFactory'         => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'      => QuestionHelper\QuestionFromAnswer::class,
@@ -54,6 +55,11 @@ class Module
                     QuestionHelper\Question\Factory::class => function($sm) {
                         return new QuestionHelper\Question\Factory(
                             $sm->get(QuestionFactory\Question::class)
+                        );
+                    },
+                    QuestionHelper\Question\Html\H1::class => function($sm) {
+                        return new QuestionHelper\Question\Html\H1(
+                            $sm->get(StringService\Escape::class)
                         );
                     },
                     QuestionHelper\Question\Sitemap\Lastmod::class => function($sm) {
