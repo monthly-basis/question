@@ -14,7 +14,6 @@ class Question extends QuestionEntity\Post
     protected $deletedDateTime;
     protected $deletedUserId;
     protected $deletedReason;
-    protected string $details;
     protected string $headline;
     protected $history;
     protected $message;
@@ -64,11 +63,6 @@ class Question extends QuestionEntity\Post
     public function getDeletedReason(): string
     {
         return $this->deletedReason;
-    }
-
-    public function getDetails(): string
-    {
-        return $this->details;
     }
 
     public function getHeadline(): string
@@ -155,12 +149,6 @@ class Question extends QuestionEntity\Post
     public function setDeletedUserId(int $deletedUserId): QuestionEntity\Question
     {
         $this->deletedUserId = $deletedUserId;
-        return $this;
-    }
-
-    public function setDetails(string $details): QuestionEntity\Question
-    {
-        $this->details = $details;
         return $this;
     }
 

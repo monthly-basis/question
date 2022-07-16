@@ -61,16 +61,6 @@ class QuestionTest extends TestCase
             $this->questionEntity->getDeletedReason()
         );
 
-        $details = 'the details';
-        $this->assertSame(
-            $this->questionEntity,
-            $this->questionEntity->setDetails($details)
-        );
-        $this->assertSame(
-            $details,
-            $this->questionEntity->getDetails()
-        );
-
         $headline = 'headline';
         $this->assertSame(
             $this->questionEntity,
