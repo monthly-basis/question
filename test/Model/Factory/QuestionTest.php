@@ -46,6 +46,7 @@ class QuestionTest extends TestCase
             'created_datetime'  => '2018-03-12 22:12:23',
             'created_ip'        => '5.6.7.8',
             'deleted_datetime'  => '2018-09-17 21:42:45',
+            'headline'          => 'This is the headline.',
             'message'           => 'message',
             'modified_datetime' => '2022-07-13 20:25:11',
             'modified_user_id'  => '54321',
@@ -54,11 +55,11 @@ class QuestionTest extends TestCase
             'subject'           => 'subject',
             'user_id'           => null,
         ];
-        $questionEntity = new QuestionEntity\Question();
-        $questionEntity
+        $questionEntity = (new QuestionEntity\Question())
             ->setCreatedName($array['created_name'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
+            ->setHeadline($array['headline'])
             ->setModifiedDateTime(new DateTime($array['modified_datetime']))
             ->setModifiedUserId(intval($array['modified_user_id']))
             ->setModifiedReason($array['modified_reason'])
@@ -67,6 +68,7 @@ class QuestionTest extends TestCase
             ->setQuestionId($array['question_id'])
             ->setSubject($array['subject'])
             ;
+
         $this->assertEquals(
             $questionEntity,
             $this->questionFactory->buildFromArray($array)
