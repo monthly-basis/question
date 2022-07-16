@@ -114,7 +114,7 @@ class QuestionTest extends TestCase
         );
     }
 
-    public function testBuildFromQuestionId()
+    public function test_buildFromQuestionId()
     {
         $this->questionTableMock->method('selectWhereQuestionId')->willReturn(
             [
@@ -134,7 +134,7 @@ class QuestionTest extends TestCase
         );
     }
 
-    public function testGetNewInstance()
+    public function test_getNewInstance()
     {
         $reflectionClass = new ReflectionClass(QuestionFactory\Question::class);
         $method = $reflectionClass->getMethod('getNewInstance');

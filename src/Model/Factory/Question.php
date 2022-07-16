@@ -22,10 +22,11 @@ class Question
     public function buildFromArray(
         array $array
     ): QuestionEntity\Question {
-        $questionEntity = static::getNewInstance();
-        $questionEntity->setCreatedDateTime(new DateTime($array['created_datetime']))
-                       ->setQuestionId($array['question_id'])
-                       ->setSubject($array['subject']);
+        $questionEntity = (static::getNewInstance())
+            ->setCreatedDateTime(new DateTime($array['created_datetime']))
+            ->setQuestionId($array['question_id'])
+            ->setSubject($array['subject'])
+            ;
 
         if (isset($array['created_ip'])) {
             $questionEntity->setCreatedIp($array['created_ip']);
