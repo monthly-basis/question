@@ -26,6 +26,7 @@ class Question
             SELECT `question`.`question_id`
                  , `question`.`user_id`
                  , `question`.`subject`
+                 , `question`.`headline`
                  , `question`.`message`
                  , `question`.`views`
                  , `question`.`views_not_bot_one_month`
