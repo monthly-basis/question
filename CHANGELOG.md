@@ -1,12 +1,39 @@
 # Changelog
 
+## v2.13.2
+
+- Run SQL.
+
+		 ALTER
+		 TABLE `question`
+		   ADD
+		COLUMN `headline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+		 AFTER `subject`
+			 ;
+
+		 ALTER
+		 TABLE `question`
+		   ADD
+		COLUMN `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+		 AFTER `message`
+			 ;
+
+		 ALTER
+		 TABLE `question`
+		MODIFY `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+			 ;
+
 ## v2.12.18
 
-- ALTER TABLE `question_view_not_bot_log` ADD COLUMN `server_http_accept_language` varchar(255) DEFAULT NULL AFTER `ip`;
+- Run SQL.
+
+		ALTER TABLE `question_view_not_bot_log` ADD COLUMN `server_http_accept_language` varchar(255) DEFAULT NULL AFTER `ip`;
 
 ## v2.12.14
 
-- ALTER TABLE `question_view_not_bot_log` ADD COLUMN `server_http_referer` varchar(255) DEFAULT NULL AFTER `ip`;
+- Run SQL.
+
+		ALTER TABLE `question_view_not_bot_log` ADD COLUMN `server_http_referer` varchar(255) DEFAULT NULL AFTER `ip`;
 
 ## v2.12.3
 
@@ -18,16 +45,22 @@
 
 ## v2.12.1
 
-- ALTER TABLE `answer_report` CHANGE `modified` `modified_datetime` datetime DEFAULT NULL;
+- Run SQL.
+
+		ALTER TABLE `answer_report` CHANGE `modified` `modified_datetime` datetime DEFAULT NULL;
 
 ## v2.8.3
 
-- ALTER TABLE `answer_history` ADD COLUMN `modified_user_id` int unsigned DEFAULT NULL AFTER `message`;
+- Run SQL.
+
+		ALTER TABLE `answer_history` ADD COLUMN `modified_user_id` int unsigned DEFAULT NULL AFTER `message`;
 
 ## v2.5.0
 
-- ALTER TABLE `answer` ADD KEY `user_id_deleted_datetime_created_datetime_answer_id` (`user_id`, `deleted_datetime`, `created_datetime`, `answer_id`);
-- ALTER TABLE `question` ADD KEY `user_id_deleted_datetime_created_datetime_question_id` (`user_id`, `deleted_datetime`, `created_datetime`, `question_id`);
+- Run SQL.
+
+		ALTER TABLE `answer` ADD KEY `user_id_deleted_datetime_created_datetime_answer_id` (`user_id`, `deleted_datetime`, `created_datetime`, `answer_id`);
+		ALTER TABLE `question` ADD KEY `user_id_deleted_datetime_created_datetime_question_id` (`user_id`, `deleted_datetime`, `created_datetime`, `question_id`);
 
 ## v2.3.0
 
