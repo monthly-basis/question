@@ -35,6 +35,10 @@ class Question
                  , `question`.`modified_user_id`
                  , `question`.`modified_datetime`
                  , `question`.`modified_reason`
+                 , `question`.`moved_datetime`
+                 , `question`.`moved_user_id`
+                 , `question`.`moved_language`
+                 , `question`.`moved_question_id`
                  , `question`.`deleted_datetime`
                  , `question`.`deleted_user_id`
                  , `question`.`deleted_reason`
