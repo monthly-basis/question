@@ -16,6 +16,11 @@ class Slug
         $this->urlFriendlyService = $urlFriendlyService;
     }
 
+    /**
+     * @todo This can probably be updated to just get url-friendly version
+     * of the title. However, let's just update title logic for now and see
+     * how things go.
+     */
     public function getSlug(
         QuestionEntity\Question $questionEntity
     ): string {
