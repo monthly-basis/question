@@ -490,7 +490,8 @@ class Module
                     return new QuestionService\Question\Questions\Similar(
                         $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionFactory\Question::class),
-                        $sm->get(QuestionTable\QuestionSearchMessage::class)
+                        $sm->get(QuestionService\Question\HeadlineAndMessage::class),
+                        $sm->get(QuestionTable\QuestionSearchMessage::class),
                     );
                 },
                 QuestionService\Question\Questions\Subject::class => function ($sm) {

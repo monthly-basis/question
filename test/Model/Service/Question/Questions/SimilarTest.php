@@ -23,13 +23,17 @@ class SimilarTest extends TestCase
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
+        $this->headlineAndMessageServiceMock = $this->createMock(
+            QuestionService\Question\HeadlineAndMessage::class
+        );
         $this->questionSearchMessageTableMock = $this->createMock(
             QuestionTable\QuestionSearchMessage::class
         );
         $this->similarService = new QuestionService\Question\Questions\Similar(
             $this->configEntity,
             $this->questionFactoryMock,
-            $this->questionSearchMessageTableMock
+            $this->headlineAndMessageServiceMock,
+            $this->questionSearchMessageTableMock,
         );
 
         $this->questionEntity = (new QuestionEntity\Question())
@@ -58,9 +62,14 @@ class SimilarTest extends TestCase
     public function test_getSimilar_3found_2returned()
     {
         $questionEntity = (new QuestionEntity\Question())
-            ->setMessage('This is the message.')
             ->setQuestionId(123)
             ;
+        $this->headlineAndMessageServiceMock
+            ->expects($this->once())
+            ->method('getHeadlineAndMessage')
+            ->with($questionEntity)
+            ->willReturn('headline and message')
+        ;
 
         $resultMock = $this->createMock(
             Result::class
@@ -83,7 +92,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
-                'this is the message.',
+                'headline and message',
                 0,
                 100,
                 0,
@@ -91,6 +100,7 @@ class SimilarTest extends TestCase
             )
             ->willReturn($resultMock)
             ;
+
         $this->questionFactoryMock
             ->expects($this->exactly(2))
             ->method('buildFromQuestionId')
@@ -107,6 +117,7 @@ class SimilarTest extends TestCase
             $questionEntity,
             12
         );
+
         $this->assertSame(
             2,
             count(iterator_to_array($generator))
@@ -116,9 +127,15 @@ class SimilarTest extends TestCase
     public function test_getSimilar_5found_5returned()
     {
         $questionEntity = (new QuestionEntity\Question())
-            ->setHeadline('This is the headline.')
             ->setQuestionId(123)
             ;
+        $this->headlineAndMessageServiceMock
+            ->expects($this->once())
+            ->method('getHeadlineAndMessage')
+            ->with($questionEntity)
+            ->willReturn('headline and message')
+        ;
+
         $resultMock = $this->createMock(
             Result::class
         );
@@ -146,7 +163,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
-                'this is the headline.',
+                'headline and message',
                 0,
                 100,
                 0,
@@ -185,10 +202,15 @@ class SimilarTest extends TestCase
     public function test_getSimilar_13found_12returned()
     {
         $questionEntity = (new QuestionEntity\Question())
-            ->setHeadline('This is the headline.')
-            ->setMessage('This is the message.')
             ->setQuestionId(123)
             ;
+        $this->headlineAndMessageServiceMock
+            ->expects($this->once())
+            ->method('getHeadlineAndMessage')
+            ->with($questionEntity)
+            ->willReturn('headline and message')
+        ;
+
         $resultMock = $this->createMock(
             Result::class
         );
@@ -240,7 +262,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
-                'this is the headline. this is the message.',
+                'headline and message',
                 0,
                 100,
                 0,

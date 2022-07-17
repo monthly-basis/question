@@ -7,6 +7,7 @@ use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use TypeError;
@@ -18,10 +19,12 @@ class Similar
     public function __construct(
         QuestionEntity\Config $configEntity,
         QuestionFactory\Question $questionFactory,
+        QuestionService\Question\HeadlineAndMessage $headlineAndMessageService,
         QuestionTable\QuestionSearchMessage $questionSearchMessageTable
     ) {
         $this->configEntity               = $configEntity;
         $this->questionFactory            = $questionFactory;
+        $this->headlineAndMessageService  = $headlineAndMessageService;
         $this->questionSearchMessageTable = $questionSearchMessageTable;
     }
 
@@ -29,19 +32,9 @@ class Similar
         QuestionEntity\Question $questionEntity,
         int $maxResults
     ): Generator {
-        $queryParts = [];
-        try {
-            $queryParts[] = $questionEntity->getHeadline();
-        } catch (Error $error) {
-            // Do nothing.
-        }
-        try {
-            $queryParts[] = $questionEntity->getMessage();
-        } catch (Error $error) {
-            // Do nothing.
-        }
-
-        $query = implode(' ', $queryParts);
+        $query = $this->headlineAndMessageService->getHeadlineAndMessage(
+            $questionEntity
+        );
         $query = strip_tags($query);
         $query = preg_replace('/\s+/s', ' ', $query);
         $words = explode(' ', $query, 21);
