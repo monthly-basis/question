@@ -2,6 +2,7 @@
 namespace MonthlyBasis\Question;
 
 use Laminas\Db as LaminasDb;
+use MonthlyBasis\ContentModeration\View\Helper as ContentModerationHelper;
 use MonthlyBasis\Group\Model\Service as GroupService;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
@@ -33,6 +34,7 @@ class Module
                     'getQuestionH1Html'             => QuestionHelper\Question\Html\H1::class,
                     'getQuestionHeadlineAndMessage' => QuestionHelper\Question\HeadlineAndMessage::class,
                     'getQuestionLastmod'            => QuestionHelper\Question\Sitemap\Lastmod::class,
+                    'getQuestionPPreviewHtml'       => QuestionHelper\Question\Html\P\Preview::class,
                     'getQuestionRootRelativeUrl'    => QuestionHelper\Question\RootRelativeUrl::class,
                     'getQuestionTitle'              => QuestionHelper\Question\Title::class,
                     'getQuestionUrl'                => QuestionHelper\Question\Url::class,
@@ -66,6 +68,12 @@ class Module
                     QuestionHelper\Question\Html\H1::class => function($sm) {
                         return new QuestionHelper\Question\Html\H1(
                             $sm->get(StringService\Escape::class)
+                        );
+                    },
+                    QuestionHelper\Question\Html\P\Preview::class => function($sm) {
+                        $viewHelperManager = $sm->get('ViewHelperManager');
+                        return new QuestionHelper\Question\Html\P\Preview(
+                            $viewHelperManager->get(ContentModerationHelper\StripTagsReplaceBadWordsAndShorten::class)
                         );
                     },
                     QuestionHelper\Question\Sitemap\Lastmod::class => function($sm) {
