@@ -31,6 +31,7 @@ class Module
                     'getLinkToQuestionHtml'      => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionFactory'         => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'      => QuestionHelper\QuestionFromAnswer::class,
+                    'getQuestionHeadlineAndMessage' => QuestionHelper\Question\HeadlineAndMessage::class,
                     'getQuestionLastmod'         => QuestionHelper\Question\Sitemap\Lastmod::class,
                     'getQuestionRootRelativeUrl' => QuestionHelper\Question\RootRelativeUrl::class,
                     'getQuestionTitle'           => QuestionHelper\Question\Title::class,
@@ -50,6 +51,11 @@ class Module
                     QuestionHelper\Post\CanBeUndeleted::class => function($sm) {
                         return new QuestionHelper\Post\CanBeUndeleted(
                             $sm->get(QuestionService\Post\CanBeUndeleted::class)
+                        );
+                    },
+                    QuestionHelper\Question\HeadlineAndMessage::class => function($sm) {
+                        return new QuestionHelper\Question\HeadlineAndMessage(
+                            $sm->get(QuestionService\Question\HeadlineAndMessage::class)
                         );
                     },
                     QuestionHelper\Question\Factory::class => function($sm) {
