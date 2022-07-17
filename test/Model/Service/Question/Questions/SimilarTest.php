@@ -57,6 +57,11 @@ class SimilarTest extends TestCase
 
     public function test_getSimilar_3found_2returned()
     {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setMessage('This is the message.')
+            ->setQuestionId(123)
+            ;
+
         $resultMock = $this->createMock(
             Result::class
         );
@@ -78,7 +83,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
-                'this is the message',
+                'this is the message.',
                 0,
                 100,
                 0,
@@ -99,7 +104,7 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $this->questionEntity,
+            $questionEntity,
             12
         );
         $this->assertSame(
@@ -110,6 +115,10 @@ class SimilarTest extends TestCase
 
     public function test_getSimilar_5found_5returned()
     {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setHeadline('This is the headline.')
+            ->setQuestionId(123)
+            ;
         $resultMock = $this->createMock(
             Result::class
         );
@@ -137,7 +146,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
-                'this is the message',
+                'this is the headline.',
                 0,
                 100,
                 0,
@@ -164,7 +173,7 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $this->questionEntity,
+            $questionEntity,
             12
         );
         $this->assertSame(
@@ -175,6 +184,11 @@ class SimilarTest extends TestCase
 
     public function test_getSimilar_13found_12returned()
     {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setHeadline('This is the headline.')
+            ->setMessage('This is the message.')
+            ->setQuestionId(123)
+            ;
         $resultMock = $this->createMock(
             Result::class
         );
@@ -226,7 +240,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
-                'this is the message',
+                'this is the headline. this is the message.',
                 0,
                 100,
                 0,
@@ -268,7 +282,7 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $this->questionEntity,
+            $questionEntity,
             12
         );
         $this->assertSame(

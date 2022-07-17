@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\Questions;
 
+use Error;
 use Exception;
 use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
@@ -28,7 +29,19 @@ class Similar
         QuestionEntity\Question $questionEntity,
         int $maxResults
     ): Generator {
-        $query = $questionEntity->getMessage();
+        $queryParts = [];
+        try {
+            $queryParts[] = $questionEntity->getHeadline();
+        } catch (Error $error) {
+            // Do nothing.
+        }
+        try {
+            $queryParts[] = $questionEntity->getMessage();
+        } catch (Error $error) {
+            // Do nothing.
+        }
+
+        $query = implode(' ', $queryParts);
         $query = strip_tags($query);
         $query = preg_replace('/\s+/s', ' ', $query);
         $words = explode(' ', $query, 21);
