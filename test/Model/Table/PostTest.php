@@ -33,6 +33,10 @@ class PostTest extends TableTestCase
 
     public function test_selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc()
     {
+        $this->markTestSkipped(
+            'Skip test for now until table model returns both questions and answers.',
+        );
+
         $result = $this->postTable->selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc(123);
         $this->assertEmpty($result);
 
