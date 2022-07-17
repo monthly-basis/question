@@ -79,6 +79,10 @@ class Similar
         }
     }
 
+    /**
+     * @todo Look into updating query to use $maxResults rather than
+     * $maxResults + 1.
+     */
     protected function getPdoResult(string $query, int $maxResults): Result
     {
         try {
