@@ -24,18 +24,18 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
-                    'canBeUndeleted'             => QuestionHelper\Post\CanBeUndeleted::class,
-                    'getAnswerFactory'           => QuestionHelper\Answer\Factory::class,
-                    'getAnswerUrl'               => QuestionHelper\Answer\Url::class,
-                    'getQuestionH1Html'          => QuestionHelper\Question\Html\H1::class,
-                    'getLinkToQuestionHtml'      => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
-                    'getQuestionFactory'         => QuestionHelper\Question\Factory::class,
-                    'getQuestionFromAnswer'      => QuestionHelper\QuestionFromAnswer::class,
+                    'canBeUndeleted'                => QuestionHelper\Post\CanBeUndeleted::class,
+                    'getAnswerFactory'              => QuestionHelper\Answer\Factory::class,
+                    'getAnswerUrl'                  => QuestionHelper\Answer\Url::class,
+                    'getLinkToQuestionHtml'         => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
+                    'getQuestionFactory'            => QuestionHelper\Question\Factory::class,
+                    'getQuestionFromAnswer'         => QuestionHelper\QuestionFromAnswer::class,
+                    'getQuestionH1Html'             => QuestionHelper\Question\Html\H1::class,
                     'getQuestionHeadlineAndMessage' => QuestionHelper\Question\HeadlineAndMessage::class,
-                    'getQuestionLastmod'         => QuestionHelper\Question\Sitemap\Lastmod::class,
-                    'getQuestionRootRelativeUrl' => QuestionHelper\Question\RootRelativeUrl::class,
-                    'getQuestionTitle'           => QuestionHelper\Question\Title::class,
-                    'getQuestionUrl'             => QuestionHelper\Question\Url::class,
+                    'getQuestionLastmod'            => QuestionHelper\Question\Sitemap\Lastmod::class,
+                    'getQuestionRootRelativeUrl'    => QuestionHelper\Question\RootRelativeUrl::class,
+                    'getQuestionTitle'              => QuestionHelper\Question\Title::class,
+                    'getQuestionUrl'                => QuestionHelper\Question\Url::class,
                 ],
                 'factories' => [
                     QuestionHelper\Answer\Factory::class => function($sm) {
