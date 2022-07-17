@@ -32,6 +32,7 @@ class Module
                     'getQuestionFactory'            => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'         => QuestionHelper\QuestionFromAnswer::class,
                     'getQuestionH1Html'             => QuestionHelper\Question\Html\H1::class,
+                    'getQuestionH2Html'             => QuestionHelper\Question\Html\H2::class,
                     'getQuestionHeadlineAndMessage' => QuestionHelper\Question\HeadlineAndMessage::class,
                     'getQuestionLastmod'            => QuestionHelper\Question\Sitemap\Lastmod::class,
                     'getQuestionPPreviewHtml'       => QuestionHelper\Question\Html\P\Preview::class,
@@ -67,6 +68,11 @@ class Module
                     },
                     QuestionHelper\Question\Html\H1::class => function($sm) {
                         return new QuestionHelper\Question\Html\H1(
+                            $sm->get(StringService\Escape::class)
+                        );
+                    },
+                    QuestionHelper\Question\Html\H2::class => function($sm) {
+                        return new QuestionHelper\Question\Html\H2(
                             $sm->get(StringService\Escape::class)
                         );
                     },
