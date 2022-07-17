@@ -14,7 +14,7 @@ class H1 extends AbstractHelper
         $this->escapeService = $escapeService;
     }
 
-    public function __invoke(QuestionEntity\Question $questionEntity)
+    public function __invoke(QuestionEntity\Question $questionEntity): string
     {
         try {
             $headlineOrSubject = $questionEntity->getHeadline();
