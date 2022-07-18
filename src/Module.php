@@ -34,6 +34,7 @@ class Module
                     'getQuestionH1Html'             => QuestionHelper\Question\Html\H1::class,
                     'getQuestionH2Html'             => QuestionHelper\Question\Html\H2::class,
                     'getQuestionH3Html'             => QuestionHelper\Question\Html\H3::class,
+                    'getQuestionHeadlineOrSubject'  => QuestionHelper\Question\HeadlineOrSubject::class,
                     'getQuestionHeadlineAndMessage' => QuestionHelper\Question\HeadlineAndMessage::class,
                     'getQuestionLastmod'            => QuestionHelper\Question\Sitemap\Lastmod::class,
                     'getQuestionPPreviewHtml'       => QuestionHelper\Question\Html\P\Preview::class,
@@ -55,6 +56,11 @@ class Module
                     QuestionHelper\Post\CanBeUndeleted::class => function($sm) {
                         return new QuestionHelper\Post\CanBeUndeleted(
                             $sm->get(QuestionService\Post\CanBeUndeleted::class)
+                        );
+                    },
+                    QuestionHelper\Question\HeadlineOrSubject::class => function($sm) {
+                        return new QuestionHelper\Question\HeadlineOrSubject(
+                            $sm->get(QuestionService\Question\HeadlineOrSubject::class)
                         );
                     },
                     QuestionHelper\Question\HeadlineAndMessage::class => function($sm) {
