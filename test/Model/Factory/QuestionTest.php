@@ -31,6 +31,49 @@ class QuestionTest extends TestCase
         );
     }
 
+    public function test_buildFromArray_subjectIsNull_questionEntity()
+    {
+        $this->userFactoryMock
+            ->expects($this->exactly(0))
+            ->method('buildFromUserId')
+            ;
+        $this->displayNameOrUsernameServiceMock
+            ->expects($this->exactly(0))
+            ->method('getDisplayNameOrUsername')
+            ;
+        $array = [
+            'created_name'      => 'name',
+            'created_datetime'  => '2018-03-12 22:12:23',
+            'created_ip'        => '5.6.7.8',
+            'deleted_datetime'  => '2018-09-17 21:42:45',
+            'headline'          => 'This is the headline.',
+            'message'           => 'message',
+            'modified_datetime' => '2022-07-13 20:25:11',
+            'modified_user_id'  => '54321',
+            'modified_reason'   => 'modified reason',
+            'question_id'       => 1,
+            'subject'           => null,
+            'user_id'           => null,
+        ];
+        $questionEntity = (new QuestionEntity\Question())
+            ->setCreatedName($array['created_name'])
+            ->setCreatedDateTime(new DateTime($array['created_datetime']))
+            ->setCreatedIp($array['created_ip'])
+            ->setHeadline($array['headline'])
+            ->setModifiedDateTime(new DateTime($array['modified_datetime']))
+            ->setModifiedUserId(intval($array['modified_user_id']))
+            ->setModifiedReason($array['modified_reason'])
+            ->setDeletedDateTime(new DateTime($array['deleted_datetime']))
+            ->setMessage($array['message'])
+            ->setQuestionId($array['question_id'])
+            ;
+
+        $this->assertEquals(
+            $questionEntity,
+            $this->questionFactory->buildFromArray($array)
+        );
+    }
+
     public function test_buildFromArray_userIdIsNull_nameIsSetFromArray()
     {
         $this->userFactoryMock

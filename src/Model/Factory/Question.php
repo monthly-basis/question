@@ -25,7 +25,6 @@ class Question
         $questionEntity = (static::getNewInstance())
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setQuestionId($array['question_id'])
-            ->setSubject($array['subject'])
             ;
 
         if (isset($array['created_ip'])) {
@@ -60,6 +59,9 @@ class Question
         }
         if (isset($array['modified_user_id'])) {
             $questionEntity->setModifiedUserId(intval($array['modified_user_id']));
+        }
+        if (isset($array['subject'])) {
+            $questionEntity->setSubject($array['subject']);
         }
         if (isset($array['user_id'])) {
             $questionEntity->setCreatedUserId((int) $array['user_id']);
