@@ -9,9 +9,9 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 class Preview extends AbstractHelper
 {
     public function __construct(
-        ContentModerationHelper\StripTagsReplaceBadWordsAndShorten $stripTagsReplaceBadWordsAndShortenHelper
+        ContentModerationHelper\StripTagsReplaceBadWordsShortenAndEscape $stripTagsReplaceBadWordsShortenAndEscapeHelper
     ) {
-        $this->stripTagsReplaceBadWordsAndShortenHelper = $stripTagsReplaceBadWordsAndShortenHelper;
+        $this->stripTagsReplaceBadWordsShortenAndEscapeHelper = $stripTagsReplaceBadWordsShortenAndEscapeHelper;
     }
 
     public function __invoke(QuestionEntity\Question $questionEntity): string
@@ -26,7 +26,7 @@ class Preview extends AbstractHelper
 
         return
             '<p' . $classString . '>'
-          . $this->stripTagsReplaceBadWordsAndShortenHelper->__invoke(
+          . $this->stripTagsReplaceBadWordsShortenAndEscapeHelper->__invoke(
                 $message,
                 256,
                 ''

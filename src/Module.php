@@ -91,7 +91,7 @@ class Module
                     QuestionHelper\Question\Html\P\Preview::class => function($sm) {
                         $viewHelperManager = $sm->get('ViewHelperManager');
                         return new QuestionHelper\Question\Html\P\Preview(
-                            $viewHelperManager->get(ContentModerationHelper\StripTagsReplaceBadWordsAndShorten::class)
+                            $viewHelperManager->get(ContentModerationHelper\StripTagsReplaceBadWordsShortenAndEscape::class)
                         );
                     },
                     QuestionHelper\Question\Sitemap\Lastmod::class => function($sm) {

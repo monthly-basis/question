@@ -10,12 +10,12 @@ class PreviewTest extends TestCase
 {
     protected function setUp(): void
     {
-        $this->stripTagsReplaceBadWordsAndShortenHelperMock = $this->createMock(
-            ContentModerationHelper\StripTagsReplaceBadWordsAndShorten::class
+        $this->stripTagsReplaceBadWordsShortenAndEscapeHelperMock = $this->createMock(
+            ContentModerationHelper\StripTagsReplaceBadWordsShortenAndEscape::class
         );
 
         $this->previewHelper = new QuestionHelper\Question\Html\P\Preview(
-            $this->stripTagsReplaceBadWordsAndShortenHelperMock
+            $this->stripTagsReplaceBadWordsShortenAndEscapeHelperMock
         );
     }
 
@@ -23,7 +23,7 @@ class PreviewTest extends TestCase
     {
         $questionEntity = new QuestionEntity\Question();
 
-        $this->stripTagsReplaceBadWordsAndShortenHelperMock
+        $this->stripTagsReplaceBadWordsShortenAndEscapeHelperMock
             ->expects($this->exactly(0))
             ->method('__invoke')
             ;
@@ -40,7 +40,7 @@ class PreviewTest extends TestCase
             ->setMessage('short message less than 256 chars')
             ;
 
-        $this->stripTagsReplaceBadWordsAndShortenHelperMock
+        $this->stripTagsReplaceBadWordsShortenAndEscapeHelperMock
             ->expects($this->once())
             ->method('__invoke')
             ->with('short message less than 256 chars', 256, '')
@@ -60,7 +60,7 @@ class PreviewTest extends TestCase
             ->setMessage($longMessage)
             ;
 
-        $this->stripTagsReplaceBadWordsAndShortenHelperMock
+        $this->stripTagsReplaceBadWordsShortenAndEscapeHelperMock
             ->expects($this->once())
             ->method('__invoke')
             ->with($longMessage, 256, '')
