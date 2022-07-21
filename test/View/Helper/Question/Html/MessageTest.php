@@ -87,7 +87,9 @@ This is the second line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
 <h1 class="message mb-0">A message with only 2 lines.</h1>
-<p class="message">This is the second line.</p>
+<p class="message">
+This is the second line.
+</p>
 EXPECTED_HTML;
 
         $questionEntity = (new QuestionEntity\Question())
@@ -115,8 +117,10 @@ This is the third line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
 <h1 class="message mb-0">A message with 3 lines.</h1>
-<p class="message">This is the second line.<br>
-This is the third line.</p>
+<p class="message">
+This is the second line.<br>
+This is the third line.
+</p>
 EXPECTED_HTML;
 
         $questionEntity = (new QuestionEntity\Question())
@@ -144,7 +148,9 @@ This is the third line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
 <h1 class="message">A message with 3 lines.</h1>
-<p class="message">This is the third line.</p>
+<p class="message">
+This is the third line.
+</p>
 EXPECTED_HTML;
 
         $questionEntity = (new QuestionEntity\Question())
@@ -173,9 +179,11 @@ Welcome to the fourth line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
 <h1 class="message mb-0">A message with 4 lines.</h1>
-<p class="message">The second line has content.<br>
+<p class="message">
+The second line has content.<br>
 This is the third line.<br>
-Welcome to the fourth line.</p>
+Welcome to the fourth line.
+</p>
 EXPECTED_HTML;
 
         $questionEntity = (new QuestionEntity\Question())
@@ -204,8 +212,10 @@ Welcome to the fourth line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
 <h1 class="message">A message with 4 lines.</h1>
-<p class="message">This is the third line.<br>
-Welcome to the fourth line.</p>
+<p class="message">
+This is the third line.<br>
+Welcome to the fourth line.
+</p>
 EXPECTED_HTML;
 
         $questionEntity = (new QuestionEntity\Question())

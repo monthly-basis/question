@@ -57,8 +57,8 @@ class Message extends AbstractHelper
             . $messageHtmlLines[0]
             . '</h1>' . "\n";
 
-        $messageHtml .= '<p class="message">'
-            . implode("<br>\n", $restOfMessageHtmlLines)
+        $messageHtml .= '<p class="message">' . "\n"
+            . implode("<br>\n", $restOfMessageHtmlLines) . "\n"
             . '</p>';
 
         return $messageHtml;
