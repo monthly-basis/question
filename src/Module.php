@@ -37,6 +37,7 @@ class Module
                     'getQuestionHeadlineOrSubject'  => QuestionHelper\Question\HeadlineOrSubject::class,
                     'getQuestionHeadlineAndMessage' => QuestionHelper\Question\HeadlineAndMessage::class,
                     'getQuestionLastmod'            => QuestionHelper\Question\Sitemap\Lastmod::class,
+                    'getQuestionMessageHtml'        => QuestionHelper\Question\Html\Message::class,
                     'getQuestionPMessageHtml'       => QuestionHelper\Question\Html\P\Message::class,
                     'getQuestionPPreviewHtml'       => QuestionHelper\Question\Html\P\Preview::class,
                     'getQuestionRootRelativeUrl'    => QuestionHelper\Question\RootRelativeUrl::class,
@@ -87,6 +88,11 @@ class Module
                     QuestionHelper\Question\Html\H3::class => function($sm) {
                         return new QuestionHelper\Question\Html\H3(
                             $sm->get(StringService\Escape::class)
+                        );
+                    },
+                    QuestionHelper\Question\Html\Message::class => function($sm) {
+                        return new QuestionHelper\Question\Html\Message(
+                            $sm->get(ContentModerationService\ToHtml::class),
                         );
                     },
                     QuestionHelper\Question\Html\P\Message::class => function($sm) {
