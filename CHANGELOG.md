@@ -1,5 +1,37 @@
 # Changelog
 
+## v2.14.1
+
+- Run SQL
+
+		 ALTER
+		 TABLE `question_history`
+		   ADD 
+		COLUMN `modified_datetime` DATETIME DEFAULT NULL
+		 AFTER `message`
+			 ;
+
+		 ALTER
+		 TABLE `question_history`
+		   ADD 
+		COLUMN `modified_user_id` INT(10) UNSIGNED DEFAULT NULL
+		 AFTER `modified_datetime`
+			 ;
+
+		UPDATE `question_history`
+		   SET `modified_datetime` = `created`
+			 ;
+
+		 ALTER
+		 TABLE `question_history`
+		   ADD KEY `question_id_modified_datetime` (`question_id`, `modified_datetime`)
+			 ;
+
+		 ALTER
+		 TABLE `question_history`
+		  DROP KEY `question_id_created`
+			 ;
+
 ## v2.13.2
 
 - Run SQL.
