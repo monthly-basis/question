@@ -32,6 +32,11 @@
 		  DROP KEY `question_id_created`
 			 ;
 
+		 ALTER
+		 TABLE `question_history`
+		  DROP `created`
+			 ;
+
 ## v2.13.2
 
 - Run SQL.
