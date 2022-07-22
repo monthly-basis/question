@@ -24,8 +24,9 @@ class QuestionHistory
                  , `question_history`.`name`
                  , `question_history`.`subject`
                  , `question_history`.`message`
+                 , `question_history`.`modified_datetime`
+                 , `question_history`.`modified_user_id`
                  , `question_history`.`modified_reason`
-                 , `question_history`.`created`
         ';
     }
 
@@ -43,15 +44,17 @@ class QuestionHistory
                     , `name`
                     , `subject`
                     , `message`
+                    , `modified_datetime`
+                    , `modified_user_id`
                     , `modified_reason`
-                    , `created`
                  )
             SELECT `question`.`question_id`
                  , `question`.`created_name`
                  , `question`.`subject`
                  , `question`.`message`
+                 , `question`.`modified_datetime`
+                 , `question`.`modified_user_id`
                  , `question`.`modified_reason`
-                 , UTC_TIMESTAMP()
               FROM `question`
              WHERE `question`.`question_id` = ?
                  ;
@@ -78,7 +81,7 @@ class QuestionHistory
         return $this->adapter->query($sql)->execute();
     }
 
-    public function selectWhereQuestionIdOrderByCreatedAsc(
+    public function selectWhereQuestionIdOrderByModifiedDatetimeAsc(
         int $questionId
     ): Result {
         $sql = $this->getSelect()
@@ -86,7 +89,7 @@ class QuestionHistory
               FROM `question_history`
              WHERE `question_history`.`question_id` = ?
              ORDER
-                BY `question_history`.`created` ASC
+                BY `question_history`.`modified_datetime` ASC
                  , `question_history`.`question_id` ASC
                  ;
         ';
@@ -96,7 +99,7 @@ class QuestionHistory
         return $this->adapter->query($sql)->execute($parameters);
     }
 
-    public function selectWhereQuestionIdOrderByCreatedDesc(
+    public function selectWhereQuestionIdOrderByModifiedDatetimeDesc(
         int $questionId
     ): Result {
         $sql = $this->getSelect()
@@ -104,7 +107,7 @@ class QuestionHistory
               FROM `question_history`
              WHERE `question_history`.`question_id` = ?
              ORDER
-                BY `question_history`.`created` DESC
+                BY `question_history`.`modified_datetime` DESC
                  , `question_history`.`question_id` DESC
                  ;
         ';
@@ -114,18 +117,18 @@ class QuestionHistory
         return $this->adapter->query($sql)->execute($parameters);
     }
 
-    public function updateSetCreatedWhereQuestionHistoryId(
-        string $created,
+    public function updateSetModifiedDatetimeWhereQuestionHistoryId(
+        string $modifiedDatetime,
         int $questionHistoryId
     ): Result {
         $sql = '
             UPDATE `question_history`
-               SET `created` = ?
+               SET `modified_datetime` = ?
              WHERE `question_history_id` = ?
                  ;
         ';
         $parameters = [
-            $created,
+            $modifiedDatetime,
             $questionHistoryId,
         ];
         return $this->adapter->query($sql)->execute($parameters);

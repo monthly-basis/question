@@ -94,7 +94,7 @@ class QuestionHistoryTest extends TableTestCase
         );
     }
 
-    public function test_selectWhereQuestionIdOrderByCreatedAsc()
+    public function test_selectWhereQuestionIdOrderByModifiedDatetimeAsc()
     {
         $this->questionTable->insert(
             12345,
@@ -110,7 +110,7 @@ class QuestionHistoryTest extends TableTestCase
             1
         );
         $result = $this->questionHistoryTable
-            ->selectWhereQuestionIdOrderByCreatedAsc(
+            ->selectWhereQuestionIdOrderByModifiedDatetimeAsc(
                 1
             );
         $this->assertSame(
@@ -124,7 +124,7 @@ class QuestionHistoryTest extends TableTestCase
         );
     }
 
-    public function test_selectWhereQuestionIdOrderByCreatedDesc()
+    public function test_selectWhereQuestionIdOrderByModifiedDatetimeDesc()
     {
         $this->questionTable->insert(
             12345,
@@ -140,7 +140,7 @@ class QuestionHistoryTest extends TableTestCase
             1
         );
         $result = $this->questionHistoryTable
-            ->selectWhereQuestionIdOrderByCreatedDesc(
+            ->selectWhereQuestionIdOrderByModifiedDatetimeDesc(
                 1
             );
         $this->assertSame(
@@ -154,7 +154,7 @@ class QuestionHistoryTest extends TableTestCase
         );
     }
 
-    public function test_updateSetCreatedWhereQuestionHistoryId_multipleRows()
+    public function test_updateSetModifiedDatetimeWhereQuestionHistoryId_multipleRows()
     {
         $this->questionTable->insert(
             12345,
@@ -171,7 +171,7 @@ class QuestionHistoryTest extends TableTestCase
         );
 
         $result = $this->questionHistoryTable
-            ->updateSetCreatedWhereQuestionHistoryId(
+            ->updateSetModifiedDatetimeWhereQuestionHistoryId(
                 '2010-04-15 15:07:35',
                 3
             );
@@ -181,7 +181,7 @@ class QuestionHistoryTest extends TableTestCase
         );
 
         $result = $this->questionHistoryTable
-            ->updateSetCreatedWhereQuestionHistoryId(
+            ->updateSetModifiedDatetimeWhereQuestionHistoryId(
                 '2010-04-15 15:07:35',
                 2
             );
@@ -191,12 +191,11 @@ class QuestionHistoryTest extends TableTestCase
         );
 
         $result = $this->questionHistoryTable
-            ->selectWhereQuestionIdOrderByCreatedAsc(
+            ->selectWhereQuestionIdOrderByModifiedDatetimeAsc(
                 1
             );
-        $this->assertSame(
-            '2010-04-15 15:07:35',
-            $result->current()['created']
+        $this->assertNull(
+            $result->current()['modified_datetime']
         );
     }
 
@@ -227,7 +226,7 @@ class QuestionHistoryTest extends TableTestCase
         );
 
         $result = $this->questionHistoryTable
-            ->selectWhereQuestionIdOrderByCreatedDesc(
+            ->selectWhereQuestionIdOrderByModifiedDatetimeDesc(
                 1
             );
         $this->assertSame(
@@ -249,7 +248,7 @@ class QuestionHistoryTest extends TableTestCase
             $result->getAffectedRows()
         );
         $result = $this->questionHistoryTable
-            ->selectWhereQuestionIdOrderByCreatedDesc(
+            ->selectWhereQuestionIdOrderByModifiedDatetimeDesc(
                 1
             );
         $this->assertSame(
