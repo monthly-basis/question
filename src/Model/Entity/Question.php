@@ -20,6 +20,10 @@ class Question extends QuestionEntity\Post
     protected DateTime $modifiedDateTime;
     protected string $modifiedReason;
     protected int $modifiedUserId;
+    protected DateTime $movedDateTime;
+    protected string $movedLanguage;
+    protected int $movedQuestionId;
+    protected int $movedUserId;
     protected $questionId;
     protected $subject;
 
@@ -93,6 +97,26 @@ class Question extends QuestionEntity\Post
     public function getModifiedUserId(): int
     {
         return $this->modifiedUserId;
+    }
+
+    public function getMovedDateTime(): DateTime
+    {
+        return $this->movedDateTime;
+    }
+
+    public function getMovedLanguage(): string
+    {
+        return $this->movedLanguage;
+    }
+
+    public function getMovedQuestionId(): int
+    {
+        return $this->movedQuestionId;
+    }
+
+    public function getMovedUserId(): int
+    {
+        return $this->movedUserId;
     }
 
     public function getQuestionId(): int
@@ -191,6 +215,30 @@ class Question extends QuestionEntity\Post
     public function setModifiedUserId(int $modifiedUserId): QuestionEntity\Question
     {
         $this->modifiedUserId = $modifiedUserId;
+        return $this;
+    }
+
+    public function setMovedDateTime(DateTime $movedDateTime) : QuestionEntity\Question
+    {
+        $this->movedDateTime = $movedDateTime;
+        return $this;
+    }
+
+    public function setMovedLanguage(string $movedLanguage) : QuestionEntity\Question
+    {
+        $this->movedLanguage = $movedLanguage;
+        return $this;
+    }
+
+    public function setMovedQuestionId(int $movedQuestionId) : QuestionEntity\Question
+    {
+        $this->movedQuestionId = $movedQuestionId;
+        return $this;
+    }
+
+    public function setMovedUserId(int $movedUserId): QuestionEntity\Question
+    {
+        $this->movedUserId = $movedUserId;
         return $this;
     }
 

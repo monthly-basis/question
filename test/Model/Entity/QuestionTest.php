@@ -100,5 +100,45 @@ class QuestionTest extends TestCase
             $modifiedUserId,
             $this->questionEntity->getModifiedUserId()
         );
+
+        $movedDateTime = new DateTime();
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setMovedDateTime($movedDateTime)
+        );
+        $this->assertSame(
+            $movedDateTime,
+            $this->questionEntity->getMovedDateTime()
+        );
+
+        $movedLanguage = 'es';
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setMovedLanguage($movedLanguage)
+        );
+        $this->assertSame(
+            $movedLanguage,
+            $this->questionEntity->getMovedLanguage()
+        );
+
+        $movedQuestionId = 12345;
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setMovedQuestionId($movedQuestionId)
+        );
+        $this->assertSame(
+            $movedQuestionId,
+            $this->questionEntity->getMovedQuestionId()
+        );
+
+        $movedUserId = 1;
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setMovedUserId($movedUserId)
+        );
+        $this->assertSame(
+            $movedUserId,
+            $this->questionEntity->getMovedUserId()
+        );
     }
 }
