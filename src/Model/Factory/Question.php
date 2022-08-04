@@ -60,6 +60,18 @@ class Question
         if (isset($array['modified_user_id'])) {
             $questionEntity->setModifiedUserId(intval($array['modified_user_id']));
         }
+        if (isset($array['moved_datetime'])) {
+            $questionEntity->setMovedDateTime(new DateTime($array['moved_datetime']));
+        }
+        if (isset($array['moved_user_id'])) {
+            $questionEntity->setMovedUserId($array['moved_user_id']);
+        }
+        if (isset($array['moved_language'])) {
+            $questionEntity->setMovedLanguage($array['moved_language']);
+        }
+        if (isset($array['moved_question_id'])) {
+            $questionEntity->setMovedQuestionId($array['moved_question_id']);
+        }
         if (isset($array['subject'])) {
             $questionEntity->setSubject($array['subject']);
         }

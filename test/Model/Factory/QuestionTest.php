@@ -51,6 +51,10 @@ class QuestionTest extends TestCase
             'modified_datetime' => '2022-07-13 20:25:11',
             'modified_user_id'  => '54321',
             'modified_reason'   => 'modified reason',
+            'moved_datetime'    => '2022-08-04 00:31:03',
+            'moved_language'    => 'es',
+            'moved_question_id' => '111',
+            'moved_user_id'     => '1',
             'question_id'       => 1,
             'subject'           => null,
             'user_id'           => null,
@@ -63,6 +67,10 @@ class QuestionTest extends TestCase
             ->setModifiedDateTime(new DateTime($array['modified_datetime']))
             ->setModifiedUserId(intval($array['modified_user_id']))
             ->setModifiedReason($array['modified_reason'])
+            ->setMovedDateTime(new DateTime($array['moved_datetime']))
+            ->setMovedLanguage($array['moved_language'])
+            ->setMovedQuestionId($array['moved_question_id'])
+            ->setMovedUserId(intval($array['moved_user_id']))
             ->setDeletedDateTime(new DateTime($array['deleted_datetime']))
             ->setMessage($array['message'])
             ->setQuestionId($array['question_id'])
