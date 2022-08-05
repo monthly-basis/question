@@ -517,6 +517,11 @@ class Module
                         $sm->get(QuestionTable\Answer::class)
                     );
                 },
+                QuestionService\Question\Questions\Related::class => function ($sm) {
+                    return new QuestionService\Question\Questions\Related(
+                        $sm->get(QuestionService\Question\Questions\Similar::class),
+                    );
+                },
                 QuestionService\Question\Questions\Search\Results::class => function ($sm) {
                     return new QuestionService\Question\Questions\Search\Results(
                         $sm->get(QuestionEntity\Config::class),
