@@ -3482,16 +3482,16 @@
         },
         {
             "name": "monthly-basis/website",
-            "version": "v2.2.1",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/website.git",
-                "reference": "76d024f4fbde1da39ebffe44e3620a8d04c79323"
+                "reference": "8865ab887c5ca766b548248d33cb39c8155b6678"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/website/zipball/76d024f4fbde1da39ebffe44e3620a8d04c79323",
-                "reference": "76d024f4fbde1da39ebffe44e3620a8d04c79323",
+                "url": "https://api.github.com/repos/monthly-basis/website/zipball/8865ab887c5ca766b548248d33cb39c8155b6678",
+                "reference": "8865ab887c5ca766b548248d33cb39c8155b6678",
                 "shasum": ""
             },
             "require": {
@@ -3512,9 +3512,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/website/issues",
-                "source": "https://github.com/monthly-basis/website/tree/v2.2.1"
+                "source": "https://github.com/monthly-basis/website/tree/v2.3.1"
             },
-            "time": "2021-09-25T02:31:22+00:00"
+            "time": "2022-08-06T17:25:39+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
