@@ -60,6 +60,9 @@ class Question
         if (isset($array['modified_user_id'])) {
             $questionEntity->setModifiedUserId(intval($array['modified_user_id']));
         }
+        if (isset($array['moved_country'])) {
+            $questionEntity->setMovedCountry($array['moved_country']);
+        }
         if (isset($array['moved_datetime'])) {
             $questionEntity->setMovedDateTime(new DateTime($array['moved_datetime']));
         }
