@@ -38,6 +38,7 @@ class Question
                  , `question`.`modified_reason`
                  , `question`.`moved_datetime`
                  , `question`.`moved_user_id`
+                 , `question`.`moved_country`
                  , `question`.`moved_language`
                  , `question`.`moved_question_id`
                  , `question`.`deleted_datetime`
@@ -67,6 +68,7 @@ class Question
             'modified_reason',
             'moved_datetime',
             'moved_user_id',
+            'moved_country',
             'moved_language',
             'moved_question_id',
             'deleted_datetime',
