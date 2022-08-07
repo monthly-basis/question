@@ -17,6 +17,7 @@ CREATE TABLE `question` (
     `modified_reason` varchar(255) DEFAULT NULL,
     `moved_datetime` datetime DEFAULT NULL,
     `moved_user_id` int unsigned DEFAULT NULL,
+    `moved_country` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `moved_language` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `moved_question_id` int unsigned DEFAULT NULL,
     `deleted_datetime` datetime default null,

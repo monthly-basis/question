@@ -1,19 +1,28 @@
 # Changelog
 
+## Unreleased
+
+		 ALTER
+		 TABLE `question`
+		   ADD
+		COLUMN `moved_country` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+		 AFTER `moved_user_id`
+			 ;
+
 ## v2.14.1
 
 - Run SQL
 
 		 ALTER
 		 TABLE `question_history`
-		   ADD 
+		   ADD
 		COLUMN `modified_datetime` DATETIME DEFAULT NULL
 		 AFTER `message`
 			 ;
 
 		 ALTER
 		 TABLE `question_history`
-		   ADD 
+		   ADD
 		COLUMN `modified_user_id` INT(10) UNSIGNED DEFAULT NULL
 		 AFTER `modified_datetime`
 			 ;
@@ -101,6 +110,6 @@
 
 ## v2.3.0
 
-### Deprecated 
+### Deprecated
 
 - In UserTable\QuestionSearchMessage, we deprecated ::selectCountWhereMatchAgainst() in favor of ::selectCountWhereMatchMessageAgainst()
