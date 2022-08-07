@@ -20,6 +20,7 @@ class Question extends QuestionEntity\Post
     protected DateTime $modifiedDateTime;
     protected string $modifiedReason;
     protected int $modifiedUserId;
+    protected string $movedCountry;
     protected DateTime $movedDateTime;
     protected string $movedLanguage;
     protected int $movedQuestionId;
@@ -97,6 +98,11 @@ class Question extends QuestionEntity\Post
     public function getModifiedUserId(): int
     {
         return $this->modifiedUserId;
+    }
+
+    public function getMovedCountry(): string
+    {
+        return $this->movedCountry;
     }
 
     public function getMovedDateTime(): DateTime
@@ -215,6 +221,12 @@ class Question extends QuestionEntity\Post
     public function setModifiedUserId(int $modifiedUserId): QuestionEntity\Question
     {
         $this->modifiedUserId = $modifiedUserId;
+        return $this;
+    }
+
+    public function setMovedCountry(string $movedCountry): QuestionEntity\Question
+    {
+        $this->movedCountry = $movedCountry;
         return $this;
     }
 

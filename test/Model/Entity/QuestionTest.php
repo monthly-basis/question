@@ -101,6 +101,16 @@ class QuestionTest extends TestCase
             $this->questionEntity->getModifiedUserId()
         );
 
+        $movedCountry = 'zaf';
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setMovedCountry($movedCountry)
+        );
+        $this->assertSame(
+            $movedCountry,
+            $this->questionEntity->getMovedCountry()
+        );
+
         $movedDateTime = new DateTime();
         $this->assertSame(
             $this->questionEntity,
