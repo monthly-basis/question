@@ -82,8 +82,8 @@ class AnswerHistoryTest extends TableTestCase
         );
         $this->assertSame(
             [
-                ['answer_id' => '1'],
-                ['answer_id' => '2'],
+                ['answer_id' => 1],
+                ['answer_id' => 2],
             ],
             iterator_to_array($result)
         );
@@ -110,12 +110,12 @@ class AnswerHistoryTest extends TableTestCase
                 1
             );
         $this->assertSame(
-            '1',
+            1,
             $result->current()['answer_history_id']
         );
         $result->next();
         $this->assertSame(
-            '2',
+            2,
             $result->current()['answer_history_id']
         );
     }
@@ -141,12 +141,12 @@ class AnswerHistoryTest extends TableTestCase
                 1
             );
         $this->assertSame(
-            '2',
+            2,
             $result->current()['answer_history_id']
         );
         $result->next();
         $this->assertSame(
-            '1',
+            1,
             $result->current()['answer_history_id']
         );
     }

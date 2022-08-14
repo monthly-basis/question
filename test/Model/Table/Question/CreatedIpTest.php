@@ -36,7 +36,7 @@ class CreatedIpTest extends TableTestCase
         );
         $this->assertSame(
             [
-                'COUNT(*)' => '0',
+                'COUNT(*)' => 0,
             ],
             $result->current(),
         );
@@ -58,7 +58,7 @@ class CreatedIpTest extends TableTestCase
         );
         $this->assertSame(
             [
-                'COUNT(*)' => '1',
+                'COUNT(*)' => 1,
             ],
             $result->current(),
         );
@@ -80,7 +80,7 @@ class CreatedIpTest extends TableTestCase
         );
         $this->assertSame(
             [
-                'COUNT(*)' => '1',
+                'COUNT(*)' => 1,
             ],
             $result->current(),
         );
@@ -102,7 +102,7 @@ class CreatedIpTest extends TableTestCase
         );
         $this->assertSame(
             [
-                'COUNT(*)' => '1',
+                'COUNT(*)' => 1,
             ],
             $result->current(),
         );
@@ -124,7 +124,7 @@ class CreatedIpTest extends TableTestCase
         );
         $this->assertSame(
             [
-                'COUNT(*)' => '2',
+                'COUNT(*)' => 2,
             ],
             $result->current(),
         );

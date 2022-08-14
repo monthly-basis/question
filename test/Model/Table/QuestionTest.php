@@ -52,7 +52,7 @@ class QuestionTest extends TableTestCase
 
         $array = $this->questionTable->selectWhereQuestionId(1);
         $this->assertSame(
-            '0',
+            0,
             $array['deleted_user_id']
         );
         $this->assertSame(
@@ -85,11 +85,11 @@ class QuestionTest extends TableTestCase
             $array
         );
         $this->assertSame(
-            '1',
+            1,
             $array['question_id']
         );
         $this->assertSame(
-            '3',
+            3,
             $array['user_id']
         );
         $this->assertSame(

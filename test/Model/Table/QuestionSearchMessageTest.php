@@ -58,7 +58,7 @@ class QuestionSearchMessageTest extends TableTestCase
             );
         $this->assertSame(
             [
-                'COUNT(*)' => '0',
+                'COUNT(*)' => 0,
             ],
             $result->current()
         );

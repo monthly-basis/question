@@ -64,7 +64,7 @@ class MessageTest extends TableTestCase
         $results = iterator_to_array($result);
         $this->assertSame(
             $results[0]['question_id'],
-            '1'
+            1
         );
 
         $result = $this->questionMessageTable->selectWhereMessageRegularExpression(
@@ -75,7 +75,7 @@ class MessageTest extends TableTestCase
         $results = iterator_to_array($result);
         $this->assertSame(
             $results[0]['question_id'],
-            '2'
+            2
         );
 
         $result = $this->questionMessageTable->selectWhereMessageRegularExpression(
@@ -86,7 +86,7 @@ class MessageTest extends TableTestCase
         $results = iterator_to_array($result);
         $this->assertSame(
             $results[0]['question_id'],
-            '2'
+            2
         );
 
         $result = $this->questionMessageTable->selectWhereMessageRegularExpression(
@@ -105,7 +105,7 @@ class MessageTest extends TableTestCase
         $results = iterator_to_array($result);
         $this->assertSame(
             $results[0]['question_id'],
-            '2'
+            2
         );
     }
 

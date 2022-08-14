@@ -36,7 +36,7 @@ class CreatedDatetimeTest extends TableTestCase
         $this->assertSame(
             $result->current(),
             [
-                'COUNT(*)' => '0',
+                'COUNT(*)' => 0,
             ],
         );
 
@@ -63,7 +63,7 @@ class CreatedDatetimeTest extends TableTestCase
         $this->assertSame(
             $result->current(),
             [
-                'COUNT(*)' => '2',
+                'COUNT(*)' => 2,
             ],
         );
 
@@ -75,7 +75,7 @@ class CreatedDatetimeTest extends TableTestCase
         $this->assertSame(
             $result->current(),
             [
-                'COUNT(*)' => '0',
+                'COUNT(*)' => 0,
             ],
         );
 
@@ -87,7 +87,7 @@ class CreatedDatetimeTest extends TableTestCase
         $this->assertSame(
             $result->current(),
             [
-                'COUNT(*)' => '0',
+                'COUNT(*)' => 0,
             ],
         );
     }

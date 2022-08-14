@@ -60,7 +60,7 @@ class AnswerTest extends TableTestCase
 
         $array = $this->answerTable->selectWhereAnswerId(1);
         $this->assertSame(
-            '0',
+            0,
             $array['deleted_user_id']
         );
         $this->assertSame(

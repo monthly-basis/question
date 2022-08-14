@@ -97,12 +97,12 @@ class AnswerReportTest extends TableTestCase
         $this->assertSame(
             [
                 [
-                    'answer_id' => '2',
-                    'COUNT(*)'  => '2',
+                    'answer_id' => 2,
+                    'COUNT(*)'  => 2,
                 ],
                 [
-                    'answer_id' => '1',
-                    'COUNT(*)'  => '1',
+                    'answer_id' => 1,
+                    'COUNT(*)'  => 1,
                 ]
             ],
             $array
@@ -159,7 +159,7 @@ class AnswerReportTest extends TableTestCase
 
         $result = $this->answerReportTable->selectWhereAnswerReportId(1);
         $this->assertSame(
-            '5',
+            5,
             $result->current()['report_status_id'],
         );
 
@@ -259,22 +259,22 @@ class AnswerReportTest extends TableTestCase
 
         $result = $this->answerReportTable->selectWhereAnswerReportId(1);
         $this->assertSame(
-            '0',
+            0,
             $result->current()['report_status_id']
         );
         $result = $this->answerReportTable->selectWhereAnswerReportId(2);
         $this->assertSame(
-            '-4',
+            -4,
             $result->current()['report_status_id']
         );
         $result = $this->answerReportTable->selectWhereAnswerReportId(3);
         $this->assertSame(
-            '1',
+            1,
             $result->current()['report_status_id']
         );
         $result = $this->answerReportTable->selectWhereAnswerReportId(4);
         $this->assertSame(
-            '-4',
+            -4,
             $result->current()['report_status_id']
         );
     }

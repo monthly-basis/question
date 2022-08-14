@@ -57,7 +57,7 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
             );
         $this->assertSame(
             [
-                '2',
+                2,
                 'this is another subject',
                 'this is the message',
                 'this is another name',
@@ -98,7 +98,7 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
             );
         $this->assertSame(
             [
-                '1',
+                1,
                 'this is the subject',
                 'this is the message',
                 'this is the name',

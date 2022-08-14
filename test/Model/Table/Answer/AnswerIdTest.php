@@ -33,11 +33,11 @@ class AnswerIdTest extends TableTestCase
         );
         $array = $this->answerIdTable->selectWhereAnswerId(1)->current();
         $this->assertSame(
-            '1',
+            1,
             $array['answer_id']
         );
         $this->assertSame(
-            '12345',
+            12345,
             $array['question_id']
         );
         $this->assertSame(
@@ -86,7 +86,7 @@ class AnswerIdTest extends TableTestCase
             $array['deleted_datetime']
         );
         $this->assertSame(
-            '4',
+            4,
             $array['deleted_user_id']
         );
         $this->assertSame(

@@ -92,8 +92,8 @@ class QuestionReportTest extends TableTestCase
         $this->assertSame(
             [
                 [
-                    'question_id' => '2',
-                    'COUNT(*)'  => '2',
+                    'question_id' => 2,
+                    'COUNT(*)'    => 2,
                 ],
             ],
             $array
@@ -150,7 +150,7 @@ class QuestionReportTest extends TableTestCase
 
         $result = $this->questionReportTable->selectWhereQuestionReportId(1);
         $this->assertSame(
-            '5',
+            5,
             $result->current()['report_status_id'],
         );
 
