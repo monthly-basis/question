@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.18.0
+
+         ALTER
+         TABLE `question`
+           ADD
+        COLUMN `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+         AFTER `question_id`
+             ;
+
 ## v2.17.0
 
          ALTER
