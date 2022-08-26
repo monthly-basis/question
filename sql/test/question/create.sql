@@ -1,5 +1,6 @@
 CREATE TABLE `question` (
     `question_id` int(10) unsigned auto_increment,
+    `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `user_id` int(10) unsigned default null, #@todo Rename column to `created_user_id`
     `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `headline` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
