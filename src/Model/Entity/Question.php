@@ -26,6 +26,7 @@ class Question extends QuestionEntity\Post
     protected int $movedQuestionId;
     protected int $movedUserId;
     protected $questionId;
+    protected string $slug;
     protected $subject;
 
     protected $views;
@@ -128,6 +129,11 @@ class Question extends QuestionEntity\Post
     public function getQuestionId(): int
     {
         return $this->questionId;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
     }
 
     public function getSubject(): string
@@ -257,6 +263,12 @@ class Question extends QuestionEntity\Post
     public function setQuestionId(int $questionId): QuestionEntity\Question
     {
         $this->questionId = $questionId;
+        return $this;
+    }
+
+    public function setSlug(string $slug): QuestionEntity\Question
+    {
+        $this->slug = $slug;
         return $this;
     }
 

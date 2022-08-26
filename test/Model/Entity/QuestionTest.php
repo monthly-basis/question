@@ -150,5 +150,15 @@ class QuestionTest extends TestCase
             $movedUserId,
             $this->questionEntity->getMovedUserId()
         );
+
+        $slug = 'slug';
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setSlug($slug)
+        );
+        $this->assertSame(
+            $slug,
+            $this->questionEntity->getSlug()
+        );
     }
 }
