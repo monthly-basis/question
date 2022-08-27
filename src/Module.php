@@ -195,6 +195,12 @@ class Module
                         $sm->get(QuestionTable\Question::class),
                     );
                 },
+                QuestionFactory\Question\FromSlug::class => function ($sm) {
+                    return new QuestionFactory\Question\FromSlug(
+                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionTable\Question\Slug::class),
+                    );
+                },
                 QuestionService\Answer\Answers::class => function ($sm) {
                     return new QuestionService\Answer\Answers(
                         $sm->get(QuestionFactory\Answer::class),
@@ -786,6 +792,12 @@ class Module
                 },
                 QuestionTable\Question\MessageDeletedDatetimeCreatedDatetime::class => function ($sm) {
                     return new QuestionTable\Question\MessageDeletedDatetimeCreatedDatetime(
+                        $sm->get('question'),
+                        $sm->get(QuestionTable\Question::class)
+                    );
+                },
+                QuestionTable\Question\Slug::class => function ($sm) {
+                    return new QuestionTable\Question\Slug(
                         $sm->get('question'),
                         $sm->get(QuestionTable\Question::class)
                     );
