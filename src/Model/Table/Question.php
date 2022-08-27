@@ -83,22 +83,25 @@ class Question
         string $subject,
         string $message = null,
         string $createdName = null,
-        string $createdIp
+        string $createdIp,
+        string $slug = null,
     ): int {
         $sql = '
             INSERT
               INTO `question` (
-                       `user_id`
+                       `slug`
+                     , `user_id`
                      , `subject`
                      , `message`
                      , `created_datetime`
                      , `created_name`
                      , `created_ip`
                    )
-            VALUES (?, ?, ?, UTC_TIMESTAMP(), ?, ?)
+            VALUES (?, ?, ?, ?, UTC_TIMESTAMP(), ?, ?)
                  ;
         ';
         $parameters = [
+            $slug,
             $userId,
             $subject,
             $message,

@@ -2,6 +2,7 @@
 namespace MonthlyBasis\QuestionTest\Model\Table;
 
 use Generator;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
@@ -31,6 +32,51 @@ class QuestionTest extends TableTestCase
     {
         $this->assertIsArray(
             $this->questionTable->getSelectColumns()
+        );
+    }
+
+    public function test_insert()
+    {
+        $generatedValue = $this->questionTable->insert(
+            1,
+            'subject',
+            'message',
+            'name',
+            '1.2.3.4',
+            'slug',
+        );
+        $this->assertSame(
+            1,
+            $generatedValue
+        );
+
+        try {
+            $this->questionTable->insert(
+                1,
+                'subject',
+                'message',
+                'name',
+                '1.2.3.4',
+                'slug',
+            );
+            $this->fail();
+        } catch (InvalidQueryException $invalidQueryException) {
+            $this->assertSame(
+                'Statement could not be executed (23000 - 1062 - Duplicate entry \'slug\' for key \'question.slug\')',
+                $invalidQueryException->getMessage(),
+            );
+        }
+
+        $generatedValue = $this->questionTable->insert(
+            1,
+            'subject for question with no slug',
+            'message for question with no slug',
+            'name',
+            '1.2.3.4',
+        );
+        $this->assertSame(
+            3,
+            $generatedValue
         );
     }
 
