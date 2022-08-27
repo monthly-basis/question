@@ -47,17 +47,15 @@ class SubjectTest extends TableTestCase
             1,
             'foobarbaz',
             'message',
-            '1.2.3.4',
             'name',
-            '1.2.3.4'
+            '1.2.3.4',
         );
         $this->questionTable->insert(
             null,
             '&lt;b&gt;',
             'message',
-            '1.2.3.4',
             'name',
-            '1.2.3.4'
+            '1.2.3.4',
         );
 
         $result = $this->questionSubjectTable->selectWhereRegularExpression(

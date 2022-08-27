@@ -43,7 +43,6 @@ class MessageTest extends TableTestCase
             1,
             'subject',
             'foobarbaz',
-            '1.2.3.4',
             'name',
             '1.2.3.4'
         );
@@ -51,7 +50,6 @@ class MessageTest extends TableTestCase
             1,
             'subject',
             '&lt;b&gt;',
-            '1.2.3.4',
             'name',
             '1.2.3.4'
         );

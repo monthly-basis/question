@@ -101,10 +101,10 @@ class QuestionTest extends TableTestCase
     public function testSelectWhereQuestionIdInAndDeletedDatetimeIsNull()
     {
         $this->questionTable->insert(
-            1, 'name', 'subject', 'message', '1.2.3.4', 'name', '1.2.3.4'
+            1, 'name', 'subject', 'message', '1.2.3.4',
         );
         $this->questionTable->insert(
-            2, 'name', 'subject', 'message', '5.6.7.8', 'name', '5.6.7.8'
+            2, 'name', 'subject', 'message', '5.6.7.8',
         );
         $generator = $this->questionTable->selectWhereQuestionIdInAndDeletedDatetimeIsNull(
             [1, 2, 3, 'string', 'injection' => 'attempt']
@@ -123,7 +123,7 @@ class QuestionTest extends TableTestCase
     public function test_updateWhereQuestionId()
     {
         $this->questionTable->insert(
-            1, 'name', 'subject', 'message', '1.2.3.4', 'name', '1.2.3.4'
+            1, 'name', 'subject', 'message', '1.2.3.4',
         );
 
         $result = $this->questionTable->updateWhereQuestionId(
