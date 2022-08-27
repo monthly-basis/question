@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+         ALTER
+         TABLE `question`
+           ADD
+        UNIQUE `slug` (`slug`)
+             ;
+
 ## v2.18.0
 
          ALTER

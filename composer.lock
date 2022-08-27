@@ -2435,16 +2435,16 @@
         },
         {
             "name": "monthly-basis/string",
-            "version": "v3.6.5",
+            "version": "v3.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/string.git",
-                "reference": "9b9062c9f0e2a116e15b125f9c0c31c0555fdb14"
+                "reference": "c7d5c938684c90056397f39581e2d7195b8f0aac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/string/zipball/9b9062c9f0e2a116e15b125f9c0c31c0555fdb14",
-                "reference": "9b9062c9f0e2a116e15b125f9c0c31c0555fdb14",
+                "url": "https://api.github.com/repos/monthly-basis/string/zipball/c7d5c938684c90056397f39581e2d7195b8f0aac",
+                "reference": "c7d5c938684c90056397f39581e2d7195b8f0aac",
                 "shasum": ""
             },
             "require": {
@@ -2463,9 +2463,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/string/issues",
-                "source": "https://github.com/monthly-basis/string/tree/v3.6.5"
+                "source": "https://github.com/monthly-basis/string/tree/v3.6.6"
             },
-            "time": "2022-08-20T04:42:57+00:00"
+            "time": "2022-08-27T04:26:10+00:00"
         },
         {
             "name": "monthly-basis/superglobal",
