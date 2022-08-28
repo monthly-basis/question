@@ -4,6 +4,14 @@
 
          ALTER
          TABLE `question`
+        CHANGE `created_datetime`
+               `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+             ;
+
+## v2.19.0
+
+         ALTER
+         TABLE `question`
            ADD
         UNIQUE `slug` (`slug`)
              ;
