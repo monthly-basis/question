@@ -37,6 +37,7 @@ class SlugTest extends TableTestCase
             'message',
             'name',
             '1.2.3.4',
+            'headline',
             'slug',
         );
         $result = $this->slugTable->selectWhereSlug('slug');

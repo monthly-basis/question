@@ -84,6 +84,7 @@ class Question
         string $message = null,
         string $createdName = null,
         string $createdIp,
+        string $headline = null,
         string $slug = null,
     ): int {
         $sql = '
@@ -92,18 +93,20 @@ class Question
                        `slug`
                      , `user_id`
                      , `subject`
+                     , `headline`
                      , `message`
                      , `created_datetime`
                      , `created_name`
                      , `created_ip`
                    )
-            VALUES (?, ?, ?, ?, UTC_TIMESTAMP(), ?, ?)
+            VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP(), ?, ?)
                  ;
         ';
         $parameters = [
             $slug,
             $userId,
             $subject,
+            $headline,
             $message,
             $createdName,
             $createdIp,

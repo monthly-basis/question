@@ -43,6 +43,7 @@ class QuestionTest extends TableTestCase
             'message',
             'name',
             '1.2.3.4',
+            'headline',
             'slug',
         );
         $this->assertSame(
@@ -57,6 +58,7 @@ class QuestionTest extends TableTestCase
                 'message',
                 'name',
                 '1.2.3.4',
+                'headline',
                 'slug',
             );
             $this->fail();
@@ -69,8 +71,8 @@ class QuestionTest extends TableTestCase
 
         $generatedValue = $this->questionTable->insert(
             1,
-            'subject for question with no slug',
-            'message for question with no slug',
+            'subject for question with no headline and no slug',
+            'message for question with no headline and no slug',
             'name',
             '1.2.3.4',
         );
