@@ -24,10 +24,11 @@ class QuestionTest extends TestCase
         $this->displayNameOrUsernameServiceMock = $this->createMock(
             UserService\DisplayNameOrUsername::class
         );
+
         $this->questionFactory = new QuestionFactory\Question(
             $this->questionTableMock,
             $this->userFactoryMock,
-            $this->displayNameOrUsernameServiceMock
+            $this->displayNameOrUsernameServiceMock,
         );
     }
 
@@ -57,6 +58,7 @@ class QuestionTest extends TestCase
             'moved_question_id' => '111',
             'moved_user_id'     => '1',
             'question_id'       => 1,
+            'slug'              => 'slug',
             'subject'           => null,
             'user_id'           => null,
         ];
@@ -64,7 +66,9 @@ class QuestionTest extends TestCase
             ->setCreatedName($array['created_name'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
+            ->setDeletedDateTime(new DateTime($array['deleted_datetime']))
             ->setHeadline($array['headline'])
+            ->setMessage($array['message'])
             ->setModifiedDateTime(new DateTime($array['modified_datetime']))
             ->setModifiedUserId(intval($array['modified_user_id']))
             ->setModifiedReason($array['modified_reason'])
@@ -73,9 +77,8 @@ class QuestionTest extends TestCase
             ->setMovedLanguage($array['moved_language'])
             ->setMovedQuestionId($array['moved_question_id'])
             ->setMovedUserId(intval($array['moved_user_id']))
-            ->setDeletedDateTime(new DateTime($array['deleted_datetime']))
-            ->setMessage($array['message'])
             ->setQuestionId($array['question_id'])
+            ->setSlug($array['slug'])
             ;
 
         $this->assertEquals(
