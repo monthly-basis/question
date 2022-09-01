@@ -71,7 +71,7 @@ class QuestionTest extends TableTestCase
 
         $generatedValue = $this->questionTable->insert(
             1,
-            'subject for question with no headline and no slug',
+            null,
             'message for question with no headline and no slug',
             'name',
             '1.2.3.4',

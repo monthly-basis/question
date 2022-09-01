@@ -80,7 +80,7 @@ class Question
 
     public function insert(
         int $userId = null,
-        string $subject,
+        ?string $subject,
         string $message = null,
         string $createdName = null,
         string $createdIp,
