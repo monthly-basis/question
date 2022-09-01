@@ -79,10 +79,10 @@ class Question
 
 
     public function insert(
-        int $userId = null,
+        ?int $userId,
         ?string $subject,
-        string $message = null,
-        string $createdName = null,
+        ?string $message,
+        ?string $createdName,
         string $createdIp,
         string $headline = null,
         string $slug = null,
