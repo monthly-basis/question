@@ -68,5 +68,35 @@ class AnswerTest extends TestCase
             $deletedReason,
             $this->answerEntity->getDeletedReason()
         );
+
+        $downVotes = 12409823;
+        $this->assertSame(
+            $this->answerEntity,
+            $this->answerEntity->setDownVotes($downVotes)
+        );
+        $this->assertSame(
+            $downVotes,
+            $this->answerEntity->getDownVotes()
+        );
+
+        $rating = 3.14159;
+        $this->assertSame(
+            $this->answerEntity,
+            $this->answerEntity->setRating($rating)
+        );
+        $this->assertSame(
+            $rating,
+            $this->answerEntity->getRating()
+        );
+
+        $upVotes = 124;
+        $this->assertSame(
+            $this->answerEntity,
+            $this->answerEntity->setUpVotes($upVotes)
+        );
+        $this->assertSame(
+            $upVotes,
+            $this->answerEntity->getUpVotes()
+        );
     }
 }

@@ -14,9 +14,12 @@ class Answer extends QuestionEntity\Post
     protected $deletedDateTime;
     protected $deletedUserId;
     protected $deletedReason;
+    protected int $downVotes;
     protected $history;
     protected $message;
     protected $questionId;
+    protected float $rating;
+    protected int $upVotes;
 
     protected $views;
 
@@ -60,6 +63,11 @@ class Answer extends QuestionEntity\Post
         return $this->deletedReason;
     }
 
+    public function getDownVotes(): int
+    {
+        return $this->downVotes;
+    }
+
     public function getHistory(): array
     {
         return $this->history;
@@ -73,6 +81,16 @@ class Answer extends QuestionEntity\Post
     public function getQuestionId(): int
     {
         return $this->questionId;
+    }
+
+    public function getRating(): float
+    {
+        return $this->rating;
+    }
+
+    public function getUpVotes(): int
+    {
+        return $this->upVotes;
     }
 
     public function getViews(): int
@@ -128,6 +146,12 @@ class Answer extends QuestionEntity\Post
         return $this;
     }
 
+    public function setDownVotes(int $downVotes): QuestionEntity\Answer
+    {
+        $this->downVotes = $downVotes;
+        return $this;
+    }
+
     public function setHistory(array $history): QuestionEntity\Answer
     {
         $this->history = $history;
@@ -143,6 +167,18 @@ class Answer extends QuestionEntity\Post
     public function setQuestionId(int $questionId): QuestionEntity\Answer
     {
         $this->questionId = $questionId;
+        return $this;
+    }
+
+    public function setRating(float $rating): QuestionEntity\Answer
+    {
+        $this->rating = $rating;
+        return $this;
+    }
+
+    public function setUpVotes(int $upVotes): QuestionEntity\Answer
+    {
+        $this->upVotes = $upVotes;
         return $this;
     }
 
