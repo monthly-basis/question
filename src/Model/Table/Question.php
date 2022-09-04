@@ -24,6 +24,7 @@ class Question
     {
         return '
             SELECT `question`.`question_id`
+                 , `question`.`slug`
                  , `question`.`user_id`
                  , `question`.`subject`
                  , `question`.`headline`
@@ -54,6 +55,7 @@ class Question
     {
         return [
             'question_id',
+            'slug',
             'user_id',
             'subject',
             'headline',
