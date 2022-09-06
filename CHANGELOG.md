@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.20.0
+
+`QuestionService\Answer\Answers::getAnswers()` now returns array rather than Generator.
+
 ## v2.19.1
 
          ALTER
