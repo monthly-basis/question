@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13faf64df47324a9f4684e863da986a3",
+    "content-hash": "ec5438b0628e6e05bcaac64024113743",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -116,16 +116,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.235.1",
+            "version": "3.235.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2025db05c7dd22ae414857dadd49207f64c2fc74"
+                "reference": "9776dc3235bf7c0fce59d5c70e3ade88d0d095d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2025db05c7dd22ae414857dadd49207f64c2fc74",
-                "reference": "2025db05c7dd22ae414857dadd49207f64c2fc74",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9776dc3235bf7c0fce59d5c70e3ade88d0d095d2",
+                "reference": "9776dc3235bf7c0fce59d5c70e3ade88d0d095d2",
                 "shasum": ""
             },
             "require": {
@@ -202,9 +202,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.235.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.235.2"
             },
-            "time": "2022-09-02T18:18:19+00:00"
+            "time": "2022-09-06T18:15:53+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -2151,6 +2151,42 @@
             "time": "2022-09-03T19:47:10+00:00"
         },
         {
+            "name": "monthly-basis/entity",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/entity.git",
+                "reference": "16494c0b60cfefd04a6d05ae28d73b13d65b2e2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/entity/zipball/16494c0b60cfefd04a6d05ae28d73b13d65b2e2b",
+                "reference": "16494c0b60cfefd04a6d05ae28d73b13d65b2e2b",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-db": "^2.9",
+                "laminas/laminas-test": "^4.0",
+                "monthly-basis/laminas-test": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\Entity\\": "src/",
+                    "MonthlyBasis\\EntityTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/monthly-basis/entity/issues",
+                "source": "https://github.com/monthly-basis/entity/tree/v2.1.1"
+            },
+            "time": "2022-08-14T08:04:51+00:00"
+        },
+        {
             "name": "monthly-basis/flash",
             "version": "v2.0.3",
             "source": {
@@ -2552,6 +2588,43 @@
                 "source": "https://github.com/monthly-basis/user/tree/v3.0.2"
             },
             "time": "2022-08-14T07:12:51+00:00"
+        },
+        {
+            "name": "monthly-basis/vote",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/vote.git",
+                "reference": "ac2f83b6a39562039778b988dd2758a6182e437f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/vote/zipball/ac2f83b6a39562039778b988dd2758a6182e437f",
+                "reference": "ac2f83b6a39562039778b988dd2758a6182e437f",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-test": "^4.0",
+                "monthly-basis/entity": "^2.0",
+                "monthly-basis/laminas-test": "^2.0",
+                "monthly-basis/user": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\Vote\\": "src/",
+                    "MonthlyBasis\\VoteTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/monthly-basis/vote/issues",
+                "source": "https://github.com/monthly-basis/vote/tree/v2.0.3"
+            },
+            "time": "2022-08-14T08:20:53+00:00"
         },
         {
             "name": "monthly-basis/website",
