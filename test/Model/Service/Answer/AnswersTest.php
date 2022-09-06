@@ -1,7 +1,6 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Service\Answer;
 
-use Generator;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
@@ -24,22 +23,11 @@ class AnswersTest extends TestCase
         );
     }
 
-    public function testInitialize()
+    public function test_getAnswers()
     {
-        $this->assertInstanceOf(
-            QuestionService\Answer\Answers::class,
-            $this->answersService
-        );
-    }
+        $questionEntity = (new QuestionEntity\Question())->setQuestionId(123);
+        $answerEntities = $this->answersService->getAnswers($questionEntity);
 
-    public function testGetAnswers()
-    {
-        $questionEntity = new QuestionEntity\Question();
-        $generator = $this->answersService->getAnswers($questionEntity);
-
-        $this->assertInstanceOf(
-            Generator::class,
-            $generator
-        );
+        $this->assertIsArray($answerEntities);
     }
 }
