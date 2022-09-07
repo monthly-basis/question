@@ -12,6 +12,7 @@ return [
         'MonthlyBasis\String',
         'MonthlyBasis\Superglobal',
         'MonthlyBasis\User',
+        'MonthlyBasis\Vote',
     ],
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(
