@@ -17,6 +17,7 @@ use MonthlyBasis\User\Model\Factory as UserFactory;
 use MonthlyBasis\User\Model\Service as UserService;
 use MonthlyBasis\ContentModeration\Model\Service as ContentModerationService;
 use MonthlyBasis\Flash\Model\Service as FlashService;
+use MonthlyBasis\Vote\Model\Service as VoteService;
 
 class Module
 {
@@ -204,7 +205,8 @@ class Module
                 QuestionService\Answer\Answers::class => function ($sm) {
                     return new QuestionService\Answer\Answers(
                         $sm->get(QuestionFactory\Answer::class),
-                        $sm->get(QuestionTable\Answer::class)
+                        $sm->get(QuestionTable\Answer::class),
+                        $sm->get(VoteService\Votes\Multiple::class),
                     );
                 },
                 QuestionService\Answer\Answers\Newest::class => function ($sm) {
