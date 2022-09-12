@@ -46,10 +46,6 @@ class Similar
         $questionsYielded = 0;
 
         foreach ($result as $array) {
-            if ($questionsYielded >= $maxResults) {
-                break;
-            }
-
             $questionEntity = $this->questionFactory->buildFromQuestionId(
                 (int) $array['question_id']
             );
@@ -66,10 +62,6 @@ class Similar
         }
     }
 
-    /**
-     * @todo Look into updating query to use $maxResults rather than
-     * $maxResults + 1.
-     */
     protected function getPdoResult(
         QuestionEntity\Question $questionEntity,
         string $query,
@@ -83,7 +75,7 @@ class Similar
                     0,
                     100,
                     0,
-                    $maxResults + 1
+                    $maxResults
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
