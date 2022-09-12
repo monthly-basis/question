@@ -43,7 +43,7 @@ class Similar
 
         $questionIdStored = $questionEntity->getQuestionId();
 
-        $result = $this->getPdoResult($query, $maxResults);
+        $result = $this->getPdoResult($questionEntity, $query, $maxResults);
 
         $questionsYielded = 0;
 
@@ -76,12 +76,16 @@ class Similar
      * @todo Look into updating query to use $maxResults rather than
      * $maxResults + 1.
      */
-    protected function getPdoResult(string $query, int $maxResults): Result
-    {
+    protected function getPdoResult(
+        QuestionEntity\Question $questionEntity,
+        string $query,
+        int $maxResults,
+    ): Result {
         try {
             return $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
                     $query,
+                    $questionEntity->getQuestionId(),
                     0,
                     100,
                     0,
@@ -93,7 +97,7 @@ class Similar
             if ($this->recursionIteration >= 5) {
                 throw new Exception('Unable to get PDO result.');
             }
-            return $this->getPdoResult($query, $maxResults);
+            return $this->getPdoResult($questionEntity, $query, $maxResults);
         }
     }
 }

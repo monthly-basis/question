@@ -40,6 +40,7 @@ class QuestionSearchMessageTest extends TableTestCase
         $result = $this->questionSearchMessageTable
             ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
                 'the search query',
+                12345,
                 0,
                 100,
                 0,

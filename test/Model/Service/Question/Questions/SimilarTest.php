@@ -93,6 +93,7 @@ class SimilarTest extends TestCase
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
                 'headline and message',
+                123,
                 0,
                 100,
                 0,
@@ -164,6 +165,7 @@ class SimilarTest extends TestCase
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
                 'headline and message',
+                123,
                 0,
                 100,
                 0,
@@ -263,6 +265,7 @@ class SimilarTest extends TestCase
             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
                 'headline and message',
+                123,
                 0,
                 100,
                 0,
@@ -319,9 +322,9 @@ class SimilarTest extends TestCase
              ->expects($this->exactly(3))
              ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
              ->withConsecutive(
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
              )
              ->will(
                  $this->onConsecutiveCalls(
@@ -337,7 +340,11 @@ class SimilarTest extends TestCase
         $method->setAccessible(true);
         $method->invokeArgs(
             $this->similarService,
-            ['the query is the message field of the question entity', 12]
+            [
+                (new QuestionEntity\Question())->setQuestionId(123),
+                'the query is the message field of the question entity',
+                12,
+            ]
         );
     }
 
@@ -347,11 +354,11 @@ class SimilarTest extends TestCase
              ->expects($this->exactly(5))
              ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
              ->withConsecutive(
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
-                ['the query is the message field of the question entity', 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
+                ['the query is the message field of the question entity', 123, 0, 100, 0, 13],
              )
              ->will(
                  $this->onConsecutiveCalls(
@@ -371,7 +378,11 @@ class SimilarTest extends TestCase
         try {
             $method->invokeArgs(
                 $this->similarService,
-                ['the query is the message field of the question entity', 12]
+                [
+                    (new QuestionEntity\Question())->setQuestionId(123),
+                    'the query is the message field of the question entity',
+                    12,
+                ]
             );
             $this->fail();
         } catch (Exception $exception) {

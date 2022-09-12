@@ -40,6 +40,7 @@ class QuestionSearchMessage
 
     public function selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
         string $query,
+        int $questionId,
         int $questionSearchMessageLimitOffset,
         int $questionSearchMessageLimitRowCount,
         int $outerLimitOffset,
@@ -52,6 +53,7 @@ class QuestionSearchMessage
                               MATCH (`message`) AGAINST (:query) AS `score`
                          FROM `question_search_message`
                         WHERE MATCH (`message`) AGAINST (:query)
+                          AND `question_id` != :questionId
                         ORDER
                            BY `score` DESC
                         LIMIT :questionSearchMessageLimitOffset, :questionSearchMessageLimitRowCount
@@ -71,6 +73,7 @@ class QuestionSearchMessage
         ';
         $parameters = [
             'query'                              => $query,
+            'questionId'                         => $questionId,
             'questionSearchMessageLimitOffset'   => $questionSearchMessageLimitOffset,
             'questionSearchMessageLimitRowCount' => $questionSearchMessageLimitRowCount,
             'outerLimitOffset'                   => $outerLimitOffset,
