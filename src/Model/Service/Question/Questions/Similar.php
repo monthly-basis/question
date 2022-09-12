@@ -41,8 +41,6 @@ class Similar
         $query = implode(' ', array_slice($words, 0, 16));
         $query = strtolower($query);
 
-        $questionIdStored = $questionEntity->getQuestionId();
-
         $result = $this->getPdoResult($questionEntity, $query, $maxResults);
 
         $questionsYielded = 0;
@@ -50,10 +48,6 @@ class Similar
         foreach ($result as $array) {
             if ($questionsYielded >= $maxResults) {
                 break;
-            }
-
-            if ($array['question_id'] == $questionIdStored) {
-                continue;
             }
 
             $questionEntity = $this->questionFactory->buildFromQuestionId(

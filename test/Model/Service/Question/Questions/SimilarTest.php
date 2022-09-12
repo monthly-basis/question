@@ -78,9 +78,6 @@ class SimilarTest extends TestCase
             $resultMock,
             [
                 [
-                    'question_id' => '123',
-                ],
-                [
                     'question_id' => '456',
                 ],
                 [
