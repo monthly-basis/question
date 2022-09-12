@@ -43,8 +43,6 @@ class Similar
 
         $result = $this->getPdoResult($questionEntity, $query, $maxResults);
 
-        $questionsYielded = 0;
-
         foreach ($result as $array) {
             $questionEntity = $this->questionFactory->buildFromQuestionId(
                 (int) $array['question_id']
@@ -58,7 +56,6 @@ class Similar
             }
 
             yield $questionEntity;
-            $questionsYielded++;
         }
     }
 
