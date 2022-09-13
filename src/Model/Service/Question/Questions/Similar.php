@@ -51,7 +51,8 @@ class Similar
         $result = $this->getPdoResult(
             $questionEntity,
             $query,
-            $maxResults,
+            $outerLimitOffset,
+            $outerLimitRowCount,
         );
 
         foreach ($result as $array) {
@@ -73,7 +74,8 @@ class Similar
     protected function getPdoResult(
         QuestionEntity\Question $questionEntity,
         string $query,
-        int $maxResults,
+        int $outerLimitOffset,
+        int $outerLimitRowCount,
     ): Result {
         try {
             return $this->questionSearchMessageTable
@@ -82,8 +84,8 @@ class Similar
                     $questionEntity->getQuestionId(),
                     0,
                     100,
-                    0,
-                    $maxResults
+                    $outerLimitOffset,
+                    $outerLimitRowCount,
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
@@ -91,7 +93,12 @@ class Similar
             if ($this->recursionIteration >= 5) {
                 throw new Exception('Unable to get PDO result.');
             }
-            return $this->getPdoResult($questionEntity, $query, $maxResults);
+            return $this->getPdoResult(
+                $questionEntity,
+                $query,
+                $outerLimitOffset,
+                $outerLimitRowCount,
+            );
         }
     }
 }

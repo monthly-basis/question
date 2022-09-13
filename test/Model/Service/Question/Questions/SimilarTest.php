@@ -337,6 +337,7 @@ class SimilarTest extends TestCase
             [
                 (new QuestionEntity\Question())->setQuestionId(123),
                 'the query is the message field of the question entity',
+                0,
                 12,
             ]
         );
@@ -375,6 +376,7 @@ class SimilarTest extends TestCase
                 [
                     (new QuestionEntity\Question())->setQuestionId(123),
                     'the query is the message field of the question entity',
+                    0,
                     12,
                 ]
             );
