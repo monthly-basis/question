@@ -30,7 +30,7 @@ class Similar
 
     public function getSimilar(
         QuestionEntity\Question $questionEntity,
-        int $maxResults
+        int $maxResults = 20,
     ): Generator {
         $query = $this->headlineAndMessageService->getHeadlineAndMessage(
             $questionEntity
