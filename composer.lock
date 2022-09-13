@@ -2117,16 +2117,16 @@
         },
         {
             "name": "monthly-basis/content-moderation",
-            "version": "v0.15.9",
+            "version": "v0.15.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/content-moderation.git",
-                "reference": "bdde375d0da953c05d01c9c46145f7e7deb3b8e3"
+                "reference": "9c53c6716c5c650a3f008e9680667f5fc94bc70b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/bdde375d0da953c05d01c9c46145f7e7deb3b8e3",
-                "reference": "bdde375d0da953c05d01c9c46145f7e7deb3b8e3",
+                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/9c53c6716c5c650a3f008e9680667f5fc94bc70b",
+                "reference": "9c53c6716c5c650a3f008e9680667f5fc94bc70b",
                 "shasum": ""
             },
             "require": {
@@ -2148,9 +2148,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/content-moderation/issues",
-                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.15.9"
+                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.15.10"
             },
-            "time": "2022-09-03T19:47:10+00:00"
+            "time": "2022-09-12T20:59:12+00:00"
         },
         {
             "name": "monthly-basis/entity",
