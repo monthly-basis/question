@@ -31,6 +31,8 @@ class Similar
     public function getSimilar(
         QuestionEntity\Question $questionEntity,
         int $maxResults = 20,
+        int $outerLimitOffset = null,
+        int $outerLimitRowCount = null,
     ): Generator {
         $query = $this->headlineAndMessageService->getHeadlineAndMessage(
             $questionEntity
@@ -40,6 +42,11 @@ class Similar
         $words = explode(' ', $query, 21);
         $query = implode(' ', array_slice($words, 0, 16));
         $query = strtolower($query);
+
+        if (is_null($outerLimitOffset)) {
+            $outerLimitOffset   = 0;
+            $outerLimitRowCount = 20;
+        }
 
         $result = $this->getPdoResult($questionEntity, $query, $maxResults);
 
