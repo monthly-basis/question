@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.22.0
 
 - Update method calls.
 
@@ -12,7 +12,9 @@
         int $outerLimitOffset,
         int $outerLimitRowCount,
     ): Generator {
+```
 
+```
     MonthlyBasis\Question\Model\Service\Question\Questions
 
     public function getRelated(
