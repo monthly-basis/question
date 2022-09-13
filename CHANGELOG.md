@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased
+
+- Update method calls.
+
+```
+    MonthlyBasis\Question\Model\Service\Question\Questions\Similar
+
+    public function getSimilar(
+        QuestionEntity\Question $questionEntity,
+        int $outerLimitOffset,
+        int $outerLimitRowCount,
+    ): Generator {
+
+    MonthlyBasis\Question\Model\Service\Question\Questions
+
+    public function getRelated(
+        QuestionEntity\Question $questionEntity,
+        int $outerLimitOffset,
+        int $outerLimitRowCount,
+    ): Generator {
+```
+
 ## v2.20.0
 
 `QuestionService\Answer\Answers::getAnswers()` now returns array rather than Generator.

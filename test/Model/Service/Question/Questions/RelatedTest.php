@@ -26,13 +26,14 @@ class RelatedTest extends TestCase
         $this->similarServiceMock
             ->expects($this->once())
             ->method('getSimilar')
-            ->with($questionEntity, 10)
+            ->with($questionEntity, 0, 10)
             ->willReturn($this->yieldQuestionEntities())
         ;
 
         $generator = $this->relatedService->getRelated(
-            $questionEntity,
-            10
+            questionEntity: $questionEntity,
+            outerLimitOffset: 0,
+            outerLimitRowCount: 10,
         );
 
         $this->assertSame(

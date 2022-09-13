@@ -112,8 +112,9 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $questionEntity,
-            12
+            questionEntity: $questionEntity,
+            outerLimitOffset: 0,
+            outerLimitRowCount: 12,
         );
 
         $this->assertSame(
@@ -189,8 +190,9 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $questionEntity,
-            12
+            questionEntity: $questionEntity,
+            outerLimitOffset: 0,
+            outerLimitRowCount: 12,
         );
         $this->assertSame(
             5,
@@ -301,8 +303,9 @@ class SimilarTest extends TestCase
             )
             ;
         $generator = $this->similarService->getSimilar(
-            $questionEntity,
-            12
+            questionEntity: $questionEntity,
+            outerLimitOffset: 0,
+            outerLimitRowCount: 12,
         );
         $this->assertSame(
             12,
