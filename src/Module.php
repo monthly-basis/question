@@ -706,6 +706,11 @@ class Module
                         $sm->get('question')
                     );
                 },
+                QuestionTable\AnswerQueue::class => function ($sm) {
+                    return new QuestionTable\AnswerQueue(
+                        $sm->get(QuestionDb\Sql::class)
+                    );
+                },
                 QuestionTable\AnswerReport::class => function ($sm) {
                     return new QuestionTable\AnswerReport(
                         $sm->get(QuestionDb\Sql::class)
