@@ -3,7 +3,7 @@ CREATE TABLE `answer_queue` (
     `question_id` int(10) unsigned not null,
     `name` varchar(255) default null,
     `message` text,
-    `created_datetime` datetime NOT NULL,
+    `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `created_user_id` int(10) unsigned default null,
     `created_ip` varchar(45) default null,
     `status_id` tinyint(1) signed default 0,
