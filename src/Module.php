@@ -312,6 +312,11 @@ class Module
                         $sm->get(QuestionTable\Answer::class)
                     );
                 },
+                QuestionService\Answer\Queue\Insert::class => function ($sm) {
+                    return new QuestionService\Answer\Queue\Insert(
+                        $sm->get(QuestionTable\AnswerQueue::class)
+                    );
+                },
                 QuestionService\Answer\Submit::class => function ($sm) {
                     return new QuestionService\Answer\Submit(
                         $sm->get(FlashService\Flash::class),
