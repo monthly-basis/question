@@ -29,7 +29,7 @@ class AnswerReportTest extends TableTestCase
 
     public function test_insertIgnore()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'message',
@@ -54,14 +54,14 @@ class AnswerReportTest extends TableTestCase
 
     public function test_selectAnswerIdCountGroupByAnswerId()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             123,
             null,
             'message',
             'created name',
             'created IP',
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             456,
             null,
             'message',
@@ -120,7 +120,7 @@ class AnswerReportTest extends TableTestCase
             $result->getAffectedRows()
         );
 
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             123,
             null,
             'message',
@@ -204,14 +204,14 @@ class AnswerReportTest extends TableTestCase
             'created name',
             'created ip',
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1,
             null,
             'message: answer to question 1',
             'created name',
             'created IP',
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             2,
             null,
             'message: answer to question 2',

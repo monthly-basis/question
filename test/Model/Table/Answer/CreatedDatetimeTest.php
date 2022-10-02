@@ -40,14 +40,14 @@ class CreatedDatetimeTest extends TableTestCase
             ],
         );
 
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'the message',
             'created name',
             '1.2.3.4',
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'the message',

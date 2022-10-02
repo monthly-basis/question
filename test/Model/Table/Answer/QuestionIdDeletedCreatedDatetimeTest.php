@@ -39,7 +39,7 @@ class QuestionIdDeletedCreatedDatetimeTest extends TableTestCase
             $count
         );
 
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'message',
@@ -47,7 +47,7 @@ class QuestionIdDeletedCreatedDatetimeTest extends TableTestCase
             'name',
             '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'message',
@@ -67,7 +67,7 @@ class QuestionIdDeletedCreatedDatetimeTest extends TableTestCase
             $count
         );
 
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'message3',

@@ -36,7 +36,7 @@ class Answer
         ';
     }
 
-    public function insert(
+    public function insertDeprecated(
         int $questionId,
         int $userId = null,
         string $message,

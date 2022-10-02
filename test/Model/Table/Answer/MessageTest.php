@@ -34,7 +34,7 @@ class MessageTest extends TableTestCase
         $results = iterator_to_array($result);
         $this->assertEmpty($results);
 
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1,
             23094,
             'foobarbaz',
@@ -42,7 +42,7 @@ class MessageTest extends TableTestCase
             'name',
             '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1,
             31093,
             '&lt;b&gt;',
@@ -106,7 +106,7 @@ class MessageTest extends TableTestCase
 
     public function testUpdateWhereQuestionId()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1,
             44422,
             'foobarbaz',

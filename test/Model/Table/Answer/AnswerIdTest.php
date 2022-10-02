@@ -24,7 +24,7 @@ class AnswerIdTest extends TableTestCase
 
     public function test_selectWhereAnswerId()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'message',
@@ -62,7 +62,7 @@ class AnswerIdTest extends TableTestCase
             $rowsAffected
         );
 
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'name',
@@ -110,14 +110,14 @@ class AnswerIdTest extends TableTestCase
 
     public function test_updateSetModifiedReasonWhereAnswerId_multipleRows_1AffectedRow()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             null,
             'message',
             'name',
             'ip'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             98765,
             null,
             'message 2',

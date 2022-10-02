@@ -21,19 +21,19 @@ class AnswerTest extends TableTestCase
         );
     }
 
-    public function testInsertAndSelectCount()
+    public function test_insertDeprecatedAndSelectCount()
     {
         $this->assertSame(
             0,
             $this->answerTable->selectCount()
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1, 2, 'first message', null, '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             3, null, 'second message', 'name', '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             5, 6, 'third message', 'another name', '5.6.7.8'
         );
         $this->assertSame(
@@ -85,15 +85,15 @@ class AnswerTest extends TableTestCase
         );
     }
 
-    public function testSelectWhereAnswerId()
+    public function test_selectWhereAnswerId()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1, 2, 'first message', null, '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             3, null, 'second message', 'name', '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             5, 6, 'third message', 'another name', '5.6.7.8'
         );
 
@@ -121,7 +121,7 @@ class AnswerTest extends TableTestCase
 
         $this->assertEmpty($result);
 
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             2,
             'first message',
@@ -137,7 +137,7 @@ class AnswerTest extends TableTestCase
             '0',
             'deletion reason',
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             12345,
             6,
             'third message',
@@ -160,7 +160,7 @@ class AnswerTest extends TableTestCase
 
     public function test_updateWhereAnswerId()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1, 2, 'first message', null, '1.2.3.4'
         );
         $result = $this->answerTable->updateWhereAnswerId(

@@ -50,7 +50,7 @@ class Submit
         $userId = isset($userEntity) ? $userEntity->getUserId() : null;
         $name   = $_POST['name'] ?? null;
 
-        $answerId = $this->answerTable->insert(
+        $answerId = $this->answerTable->insertDeprecated(
             $_POST['question-id'],
             $userId,
             $_POST['message'],

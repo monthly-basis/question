@@ -17,7 +17,7 @@ class Visitor
 
     public function insert(): QuestionEntity\Answer
     {
-        $answerId = $this->answerTable->insert(
+        $answerId = $this->answerTable->insertDeprecated(
             $_POST['question-id'],
             null,
             $_POST['message'],

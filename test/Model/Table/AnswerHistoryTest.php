@@ -42,21 +42,21 @@ class AnswerHistoryTest extends TableTestCase
 
     public function test_selectDistinctQuestionId_multipleRows_multipleResults()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             1,
             null,
             'message',
             'created name',
             '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             99,
             null,
             'message',
             'created name',
             '1.2.3.4'
         );
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             99,
             null,
             'message',
@@ -91,7 +91,7 @@ class AnswerHistoryTest extends TableTestCase
 
     public function test_selectWhereAnswerIdOrderByCreatedAsc()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             2,
             123,
             'message',
@@ -122,7 +122,7 @@ class AnswerHistoryTest extends TableTestCase
 
     public function test_selectWhereAnswerIdOrderByCreatedDesc()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             2,
             123,
             'message',
@@ -153,7 +153,7 @@ class AnswerHistoryTest extends TableTestCase
 
     public function test_updateSetCreatedWhereAnswerHistoryId_multipleRows()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             99,
             null,
             'message',
@@ -199,7 +199,7 @@ class AnswerHistoryTest extends TableTestCase
 
     public function test_updateSetModifiedReasonWhereAnswerHistoryId_multipleRows_1AffectedRow()
     {
-        $this->answerTable->insert(
+        $this->answerTable->insertDeprecated(
             99,
             null,
             'message',
