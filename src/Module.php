@@ -625,6 +625,12 @@ class Module
                         $sm->get(QuestionService\Question\RootRelativeUrl::class)
                     );
                 },
+                QuestionService\Question\Views\Increment\Conditionally::class => function ($sm) {
+                    return new QuestionService\Question\Views\Increment\Conditionally(
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get(QuestionService\Question\IncrementViews::class),
+                    );
+                },
                 QuestionTable\Answer::class => function ($sm) {
                     return new QuestionTable\Answer(
                         $sm->get('question')
