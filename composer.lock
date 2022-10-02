@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1857e1ab35a00e1e0bf1cd84e2e4b9fa",
+    "content-hash": "b55078be177900c9b118e7142da6ffbb",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2295,6 +2295,41 @@
                 "source": "https://github.com/monthly-basis/ip-address/tree/v2.5.1"
             },
             "time": "2022-08-14T07:05:40+00:00"
+        },
+        {
+            "name": "monthly-basis/laminas",
+            "version": "v0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/laminas.git",
+                "reference": "52199c33f94af2a48f694c51aeb48b6129480fe3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/laminas/zipball/52199c33f94af2a48f694c51aeb48b6129480fe3",
+                "reference": "52199c33f94af2a48f694c51aeb48b6129480fe3",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-db": "^2.9",
+                "laminas/laminas-test": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\Laminas\\": "src/",
+                    "MonthlyBasis\\LaminasTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/monthly-basis/laminas/issues",
+                "source": "https://github.com/monthly-basis/laminas/tree/v0.0.0"
+            },
+            "time": "2022-10-02T19:29:11+00:00"
         },
         {
             "name": "monthly-basis/laminas-test",
