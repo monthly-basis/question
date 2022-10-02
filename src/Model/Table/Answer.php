@@ -16,6 +16,8 @@ class Answer extends LaminasDb\Table
     public function __construct(Adapter $adapter)
     {
         $this->adapter = $adapter;
+
+        $this->setTable('answer');
     }
 
     public function getSelect(): string
