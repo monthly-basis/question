@@ -7,6 +7,7 @@ return [
         'MonthlyBasis\ContentModeration',
         'MonthlyBasis\Flash',
         'MonthlyBasis\Group',
+        'MonthlyBasis\Laminas',
         'MonthlyBasis\Memcached',
         'MonthlyBasis\Question',
         'MonthlyBasis\String',

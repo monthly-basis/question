@@ -4,8 +4,9 @@ namespace MonthlyBasis\Question\Model\Table;
 use Generator;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
+use MonthlyBasis\Laminas\Model\Db as LaminasDb;
 
-class Answer
+class Answer extends LaminasDb\Table
 {
     /**
      * @var Adapter
