@@ -8,15 +8,9 @@ use MonthlyBasis\Laminas\Model\Db as LaminasDb;
 
 class Answer extends LaminasDb\Table
 {
-    /**
-     * @var Adapter
-     */
-    protected $adapter;
-
-    public function __construct(Adapter $adapter)
-    {
-        $this->adapter = $adapter;
-
+    public function __construct(
+        protected Adapter $adapter
+    ) {
         $this->setTable('answer');
     }
 
