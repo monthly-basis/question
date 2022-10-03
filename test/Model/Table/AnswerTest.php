@@ -13,7 +13,7 @@ class AnswerTest extends TableTestCase
         $this->setForeignKeyChecks(1);
 
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->getSql()
         );
         $this->answerIdTable = new QuestionTable\Answer\AnswerId(
             $this->getAdapter(),

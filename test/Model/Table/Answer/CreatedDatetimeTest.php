@@ -18,7 +18,7 @@ class CreatedDatetimeTest extends TableTestCase
             $this->getAdapter()
         );
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->getSql()
         );
 
         $this->createdDatetimeTable = new QuestionTable\Answer\CreatedDatetime(

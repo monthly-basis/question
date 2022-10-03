@@ -10,7 +10,7 @@ class QuestionIdDeletedCreatedDatetimeTest extends TableTestCase
     protected function setUp(): void
     {
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->getSql()
         );
         $this->questionIdDeletedCreatedDatetimeTable = new QuestionTable\Answer\QuestionIdDeletedCreatedDatetime(
             $this->getAdapter()

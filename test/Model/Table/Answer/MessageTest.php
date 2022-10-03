@@ -13,7 +13,7 @@ class MessageTest extends TableTestCase
     protected function setUp(): void
     {
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->getSql()
         );
         $this->answerMessageTable = new QuestionTable\Answer\Message(
             $this->getAdapter()

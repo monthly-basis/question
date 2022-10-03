@@ -2,16 +2,19 @@
 namespace MonthlyBasis\Question\Model\Table;
 
 use Generator;
-use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use MonthlyBasis\Laminas\Model\Db as LaminasDb;
 
 class Answer extends LaminasDb\Table
 {
     public function __construct(
-        protected Adapter $adapter
+        \Laminas\Db\Sql\Sql $sql
     ) {
-        $this->setTable('answer');
+        $this
+            ->setAdapter($sql->getAdapter())
+            ->setSql($sql)
+            ->setTable('answer')
+        ;
     }
 
     public function getSelect(): string
@@ -60,7 +63,7 @@ class Answer extends LaminasDb\Table
             $createdName,
             $createdIp,
         ];
-        return (int) $this->adapter
+        return (int) $this->getAdapter()
             ->query($sql)
             ->execute($parameters)
             ->getGeneratedValue();
@@ -100,7 +103,7 @@ class Answer extends LaminasDb\Table
             $deletedUserId,
             $deletedReason,
         ];
-        return (int) $this->adapter
+        return (int) $this->getAdapter()
             ->query($sql)
             ->execute($parameters)
             ->getGeneratedValue();
@@ -113,7 +116,7 @@ class Answer extends LaminasDb\Table
               FROM `answer`
                  ;
         ';
-        $row = $this->adapter->query($sql)->execute()->current();
+        $row = $this->getAdapter()->query($sql)->execute()->current();
         return (int) $row['count'];
     }
 
@@ -125,7 +128,7 @@ class Answer extends LaminasDb\Table
              WHERE `question_id` = ?
                  ;
         ';
-        $row = $this->adapter->query($sql)->execute([$questionId])->current();
+        $row = $this->getAdapter()->query($sql)->execute([$questionId])->current();
         return (int) $row['count'];
     }
 
@@ -142,7 +145,7 @@ class Answer extends LaminasDb\Table
         $parameters = [
             $questionId,
         ];
-        return $this->adapter->query($sql)->execute($parameters);
+        return $this->getAdapter()->query($sql)->execute($parameters);
     }
 
     /**
@@ -159,7 +162,7 @@ class Answer extends LaminasDb\Table
         $parameters = [
             $answerId,
         ];
-        return $this->adapter->query($sql)->execute($parameters)->current();
+        return $this->getAdapter()->query($sql)->execute($parameters)->current();
     }
 
     public function selectWhereQuestionId(int $questionId): Generator
@@ -175,7 +178,7 @@ class Answer extends LaminasDb\Table
         $parameters = [
             'questionId' => $questionId,
         ];
-        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+        foreach ($this->getAdapter()->query($sql)->execute($parameters) as $array) {
             yield $array;
         }
     }
@@ -195,7 +198,7 @@ class Answer extends LaminasDb\Table
         $parameters = [
             $questionId,
         ];
-        return $this->adapter->query($sql)->execute($parameters);
+        return $this->getAdapter()->query($sql)->execute($parameters);
     }
 
     public function selectWhereUserId(
@@ -226,7 +229,7 @@ class Answer extends LaminasDb\Table
             $limitOffset,
             $limitRowCount,
         ];
-        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+        foreach ($this->getAdapter()->query($sql)->execute($parameters) as $array) {
             yield $array;
         }
     }
@@ -255,6 +258,6 @@ class Answer extends LaminasDb\Table
             $modifiedReason,
             $answerId,
         ];
-        return $this->adapter->query($sql)->execute($parameters);
+        return $this->getAdapter()->query($sql)->execute($parameters);
     }
 }

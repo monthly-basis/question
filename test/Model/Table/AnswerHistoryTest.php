@@ -18,7 +18,7 @@ class AnswerHistoryTest extends TableTestCase
     protected function setUp(): void
     {
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->getSql()
         );
         $this->answerHistoryTable = new QuestionTable\AnswerHistory(
             $this->getAdapter()

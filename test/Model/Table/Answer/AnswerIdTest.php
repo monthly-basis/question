@@ -10,7 +10,7 @@ class AnswerIdTest extends TableTestCase
     protected function setUp(): void
     {
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->getSql()
         );
         $this->answerIdTable = new QuestionTable\Answer\AnswerId(
             $this->getAdapter(),

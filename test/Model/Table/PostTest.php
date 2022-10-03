@@ -20,7 +20,7 @@ class PostTest extends TableTestCase
         );
 
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->sql
         );
         $this->questionTable = new QuestionTable\Question(
             $this->sql

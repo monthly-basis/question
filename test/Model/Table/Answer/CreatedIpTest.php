@@ -15,7 +15,7 @@ class CreatedIpTest extends TableTestCase
         $this->setForeignKeyChecks(1);
 
         $this->answerTable = new QuestionTable\Answer(
-            $this->getAdapter()
+            $this->getSql()
         );
         $this->createdIpTable = new QuestionTable\Answer\CreatedIp(
             $this->getAdapter(),

@@ -633,7 +633,7 @@ class Module
                 },
                 QuestionTable\Answer::class => function ($sm) {
                     return new QuestionTable\Answer(
-                        $sm->get('question')
+                        $sm->get(QuestionDb\Sql::class),
                     );
                 },
                 QuestionTable\Answer\QuestionIdDeletedCreatedDatetime::class => function ($sm) {

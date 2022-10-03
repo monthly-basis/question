@@ -2298,16 +2298,16 @@
         },
         {
             "name": "monthly-basis/laminas",
-            "version": "v0.0.0",
+            "version": "v0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/laminas.git",
-                "reference": "52199c33f94af2a48f694c51aeb48b6129480fe3"
+                "reference": "ef400bb462e992300760975b540f2d615d7591c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/laminas/zipball/52199c33f94af2a48f694c51aeb48b6129480fe3",
-                "reference": "52199c33f94af2a48f694c51aeb48b6129480fe3",
+                "url": "https://api.github.com/repos/monthly-basis/laminas/zipball/ef400bb462e992300760975b540f2d615d7591c1",
+                "reference": "ef400bb462e992300760975b540f2d615d7591c1",
                 "shasum": ""
             },
             "require": {
@@ -2327,22 +2327,22 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/laminas/issues",
-                "source": "https://github.com/monthly-basis/laminas/tree/v0.0.0"
+                "source": "https://github.com/monthly-basis/laminas/tree/v0.0.2"
             },
-            "time": "2022-10-02T19:29:11+00:00"
+            "time": "2022-10-03T02:41:48+00:00"
         },
         {
             "name": "monthly-basis/laminas-test",
-            "version": "v2.1.6",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/laminas-test.git",
-                "reference": "29bae8fef4c4b66e264ac190a69ed5e4e0ed35ec"
+                "reference": "5ac39d75bc8b1da66f5f738356fd434da9963b56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/laminas-test/zipball/29bae8fef4c4b66e264ac190a69ed5e4e0ed35ec",
-                "reference": "29bae8fef4c4b66e264ac190a69ed5e4e0ed35ec",
+                "url": "https://api.github.com/repos/monthly-basis/laminas-test/zipball/5ac39d75bc8b1da66f5f738356fd434da9963b56",
+                "reference": "5ac39d75bc8b1da66f5f738356fd434da9963b56",
                 "shasum": ""
             },
             "require": {
@@ -2362,9 +2362,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/laminas-test/issues",
-                "source": "https://github.com/monthly-basis/laminas-test/tree/v2.1.6"
+                "source": "https://github.com/monthly-basis/laminas-test/tree/v2.2.0"
             },
-            "time": "2022-08-13T06:40:25+00:00"
+            "time": "2022-10-03T02:59:33+00:00"
         },
         {
             "name": "monthly-basis/memcached",
