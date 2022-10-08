@@ -2,7 +2,7 @@ CREATE TABLE `question` (
     `question_id` int(10) unsigned auto_increment,
     `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `user_id` int(10) unsigned default null, #@todo Rename column to `created_user_id`
-    `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+    `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL,
     `headline` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     `views` int(10) unsigned NOT NULL DEFAULT '0',
@@ -11,7 +11,7 @@ CREATE TABLE `question` (
     `views_not_bot_one_day` int(10) unsigned NOT NULL DEFAULT '0',
     `views_not_bot_one_hour` int(10) unsigned NOT NULL DEFAULT '0',
     `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `created_name` varchar(255) default null, #@todo Rename column to `name`
+    `created_name` varchar(255) COLLATE utf8mb4_0900_as_cs DEFAULT NULL, #@todo Rename column to `name`
     `created_ip` varchar(45) default null,
     `modified_datetime` DATETIME DEFAULT NULL,
     `modified_user_id` INT(10) UNSIGNED DEFAULT NULL,

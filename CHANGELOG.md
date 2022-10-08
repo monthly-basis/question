@@ -6,6 +6,11 @@
 
     ALTER TABLE `answer` CHANGE `created_datetime` `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
+- Alter `question` table.
+
+    ALTER TABLE `question` CHANGE `created_name` `created_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL;
+    ALTER TABLE `question` CHANGE `subject` `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL;
+
 ## v2.22.0
 
 - Update method calls.
