@@ -1,12 +1,9 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Table;
 
-use Generator;
-use Laminas\Db\Adapter\Adapter;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
-use PHPUnit\Framework\TestCase;
 
 class PostTest extends TableTestCase
 {
@@ -44,11 +41,13 @@ class PostTest extends TableTestCase
             '255.255.255.255',
         );
         $this->answerTable->insert(
-            1,
-            123,
-            'message for answer 1',
-            null,
-            '255.255.255.255'
+            values: [
+                'question_id'  => 1,
+                'user_id'      => 123,
+                'message'      => 'message for answer 1',
+                'created_name' => null,
+                'created_ip'   => '255.255.255.255'
+            ]
         );
         $this->questionTable->insert(
             123,
@@ -58,11 +57,13 @@ class PostTest extends TableTestCase
             '255.255.255.255',
         );
         $this->answerTable->insert(
-            1,
-            456,
-            'message for answer 2',
-            null,
-            '255.255.255.255'
+            values: [
+                'question_id'  => 1,
+                'user_id'      => 456,
+                'message'      => 'message for answer 2',
+                'created_name' => null,
+                'created_ip'   => '255.255.255.255'
+            ]
         );
         $this->answerTable->insertDeleted(
             1,
@@ -85,8 +86,8 @@ class PostTest extends TableTestCase
             [
                 'entity_type' => 'question',
                 'answer_id'   => null,
-                'question_id' => '2',
-                'user_id'     => '123',
+                'question_id' => 2,
+                'user_id'     => 123,
                 'subject'     => 'subject for question 2',
                 'message'     => 'message for question 2',
             ],
