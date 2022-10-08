@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.24.4
 
 - Alter `answer` table.
 
