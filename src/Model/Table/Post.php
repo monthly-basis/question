@@ -20,7 +20,6 @@ class Post
         $sql = "
             SELECT * FROM (
 
-            /*
                 (
                 SELECT 'question' AS `entity_type`
                      , NULL AS `answer_id`
@@ -42,7 +41,6 @@ class Post
                 )
 
             UNION ALL
-            */
 
                 (
                 SELECT 'answer' AS `entity_type`
