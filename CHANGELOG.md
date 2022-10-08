@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Alter `answer` table.
+
+    ALTER TABLE `answer` CHANGE `created_datetime` `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
 ## v2.22.0
 
 - Update method calls.
