@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Alter `answer` table.
+
+    ALTER TABLE `answer` CHANGE `created_name` `created_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL;
+
 ## v2.24.4
 
 - Alter `answer` table.

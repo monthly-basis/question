@@ -4,7 +4,7 @@ CREATE TABLE `answer` (
     `user_id` int(10) unsigned default null, #@todo Rename column to `created_user_id`
     `message` text,
     `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `created_name` varchar(255) default null, #@todo Rename column to `name`
+    `created_name` varchar(255) COLLATE utf8mb4_0900_as_cs DEFAULT NULL, #@todo Rename column to `name`
     `created_ip` varchar(45) default null,
     `modified_datetime` DATETIME DEFAULT NULL,
     `modified_user_id` INT(10) UNSIGNED DEFAULT NULL,
