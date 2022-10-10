@@ -19,21 +19,23 @@ class RelatedTest extends TestCase
         );
     }
 
-    public function test_getRelated()
+    public function test_getRelated_allParametersNamed_generator()
     {
         $questionEntity = new QuestionEntity\Question();
 
         $this->similarServiceMock
             ->expects($this->once())
             ->method('getSimilar')
-            ->with($questionEntity, 0, 10)
+            ->with($questionEntity, 5, 10, 15, 20)
             ->willReturn($this->yieldQuestionEntities())
         ;
 
         $generator = $this->relatedService->getRelated(
             questionEntity: $questionEntity,
-            outerLimitOffset: 0,
-            outerLimitRowCount: 10,
+            questionSearchMessageLimitOffset: 5,
+            questionSearchMessageLimitRowCount: 10,
+            outerLimitOffset: 15,
+            outerLimitRowCount: 20,
         );
 
         $this->assertSame(
