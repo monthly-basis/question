@@ -30,6 +30,8 @@ class Similar
 
     public function getSimilar(
         QuestionEntity\Question $questionEntity,
+        int $questionSearchMessageLimitOffset = 0,
+        int $questionSearchMessageLimitRowCount = 20,
         int $outerLimitOffset,
         int $outerLimitRowCount,
     ): Generator {
@@ -45,6 +47,8 @@ class Similar
         $result = $this->getPdoResult(
             questionEntity: $questionEntity,
             query: $query,
+            questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
+            questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
             outerLimitOffset: $outerLimitOffset,
             outerLimitRowCount: $outerLimitRowCount,
         );
@@ -68,18 +72,20 @@ class Similar
     protected function getPdoResult(
         QuestionEntity\Question $questionEntity,
         string $query,
+        int $questionSearchMessageLimitOffset,
+        int $questionSearchMessageLimitRowCount,
         int $outerLimitOffset,
         int $outerLimitRowCount,
     ): Result {
         try {
             return $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
-                    $query,
-                    $questionEntity->getQuestionId(),
-                    0,
-                    100,
-                    $outerLimitOffset,
-                    $outerLimitRowCount,
+                    query: $query,
+                    questionId: $questionEntity->getQuestionId(),
+                    questionSearchMessageLimitOffset: 0,
+                    questionSearchMessageLimitRowCount: 100,
+                    outerLimitOffset: $outerLimitOffset,
+                    outerLimitRowCount: $outerLimitRowCount,
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
@@ -90,6 +96,8 @@ class Similar
             return $this->getPdoResult(
                 questionEntity: $questionEntity,
                 query: $query,
+                questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
+                questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
                 outerLimitOffset: $outerLimitOffset,
                 outerLimitRowCount: $outerLimitRowCount,
             );
