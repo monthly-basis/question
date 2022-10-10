@@ -20,11 +20,15 @@ class Related
 
     public function getRelated(
         QuestionEntity\Question $questionEntity,
+        int $questionSearchMessageLimitOffset = 0,
+        int $questionSearchMessageLimitRowCount = 20,
         int $outerLimitOffset = 0,
         int $outerLimitRowCount = 20,
     ): Generator {
         return $this->similarService->getSimilar(
             questionEntity: $questionEntity,
+            questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
+            questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
             outerLimitOffset: $outerLimitOffset,
             outerLimitRowCount: $outerLimitRowCount,
         );
