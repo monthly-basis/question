@@ -43,10 +43,10 @@ class Similar
         $query = strtolower($query);
 
         $result = $this->getPdoResult(
-            $questionEntity,
-            $query,
-            $outerLimitOffset,
-            $outerLimitRowCount,
+            questionEntity: $questionEntity,
+            query: $query,
+            outerLimitOffset: $outerLimitOffset,
+            outerLimitRowCount: $outerLimitRowCount,
         );
 
         foreach ($result as $array) {
@@ -88,10 +88,10 @@ class Similar
                 throw new Exception('Unable to get PDO result.');
             }
             return $this->getPdoResult(
-                $questionEntity,
-                $query,
-                $outerLimitOffset,
-                $outerLimitRowCount,
+                questionEntity: $questionEntity,
+                query: $query,
+                outerLimitOffset: $outerLimitOffset,
+                outerLimitRowCount: $outerLimitRowCount,
             );
         }
     }
