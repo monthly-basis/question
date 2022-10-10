@@ -32,8 +32,8 @@ class Similar
         QuestionEntity\Question $questionEntity,
         int $questionSearchMessageLimitOffset = 0,
         int $questionSearchMessageLimitRowCount = 20,
-        int $outerLimitOffset,
-        int $outerLimitRowCount,
+        int $outerLimitOffset = 0,
+        int $outerLimitRowCount = 20,
     ): Generator {
         $query = $this->headlineAndMessageService->getHeadlineAndMessage(
             $questionEntity
