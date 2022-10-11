@@ -35,6 +35,23 @@ class QuestionTest extends TableTestCase
         );
     }
 
+    public function test_insert()
+    {
+        $result = $this->questionTable->insert(
+            values: [
+                'headline' => 'this is the headline',
+            ],
+        );
+        $this->assertSame(
+            1,
+            $result->getAffectedRows(),
+        );
+        $this->assertSame(
+            '1',
+            $result->getGeneratedValue(),
+        );
+    }
+
     public function test_insertDeprecated()
     {
         $generatedValue = $this->questionTable->insertDeprecated(
@@ -106,6 +123,35 @@ class QuestionTest extends TableTestCase
         $this->assertSame(
             'foul language',
             $array['deleted_reason']
+        );
+    }
+
+    public function test_select()
+    {
+        $this->questionTable->insert(
+            values: [
+                'headline' => 'the headline',
+            ],
+        );
+        $result = $this->questionTable->select(
+            where: [
+                'moved_datetime' => null,
+                'deleted_datetime' => null,
+            ],
+        );
+        $this->assertSame(
+            [
+                'question_id'      => 1,
+                'headline'         => 'the headline',
+                'moved_datetime'   => null,
+                'deleted_datetime' => null,
+            ],
+            [
+                'question_id'      => $result->current()['question_id'],
+                'headline'         => $result->current()['headline'],
+                'moved_datetime'   => $result->current()['moved_datetime'],
+                'deleted_datetime' => $result->current()['deleted_datetime'],
+            ],
         );
     }
 

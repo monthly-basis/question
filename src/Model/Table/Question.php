@@ -5,16 +5,17 @@ use Generator;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Sql\Sql;
+use MonthlyBasis\Laminas\Model\Db as LaminasDb;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use TypeError;
 
-class Question
+class Question extends LaminasDb\Table
 {
     protected Adapter $adapter;
-    protected Sql $sql;
+    protected string $table = 'question';
 
     public function __construct(
-        QuestionDb\Sql $sql
+        protected \Laminas\Db\Sql\Sql $sql
     ) {
         $this->sql     = $sql;
         $this->adapter = $this->sql->getAdapter();
