@@ -1,5 +1,5 @@
 <?php
-namespace MonthlyBasis\Question\Model\Service\Question\Questions\Subject;
+namespace MonthlyBasis\Question\Model\Service\Questions\Subject;
 
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 

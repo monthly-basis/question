@@ -559,14 +559,14 @@ class Module
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
                     );
                 },
-                QuestionService\Question\Questions\Subject::class => function ($sm) {
-                    return new QuestionService\Question\Questions\Subject(
+                QuestionService\Questions\Subject::class => function ($sm) {
+                    return new QuestionService\Questions\Subject(
                         $sm->get('laminas-db-sql-sql'),
                         $sm->get(QuestionFactory\Question::class)
                     );
                 },
-                QuestionService\Question\Questions\Subject\NumberOfPages::class => function ($sm) {
-                    return new QuestionService\Question\Questions\Subject\NumberOfPages(
+                QuestionService\Questions\Subject\NumberOfPages::class => function ($sm) {
+                    return new QuestionService\Questions\Subject\NumberOfPages(
                         $sm->get(QuestionTable\Question\SubjectDeletedDatetimeViewsBrowser::class)
                     );
                 },
