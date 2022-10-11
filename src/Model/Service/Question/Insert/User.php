@@ -19,7 +19,7 @@ class User
     public function insert(
         UserEntity\User $userEntity
     ): QuestionEntity\Question {
-        $questionId = $this->questionTable->insert(
+        $questionId = $this->questionTable->insertDeprecated(
             $userEntity->getUserId(),
             $_POST['subject'],
             $_POST['message'],

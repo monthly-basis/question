@@ -36,14 +36,14 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
 
     public function test_selectWhereMessageAndDeletedDatetimeIsNullOrderByCreatedDatetimeDescLimit1_multipleRows_oneResult()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'this is the subject',
             'this is the message',
             'this is the name',
             '1.2.3.4'
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'this is another subject',
             'this is the message',
@@ -75,7 +75,7 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
 
     public function test_selectWhereMessageAndDeletedDatetimeIsNullOrderByCreatedDatetimeDescLimit1_deletedRow_oneResult()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'this is the subject',
             'this is the message',

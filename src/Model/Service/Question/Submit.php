@@ -45,7 +45,7 @@ class Submit
             $userId = $userEntity->getUserId();
         }
 
-        $questionId = $this->questionTable->insert(
+        $questionId = $this->questionTable->insertDeprecated(
             $userId ?? null,
             $_POST['subject'],
             $_POST['message'] ?? null,

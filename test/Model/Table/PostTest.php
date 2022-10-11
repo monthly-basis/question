@@ -33,7 +33,7 @@ class PostTest extends TableTestCase
         $result = $this->postTable->selectFromAnswerUnionQuestionOrderByCreatedDatetimeDesc(123);
         $this->assertEmpty($result);
 
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             123,
             'subject for question 1',
             'message for question 1',
@@ -49,7 +49,7 @@ class PostTest extends TableTestCase
                 'created_ip'   => '255.255.255.255'
             ]
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             123,
             'subject for question 2',
             'message for question 2',

@@ -80,7 +80,7 @@ class Question
     }
 
 
-    public function insert(
+    public function insertDeprecated(
         ?int $userId,
         ?string $subject,
         ?string $message,

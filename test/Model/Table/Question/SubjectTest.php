@@ -43,14 +43,14 @@ class SubjectTest extends TableTestCase
         $results = iterator_to_array($result);
         $this->assertEmpty($results);
 
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             1,
             'foobarbaz',
             'message',
             'name',
             '1.2.3.4',
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             '&lt;b&gt;',
             'message',

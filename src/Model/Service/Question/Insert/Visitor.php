@@ -17,7 +17,7 @@ class Visitor
 
     public function insert(): QuestionEntity\Question
     {
-        $questionId = $this->questionTable->insert(
+        $questionId = $this->questionTable->insertDeprecated(
             null,
             $_POST['subject'],
             $_POST['message'],

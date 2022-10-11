@@ -57,14 +57,14 @@ class QuestionHistoryTest extends TableTestCase
 
     public function test_selectDistinctQuestionId_multipleRows_multipleResults()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject',
             'message',
             'created name',
             '1.2.3.4'
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject 2',
             'message 2',
@@ -96,7 +96,7 @@ class QuestionHistoryTest extends TableTestCase
 
     public function test_selectWhereQuestionIdOrderByModifiedDatetimeAsc()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             12345,
             'this is the subject',
             'this is the message',
@@ -126,7 +126,7 @@ class QuestionHistoryTest extends TableTestCase
 
     public function test_selectWhereQuestionIdOrderByModifiedDatetimeDesc()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             12345,
             'this is the subject',
             'this is the message',
@@ -156,7 +156,7 @@ class QuestionHistoryTest extends TableTestCase
 
     public function test_updateSetModifiedDatetimeWhereQuestionHistoryId_multipleRows()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             12345,
             'this is the subject',
             'this is the message',
@@ -201,7 +201,7 @@ class QuestionHistoryTest extends TableTestCase
 
     public function test_updateSetModifiedReasonWhereQuestionHistoryId_multipleRows_1AffectedRow()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             12345,
             'this is the subject',
             'this is the message',

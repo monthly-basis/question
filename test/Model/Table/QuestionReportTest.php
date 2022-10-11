@@ -24,7 +24,7 @@ class QuestionReportTest extends TableTestCase
 
     public function test_insertIgnore()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject',
             'message',
@@ -49,14 +49,14 @@ class QuestionReportTest extends TableTestCase
 
     public function test_selectQuestionIdCountGroupByQuestionId()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject 1',
             'message 1',
             'created name 1',
             'created ip 1',
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject 2',
             'message 2',
@@ -111,7 +111,7 @@ class QuestionReportTest extends TableTestCase
             $result->getAffectedRows()
         );
 
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject',
             'message',

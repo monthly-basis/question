@@ -35,9 +35,9 @@ class QuestionTest extends TableTestCase
         );
     }
 
-    public function test_insert()
+    public function test_insertDeprecated()
     {
-        $generatedValue = $this->questionTable->insert(
+        $generatedValue = $this->questionTable->insertDeprecated(
             1,
             'subject',
             'message',
@@ -52,7 +52,7 @@ class QuestionTest extends TableTestCase
         );
 
         try {
-            $this->questionTable->insert(
+            $this->questionTable->insertDeprecated(
                 1,
                 'subject',
                 'message',
@@ -69,7 +69,7 @@ class QuestionTest extends TableTestCase
             );
         }
 
-        $generatedValue = $this->questionTable->insert(
+        $generatedValue = $this->questionTable->insertDeprecated(
             1,
             null,
             'message for question with no headline and no slug',
@@ -120,7 +120,7 @@ class QuestionTest extends TableTestCase
 
     public function testSelectWhereQuestionId()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             3,
             'this is the subject',
             'message',
@@ -148,10 +148,10 @@ class QuestionTest extends TableTestCase
 
     public function testSelectWhereQuestionIdInAndDeletedDatetimeIsNull()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             1, 'name', 'subject', 'message', '1.2.3.4',
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             2, 'name', 'subject', 'message', '5.6.7.8',
         );
         $generator = $this->questionTable->selectWhereQuestionIdInAndDeletedDatetimeIsNull(
@@ -170,7 +170,7 @@ class QuestionTest extends TableTestCase
 
     public function test_updateWhereQuestionId()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             1, 'name', 'subject', 'message', '1.2.3.4',
         );
 

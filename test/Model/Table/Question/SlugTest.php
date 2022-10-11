@@ -31,7 +31,7 @@ class SlugTest extends TableTestCase
         $result = $this->slugTable->selectWhereSlug('slug');
         $this->assertEmpty($result);
 
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             1,
             'subject',
             'message',

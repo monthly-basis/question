@@ -27,7 +27,7 @@ class QuestionIdTest extends TableTestCase
 
     public function test_selectWhereQuestionId()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             3,
             'this is the subject',
             'message',
@@ -62,7 +62,7 @@ class QuestionIdTest extends TableTestCase
             $rowsAffected
         );
 
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'name',
             'subject',
@@ -110,14 +110,14 @@ class QuestionIdTest extends TableTestCase
 
     public function test_updateSetModifiedReasonWhereQuestionId_multipleRows_1AffectedRow()
     {
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'name',
             'subject',
             'message',
             'ip'
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'name 2',
             'subject 2',

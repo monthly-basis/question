@@ -190,14 +190,14 @@ class AnswerReportTest extends TableTestCase
             $result->getAffectedRows()
         );
 
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject for question 1',
             'message for question 1',
             'created name',
             'created ip',
         );
-        $this->questionTable->insert(
+        $this->questionTable->insertDeprecated(
             null,
             'subject for question 2',
             'message for question 2',
