@@ -561,7 +561,7 @@ class Module
                 },
                 QuestionService\Questions\Subject::class => function ($sm) {
                     return new QuestionService\Questions\Subject(
-                        $sm->get('laminas-db-sql-sql'),
+                        $sm->get(QuestionDb\Sql::class),
                         $sm->get(QuestionFactory\Question::class)
                     );
                 },
