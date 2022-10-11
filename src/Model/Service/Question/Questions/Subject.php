@@ -4,7 +4,6 @@ namespace MonthlyBasis\Question\Model\Service\Question\Questions;
 use Generator;
 use Laminas\Db as LaminasDb;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
-use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class Subject
 {
@@ -26,6 +25,7 @@ class Subject
                 'question_id',
                 'user_id',
                 'subject',
+                'headline',
                 'message',
                 'views',
                 'created_datetime',
@@ -40,6 +40,7 @@ class Subject
             ])
             ->where([
                 'subject' => $subject,
+                'moved_datetime' => null,
                 'deleted_datetime' => null,
             ])
             ->order('views_not_bot_one_month DESC')
