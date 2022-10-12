@@ -6,17 +6,23 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class NumberOfPages
 {
     public function __construct(
-        QuestionTable\Question\SubjectDeletedDatetimeViewsBrowser $subjectDeletedViewsBrowserTable
-    ) {
-        $this->subjectDeletedViewsBrowserTable = $subjectDeletedViewsBrowserTable;
-    }
+        protected QuestionTable\Question $questionTable
+    ) {}
 
     public function getNumberOfPages(
         string $subject
     ): int {
-        $count = $this->subjectDeletedViewsBrowserTable->selectCountWhereSubjectEqualsAndDeletedDatetimeIsNull(
-            $subject
+        $result = $this->questionTable->select(
+            columns: [
+                'COUNT(*)' => new \Laminas\Db\Sql\Expression('COUNT(*)')
+            ],
+            where: [
+                'subject'          => $subject,
+                'moved_datetime'   => null,
+                'deleted_datetime' => null,
+            ],
         );
+        $count = $result->current()['COUNT(*)'];
         return ceil($count / 100);
     }
 }

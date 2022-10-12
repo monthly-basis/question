@@ -567,7 +567,7 @@ class Module
                 },
                 QuestionService\Questions\Subject\NumberOfPages::class => function ($sm) {
                     return new QuestionService\Questions\Subject\NumberOfPages(
-                        $sm->get(QuestionTable\Question\SubjectDeletedDatetimeViewsBrowser::class)
+                        $sm->get(QuestionTable\Question::class)
                     );
                 },
                 QuestionService\Question\Questions\Year::class => function ($sm) {
