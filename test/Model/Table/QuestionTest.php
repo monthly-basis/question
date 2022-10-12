@@ -6,26 +6,22 @@ use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
-use PHPUnit\Framework\TestCase;
 
 class QuestionTest extends TableTestCase
 {
     protected function setUp(): void
     {
-        $this->sql = new QuestionDb\Sql(
-            $this->getAdapter()
-        );
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTable('question');
+        $this->setForeignKeyChecks(1);
+
         $this->questionTable = new QuestionTable\Question(
-            $this->sql
+            $this->getSql()
         );
         $this->questionIdTable = new QuestionTable\Question\QuestionId(
             $this->getAdapter(),
             $this->questionTable
         );
-
-        $this->setForeignKeyChecks(0);
-        $this->dropAndCreateTable('question');
-        $this->setForeignKeyChecks(1);
     }
 
     public function test_getSelectColumns()
