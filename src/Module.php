@@ -104,7 +104,11 @@ class Module
                     QuestionHelper\Question\Html\P\Preview::class => function($sm) {
                         $viewHelperManager = $sm->get('ViewHelperManager');
                         return new QuestionHelper\Question\Html\P\Preview(
-                            $viewHelperManager->get(ContentModerationHelper\StripTagsReplaceBadWordsShortenAndEscape::class)
+                            $sm->get(ContentModerationService\Replace\BadWords::class),
+                            $sm->get(ContentModerationService\Replace\LineBreaks::class),
+                            $sm->get(ContentModerationService\Replace\Spaces::class),
+                            $sm->get(StringService\Escape::class),
+                            $sm->get(StringService\Shorten::class),
                         );
                     },
                     QuestionHelper\Question\Sitemap\Lastmod::class => function($sm) {
