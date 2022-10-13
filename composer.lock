@@ -831,16 +831,16 @@
         },
         {
             "name": "laminas/laminas-cli",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cli.git",
-                "reference": "da26bc52aef67f7bc8977269afb3c995102884e6"
+                "reference": "8476ca735f788cddc456ad660a29d9c8349554b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-cli/zipball/da26bc52aef67f7bc8977269afb3c995102884e6",
-                "reference": "da26bc52aef67f7bc8977269afb3c995102884e6",
+                "url": "https://api.github.com/repos/laminas/laminas-cli/zipball/8476ca735f788cddc456ad660a29d9c8349554b0",
+                "reference": "8476ca735f788cddc456ad660a29d9c8349554b0",
                 "shasum": ""
             },
             "require": {
@@ -895,7 +895,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-11T20:47:19+00:00"
+            "time": "2022-10-13T22:36:07+00:00"
         },
         {
             "name": "laminas/laminas-config",
@@ -2514,16 +2514,16 @@
         },
         {
             "name": "monthly-basis/string",
-            "version": "v3.6.6",
+            "version": "v3.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/string.git",
-                "reference": "c7d5c938684c90056397f39581e2d7195b8f0aac"
+                "reference": "ef355f31c2fdd7ab72735b813479542edcd6205d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/string/zipball/c7d5c938684c90056397f39581e2d7195b8f0aac",
-                "reference": "c7d5c938684c90056397f39581e2d7195b8f0aac",
+                "url": "https://api.github.com/repos/monthly-basis/string/zipball/ef355f31c2fdd7ab72735b813479542edcd6205d",
+                "reference": "ef355f31c2fdd7ab72735b813479542edcd6205d",
                 "shasum": ""
             },
             "require": {
@@ -2542,9 +2542,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/string/issues",
-                "source": "https://github.com/monthly-basis/string/tree/v3.6.6"
+                "source": "https://github.com/monthly-basis/string/tree/v3.6.7"
             },
-            "time": "2022-08-27T04:26:10+00:00"
+            "time": "2022-10-13T22:41:34+00:00"
         },
         {
             "name": "monthly-basis/superglobal",
