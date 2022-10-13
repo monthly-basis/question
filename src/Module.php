@@ -103,7 +103,6 @@ class Module
                         );
                     },
                     QuestionHelper\Question\Html\P\Preview::class => function($sm) {
-                        $viewHelperManager = $sm->get('ViewHelperManager');
                         return new QuestionHelper\Question\Html\P\Preview(
                             $sm->get(ContentModerationService\Replace\BadWords::class),
                             $sm->get(ContentModerationService\Replace\LineBreaks::class),
