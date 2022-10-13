@@ -41,6 +41,7 @@ class Module
                     'getQuestionMessageHtml'        => QuestionHelper\Question\Html\Message::class,
                     'getQuestionPMessageHtml'       => QuestionHelper\Question\Html\P\Message::class,
                     'getQuestionPPreviewHtml'       => QuestionHelper\Question\Html\P\Preview::class,
+                    'getQuestionPreviewHtml'       => QuestionHelper\Question\Html\Preview::class,
                     'getQuestionRootRelativeUrl'    => QuestionHelper\Question\RootRelativeUrl::class,
                     'getQuestionTitle'              => QuestionHelper\Question\Title::class,
                     'getQuestionUrl'                => QuestionHelper\Question\Url::class,
@@ -104,6 +105,15 @@ class Module
                     QuestionHelper\Question\Html\P\Preview::class => function($sm) {
                         $viewHelperManager = $sm->get('ViewHelperManager');
                         return new QuestionHelper\Question\Html\P\Preview(
+                            $sm->get(ContentModerationService\Replace\BadWords::class),
+                            $sm->get(ContentModerationService\Replace\LineBreaks::class),
+                            $sm->get(ContentModerationService\Replace\Spaces::class),
+                            $sm->get(StringService\Escape::class),
+                            $sm->get(StringService\Shorten::class),
+                        );
+                    },
+                    QuestionHelper\Question\Html\Preview::class => function($sm) {
+                        return new QuestionHelper\Question\Html\Preview(
                             $sm->get(ContentModerationService\Replace\BadWords::class),
                             $sm->get(ContentModerationService\Replace\LineBreaks::class),
                             $sm->get(ContentModerationService\Replace\Spaces::class),
