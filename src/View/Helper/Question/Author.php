@@ -16,6 +16,9 @@ class Author extends AbstractHelper
     ) {
     }
 
+    /**
+     * @throws QuestionException
+     */
     public function __invoke(QuestionEntity\Question $questionEntity): string
     {
         try {
