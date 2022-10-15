@@ -6,7 +6,6 @@ use Laminas\Db\Adapter\Driver\Pdo\Connection;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use Throwable;
-use TypeError;
 
 class Edit
 {
@@ -25,20 +24,12 @@ class Edit
      */
     public function edit(
         QuestionEntity\Question $questionEntity,
-        $name,
+        string|null $name,
         $subject,
         $message,
         $modifiedUserId,
         $modifiedReason
     ) {
-        try {
-            $questionEntity->getCreatedUserId();
-        } catch (TypeError $typeError) {
-            if (empty($name)) {
-                throw new Exception('Name cannot be empty');
-            }
-        }
-
         try {
             $this->connection->beginTransaction();
             $this->questionHistoryTable->insertSelectFromQuestion(
