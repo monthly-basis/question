@@ -72,6 +72,12 @@ class Module
                             $sm->get(QuestionService\Question\HeadlineAndMessage::class)
                         );
                     },
+                    QuestionHelper\Question\Author::class => function($sm) {
+                        return new QuestionHelper\Question\Author(
+                            $sm->get(UserFactory\User::class),
+                            $sm->get(UserService\DisplayNameOrUsername::class),
+                        );
+                    },
                     QuestionHelper\Question\Factory::class => function($sm) {
                         return new QuestionHelper\Question\Factory(
                             $sm->get(QuestionFactory\Question::class)
