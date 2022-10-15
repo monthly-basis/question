@@ -15,6 +15,7 @@ use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 use MonthlyBasis\User\Model\Factory as UserFactory;
 use MonthlyBasis\User\Model\Service as UserService;
+use MonthlyBasis\User\View\Helper as UserHelper;
 use MonthlyBasis\ContentModeration\Model\Service as ContentModerationService;
 use MonthlyBasis\Flash\Model\Service as FlashService;
 use MonthlyBasis\Vote\Model\Service as VoteService;
@@ -31,6 +32,7 @@ class Module
                     'getAnswerUrl'                  => QuestionHelper\Answer\Url::class,
                     'getLinkToQuestionHtml'         => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionAuthor'             => QuestionHelper\Question\Author::class,
+                    'getQuestionAuthorHtml'         => QuestionHelper\Question\Html\Author::class,
                     'getQuestionFactory'            => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'         => QuestionHelper\QuestionFromAnswer::class,
                     'getQuestionH1Html'             => QuestionHelper\Question\Html\H1::class,
@@ -82,6 +84,15 @@ class Module
                     QuestionHelper\Question\Factory::class => function($sm) {
                         return new QuestionHelper\Question\Factory(
                             $sm->get(QuestionFactory\Question::class)
+                        );
+                    },
+                    QuestionHelper\Question\Html\Author::class => function($sm) {
+                        $vhm = $sm->get('ViewHelperManager');
+                        return new QuestionHelper\Question\Html\Author(
+                            $vhm->get(ContentModerationHelper\ReplaceAndEscape::class),
+                            $vhm->get(ContentModerationHelper\ReplaceAndUrlencode::class),
+                            $sm->get(UserFactory\User::class),
+                            $vhm->get(UserHelper\UserHtml::class),
                         );
                     },
                     QuestionHelper\Question\Html\H1::class => function($sm) {
