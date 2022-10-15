@@ -13,7 +13,7 @@ class HeadlineOrSubject extends AbstractHelper
         $this->headlineOrSubjectService = $headlineOrSubjectService;
     }
 
-    public function __invoke(QuestionEntity\Question $questionEntity)
+    public function __invoke(QuestionEntity\Question $questionEntity): string
     {
         return $this->headlineOrSubjectService->getHeadlineOrSubject(
             $questionEntity

@@ -1,9 +1,9 @@
 <?php
 namespace MonthlyBasis\Question\View\Helper\Question;
 
+use Laminas\View\Helper\AbstractHelper;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
-use Laminas\View\Helper\AbstractHelper;
 
 class RootRelativeUrl extends AbstractHelper
 {
@@ -13,7 +13,7 @@ class RootRelativeUrl extends AbstractHelper
         $this->rootRelativeUrlService = $rootRelativeUrlService;
     }
 
-    public function __invoke(QuestionEntity\Question $questionEntity)
+    public function __invoke(QuestionEntity\Question $questionEntity): string
     {
         return $this->rootRelativeUrlService->getRootRelativeUrl(
             $questionEntity
