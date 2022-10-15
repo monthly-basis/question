@@ -30,6 +30,7 @@ class Module
                     'getAnswerFactory'              => QuestionHelper\Answer\Factory::class,
                     'getAnswerUrl'                  => QuestionHelper\Answer\Url::class,
                     'getLinkToQuestionHtml'         => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
+                    'getQuestionAuthor'             => QuestionHelper\Question\Author::class,
                     'getQuestionFactory'            => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'         => QuestionHelper\QuestionFromAnswer::class,
                     'getQuestionH1Html'             => QuestionHelper\Question\Html\H1::class,
