@@ -10,6 +10,7 @@ CREATE TABLE `question` (
     `views_not_bot_one_week` int(10) unsigned NOT NULL DEFAULT '0',
     `views_not_bot_one_day` int(10) unsigned NOT NULL DEFAULT '0',
     `views_not_bot_one_hour` int(10) unsigned NOT NULL DEFAULT '0',
+    `imported` tinyint(1) unsigned NOT NULL DEFAULT '0',
     `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `created_name` varchar(255) COLLATE utf8mb4_0900_as_cs DEFAULT NULL, #@todo Rename column to `name`
     `created_ip` varchar(45) default null,
@@ -29,6 +30,7 @@ CREATE TABLE `question` (
     KEY `user_id` (`user_id`),
     KEY `user_id_deleted_datetime_created_datetime_question_id` (`user_id`, `deleted_datetime`, `created_datetime`, `question_id`),
     KEY `subject_moved_datetime_deleted_datetime_views_not_bot_one_month` (`subject`,`moved_datetime`,`deleted_datetime`,`views_not_bot_one_month`),
+    KEY `imported_moved_datetime_deleted_datetime_created_datetime` (`imported`, `moved_datetime`, `deleted_datetime`, `created_datetime`),
     KEY `created_datetime_deleted_datetime_views_not_bot_one_month` (`created_datetime`, `deleted_datetime`, `views_not_bot_one_month`),
     KEY `created_name_deleted_datetime_created_datetime` (`created_name`, `deleted_datetime`, `created_datetime`),
     KEY `created_name_deleted_datetime_views_not_bot_one_month` (`created_name`, `deleted_datetime`, `views_not_bot_one_month`),
