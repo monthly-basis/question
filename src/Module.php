@@ -391,6 +391,11 @@ class Module
                         $sm->get(QuestionTable\Question\CreatedIp::class),
                     );
                 },
+                QuestionService\QuestionSearchMessage\Rotate::class => function ($sm) {
+                    return new QuestionService\QuestionSearchMessage\Rotate(
+                        $sm->get(QuestionTable\QuestionSearchMessage::class),
+                    );
+                },
                 QuestionService\Question\Edit::class => function ($sm) {
                     return new QuestionService\Question\Edit(
                         $sm->get('question')->getDriver()->getConnection(),
