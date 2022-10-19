@@ -886,6 +886,7 @@ class Module
                 QuestionTable\QuestionSearchMessage::class => function ($sm) {
                     return new QuestionTable\QuestionSearchMessage(
                         $sm->get(MemcachedService\Memcached::class),
+                        $sm->get(QuestionDb\Sql::class),
                         $sm->get('question')
                     );
                 },

@@ -9,17 +9,57 @@ class QuestionSearchMessageTest extends TableTestCase
 {
     protected function setUp(): void
     {
+        $this->questionTable = new QuestionTable\Question(
+            $this->getSql()
+        );
+
         $this->memcachedServiceMock = $this->createMock(
             MemcachedService\Memcached::class
         );
         $this->questionSearchMessageTable = new QuestionTable\QuestionSearchMessage(
             $this->memcachedServiceMock,
-            $this->getAdapter()
+            $this->getSql(),
+            $this->getAdapter(),
         );
 
         $this->setForeignKeyChecks(0);
-        $this->dropAndCreateTable('question_search_message');
+        $this->dropAndCreateTables(['question', 'question_search_message']);
         $this->setForeignKeyChecks(1);
+    }
+
+    public function test_rotate()
+    {
+        $this->questionTable->insert(
+            values: [
+                'message' => 'message of question with 0 views',
+                'views_not_bot_one_month' => 0,
+            ]
+        );
+        $this->questionTable->insert(
+            values: [
+                'message' => 'message of question with 1 view',
+                'views_not_bot_one_month' => 1,
+            ]
+        );
+        $this->questionTable->insert(
+            values: [
+                'message' => 'message of question with 100 views',
+                'views_not_bot_one_month' => 100,
+            ]
+        );
+        $this->questionSearchMessageTable->rotate();
+
+        $result = $this->questionSearchMessageTable->select(
+            columns: [
+                'count' => new \Laminas\Db\Sql\Expression('COUNT(*)')
+            ],
+        );
+        $this->assertSame(
+            [
+                'count' => 2,
+            ],
+            $result->current(),
+        );
     }
 
     public function test_selectQuestionIdWhereMatchAgainstOrderByScoreDesc()

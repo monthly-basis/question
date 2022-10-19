@@ -3,16 +3,42 @@ namespace MonthlyBasis\Question\Model\Table;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
+use MonthlyBasis\Laminas\Model\Db as LaminasDb;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 
-class QuestionSearchMessage
+class QuestionSearchMessage extends LaminasDb\Table
 {
+    protected string $table = 'question_search_message';
+
     public function __construct(
-        MemcachedService\Memcached $memcachedService,
-        Adapter $adapter
-    ) {
-        $this->memcachedService = $memcachedService;
-        $this->adapter   = $adapter;
+        protected MemcachedService\Memcached $memcachedService,
+        protected \Laminas\Db\Sql\Sql $sql,
+        protected Adapter $adapter,
+    ) {}
+
+    public function rotate(): Result
+    {
+        $sql = '
+            SET SESSION `long_query_time` = 60;
+            SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+            drop table if exists question_search_message_new;
+            create table question_search_message_new like question_search_message;
+            insert into question_search_message_new select question_id, message from question
+              WHERE `views_not_bot_one_month` > 0
+                AND moved_datetime is null
+                AND deleted_datetime is null
+                  ;
+
+            SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+            rename table question_search_message to question_search_message_old;
+            rename table question_search_message_new to question_search_message;
+            drop table question_search_message_old;
+
+            SET SESSION `long_query_time` = 5;
+        ';
+        return $this->adapter->createStatement($sql)->execute();
     }
 
     public function selectQuestionIdWhereMatchAgainstOrderByScoreDesc(
