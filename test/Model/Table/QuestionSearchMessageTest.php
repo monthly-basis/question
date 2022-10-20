@@ -62,6 +62,27 @@ class QuestionSearchMessageTest extends TableTestCase
         );
     }
 
+    public function test_select()
+    {
+        $this->questionSearchMessageTable->insert(
+            values: [
+                'question_id' => 1,
+                'message'     => 'the message',
+            ]
+        );
+        $result = $this->questionSearchMessageTable->select(
+            columns: [
+                'max' => new \Laminas\Db\Sql\Expression('MAX(`question_search_message_id`)')
+            ],
+        );
+        $this->assertSame(
+            [
+                'max' => 1,
+            ],
+            $result->current()
+        );
+    }
+
     public function test_selectQuestionIdWhereMatchAgainstOrderByScoreDesc()
     {
         $result = $this->questionSearchMessageTable
