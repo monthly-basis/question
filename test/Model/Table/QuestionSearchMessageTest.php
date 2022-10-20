@@ -67,7 +67,13 @@ class QuestionSearchMessageTest extends TableTestCase
         $this->questionSearchMessageTable->insert(
             values: [
                 'question_id' => 1,
-                'message'     => 'the message',
+                'message'     => 'message 1',
+            ]
+        );
+        $this->questionSearchMessageTable->insert(
+            values: [
+                'question_id' => 2,
+                'message'     => 'message 2',
             ]
         );
         $result = $this->questionSearchMessageTable->select(
@@ -77,7 +83,24 @@ class QuestionSearchMessageTest extends TableTestCase
         );
         $this->assertSame(
             [
-                'max' => 1,
+                'max' => 2,
+            ],
+            $result->current()
+        );
+
+        $result = $this->questionSearchMessageTable->select(
+            columns: [
+                'question_id',
+                'message',
+            ],
+            where: [
+                'question_search_message_id' => 2,
+            ],
+        );
+        $this->assertSame(
+            [
+                'question_id' => 2,
+                'message'     => 'message 2',
             ],
             $result->current()
         );
