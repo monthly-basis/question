@@ -24,11 +24,12 @@ class QuestionSearchMessage extends LaminasDb\Table
 
             drop table if exists question_search_message_new;
             create table question_search_message_new like question_search_message;
-            insert into question_search_message_new select question_id, message from question
-              WHERE `views_not_bot_one_month` > 0
-                AND moved_datetime is null
-                AND deleted_datetime is null
-                  ;
+            INSERT INTO `question_search_message_new` (`question_id`, `message`)
+                SELECT `question_id`, `message` FROM `question`
+                 WHERE `views_not_bot_one_month` > 0
+                   AND `moved_datetime` IS NULL
+                   AND `deleted_datetime` IS NULL
+                 ;
 
             SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 
