@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.30.1
+
+- Alter `question_search_message` table.
+
+	ALTER TABLE `question_search_message` ADD UNIQUE KEY `question_id` (`question_id`);
+
+	ALTER TABLE `question_search_message` DROP PRIMARY KEY;
+
+	ALTER TABLE `question_search_message` ADD `question_search_message_id` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT FIRST;
+
 ## v2.24.25
 
 - Alter `answer` table.
