@@ -627,6 +627,12 @@ class Module
                         $sm->get(QuestionTable\Question::class)
                     );
                 },
+                QuestionService\Question\Random::class => function ($sm) {
+                    return new QuestionService\Question\Random(
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class),
+                        $sm->get(QuestionTable\QuestionSearchMessage::class),
+                    );
+                },
                 QuestionService\Question\RootRelativeUrl::class => function ($sm) {
                     return new QuestionService\Question\RootRelativeUrl(
                         $sm->get(QuestionEntity\Config::class),
