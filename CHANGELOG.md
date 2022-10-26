@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Alter `question` table.
+
+    ALTER TABLE `question` ADD KEY `created_datetime_etc` (`created_datetime`, `moved_datetime`, `deleted_datetime`, `views_not_bot_one_month` DESC);
+
 ## v2.30.1
 
 - Alter `question_search_message` table.

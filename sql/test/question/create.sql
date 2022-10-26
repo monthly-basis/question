@@ -33,6 +33,7 @@ CREATE TABLE `question` (
     KEY `subject_etc` (`subject`,`moved_datetime`,`deleted_datetime`,`views_not_bot_one_hour` DESC, `views_not_bot_one_day` DESC, `views_not_bot_one_week` DESC, `views_not_bot_one_month` DESC, `views` DESC, `created_datetime` DESC, `question_id` DESC),
     KEY `imported_moved_datetime_deleted_datetime_created_datetime` (`imported`, `moved_datetime`, `deleted_datetime`, `created_datetime`),
     KEY `created_datetime_deleted_datetime_views_not_bot_one_month` (`created_datetime`, `deleted_datetime`, `views_not_bot_one_month`),
+    KEY `created_datetime_etc` (`created_datetime`, `moved_datetime`, `deleted_datetime`, `views_not_bot_one_month` DESC),
     KEY `created_name_deleted_datetime_created_datetime` (`created_name`, `deleted_datetime`, `created_datetime`),
     KEY `created_name_deleted_datetime_views_not_bot_one_month` (`created_name`, `deleted_datetime`, `views_not_bot_one_month`),
     KEY `created_ip_created_datetime` (`created_ip`, `created_datetime`),
