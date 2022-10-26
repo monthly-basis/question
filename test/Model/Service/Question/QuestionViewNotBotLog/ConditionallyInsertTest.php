@@ -129,10 +129,10 @@ class ConditionallyInsertTest extends TestCase
     /**
      * @runInSeparateProcess
      */
-    public function test_conditionallyInsert_isNotBotRefererIsGoogleDoesNotStartWithEnUs_false()
+    public function test_conditionallyInsert_isNotBotRefererIsGoogleDoesNotStartWithEnUs_true()
     {
         $_SERVER = [
-            'HTTP_ACCEPT_LANGUAGE' => 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+            'HTTP_ACCEPT_LANGUAGE' => 'ko-KR,ko;q=0.9,en-US;q=0.8,en',
             'HTTP_REFERER'         => 'https://www.google.com/',
             'REMOTE_ADDR'          => '1.2.3.4',
         ];
@@ -145,21 +145,36 @@ class ConditionallyInsertTest extends TestCase
             ->method('isBot')
             ->willReturn(false)
             ;
+        /*
         $this->startsWithServiceMock
             ->expects($this->once())
             ->method('startsWith')
             ->with('ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7', 'en-US')
             ->willReturn(false)
             ;
+         */
+        /*
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->exactly(0))
             ->method('insert')
+            ;
+         */
+        $this->questionViewNotBotLogTableGatewayMock
+            ->expects($this->once())
+            ->method('insert')
+            ->with([
+                'question_id'                 => 12345,
+                'ip'                          => '1.2.3.4',
+                'server_http_accept_language' => 'ko-KR,ko;q=0.9,en-US;q=0.8,en',
+                'server_http_referer'         => 'https://www.google.com/',
+            ])
             ;
 
         $result = $this->conditionallyInsertService->conditionallyInsert(
             $questionEntity
         );
-        $this->assertFalse($result);
+        //$this->assertFalse($result);
+        $this->assertTrue($result);
     }
 
     /**
@@ -181,12 +196,14 @@ class ConditionallyInsertTest extends TestCase
             ->method('isBot')
             ->willReturn(false)
             ;
+        /*
         $this->startsWithServiceMock
             ->expects($this->once())
             ->method('startsWith')
             ->with('en-US,en;q=0.9', 'en-US')
             ->willReturn(true)
             ;
+         */
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->once())
             ->method('insert')
@@ -224,12 +241,14 @@ class ConditionallyInsertTest extends TestCase
             ->method('isBot')
             ->willReturn(false)
             ;
+        /*
         $this->startsWithServiceMock
             ->expects($this->once())
             ->method('startsWith')
             ->with('en-US,en;q=0.9', 'en-US')
             ->willReturn(true)
             ;
+         */
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->once())
             ->method('insert')

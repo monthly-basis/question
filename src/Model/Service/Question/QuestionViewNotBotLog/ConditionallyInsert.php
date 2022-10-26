@@ -67,9 +67,12 @@ class ConditionallyInsert
          * traffic from different countries.
          */
         $serverHttpAcceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
+        /*
+         * For now, comment out logic which excludes international traffic.
         if (!$this->startsWithService->startsWith($serverHttpAcceptLanguage, 'en-US')) {
             return false;
         }
+         */
         $serverHttpAcceptLanguage = substr($serverHttpAcceptLanguage, 0, 255);
 
         try {
