@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.31.2
 
 - Alter `question` table.
 
