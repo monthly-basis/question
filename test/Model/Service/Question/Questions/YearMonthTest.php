@@ -12,9 +12,6 @@ class YearMonthTest extends TestCase
 {
     protected function setUp(): void
     {
-        $this->sqlMock = $this->createMock(
-            LaminasDb\Sql\Sql::class
-        );
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
@@ -22,7 +19,6 @@ class YearMonthTest extends TestCase
             QuestionTable\Question::class
         );
         $this->yearMonthService = new QuestionService\Question\Questions\YearMonth(
-            $this->sqlMock,
             $this->questionFactoryMock,
             $this->questionTableMock
         );

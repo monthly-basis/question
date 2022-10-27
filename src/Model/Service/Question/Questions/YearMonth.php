@@ -12,11 +12,9 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class YearMonth
 {
     public function __construct(
-        LaminasDb\Sql\Sql $sql,
         QuestionFactory\Question $questionFactory,
         QuestionTable\Question $questionTable
     ) {
-        $this->sql             = $sql;
         $this->questionFactory = $questionFactory;
         $this->questionTable   = $questionTable;
     }
@@ -33,22 +31,21 @@ class YearMonth
             ->sub(new DateInterval('PT1S'))
             ;
 
-        $select = $this->sql
-            ->select('question')
-            ->columns($this->questionTable->getSelectColumns())
-            ->where([
+        $result = $this->questionTable->select(
+            columns: $this->questionTable->getSelectColumns(),
+            where: [
                 new LaminasDb\Sql\Predicate\Between(
                     'created_datetime',
                     $dateTimeMin->format('Y-m-d H:i:s'),
                     $dateTimeMax->format('Y-m-d H:i:s')
                 ),
+                'moved_datetime'   => null,
                 'deleted_datetime' => null,
-            ])
-            ->order('views_not_bot_one_month DESC')
-            ->limit(100)
-            ->offset(0)
-            ;
-        $result = $this->sql->prepareStatementForSqlObject($select)->execute();
+            ],
+            order: 'views_not_bot_one_month DESC',
+            limit: 100,
+            offset: 0,
+        );
 
         foreach ($result as $array) {
             yield $this->questionFactory->buildFromArray($array);

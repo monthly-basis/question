@@ -615,9 +615,8 @@ class Module
                 },
                 QuestionService\Question\Questions\YearMonth::class => function ($sm) {
                     return new QuestionService\Question\Questions\YearMonth(
-                        $sm->get('laminas-db-sql-sql'),
                         $sm->get(QuestionFactory\Question::class),
-                        $sm->get(QuestionTable\Question::class)
+                        $sm->get(QuestionTable\Question::class),
                     );
                 },
                 QuestionService\Question\Questions\YearMonthDay::class => function ($sm) {
