@@ -65,6 +65,32 @@ class QuestionSearchMessage extends LaminasDb\Table
         return $this->adapter->query($sql)->execute($parameters);
     }
 
+    public function selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
+        string $query,
+        int $questionId,
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
+        $sql = '
+            SELECT `question_id`
+                 , MATCH (`message`) AGAINST (:query) AS `score`
+              FROM `question_search_message`
+             WHERE MATCH (`message`) AGAINST (:query)
+               AND `question_id` != :questionId
+             ORDER
+                BY `score` DESC
+             LIMIT :limitOffset, :limitRowCount
+                 ;
+        ';
+        $parameters = [
+            'query'         => $query,
+            'questionId'    => $questionId,
+            'limitOffset'   => $limitOffset,
+            'limitRowCount' => $limitRowCount,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
         string $query,
         int $questionId,

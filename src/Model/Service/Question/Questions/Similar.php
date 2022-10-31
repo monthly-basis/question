@@ -47,10 +47,6 @@ class Similar
         $result = $this->getPdoResult(
             questionEntity: $questionEntity,
             query: $query,
-            questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
-            questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
-            outerLimitOffset: $outerLimitOffset,
-            outerLimitRowCount: $outerLimitRowCount,
         );
 
         foreach ($result as $array) {
@@ -72,20 +68,14 @@ class Similar
     protected function getPdoResult(
         QuestionEntity\Question $questionEntity,
         string $query,
-        int $questionSearchMessageLimitOffset,
-        int $questionSearchMessageLimitRowCount,
-        int $outerLimitOffset,
-        int $outerLimitRowCount,
     ): Result {
         try {
             return $this->questionSearchMessageTable
-                ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
+                ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
                     questionId: $questionEntity->getQuestionId(),
-                    questionSearchMessageLimitOffset: 0,
-                    questionSearchMessageLimitRowCount: 100,
-                    outerLimitOffset: $outerLimitOffset,
-                    outerLimitRowCount: $outerLimitRowCount,
+                    limitOffset: 0,
+                    limitRowCount: 10,
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
@@ -96,10 +86,6 @@ class Similar
             return $this->getPdoResult(
                 questionEntity: $questionEntity,
                 query: $query,
-                questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
-                questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
-                outerLimitOffset: $outerLimitOffset,
-                outerLimitRowCount: $outerLimitRowCount,
             );
         }
     }

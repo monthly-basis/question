@@ -87,14 +87,10 @@ class SimilarTest extends TestCase
         );
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
                 'headline and message',
                 123,
-                0,
-                100,
-                0,
-                12
             )
             ->willReturn($resultMock)
             ;
@@ -162,14 +158,10 @@ class SimilarTest extends TestCase
         );
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
                 'headline and message',
                 123,
-                0,
-                100,
-                0,
-                12
             )
             ->willReturn($resultMock)
             ;
@@ -262,14 +254,10 @@ class SimilarTest extends TestCase
         );
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
                 'headline and message',
                 123,
-                0,
-                100,
-                0,
-                12
             )
             ->willReturn($resultMock)
             ;
@@ -323,11 +311,11 @@ class SimilarTest extends TestCase
     {
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
-             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
              ->withConsecutive(
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
+                ['the query is the message field of the question entity', 123],
+                ['the query is the message field of the question entity', 123],
+                ['the query is the message field of the question entity', 123],
              )
              ->will(
                  $this->onConsecutiveCalls(
@@ -358,13 +346,13 @@ class SimilarTest extends TestCase
     {
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(5))
-             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
              ->withConsecutive(
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
+                ['the query is the message field of the question entity', 123],
+                ['the query is the message field of the question entity', 123],
+                ['the query is the message field of the question entity', 123],
+                ['the query is the message field of the question entity', 123],
+                ['the query is the message field of the question entity', 123],
              )
              ->will(
                  $this->onConsecutiveCalls(
