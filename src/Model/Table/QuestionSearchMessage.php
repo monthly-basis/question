@@ -109,29 +109,6 @@ class QuestionSearchMessage extends LaminasDb\Table
         return $this->adapter->query($sql)->execute($parameters);
     }
 
-    /**
-     * @deprecated Use ::selectCountWhereMatchMessageAgainst() instead
-     */
-    public function selectCountWhereMatchAgainst(string $query): int
-    {
-        $cacheKey = md5(__METHOD__ . $query);
-        if (null !== ($count = $this->memcachedService->get($cacheKey))) {
-            return $count;
-        }
-
-        $sql = '
-            SELECT COUNT(*) AS `count`
-              FROM `question_search_message`
-             WHERE MATCH (`message`) AGAINST (?)
-                 ;
-        ';
-        $row = $this->adapter->query($sql)->execute([$query])->current();
-
-        $count = (int) $row['count'];
-        $this->memcachedService->setForDays($cacheKey, $count, 28);
-        return (int) $row['count'];
-    }
-
     public function selectCountWhereMatchMessageAgainst(string $query): Result
     {
         $sql = '
