@@ -33,12 +33,13 @@ class QuestionSearchMessageTest extends TableTestCase
             values: [
                 'message' => 'message of question with 0 views',
                 'views_not_bot_one_month' => 0,
+                'moved_datetime' => '2022-10-31 13:56:24',
             ]
         );
         $this->questionTable->insert(
             values: [
                 'message' => 'message of question with 1 view',
-                'views_not_bot_one_month' => 1,
+                'views_not_bot_one_month' => 0,
             ]
         );
         $this->questionTable->insert(
