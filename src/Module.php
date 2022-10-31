@@ -568,7 +568,10 @@ class Module
                 },
                 QuestionService\Question\Questions\Related::class => function ($sm) {
                     return new QuestionService\Question\Questions\Related(
-                        $sm->get(QuestionService\Question\Questions\Similar::class),
+                        $sm->get(QuestionEntity\Config::class),
+                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionService\Question\HeadlineAndMessage::class),
+                        $sm->get(QuestionTable\QuestionSearchMessage::class),
                     );
                 },
                 QuestionService\Question\Questions\Search\Results::class => function ($sm) {

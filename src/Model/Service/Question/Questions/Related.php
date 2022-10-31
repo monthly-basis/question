@@ -1,21 +1,31 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\Questions;
 
+use Error;
+use Exception;
 use Generator;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
+use MonthlyBasis\Question\Model\Factory as QuestionFactory;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
+use TypeError;
 
-/**
- * Right now, this Related service is just a wrapper for Similar service.
- * However, if Related means something different than Similar in the future,
- * then code in Related and Similar can be modified individually.
- */
 class Related
 {
+    protected int $recursionIteration = 0;
+
     public function __construct(
-        QuestionService\Question\Questions\Similar $similarService
+        QuestionEntity\Config $configEntity,
+        QuestionFactory\Question $questionFactory,
+        QuestionService\Question\HeadlineAndMessage $headlineAndMessageService,
+        QuestionTable\QuestionSearchMessage $questionSearchMessageTable
     ) {
-        $this->similarService = $similarService;
+        $this->configEntity               = $configEntity;
+        $this->questionFactory            = $questionFactory;
+        $this->headlineAndMessageService  = $headlineAndMessageService;
+        $this->questionSearchMessageTable = $questionSearchMessageTable;
     }
 
     public function getRelated(
@@ -25,12 +35,72 @@ class Related
         int $outerLimitOffset = 0,
         int $outerLimitRowCount = 20,
     ): Generator {
-        return $this->similarService->getSimilar(
+        $query = $this->headlineAndMessageService->getHeadlineAndMessage(
+            $questionEntity
+        );
+        $query = strip_tags($query);
+        $query = preg_replace('/\s+/s', ' ', $query);
+        $words = explode(' ', $query, 21);
+        $query = implode(' ', array_slice($words, 0, 16));
+        $query = strtolower($query);
+
+        $result = $this->getPdoResult(
             questionEntity: $questionEntity,
+            query: $query,
             questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
             questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
             outerLimitOffset: $outerLimitOffset,
             outerLimitRowCount: $outerLimitRowCount,
         );
+
+        foreach ($result as $array) {
+            $questionEntity = $this->questionFactory->buildFromQuestionId(
+                (int) $array['question_id']
+            );
+
+            try {
+                $questionEntity->getDeletedDatetime();
+                continue;
+            } catch (TypeError $typeError) {
+                // Do nothing.
+            }
+
+            yield $questionEntity;
+        }
+    }
+
+    protected function getPdoResult(
+        QuestionEntity\Question $questionEntity,
+        string $query,
+        int $questionSearchMessageLimitOffset,
+        int $questionSearchMessageLimitRowCount,
+        int $outerLimitOffset,
+        int $outerLimitRowCount,
+    ): Result {
+        try {
+            return $this->questionSearchMessageTable
+                ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
+                    query: $query,
+                    questionId: $questionEntity->getQuestionId(),
+                    questionSearchMessageLimitOffset: 0,
+                    questionSearchMessageLimitRowCount: 100,
+                    outerLimitOffset: $outerLimitOffset,
+                    outerLimitRowCount: $outerLimitRowCount,
+                );
+        } catch (InvalidQueryException $invalidQueryException) {
+            sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
+            $this->recursionIteration++;
+            if ($this->recursionIteration >= 5) {
+                throw new Exception('Unable to get PDO result.');
+            }
+            return $this->getPdoResult(
+                questionEntity: $questionEntity,
+                query: $query,
+                questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
+                questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
+                outerLimitOffset: $outerLimitOffset,
+                outerLimitRowCount: $outerLimitRowCount,
+            );
+        }
     }
 }
