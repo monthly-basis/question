@@ -39,7 +39,11 @@ class YearMonthDay
             SELECT `question`.`question_id` AS `question_id`, `question`.`user_id` AS `user_id`
                  , `question`.`subject` AS `subject`
                  , `question`.`headline` AS `headline`
-                 , `question`.`message` AS `message`, `question`.`views` AS `views`, `question`.`views_not_bot_one_month` AS `views_not_bot_one_month`, `question`.`created_datetime` AS `created_datetime`, `question`.`created_name` AS `created_name`, `question`.`created_ip` AS `created_ip`, `question`.`modified_user_id` AS `modified_user_id`, `question`.`modified_datetime` AS `modified_datetime`, `question`.`modified_reason` AS `modified_reason`, `question`.`deleted_datetime` AS `deleted_datetime`, `question`.`deleted_user_id` AS `deleted_user_id`, `question`.`deleted_reason` AS `deleted_reason`
+                 , `question`.`message` AS `message`
+                 , `question`.`views` AS `views`
+                 , `question`.`views_not_bot_one_month` AS `views_not_bot_one_month`
+                 , `question`.`answer_count_cached` AS `answer_count_cached`
+                 , `question`.`created_datetime` AS `created_datetime`, `question`.`created_name` AS `created_name`, `question`.`created_ip` AS `created_ip`, `question`.`modified_user_id` AS `modified_user_id`, `question`.`modified_datetime` AS `modified_datetime`, `question`.`modified_reason` AS `modified_reason`, `question`.`deleted_datetime` AS `deleted_datetime`, `question`.`deleted_user_id` AS `deleted_user_id`, `question`.`deleted_reason` AS `deleted_reason`
 
               FROM `question`
 
