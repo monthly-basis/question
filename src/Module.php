@@ -396,6 +396,11 @@ class Module
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
                     );
                 },
+                QuestionService\QuestionSearchSimilar\Rotate::class => function ($sm) {
+                    return new QuestionService\QuestionSearchSimilar\Rotate(
+                        $sm->get(QuestionTable\QuestionSearchSimilar::class),
+                    );
+                },
                 QuestionService\Question\Edit::class => function ($sm) {
                     return new QuestionService\Question\Edit(
                         $sm->get('question')->getDriver()->getConnection(),
