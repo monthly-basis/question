@@ -23,6 +23,7 @@ class Question
         array $array
     ): QuestionEntity\Question {
         $questionEntity = (static::getNewInstance())
+            ->setAnswerCountCached($array['answer_count_cached'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setQuestionId($array['question_id'])
             ;

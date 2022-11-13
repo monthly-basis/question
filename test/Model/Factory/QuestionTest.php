@@ -43,26 +43,28 @@ class QuestionTest extends TestCase
             ->method('getDisplayNameOrUsername')
             ;
         $array = [
-            'created_name'      => 'name',
-            'created_datetime'  => '2018-03-12 22:12:23',
-            'created_ip'        => '5.6.7.8',
-            'deleted_datetime'  => '2018-09-17 21:42:45',
-            'headline'          => 'This is the headline.',
-            'message'           => 'message',
-            'modified_datetime' => '2022-07-13 20:25:11',
-            'modified_user_id'  => '54321',
-            'modified_reason'   => 'modified reason',
-            'moved_country'     => 'zaf',
-            'moved_datetime'    => '2022-08-04 00:31:03',
-            'moved_language'    => 'es',
-            'moved_question_id' => '111',
-            'moved_user_id'     => '1',
-            'question_id'       => 1,
-            'slug'              => 'slug',
-            'subject'           => null,
-            'user_id'           => null,
+            'answer_count_cached' => 726,
+            'created_name'        => 'name',
+            'created_datetime'    => '2018-03-12 22:12:23',
+            'created_ip'          => '5.6.7.8',
+            'deleted_datetime'    => '2018-09-17 21:42:45',
+            'headline'            => 'This is the headline.',
+            'message'             => 'message',
+            'modified_datetime'   => '2022-07-13 20:25:11',
+            'modified_user_id'    => '54321',
+            'modified_reason'     => 'modified reason',
+            'moved_country'       => 'zaf',
+            'moved_datetime'      => '2022-08-04 00:31:03',
+            'moved_language'      => 'es',
+            'moved_question_id'   => '111',
+            'moved_user_id'       => '1',
+            'question_id'         => 1,
+            'slug'                => 'slug',
+            'subject'             => null,
+            'user_id'             => null,
         ];
         $questionEntity = (new QuestionEntity\Question())
+            ->setAnswerCountCached($array['answer_count_cached'])
             ->setCreatedName($array['created_name'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
@@ -98,20 +100,22 @@ class QuestionTest extends TestCase
             ->method('getDisplayNameOrUsername')
             ;
         $array = [
-            'created_name'      => 'name',
-            'created_datetime'  => '2018-03-12 22:12:23',
-            'created_ip'        => '5.6.7.8',
-            'deleted_datetime'  => '2018-09-17 21:42:45',
-            'headline'          => 'This is the headline.',
-            'message'           => 'message',
-            'modified_datetime' => '2022-07-13 20:25:11',
-            'modified_user_id'  => '54321',
-            'modified_reason'   => 'modified reason',
-            'question_id'       => 1,
-            'subject'           => 'subject',
-            'user_id'           => null,
+            'answer_count_cached' => 726,
+            'created_name'        => 'name',
+            'created_datetime'    => '2018-03-12 22:12:23',
+            'created_ip'          => '5.6.7.8',
+            'deleted_datetime'    => '2018-09-17 21:42:45',
+            'headline'            => 'This is the headline.',
+            'message'             => 'message',
+            'modified_datetime'   => '2022-07-13 20:25:11',
+            'modified_user_id'    => '54321',
+            'modified_reason'     => 'modified reason',
+            'question_id'         => 1,
+            'subject'             => 'subject',
+            'user_id'             => null,
         ];
         $questionEntity = (new QuestionEntity\Question())
+            ->setAnswerCountCached($array['answer_count_cached'])
             ->setCreatedName($array['created_name'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
@@ -150,15 +154,17 @@ class QuestionTest extends TestCase
             ->with($userEntity)
             ->willReturn('i am foo');
         $array = [
-            'question_id'      => 1,
-            'user_id'          => 12345,
-            'created_name'     => null,
-            'subject'          => 'subject',
-            'views'            => '123',
-            'created_datetime' => '2018-03-12 22:12:23',
+            'answer_count_cached' => 726,
+            'question_id'         => 1,
+            'user_id'             => 12345,
+            'created_name'        => null,
+            'subject'             => 'subject',
+            'views'               => '123',
+            'created_datetime'    => '2018-03-12 22:12:23',
         ];
         $questionEntity = new QuestionEntity\Question();
         $questionEntity
+            ->setAnswerCountCached(726)
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedName('i am foo')
             ->setCreatedUserId((int) $array['user_id'])
@@ -176,13 +182,14 @@ class QuestionTest extends TestCase
     {
         $this->questionTableMock->method('selectWhereQuestionId')->willReturn(
             [
-                'question_id' => 123,
-                'user_id'     => null,
-                'name'        => 'name',
-                'subject'     => 'subject',
-                'message'     => 'message',
-                'created_datetime'     => '2018-03-12 22:12:23',
-                'views'       => '123',
+                'answer_count_cached' => 726,
+                'question_id'         => 123,
+                'user_id'             => null,
+                'name'                => 'name',
+                'subject'             => 'subject',
+                'message'             => 'message',
+                'created_datetime'    => '2018-03-12 22:12:23',
+                'views'               => '123',
             ]
         );
         $questionEntity = $this->questionFactory->buildFromQuestionId(1);
