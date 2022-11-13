@@ -28,6 +28,7 @@ class Subject
                 'headline',
                 'message',
                 'views',
+                'answer_count_cached',
                 'created_datetime',
                 'created_name',
                 'created_ip',
