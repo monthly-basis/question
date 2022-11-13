@@ -26,14 +26,14 @@ class SimilarTest extends TestCase
         $this->headlineAndMessageServiceMock = $this->createMock(
             QuestionService\Question\HeadlineAndMessage::class
         );
-        $this->questionSearchMessageTableMock = $this->createMock(
-            QuestionTable\QuestionSearchMessage::class
+        $this->questionSearchSimilarTableMock = $this->createMock(
+            QuestionTable\QuestionSearchSimilar::class
         );
         $this->similarService = new QuestionService\Question\Questions\Similar(
             $this->configEntity,
             $this->questionFactoryMock,
             $this->headlineAndMessageServiceMock,
-            $this->questionSearchMessageTableMock,
+            $this->questionSearchSimilarTableMock,
         );
 
         $this->questionEntity = (new QuestionEntity\Question())
@@ -85,7 +85,7 @@ class SimilarTest extends TestCase
                 ],
             ]
         );
-        $this->questionSearchMessageTableMock
+        $this->questionSearchSimilarTableMock
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
@@ -156,7 +156,7 @@ class SimilarTest extends TestCase
                 ],
             ]
         );
-        $this->questionSearchMessageTableMock
+        $this->questionSearchSimilarTableMock
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
@@ -252,7 +252,7 @@ class SimilarTest extends TestCase
                 ],
             ]
         );
-        $this->questionSearchMessageTableMock
+        $this->questionSearchSimilarTableMock
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
@@ -309,7 +309,7 @@ class SimilarTest extends TestCase
 
     public function test_getPdoResult_tableModelThrows2Exceptions_resultAfterRecursiveCalls()
     {
-        $this->questionSearchMessageTableMock
+        $this->questionSearchSimilarTableMock
              ->expects($this->exactly(3))
              ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
              ->withConsecutive(
@@ -344,7 +344,7 @@ class SimilarTest extends TestCase
 
     public function test_getPdoResult_tableModelThrows5Exceptions_exceptionAfterRecursiveCalls()
     {
-        $this->questionSearchMessageTableMock
+        $this->questionSearchSimilarTableMock
              ->expects($this->exactly(5))
              ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
              ->withConsecutive(

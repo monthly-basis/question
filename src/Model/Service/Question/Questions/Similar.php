@@ -17,16 +17,11 @@ class Similar
     protected int $recursionIteration = 0;
 
     public function __construct(
-        QuestionEntity\Config $configEntity,
-        QuestionFactory\Question $questionFactory,
-        QuestionService\Question\HeadlineAndMessage $headlineAndMessageService,
-        QuestionTable\QuestionSearchMessage $questionSearchMessageTable
-    ) {
-        $this->configEntity               = $configEntity;
-        $this->questionFactory            = $questionFactory;
-        $this->headlineAndMessageService  = $headlineAndMessageService;
-        $this->questionSearchMessageTable = $questionSearchMessageTable;
-    }
+        protected QuestionEntity\Config $configEntity,
+        protected QuestionFactory\Question $questionFactory,
+        protected QuestionService\Question\HeadlineAndMessage $headlineAndMessageService,
+        protected QuestionTable\QuestionSearchSimilar $questionSearchSimilarTable
+    ) {}
 
     public function getSimilar(
         QuestionEntity\Question $questionEntity,
@@ -70,7 +65,7 @@ class Similar
         string $query,
     ): Result {
         try {
-            return $this->questionSearchMessageTable
+            return $this->questionSearchSimilarTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
                     questionId: $questionEntity->getQuestionId(),

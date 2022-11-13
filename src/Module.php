@@ -600,7 +600,7 @@ class Module
                         $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionFactory\Question::class),
                         $sm->get(QuestionService\Question\HeadlineAndMessage::class),
-                        $sm->get(QuestionTable\QuestionSearchMessage::class),
+                        $sm->get(QuestionTable\QuestionSearchSimilar::class),
                     );
                 },
                 QuestionService\Questions\Subject::class => function ($sm) {
