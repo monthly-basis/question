@@ -32,6 +32,7 @@ class Question extends LaminasDb\Table
                  , `question`.`message`
                  , `question`.`views`
                  , `question`.`views_not_bot_one_month`
+                 , `question`.`answer_count_cached`
                  , `question`.`created_datetime`
                  , `question`.`created_name`
                  , `question`.`created_ip`
@@ -63,6 +64,7 @@ class Question extends LaminasDb\Table
             'message',
             'views',
             'views_not_bot_one_month',
+            'answer_count_cached',
             'created_datetime',
             'created_name',
             'created_ip',
