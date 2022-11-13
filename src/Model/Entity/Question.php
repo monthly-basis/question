@@ -6,6 +6,7 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 
 class Question extends QuestionEntity\Post
 {
+    protected int $answerCountCached;
     protected $answers;
     protected $createdDateTime;
     protected $createdIp;
@@ -30,6 +31,11 @@ class Question extends QuestionEntity\Post
     protected $subject;
 
     protected $views;
+
+    public function getAnswerCountCached(): int
+    {
+        return $this->answerCountCached;
+    }
 
     public function getAnswers(): array
     {
@@ -144,6 +150,12 @@ class Question extends QuestionEntity\Post
     public function getViews(): int
     {
         return $this->views;
+    }
+
+    public function setAnswerCountCached(int $answerCountCached): QuestionEntity\Question
+    {
+        $this->answerCountCached = $answerCountCached;
+        return $this;
     }
 
     public function setAnswers(array $answers): QuestionEntity\Question

@@ -14,6 +14,16 @@ class QuestionTest extends TestCase
 
     public function test_settersAndGetters()
     {
+        $answerCountCached = 726;
+        $this->assertSame(
+            $this->questionEntity,
+            $this->questionEntity->setAnswerCountCached($answerCountCached)
+        );
+        $this->assertSame(
+            $answerCountCached,
+            $this->questionEntity->getAnswerCountCached()
+        );
+
         $createdDateTime = new DateTime();
         $this->questionEntity->setCreatedDateTime($createdDateTime);
         $this->assertSame(
