@@ -909,6 +909,12 @@ class Module
                         $sm->get('question')
                     );
                 },
+                QuestionTable\QuestionSearchSimilar::class => function ($sm) {
+                    return new QuestionTable\QuestionSearchSimilar(
+                        $sm->get(QuestionDb\Sql::class),
+                        $sm->get('question')
+                    );
+                },
             ],
         ];
     }
