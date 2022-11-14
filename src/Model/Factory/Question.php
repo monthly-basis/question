@@ -23,11 +23,13 @@ class Question
         array $array
     ): QuestionEntity\Question {
         $questionEntity = (static::getNewInstance())
-            ->setAnswerCountCached($array['answer_count_cached'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setQuestionId($array['question_id'])
             ;
 
+        if (isset($array['answer_count_cached'])) {
+            $questionEntity->setAnswerCountCached($array['answer_count_cached']);
+        }
         if (isset($array['created_ip'])) {
             $questionEntity->setCreatedIp($array['created_ip']);
         }
