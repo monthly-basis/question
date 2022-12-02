@@ -348,6 +348,11 @@ class Module
                         $sm->get(QuestionTable\AnswerQueue::class)
                     );
                 },
+                QuestionService\Answer\RootRelativeUrl::class => function ($sm) {
+                    return new QuestionService\Answer\RootRelativeUrl(
+                        $sm->get(QuestionService\Answer\Slug::class),
+                    );
+                },
                 QuestionService\Answer\Slug::class => function ($sm) {
                     return new QuestionService\Answer\Slug(
                         $sm->get(StringService\StripTagsAndShorten::class),
