@@ -9,41 +9,37 @@ class UrlTest extends TestCase
 {
     protected function setUp(): void
     {
-        $this->questionUrlServiceMock = $this->createMock(
-            QuestionService\Question\Url::class
-        );
-        $this->questionFromAnswerServiceMock = $this->createMock(
-            QuestionService\QuestionFromAnswer::class
+        $this->rootRelativeUrlServiceMock = $this->createMock(
+            QuestionService\Answer\RootRelativeUrl::class
         );
 
         $this->urlService = new QuestionService\Answer\Url(
-            $this->questionUrlServiceMock,
-            $this->questionFromAnswerServiceMock,
+            $this->rootRelativeUrlServiceMock,
         );
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function test_getUrl()
     {
+        $_SERVER = [
+            'HTTP_HOST' => 'www.example.com',
+        ];
+
         $answerEntity = (new QuestionEntity\Answer())
             ->setAnswerId(12345)
             ;
-        $questionEntity = new QuestionEntity\Question();
 
-        $this->questionFromAnswerServiceMock
+        $this->rootRelativeUrlServiceMock
             ->expects($this->once())
-            ->method('getQuestionFromAnswer')
+            ->method('getRootRelativeUrl')
             ->with($answerEntity)
-            ->willReturn($questionEntity)
+            ->willReturn('/answers/12345/answer-slug')
         ;
-        $this->questionUrlServiceMock
-            ->expects($this->once())
-            ->method('getUrl')
-            ->with($questionEntity)
-            ->willReturn('https://www.example.com/questions/54321/question-slug')
-            ;
 
         $this->assertSame(
-            'https://www.example.com/questions/54321/question-slug#12345',
+            'https://www.example.com/answers/12345/answer-slug',
             $this->urlService->getUrl($answerEntity)
         );
     }

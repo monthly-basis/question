@@ -373,8 +373,7 @@ class Module
                 },
                 QuestionService\Answer\Url::class => function ($sm) {
                     return new QuestionService\Answer\Url(
-                        $sm->get(QuestionService\Question\Url::class),
-                        $sm->get(QuestionService\QuestionFromAnswer::class),
+                        $sm->get(QuestionService\Answer\RootRelativeUrl::class),
                     );
                 },
                 QuestionService\Post\CanBeUndeleted::class => function ($sm) {
