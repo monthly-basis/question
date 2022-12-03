@@ -290,6 +290,9 @@ class Module
                         $sm->get(QuestionTable\AnswerDeleteQueue::class)
                     );
                 },
+                QuestionService\Answer\Deleted::class => function ($sm) {
+                    return new QuestionService\Answer\Deleted();
+                },
                 QuestionService\Answer\Duplicate::class => function ($sm) {
                     return new QuestionService\Answer\Duplicate(
                         $sm->get(QuestionTable\Answer\QuestionIdDeletedCreatedDatetime::class)
