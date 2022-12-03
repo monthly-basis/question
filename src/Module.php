@@ -411,6 +411,9 @@ class Module
                         $sm->get(QuestionTable\QuestionSearchSimilar::class),
                     );
                 },
+                QuestionService\Question\Deleted::class => function ($sm) {
+                    return new QuestionService\Question\Deleted();
+                },
                 QuestionService\Question\Edit::class => function ($sm) {
                     return new QuestionService\Question\Edit(
                         $sm->get('question')->getDriver()->getConnection(),
