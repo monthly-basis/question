@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+    ALTER TABLE `answer` ADD COLUMN `imported` tinyint(1) unsigned NOT NULL DEFAULT '0' AFTER `message`;
+
 ## v2.31.2
 
 - Alter `question` table.
