@@ -31,14 +31,6 @@ class Edit
         $modifiedReason
     ) {
         try {
-            $answerEntity->getCreatedUserId();
-        } catch (TypeError $typeError) {
-            if (empty($name)) {
-                throw new Exception('Name cannot be empty');
-            }
-        }
-
-        try {
             $this->connection->beginTransaction();
             $this->answerHistoryTable->insertSelectFromAnswer(
                 $answerEntity->getAnswerId()
