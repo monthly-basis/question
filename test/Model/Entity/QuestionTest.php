@@ -12,6 +12,19 @@ class QuestionTest extends TestCase
         $this->questionEntity = new QuestionEntity\Question();
     }
 
+    public function test___isset()
+    {
+        $this->assertFalse(
+            isset($this->questionEntity->createdName)
+        );
+
+        $this->questionEntity->setCreatedName('Created Name');
+
+        $this->assertTrue(
+            isset($this->questionEntity->createdName)
+        );
+    }
+
     public function test_settersAndGetters()
     {
         $answerCountCached = 726;

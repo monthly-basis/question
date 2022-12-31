@@ -32,6 +32,11 @@ class Question extends QuestionEntity\Post
 
     protected $views;
 
+    public function __isset($name): bool
+    {
+        return isset($this->$name);
+    }
+
     public function getAnswerCountCached(): int
     {
         return $this->answerCountCached;
