@@ -12,11 +12,16 @@ class AnswerTest extends TestCase
         $this->answerEntity = new QuestionEntity\Answer();
     }
 
-    public function testInitialize()
+    public function test___isset()
     {
-        $this->assertInstanceOf(
-            QuestionEntity\Answer::class,
-            $this->answerEntity
+        $this->assertFalse(
+            isset($this->answerEntity->createdName)
+        );
+
+        $this->answerEntity->setCreatedName('Created Name');
+
+        $this->assertTrue(
+            isset($this->answerEntity->createdName)
         );
     }
 
