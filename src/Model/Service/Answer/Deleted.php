@@ -7,11 +7,6 @@ class Deleted
 {
     public function isDeleted(QuestionEntity\Answer $answerEntity): bool
     {
-        try {
-            $answerEntity->getDeletedDateTime();
-            return true;
-        } catch (\Error) {
-            return false;
-        }
+        return isset($answerEntity->deletedDateTime);
     }
 }
