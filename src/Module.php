@@ -346,6 +346,13 @@ class Module
                         $sm->get(QuestionTable\Answer::class)
                     );
                 },
+                QuestionService\AnswerOrQuestionDeleted::class => function ($sm) {
+                    return new QuestionService\AnswerOrQuestionDeleted(
+                        $sm->get(QuestionService\Answer\Deleted::class),
+                        $sm->get(QuestionService\Question\Deleted::class),
+                        $sm->get(QuestionService\QuestionFromAnswer::class),
+                    );
+                },
                 QuestionService\Answer\Queue\Insert::class => function ($sm) {
                     return new QuestionService\Answer\Queue\Insert(
                         $sm->get(QuestionTable\AnswerQueue::class)
