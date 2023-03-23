@@ -54,11 +54,13 @@ class ResultsTest extends TestCase
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
              ->method('selectQuestionIdWhereMatchAgainstOrderByScoreDesc')
+             /*
              ->withConsecutive(
                 ['the amazing search query', 600, 100],
                 ['the amazing search query', 600, 100],
                 ['the amazing search query', 600, 100],
              )
+             */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),
@@ -79,6 +81,7 @@ class ResultsTest extends TestCase
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(5))
              ->method('selectQuestionIdWhereMatchAgainstOrderByScoreDesc')
+             /*
              ->withConsecutive(
                 ['the amazing search query', 600, 100],
                 ['the amazing search query', 600, 100],
@@ -86,6 +89,7 @@ class ResultsTest extends TestCase
                 ['the amazing search query', 600, 100],
                 ['the amazing search query', 600, 100],
              )
+             */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),

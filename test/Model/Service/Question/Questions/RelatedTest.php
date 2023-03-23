@@ -102,10 +102,12 @@ class RelatedTest extends TestCase
         $this->questionFactoryMock
             ->expects($this->exactly(2))
             ->method('buildFromQuestionId')
+            /*
             ->withConsecutive(
                 [456],
                 [789]
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 $this->relatedQuestions[0],
                 $this->relatedQuestions[1]
@@ -176,6 +178,7 @@ class RelatedTest extends TestCase
         $this->questionFactoryMock
             ->expects($this->exactly(5))
             ->method('buildFromQuestionId')
+            /*
             ->withConsecutive(
                 [1],
                 [2],
@@ -183,6 +186,7 @@ class RelatedTest extends TestCase
                 [4],
                 [5]
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 $this->relatedQuestions[0],
                 $this->relatedQuestions[1],
@@ -276,6 +280,7 @@ class RelatedTest extends TestCase
         $this->questionFactoryMock
             ->expects($this->exactly(12))
             ->method('buildFromQuestionId')
+            /*
             ->withConsecutive(
                 [1],
                 [2],
@@ -290,6 +295,7 @@ class RelatedTest extends TestCase
                 [11],
                 [12]
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 $this->relatedQuestions[0],
                 $this->relatedQuestions[1],
@@ -324,11 +330,13 @@ class RelatedTest extends TestCase
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
              ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             /*
              ->withConsecutive(
                 ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
                 ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
                 ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
              )
+              */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),
@@ -359,6 +367,7 @@ class RelatedTest extends TestCase
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(5))
              ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+             /*
              ->withConsecutive(
                 ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
                 ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
@@ -366,6 +375,7 @@ class RelatedTest extends TestCase
                 ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
                 ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
              )
+              */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),

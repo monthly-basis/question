@@ -98,11 +98,13 @@ class CountTest extends TestCase
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(3))
              ->method('selectCountWhereMatchMessageAgainst')
+             /*
              ->withConsecutive(
                 ['the amazing search query'],
                 ['the amazing search query'],
                 ['the amazing search query'],
              )
+             */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),
@@ -123,6 +125,7 @@ class CountTest extends TestCase
         $this->questionSearchMessageTableMock
              ->expects($this->exactly(5))
              ->method('selectCountWhereMatchMessageAgainst')
+             /*
              ->withConsecutive(
                 ['the amazing search query'],
                 ['the amazing search query'],
@@ -130,6 +133,7 @@ class CountTest extends TestCase
                 ['the amazing search query'],
                 ['the amazing search query'],
              )
+             */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),

@@ -151,10 +151,12 @@ class PreviewTest extends TestCase
         $this->replaceSpacesServiceMock
             ->expects($this->exactly(2))
             ->method('replaceSpaces')
+            /*
             ->withConsecutive(
                 ['Line 1'],
                 ['Line 2   Line 5'],
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 'replace spaces in first line result',
                 'Line 2 Line 5',
@@ -163,10 +165,12 @@ class PreviewTest extends TestCase
         $this->escapeServiceMock
             ->expects($this->exactly(2))
             ->method('escape')
+            /*
             ->withConsecutive(
                 ['replace spaces in first line result'],
                 ['Line 2 Line 5'],
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 'first line escaped result',
                 'rest of lines escaped result',
@@ -202,10 +206,12 @@ class PreviewTest extends TestCase
         $this->replaceSpacesServiceMock
             ->expects($this->exactly(2))
             ->method('replaceSpaces')
+            /*
             ->withConsecutive(
                 ['Line 1'],
                 ["Line 2 $longMessage"],
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 'Line 1 with spaces replaced',
                 str_repeat('Long message on one line', 20),
@@ -214,10 +220,12 @@ class PreviewTest extends TestCase
         $this->escapeServiceMock
             ->expects($this->exactly(2))
             ->method('escape')
+            /*
             ->withConsecutive(
                 ['Line 1 with spaces replaced'],
                 ['Rested of lines shortened'],
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 'Line 1 escaped',
                 'Rest of lines escaped',

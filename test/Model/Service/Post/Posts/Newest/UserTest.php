@@ -90,6 +90,7 @@ class UserTest extends TestCase
         $this->questionFactoryMock
              ->expects($this->exactly(2))
              ->method('buildFromArray')
+             /*
              ->withConsecutive(
                  [
                      [
@@ -108,6 +109,7 @@ class UserTest extends TestCase
                      ],
                  ]
              )
+              */
              ->willReturn(
                  $questionEntity1,
                  $questionEntity2

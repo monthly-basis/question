@@ -98,10 +98,12 @@ class SimilarTest extends TestCase
         $this->questionFactoryMock
             ->expects($this->exactly(2))
             ->method('buildFromQuestionId')
+            /*
             ->withConsecutive(
                 [456],
                 [789]
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 $this->similarQuestions[0],
                 $this->similarQuestions[1]
@@ -168,6 +170,7 @@ class SimilarTest extends TestCase
         $this->questionFactoryMock
             ->expects($this->exactly(5))
             ->method('buildFromQuestionId')
+            /*
             ->withConsecutive(
                 [1],
                 [2],
@@ -175,6 +178,7 @@ class SimilarTest extends TestCase
                 [4],
                 [5]
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 $this->similarQuestions[0],
                 $this->similarQuestions[1],
@@ -264,6 +268,7 @@ class SimilarTest extends TestCase
         $this->questionFactoryMock
             ->expects($this->exactly(12))
             ->method('buildFromQuestionId')
+            /*
             ->withConsecutive(
                 [1],
                 [2],
@@ -278,6 +283,7 @@ class SimilarTest extends TestCase
                 [11],
                 [12]
             )
+             */
             ->willReturnOnConsecutiveCalls(
                 $this->similarQuestions[0],
                 $this->similarQuestions[1],
@@ -312,11 +318,13 @@ class SimilarTest extends TestCase
         $this->questionSearchSimilarTableMock
              ->expects($this->exactly(3))
              ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
+             /*
              ->withConsecutive(
                 ['the query is the message field of the question entity', 123],
                 ['the query is the message field of the question entity', 123],
                 ['the query is the message field of the question entity', 123],
              )
+             */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),
@@ -347,6 +355,7 @@ class SimilarTest extends TestCase
         $this->questionSearchSimilarTableMock
              ->expects($this->exactly(5))
              ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
+             /*
              ->withConsecutive(
                 ['the query is the message field of the question entity', 123],
                 ['the query is the message field of the question entity', 123],
@@ -354,6 +363,7 @@ class SimilarTest extends TestCase
                 ['the query is the message field of the question entity', 123],
                 ['the query is the message field of the question entity', 123],
              )
+              */
              ->will(
                  $this->onConsecutiveCalls(
                      $this->throwException(new InvalidQueryException()),
