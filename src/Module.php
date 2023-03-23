@@ -487,7 +487,7 @@ class Module
                 },
                 QuestionService\QuestionFromAnswer::class => function ($sm) {
                     return new QuestionService\QuestionFromAnswer(
-                        $sm->get(QuestionFactory\Question::class)
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class)
                     );
                 },
                 QuestionService\NumberOfPostsDeletedByUserId0InLast24Hours::class => function ($sm) {

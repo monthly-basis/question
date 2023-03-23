@@ -7,15 +7,14 @@ use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 class QuestionFromAnswer
 {
     public function __construct(
-        QuestionFactory\Question $questionFactory
+        protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory
     ) {
-        $this->questionFactory = $questionFactory;
     }
 
     public function getQuestionFromAnswer(
         QuestionEntity\Answer $answerEntity
     ): QuestionEntity\Question {
-        return $this->questionFactory->buildFromQuestionId(
+        return $this->fromQuestionIdFactory->buildFromQuestionId(
             $answerEntity->getQuestionId()
         );
     }

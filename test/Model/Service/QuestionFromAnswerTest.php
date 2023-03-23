@@ -1,5 +1,5 @@
 <?php
-namespace MonthlyBasis\QuestionTest\Model\Service\Question;
+namespace MonthlyBasis\QuestionTest\Model\Service;
 
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
@@ -10,32 +10,30 @@ class QuestionFromAnswerTest extends TestCase
 {
     protected function setUp(): void
     {
-        $this->questionFactoryMock = $this->createMock(
-            QuestionFactory\Question::class
+        $this->fromQuestionIdFactoryMock = $this->createMock(
+            QuestionFactory\Question\FromQuestionId::class
         );
         $this->questionFromAnswerService = new QuestionService\QuestionFromAnswer(
-            $this->questionFactoryMock
-        );
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            QuestionService\QuestionFromAnswer::class,
-            $this->questionFromAnswerService
+            $this->fromQuestionIdFactoryMock
         );
     }
 
     public function testGetQuestionFromAnswer()
     {
-        $answerEntity = new QuestionEntity\Answer();
-        $answerEntity->setQuestionId(123);
-        $questionEntity = $this->questionFromAnswerService->getQuestionFromAnswer(
-            $answerEntity
-        );
-        $this->assertInstanceOf(
-            QuestionEntity\Question::class,
-            $questionEntity
+        $answerEntity = (new QuestionEntity\Answer())
+            ->setQuestionId(123);
+        $questionEntity = new QuestionEntity\Question();
+
+        $this->fromQuestionIdFactoryMock
+             ->expects($this->once())
+             ->method('buildFromQuestionId')
+             ->with(123)
+             ->willReturn($questionEntity);
+        $this->assertSame(
+            $questionEntity,
+            $this->questionFromAnswerService->getQuestionFromAnswer(
+                $answerEntity
+            ),
         );
     }
 }
