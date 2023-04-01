@@ -13,25 +13,19 @@ class IncrementViewsTest extends TestCase
         $this->questionTableMock = $this->createMock(
             QuestionTable\Question::class
         );
+
         $this->incrementViewsService = new QuestionService\Question\IncrementViews(
             $this->questionTableMock
         );
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            QuestionService\Question\IncrementViews::class,
-            $this->incrementViewsService
-        );
-    }
-
     public function testIncrementViews()
     {
-        $questionEntity = new QuestionEntity\Question();
-        $questionEntity->setQuestionId(123);
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(123);
 
         $this->questionTableMock
+             ->expects($this->once())
              ->method('updateViewsWhereQuestionId')
              ->willReturn(true);
 

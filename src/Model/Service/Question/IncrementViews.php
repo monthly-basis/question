@@ -6,25 +6,14 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class IncrementViews
 {
-    /**
-     * Construct.
-     *
-     * @param QuestionTable\Question $questionTable
-     */
     public function __construct(
-        QuestionTable\Question $questionTable
+        protected QuestionTable\Question $questionTable
     ) {
-        $this->questionTable = $questionTable;
     }
 
-    /**
-     * Increment views.
-     *
-     * @param QuestionEntity\Question $questionEntity
-     * @return bool
-     */
-    public function incrementViews(QuestionEntity\Question $questionEntity)
-    {
+    public function incrementViews(
+        QuestionEntity\Question $questionEntity
+    ): bool {
         return $this->questionTable->updateViewsWhereQuestionId(
             $questionEntity->getQuestionId()
         );
