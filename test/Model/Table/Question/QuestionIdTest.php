@@ -50,6 +50,55 @@ class QuestionIdTest extends TableTestCase
         );
     }
 
+    public function test_updateAnswerCountCachedWhereQuestionId()
+    {
+        $result = $this->questionIdTable->updateAnswerCountCachedWhereQuestionId(
+            1
+        );
+
+        $this->assertSame(
+            0,
+            $result->getAffectedRows()
+        );
+
+        $this->questionTable->insertDeprecated(
+            null,
+            'name',
+            'subject',
+            'message',
+            'ip',
+            'name',
+            'ip'
+        );
+        $result = $this->questionIdTable->updateAnswerCountCachedWhereQuestionId(
+            1
+        );
+
+        $this->assertSame(
+            1,
+            $result->getAffectedRows()
+        );
+
+        $result = $this->questionIdTable->updateAnswerCountCachedWhereQuestionId(
+            1
+        );
+        $select = $this->sql
+            ->select()
+            ->columns([
+                'answer_count_cached'
+            ])
+            ->from('question')
+            ->where([
+                'question_id' => 1,
+            ])
+            ;
+        $array = $this->sql->prepareStatementForSqlObject($select)->execute()->current();
+        $this->assertSame(
+            2,
+            $array['answer_count_cached']
+        );
+    }
+
     public function testUpdateSetDeletedColumnsWhereQuestionId()
     {
         $rowsAffected = $this->questionIdTable->updateSetDeletedColumnsWhereQuestionId(

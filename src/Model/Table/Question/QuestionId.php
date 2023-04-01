@@ -31,6 +31,22 @@ class QuestionId
         return $this->adapter->query($sql)->execute($parameters);
     }
 
+    public function updateAnswerCountCachedWhereQuestionId(
+        int $questionId
+    ): Result {
+        $sql = '
+            UPDATE `question`
+               SET `answer_count_cached` = `answer_count_cached` + 1
+             WHERE `question_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $questionId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
+
     public function updateSetCreatedNameWhereQuestionId(
         string $createdName,
         int $questionId
