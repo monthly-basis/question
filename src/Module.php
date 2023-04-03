@@ -530,6 +530,11 @@ class Module
                         $sm->get(QuestionTable\Question\MessageDeletedDatetimeCreatedDatetime::class)
                     );
                 },
+                QuestionService\Question\IncrementAnswerCountCached::class => function ($sm) {
+                    return new QuestionService\Question\IncrementAnswerCountCached(
+                        $sm->get(QuestionTable\Question\QuestionId::class)
+                    );
+                },
                 QuestionService\Question\IncrementViews::class => function ($sm) {
                     return new QuestionService\Question\IncrementViews(
                         $sm->get(QuestionTable\Question::class)
