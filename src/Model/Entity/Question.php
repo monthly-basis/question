@@ -42,6 +42,11 @@ class Question extends QuestionEntity\Post
         return isset($this->$name);
     }
 
+    public function __set(string $name, mixed $value): void
+    {
+        $this->$name = $value;
+    }
+
     public function getAnswerCountCached(): int
     {
         return $this->answerCountCached;

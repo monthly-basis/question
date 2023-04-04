@@ -35,6 +35,15 @@ class QuestionTest extends TestCase
         );
     }
 
+    public function test___set()
+    {
+        $this->questionEntity->views = 123;
+        $this->assertSame(
+            123,
+            $this->questionEntity->getViews()
+        );
+    }
+
     public function test_settersAndGetters()
     {
         $answerCountCached = 726;
