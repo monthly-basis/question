@@ -12,6 +12,16 @@ class AnswerTest extends TestCase
         $this->answerEntity = new QuestionEntity\Answer();
     }
 
+    public function test___get()
+    {
+        $this->assertNull($this->answerEntity->views);
+        $this->answerEntity->setViews(123);
+        $this->assertSame(
+            123,
+            $this->answerEntity->views
+        );
+    }
+
     public function test___isset()
     {
         $this->assertFalse(
@@ -22,6 +32,15 @@ class AnswerTest extends TestCase
 
         $this->assertTrue(
             isset($this->answerEntity->createdName)
+        );
+    }
+
+    public function test___set()
+    {
+        $this->answerEntity->views = 123;
+        $this->assertSame(
+            123,
+            $this->answerEntity->getViews()
         );
     }
 
