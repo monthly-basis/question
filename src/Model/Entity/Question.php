@@ -32,6 +32,11 @@ class Question extends QuestionEntity\Post
 
     protected $views;
 
+    public function __get($name): mixed
+    {
+        return $this->$name;
+    }
+
     public function __isset($name): bool
     {
         return isset($this->$name);
