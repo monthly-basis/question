@@ -19,7 +19,7 @@ class Visitor
     {
         $questionId = $this->questionTable->insertDeprecated(
             null,
-            $_POST['subject'],
+            $_POST['subject'] ?? null,
             $_POST['message'],
             $_POST['name'],
             $_SERVER['REMOTE_ADDR']
