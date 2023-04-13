@@ -8,11 +8,9 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class Visitor
 {
     public function __construct(
-        QuestionFactory\Question $questionFactory,
-        QuestionTable\Question $questionTable
+        protected QuestionFactory\Question $questionFactory,
+        protected QuestionTable\Question $questionTable
     ) {
-        $this->questionFactory = $questionFactory;
-        $this->questionTable   = $questionTable;
     }
 
     public function insert(): QuestionEntity\Question
