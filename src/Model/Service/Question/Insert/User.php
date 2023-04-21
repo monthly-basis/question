@@ -21,7 +21,7 @@ class User
     ): QuestionEntity\Question {
         $questionId = $this->questionTable->insertDeprecated(
             $userEntity->getUserId(),
-            $_POST['subject'],
+            $_POST['subject'] ?? null,
             $_POST['message'],
             $_POST['name'],
             $_SERVER['REMOTE_ADDR']
