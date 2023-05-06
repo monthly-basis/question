@@ -386,6 +386,12 @@ class Module
                         $sm->get(QuestionService\Answer\RootRelativeUrl::class),
                     );
                 },
+                QuestionService\Answers\User::class => function ($sm) {
+                    return new QuestionService\Answers\User(
+                        $sm->get(QuestionFactory\Answer::class),
+                        $sm->get(QuestionTable\Answer::class),
+                    );
+                },
                 QuestionService\Post\CanBeUndeleted::class => function ($sm) {
                     return new QuestionService\Post\CanBeUndeleted(
                         $sm->get(GroupService\LoggedInUserInGroupName::class),
