@@ -234,6 +234,36 @@ class Answer extends LaminasDb\Table
         }
     }
 
+    public function selectWhereUserIdOrderByCreatedDatetimeDesc(
+        int $userId,
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
+        $sql = $this->getSelect()
+             . '
+              FROM `answer`
+
+              JOIN `question`
+             USING (`question_id`)
+
+             WHERE `answer`.`user_id` = ?
+               AND `answer`.`deleted_datetime` IS NULL
+               AND `question`.`deleted_datetime` IS NULL
+
+             ORDER
+                BY `question`.`created_datetime` DESC
+
+             LIMIT ?, ?
+                 ;
+        ';
+        $parameters = [
+            $userId,
+            $limitOffset,
+            $limitRowCount,
+        ];
+        return $this->getAdapter()->query($sql)->execute($parameters);
+    }
+
     public function updateWhereAnswerId(
         string $name = null,
         string $message,
