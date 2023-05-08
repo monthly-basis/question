@@ -714,6 +714,12 @@ class Module
                         $sm->get(QuestionService\Question\RootRelativeUrl::class)
                     );
                 },
+                QuestionService\Questions\User::class => function ($sm) {
+                    return new QuestionService\Questions\User(
+                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionTable\Question::class),
+                    );
+                },
                 QuestionService\Question\Views\Increment\Conditionally::class => function ($sm) {
                     return new QuestionService\Question\Views\Increment\Conditionally(
                         $sm->get(MemcachedService\Memcached::class),
