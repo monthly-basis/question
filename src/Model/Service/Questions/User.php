@@ -24,7 +24,7 @@ class User
             100
         );
         foreach ($result as $array) {
-            yield $this->answerFactory->buildFromArray($array);
+            yield $this->questionFactory->buildFromArray($array);
         }
     }
 }
