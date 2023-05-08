@@ -210,6 +210,14 @@ class QuestionTest extends TableTestCase
         );
     }
 
+    public function test_selectWhereUserIdOrderByCreatedDatetimeDesc()
+    {
+        $generator = $this->questionTable->selectWhereUserIdOrderByCreatedDatetimeDesc(1, 0, 100);
+        $this->assertEmpty(
+            iterator_to_array($generator)
+        );
+    }
+
     public function test_updateWhereQuestionId()
     {
         $this->questionTable->insertDeprecated(

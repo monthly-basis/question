@@ -249,6 +249,32 @@ class Question extends LaminasDb\Table
         }
     }
 
+    public function selectWhereUserIdOrderByCreatedDatetimeDesc(
+        int $userId,
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
+        $sql = $this->getSelect()
+             . '
+              FROM `question`
+
+             WHERE `question`.`user_id` = ?
+               AND `question`.`deleted_datetime` IS NULL
+
+             ORDER
+                BY `question`.`created_datetime` DESC
+
+             LIMIT ?, ?
+                 ;
+        ';
+        $parameters = [
+            $userId,
+            $limitOffset,
+            $limitRowCount,
+        ];
+        return $this->getAdapter()->query($sql)->execute($parameters);
+    }
+
     public function updateViewsWhereQuestionId(int $questionId) : bool
     {
         $sql = '
