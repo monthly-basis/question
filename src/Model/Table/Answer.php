@@ -206,7 +206,6 @@ class Answer extends LaminasDb\Table
         int $limitOffset,
         int $limitRowCount
     ): Generator {
-
         $sql = $this->getSelect()
              . '
               FROM `answer`
