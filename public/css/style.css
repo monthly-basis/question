@@ -1,0 +1,41 @@
+body {
+    font-family: sans-serif;
+    font-size: 20px;
+    margin: 0;
+    background-color: #eee;
+}
+h1 {
+    font-size: 40px;
+    line-height: 50px;
+    margin: -5px 0;
+}
+header, footer {
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+    header a:visited {
+        color: #00f;
+    }
+    header .column {
+        align-self: flex-end;
+    }
+input {
+    font-size: 20px;
+}
+.columns {
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1348px;
+}
+    .columns.one-column .column {
+        width: 100%;
+    }
+.panel {
+    padding: 10px;
+    background-color: #fff;
+}
+    .panel *:last-child {
+        margin-bottom: 0;
+    }
