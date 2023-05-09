@@ -1,0 +1,31 @@
+<?php
+$htmlHeadTitle = isset($this->htmlHeadTitle)
+               ? $this->htmlHeadTitle
+               : 'Question HTTPS';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?= $this->escape($htmlHeadTitle); ?></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header class="columns two-columns">
+        <div class="column">
+            <h1>Question HTTPS</h1>
+        </div>
+        <div class="column">
+            <a href="/questions/ask">Ask a New Question</a>
+        </div>
+    </header>
+    <main class="columns one-column">
+        <div class="column">
+            <?= $this->content ?>
+        </div>
+    </main>
+    <footer class="columns">
+        &copy; 2021 Monthly Basis
+    </footer>
+</body>
+</html>
