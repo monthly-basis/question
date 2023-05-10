@@ -1,5 +1,5 @@
 <?php
-namespace MonthlyBasis\QuestionHttps\Controller\Questions;
+namespace MonthlyBasis\Question\Controller\Questions;
 
 use Laminas\Mvc\Controller\AbstractActionController;
 
