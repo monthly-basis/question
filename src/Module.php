@@ -31,11 +31,6 @@ class Module
             'controllers' => include __DIR__ . '/../config/module.controllers.config.php',
             'router' => include __DIR__ . '/../config/module.router.config.php',
             'view_manager' => [
-                'display_exceptions' => true,
-                'display_not_found_reason' => true,
-                'doctype'                  => 'HTML5',
-                'not_found_template'       => 'error/404',
-                'exception_template'       => 'error/index',
                 'template_path_stack' => [
                     'monthly-basis/question' => __DIR__ . '/../view',
                 ],
