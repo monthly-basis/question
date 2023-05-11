@@ -2,8 +2,11 @@
 namespace MonthlyBasis\Question;
 
 use Laminas\Db as LaminasDb;
+use Laminas\Router\Http\Literal;
+use Laminas\Router\Http\Segment;
 use MonthlyBasis\ContentModeration\View\Helper as ContentModerationHelper;
 use MonthlyBasis\Group\Model\Service as GroupService;
+use MonthlyBasis\Question\Controller as QuestionController;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
@@ -24,7 +27,26 @@ class Module
 {
     public function getConfig()
     {
-        return [
+        $config = [
+            'controllers' => include __DIR__ . '/../config/module.controllers.config.php',
+            'router' => include __DIR__ . '/../config/module.router.config.php',
+            'view_manager' => [
+                'display_exceptions' => true,
+                'display_not_found_reason' => true,
+                'doctype'                  => 'HTML5',
+                'not_found_template'       => 'error/404',
+                'exception_template'       => 'error/index',
+                'template_map' => [
+                    'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+                    'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+                    'error/404'               => __DIR__ . '/../view/error/404.phtml',
+                    'error/index'             => __DIR__ . '/../view/error/index.phtml',
+                ],
+                'template_path_stack' => [
+                    'monthly-basis/question' => __DIR__ . '/../view',
+                ],
+            ],
+
             'view_helpers' => [
                 'aliases' => [
                     'canBeUndeleted'                => QuestionHelper\Post\CanBeUndeleted::class,
@@ -174,6 +196,8 @@ class Module
                 ],
             ],
         ];
+
+        return $config;
     }
 
     public function getServiceConfig()
