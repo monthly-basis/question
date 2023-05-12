@@ -4,18 +4,6 @@ use MonthlyBasis\Question\Controller as QuestionController;
 
 return [
     'routes' => [
-        'monthly-basis/question' => [
-            'type' => Literal::class,
-            'options' => [
-                'route'    => '/',
-                'defaults' => [
-                    'controller' => QuestionController\Index::class,
-                    'action'     => 'index',
-                ],
-            ],
-            'priority' => -1,
-            'may_terminate' => true,
-        ],
         'monthly-basis/question/questions' => [
             'type' => Literal::class,
             'options' => [
