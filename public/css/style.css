@@ -21,8 +21,18 @@ header, footer {
         align-self: flex-end;
     }
 input {
+    display: block;
     font-size: 20px;
+    padding: 7px;
+    border: 1px solid #333;
+    border-radius: 4px;
 }
+    input[type=submit] {
+
+    }
+    input[type=submit]:active {
+        background-color: #fff;
+    }
 .columns {
     margin: 0 auto 10px;
     display: flex;
@@ -39,3 +49,8 @@ input {
     .panel *:last-child {
         margin-bottom: 0;
     }
+textarea {
+    display: block;
+    width: 800px;
+    height: 200px;
+}
