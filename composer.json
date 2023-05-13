@@ -19,6 +19,7 @@
         "monthly-basis/string": "^3.0",
         "monthly-basis/superglobal": "^2.0",
         "monthly-basis/user": "^3.0",
-        "monthly-basis/vote": "^2.0"
+        "monthly-basis/vote": "^2.0",
+        "orhanerday/open-ai": "^4.0"
     }
 }
