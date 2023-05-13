@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\Question\Model\Service\Question\Insert;
 
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
@@ -15,14 +16,14 @@ class Visitor
 
     public function insert(): QuestionEntity\Question
     {
-        $questionId = $this->questionTable->insertDeprecated(
-            null,
-            $_POST['subject'] ?? null,
-            $_POST['message'],
-            $_POST['name'],
-            $_SERVER['REMOTE_ADDR']
-        );
+        $result = $this->questionTable->insert([
+            'message'    => $_POST['message'],
+            'name'       => $_POST['name'],
+            'created_ip' => $_SERVER['REMOTE_ADDR'],
+        ]);
 
-        return $this->questionFactory->buildFromQuestionId($questionId);
+        return $this->questionFactory->buildFromQuestionId(
+            $result->getGeneratedValue()
+        );
     }
 }
