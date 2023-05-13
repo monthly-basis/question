@@ -29,7 +29,7 @@ return [
         QuestionController\Questions\View::class => function ($sm) {
             return new QuestionController\Questions\View(
                 $sm->get(QuestionFactory\Answer::class),
-                $sm->get(QuestionFactory\Question::class),
+                $sm->get(QuestionFactory\Question\FromSlug::class),
                 $sm->get(QuestionService\Answer\Answers::class),
                 $sm->get(QuestionService\Question\Questions\Related::class),
                 $sm->get(QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert::class),

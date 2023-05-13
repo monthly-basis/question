@@ -18,7 +18,7 @@ class View extends AbstractActionController
 {
     public function __construct(
         protected QuestionFactory\Answer $answerFactory,
-        protected QuestionFactory\Question $questionFactory,
+        protected QuestionFactory\Question\FromSlug $questionFromSlugFactory,
         protected QuestionService\Answer\Answers $answersService,
         protected QuestionService\Question\Questions\Related $relatedService,
         protected QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert $conditionallyInsertService,
@@ -29,10 +29,10 @@ class View extends AbstractActionController
 
     public function viewAction()
     {
-        $questionId = $this->params()->fromRoute('questionId');
+        $slug = $this->params()->fromRoute('slug');
 
-        $questionEntity = $this->questionFactory->buildFromQuestionId(
-            $questionId
+        $questionEntity = $this->questionFromSlugFactory->buildFromSlug(
+            $slug
         );
 
         $url = $this->urlService->getUrl($questionEntity);

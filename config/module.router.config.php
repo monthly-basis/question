@@ -19,7 +19,7 @@ return [
                 'view' => [
                     'type' => Regex::class,
                     'options' => [
-                        'regex'    => '/[\w\-]+',
+                        'regex'    => '/(?<slug>[\w\-]+)',
                         'defaults' => [
                             'controller' => QuestionController\Questions\View::class,
                             'action'     => 'view',
