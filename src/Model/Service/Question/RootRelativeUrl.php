@@ -17,17 +17,15 @@ class RootRelativeUrl
     public function getRootRelativeUrl(
         QuestionEntity\Question $questionEntity
     ): string {
-        $rootRelativeUrl = '/'
-            . $questionEntity->getQuestionId()
-            . '/'
-            . $this->slugService->getSlug($questionEntity);
-
-        $pathBeforeQuestionId
+        $rootRelativeUrl
             = $this->configEntity['question']['root-relative-url']['path-before-question-id']
             ?? '/questions'
             ;
 
-        $rootRelativeUrl = $pathBeforeQuestionId . $rootRelativeUrl;
+        $rootRelativeUrl .= '/'
+            . $questionEntity->getQuestionId()
+            . '/'
+            . $this->slugService->getSlug($questionEntity);
 
         return $rootRelativeUrl;
     }
