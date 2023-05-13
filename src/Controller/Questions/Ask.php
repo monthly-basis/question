@@ -9,6 +9,7 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
+use Orhanerday\OpenAi\OpenAi;
 
 class Ask extends AbstractActionController
 {
@@ -95,7 +96,7 @@ class Ask extends AbstractActionController
         $open_ai->setTimeout(170);
 
         $completeJson = $open_ai->chat([
-            'model' => 'gpt-3.5-turbo',
+            'model' => 'gpt-4',
             'messages' => [
                 ["role" => "user", "content" => $questionEntity->getMessage()]
             ],
