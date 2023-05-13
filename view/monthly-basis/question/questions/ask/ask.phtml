@@ -1,10 +1,29 @@
 <?php
 $this->layout()->setVariables([
+    'jsKeys'        => ['question-form'],
     'htmlHeadTitle' => 'Ask a New Question',
 ]);
+
+$cookieName   = $_COOKIE['name'] ?? '';
+$flashService = $this->flash();
 ?>
 <div class="panel">
     <h1>Ask a New Question</h1>
 
-    <p>The ask form will go here.</p>
+    <form class="question" action="/questions/ask" method="post">
+        <p>
+            <label for="message">Question</label>
+            <textarea name="message" id="message"><?= $this->escape($flashService->get('message') ?? ''); ?></textarea>
+        </p>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php if (!empty($errors = $flashService->get('errors'))): ?>
+        <ol class="errors">
+            <?php foreach ($errors as $error): ?>
+                <li><?= $this->escape($error); ?></li>
+            <?php endforeach ?>
+        </ol>
+    <?php endif ?>
 </div>
