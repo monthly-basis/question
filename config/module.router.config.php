@@ -16,6 +16,18 @@ return [
             'priority' => -1,
             'may_terminate' => true,
             'child_routes' => [
+                'view' => [
+                    'type' => Regex::class,
+                    'options' => [
+                        'regex'    => '/[\w\-]+',
+                        'defaults' => [
+                            'controller' => QuestionController\Questions\View::class,
+                            'action'     => 'view',
+                        ],
+                        'spec' => '',
+                    ],
+                    'may_terminate' => true,
+                ],
                 'ask' => [
                     'type' => Literal::class,
                     'options' => [

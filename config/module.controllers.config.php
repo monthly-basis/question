@@ -26,5 +26,9 @@ return [
                 $sm->get(QuestionTable\Answer::class),
             );
         },
+        QuestionController\Questions\View::class => function ($sm) {
+            return new QuestionController\Questions\View(
+            );
+        },
     ],
 ];
