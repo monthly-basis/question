@@ -106,6 +106,7 @@ class RootRelativeUrlTest extends TestCase
     {
         $this->configEntity['question'] = [
             'root-relative-url' => [
+                'include-question-id'     => false,
                 'path-before-question-id' => '/my/custom/path',
             ],
         ];
@@ -123,7 +124,7 @@ class RootRelativeUrlTest extends TestCase
             ;
 
         $this->assertSame(
-            '/my/custom/path/12345/my-question-title',
+            '/my/custom/path/my-question-title',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }

@@ -22,9 +22,14 @@ class RootRelativeUrl
             ?? '/questions'
             ;
 
+        $includeQuestionId = $this->configEntity['question']['root-relative-url']['include-question-id'] ?? true;
+
+        if ($includeQuestionId) {
+            $rootRelativeUrl .= '/'
+                . $questionEntity->getQuestionId();
+        }
+
         $rootRelativeUrl .= '/'
-            . $questionEntity->getQuestionId()
-            . '/'
             . $this->slugService->getSlug($questionEntity);
 
         return $rootRelativeUrl;
