@@ -17,9 +17,9 @@ class Visitor
     public function insert(): QuestionEntity\Question
     {
         $result = $this->questionTable->insert([
-            'message'    => $_POST['message'],
-            'name'       => $_POST['name'],
-            'created_ip' => $_SERVER['REMOTE_ADDR'],
+            'message'      => $_POST['message'],
+            'created_name' => $_POST['name'],
+            'created_ip'   => $_SERVER['REMOTE_ADDR'],
         ]);
 
         return $this->questionFactory->buildFromQuestionId(

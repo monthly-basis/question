@@ -47,9 +47,9 @@ class VisitorTest extends TestCase
             ->expects($this->once())
             ->method('insert')
             ->with([
-                'message'    => 'message',
-                'name'       => 'name',
-                'created_ip' => '1.2.3.4',
+                'message'      => 'message',
+                'created_name' => 'name',
+                'created_ip'   => '1.2.3.4',
             ])
             ->willReturn($resultMock)
             ;
