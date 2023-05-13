@@ -4,7 +4,7 @@ use MonthlyBasis\Question\Controller as QuestionController;
 
 return [
     'routes' => [
-        'monthly-basis/question/questions' => [
+        'questions' => [
             'type' => Literal::class,
             'options' => [
                 'route'    => '/questions',
