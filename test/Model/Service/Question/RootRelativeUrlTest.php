@@ -10,8 +10,17 @@ class RootRelativeUrlTest extends TestCase
 {
     protected function setUp(): void
     {
-        $configPath  = $_SERVER['PWD'] . '/config/autoload/local.php';
-        $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
+        $configArray = [
+            'answer' => [
+
+            ],
+            'question' => [
+                'root-relative-url' => [
+                    'path-before-question-id' => '/path/before/question-id',
+                ],
+            ],
+            'sleep-when-result-unavailable' => 0,
+        ];
         $this->configEntity = new QuestionEntity\Config(
             $configArray
         );
