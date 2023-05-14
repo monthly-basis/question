@@ -705,6 +705,12 @@ class Module
                         $sm->get(StringService\UrlFriendly::class)
                     );
                 },
+                QuestionService\Question\Slug\FromMessage::class => function ($sm) {
+                    return new QuestionService\Question\Slug\FromMessage(
+                        $sm->get(StringService\StripTagsAndShorten::class),
+                        $sm->get(StringService\UrlFriendly::class),
+                    );
+                },
                 QuestionService\Question\Submit::class => function ($sm) {
                     return new QuestionService\Question\Submit(
                         $sm->get(FlashService\Flash::class),
