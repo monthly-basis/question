@@ -70,7 +70,9 @@ class Ask extends AbstractActionController
             'Question successfully posted! <a href="/questions/ask" style="color: blue; white-space: nowrap;">Ask another question.</a>'
         );
 
-        $questionEntity = $this->visitorInsertQuestionService->insert();
+        $questionEntity = $this->visitorInsertQuestionService->insert(
+            withSlug: true,
+        );
 
         $message = $this->getMessage($questionEntity);
         $message = trim($message);
