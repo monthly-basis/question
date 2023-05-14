@@ -494,7 +494,8 @@ class Module
                 QuestionService\Question\Insert\Visitor::class => function ($sm) {
                     return new QuestionService\Question\Insert\Visitor(
                         $sm->get(QuestionFactory\Question::class),
-                        $sm->get(QuestionTable\Question::class)
+                        $sm->get(QuestionService\Question\Slug\FromMessage::class),
+                        $sm->get(QuestionTable\Question::class),
                     );
                 },
                 QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert::class => function ($sm) {
