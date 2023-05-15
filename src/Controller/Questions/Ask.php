@@ -94,7 +94,7 @@ class Ask extends AbstractActionController
     protected function getMessage(QuestionEntity\Question $questionEntity): string
     {
         ini_set('max_execution_time', 180);
-        $open_ai = new OpenAi($this->openAiConfig['key']);
+        $open_ai = new OpenAi($this->openAiConfig['secret-key']);
         $open_ai->setTimeout(170);
 
         $completeJson = $open_ai->chat([
