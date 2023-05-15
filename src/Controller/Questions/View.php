@@ -10,9 +10,6 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\String\Model\Service as StringService;
-use MonthlyBasis\Vote\Model\Factory as VoteFactory;
-use MonthlyBasis\Vote\Model\Service as VoteService;
-use TypeError;
 
 class View extends AbstractActionController
 {
@@ -49,7 +46,6 @@ class View extends AbstractActionController
         );
         $answerEntities = $this->answersService->getAnswers(
             questionEntity: $questionEntity,
-            withVotes: true,
         );
 
         $answerEntityIds = [];
