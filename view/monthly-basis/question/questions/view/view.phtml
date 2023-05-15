@@ -1,0 +1,44 @@
+<?php
+$questionTitle         = $this->getQuestionTitle($questionEntity);
+$answerEntitiesCount   = count($answerEntities);
+$numberOfAnswerPages   = ceil($answerEntitiesCount / 20);
+
+$jsKeys = [
+    'js',
+    'questions',
+    'answer-form',
+];
+
+$this->layout()->setVariables([
+    'cssKeys'                  => ['question'],
+    'htmlHeadTitle'            => $questionTitle,
+    'htmlHeadLinkRelCanonical' => $this->getQuestionUrl($questionEntity),
+    'htmlHeadMetaDescription'  => $this->stripTagsAndShorten(
+                                      html_entity_decode($this->getQuestionHeadlineAndMessage($questionEntity)),
+                                      160
+                                  ),
+    'jsKeys'                   => $jsKeys,
+]);
+
+$questionEntityViewsNumberFormat = number_format($questionEntity->getViews());
+?>
+<section id="question" class="panel" data-question-id="<?= $questionEntity->getQuestionId(); ?>">
+    <?= $this->getQuestionMessageHtml($questionEntity); ?>
+</section>
+
+<?php if ($answerEntitiesCount): ?>
+<section id="answers">
+    <div class="panel">
+        <h2><?= $answerEntitiesCount ?> <?= ($answerEntitiesCount > 1) ? 'answers' : 'answer' ?></h2>
+    </div>
+    <ol class="panels answers">
+        <?= $this->partial(
+            'monthly-basis/question/questions/view/answers',
+            [
+                'answerEntities'   => $answerEntities,
+            ]
+        );
+        ?>
+    </ol>
+</section>
+<?php endif ?>
