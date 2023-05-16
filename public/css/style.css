@@ -38,6 +38,26 @@ input {
     input[type=submit]:active {
         background-color: #fff;
     }
+ol.panels {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+    ol.panels li {
+        padding: 12px;
+        background-color: #fff;
+    }
+p.message {
+    margin: 0;
+}
+section#question {
+    margin-bottom: 12px;
+}
+textarea {
+    display: block;
+    width: 800px;
+    height: 200px;
+}
 .columns {
     margin: 0 auto 12px;
     display: flex;
@@ -50,18 +70,8 @@ input {
 .panel {
     padding: 12px;
     background-color: #fff;
+    margin-bottom: 12px;
 }
     .panel *:last-child {
         margin-bottom: 0;
     }
-    .panel + .panel {
-        margin-top: 12px;
-    }
-section#question {
-    margin-bottom: 12px;
-}
-textarea {
-    display: block;
-    width: 800px;
-    height: 200px;
-}
