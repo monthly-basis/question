@@ -1,0 +1,6 @@
+<?php foreach ($answerEntities as $answerEntity): ?>
+    <?php $messageHtml = $this->toHtml($answerEntity->getMessage()); ?>
+    <li id="<?= $answerEntity->getAnswerId() ?>" class="answer" data-answer-id="<?= $answerEntity->getAnswerId(); ?>">
+        <p class="message"><?= $messageHtml ?></p>
+    </li>
+<?php endforeach ?>
