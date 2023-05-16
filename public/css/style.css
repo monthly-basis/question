@@ -6,12 +6,17 @@ body {
 }
 h1 {
     font-size: 40px;
-    line-height: 50px;
-    margin: -5px 0;
+    line-height: 44px;
+    margin: 0;
+}
+h2 {
+    font-size: 35px;
+    line-height: 39px;
+    margin: 0;
 }
 header, footer {
     background-color: #fff;
-    padding: 10px;
+    padding: 12px;
     box-sizing: border-box;
 }
     header a:visited {
@@ -34,7 +39,7 @@ input {
         background-color: #fff;
     }
 .columns {
-    margin: 0 auto 10px;
+    margin: 0 auto 12px;
     display: flex;
     justify-content: space-between;
     max-width: 1348px;
@@ -43,15 +48,18 @@ input {
         width: 100%;
     }
 .panel {
-    padding: 10px;
+    padding: 12px;
     background-color: #fff;
 }
     .panel *:last-child {
         margin-bottom: 0;
     }
     .panel + .panel {
-        margin-top: 10px;
+        margin-top: 12px;
     }
+section#question {
+    margin-bottom: 12px;
+}
 textarea {
     display: block;
     width: 800px;
