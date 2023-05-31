@@ -12,7 +12,9 @@ return [
             return new QuestionController\Index();
         },
         QuestionController\Questions::class => function ($sm) {
-            return new QuestionController\Questions();
+            return new QuestionController\Questions(
+                $sm->get(QuestionService\Question\Questions\Newest::class),
+            );
         },
         QuestionController\Questions\Ask::class => function ($sm) {
             return new QuestionController\Questions\Ask(
