@@ -1,6 +1,9 @@
-<?php
-?>
-
 <div class="panel">
     <h1>Questions</h1>
 </div>
+<?= $this->partial(
+    'monthly-basis/question/questions/ol',
+    [
+        'questionEntities' => $newestQuestions,
+    ]
+) ?>
