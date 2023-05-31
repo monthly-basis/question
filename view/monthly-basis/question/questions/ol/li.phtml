@@ -1,0 +1,49 @@
+<?php
+use MonthlyBasis\Question\Model\Exception as QuestionException;
+
+/*
+ * @param QuestionEntity\Question $questionEntity
+ * @param bool $showTags = true
+ */
+$showTags = $showTags ?? true;
+
+$rootRelativeUrl = $this->getQuestionRootRelativeUrl(
+    $questionEntity
+);
+
+try {
+    $authorHtml = $this->getQuestionAuthorHtml($questionEntity);
+} catch (QuestionException) {
+    // Do nothing.
+}
+
+?>
+<li>
+    <a href="<?= $rootRelativeUrl ?>">
+        <?= $this->getQuestionPreviewHtml($questionEntity); ?>
+    </a>
+    <?php if ($showTags): ?>
+        <?php
+            $answersRru = $rootRelativeUrl . '#answers';
+            $answersInnerHtml = '<a href="' . $this->escape($answersRru) . '">'
+                . $questionEntity->getAnswerCountCached()
+                . ' '
+                . (($questionEntity->getAnswerCountCached() == 1) ? 'answer' : 'answers')
+                . '</a>';
+        ?>
+        <aside class="tags">
+            <ol>
+                <?php if ($questionEntity->getAnswerCountCached() > 0): ?>
+                    <li><?= $answersInnerHtml ?></li>
+                <?php endif ?>
+                <?php if (isset($authorHtml)): ?>
+                    <li>asked by <?= $authorHtml ?></li>
+                <?php endif ?>
+                <li><?= number_format($questionEntity->getViews()); ?> <?= ($questionEntity->getViews() == 1) ? 'view' : 'views' ?></li>
+                <?php if ($questionEntity->getAnswerCountCached() == 0): ?>
+                    <li><?= $answersInnerHtml ?></li>
+                <?php endif ?>
+            </ol>
+        </aside>
+    <?php endif ?>
+</li>

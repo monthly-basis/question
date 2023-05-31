@@ -1,0 +1,20 @@
+<?php
+/*
+ * @param array $questionEntities
+ * @param bool $showCategoryTag
+ * @param bool $showTimestamp
+ */
+?>
+<ol class="panels posts">
+    <?php foreach ($questionEntities as $questionEntity): ?>
+        <?php
+        echo $this->partial(
+            'monthly-basis/question/questions/ol/li',
+            [
+                'questionEntity'  => $questionEntity,
+            ]
+        );
+        ?>
+        <?php $iteration++; ?>
+    <?php endforeach ?>
+</ol>
