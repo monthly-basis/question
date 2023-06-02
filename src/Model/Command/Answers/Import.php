@@ -46,6 +46,11 @@ class Import extends Command
             echo "Iteration $iteration of $iterations\n";
             echo "Importing answer...\n";
             $questionArray = $this->selectQuestion()->current();
+
+            if (empty($questionArray)) {
+                break;
+            }
+
             var_dump($questionArray);
             $this->insertIntoLog($questionArray['question_id']);
             $answerMessage = $this->getAnswerMessage($questionArray);
