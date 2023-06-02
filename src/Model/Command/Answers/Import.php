@@ -86,7 +86,6 @@ class Import extends Command
     {
         $sql = '
             SELECT `question`.`question_id`
-                 , `question`.`subject`
                  , `question`.`message`
 
               FROM `question`
@@ -126,7 +125,7 @@ class Import extends Command
 
     protected function getAnswerMessage(array $questionArray): string
     {
-        $open_ai = new OpenAi($this->openAiConfig['key']);
+        $open_ai = new OpenAi($this->openAiConfig['secret-key']);
         $open_ai->setTimeout(600);
 
         $messages = [
