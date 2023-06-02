@@ -7,6 +7,7 @@ use Laminas\Router\Http\Segment;
 use MonthlyBasis\ContentModeration\View\Helper as ContentModerationHelper;
 use MonthlyBasis\Group\Model\Service as GroupService;
 use MonthlyBasis\Question\Controller as QuestionController;
+use MonthlyBasis\Question\Model\Command as QuestionCommand;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
@@ -29,6 +30,8 @@ class Module
     {
         $config = [
             'controllers' => include __DIR__ . '/../config/module.controllers.config.php',
+            'laminas-cli' => include __DIR__ . '/../config/module.laminas-cli.config.php',
+
             'router' => include __DIR__ . '/../config/module.router.config.php',
             'view_manager' => [
                 'template_path_stack' => [
@@ -202,6 +205,12 @@ class Module
                     return new LaminasDb\TableGateway\TableGateway(
                         'question_view_not_bot_log',
                         $sm->get('question')
+                    );
+                },
+                QuestionCommand\Answers\Import::class => function ($sm) {
+                    return new QuestionCommand\Answers\Import(
+                        $sm->get('config')['monthly-basis']['open-ai'],
+                        $sm->get(QuestionDb\Sql::class),
                     );
                 },
                 QuestionDb\Sql::class => function ($sm) {
