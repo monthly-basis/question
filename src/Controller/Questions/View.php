@@ -63,7 +63,7 @@ class View extends AbstractActionController
         return [
             'answerEntities'   => $answerEntities,
             'questionEntity'   => $questionEntity,
-            'relatedQuestions' => iterator_to_array($relatedQuestions),
+            'relatedQuestions' => $relatedQuestions,
         ];
     }
 }

@@ -19,6 +19,9 @@ header, footer {
     padding: 12px;
     box-sizing: border-box;
 }
+header.columns {
+    margin-bottom: 12px;
+}
     header a:visited {
         color: #00f;
     }
@@ -40,7 +43,7 @@ input {
     }
 ol.panels {
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 12px;
     padding: 0;
 }
     ol.panels > li {
@@ -79,7 +82,7 @@ textarea {
     height: 200px;
 }
 .columns {
-    margin: 0 auto 12px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     max-width: 1348px;

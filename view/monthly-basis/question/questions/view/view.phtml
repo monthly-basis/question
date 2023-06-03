@@ -2,6 +2,7 @@
 $questionTitle         = $this->getQuestionTitle($questionEntity);
 $answerEntitiesCount   = count($answerEntities);
 $numberOfAnswerPages   = ceil($answerEntitiesCount / 20);
+$relatedQuestions = iterator_to_array($relatedQuestions);
 
 $jsKeys = [
     'js',
@@ -41,4 +42,14 @@ $questionEntityViewsNumberFormat = number_format($questionEntity->getViews());
         ?>
     </ol>
 </section>
+<?php endif ?>
+
+<?php if ($relatedQuestions): ?>
+    <?= $this->partial(
+        'monthly-basis/question/questions/view/related',
+        [
+            'relatedQuestions' => $relatedQuestions,
+        ]
+    );
+    ?>
 <?php endif ?>
