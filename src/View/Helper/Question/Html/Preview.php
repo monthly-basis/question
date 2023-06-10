@@ -37,10 +37,10 @@ class Preview extends AbstractHelper
         $firstLine = $lines[0];
         $firstLine = $this->replaceSpacesService->replaceSpaces($firstLine);
 
-        if (strlen($firstLine) > 256) {
+        if (strlen($firstLine) > 128) {
             $firstLine = $this->shortenService->shorten(
                 $firstLine,
-                256
+                128
             );
             return '<b class="a-c-e">'
                 . $this->escapeService->escape($firstLine)
@@ -57,7 +57,7 @@ class Preview extends AbstractHelper
         $restOfLines = implode(' ', $restOfLines);
         $restOfLines = $this->replaceSpacesService->replaceSpaces($restOfLines);
 
-        $charactersRemaining = 256 - strlen($firstLine);
+        $charactersRemaining = 128 - strlen($firstLine);
 
         if (strlen($restOfLines) > $charactersRemaining) {
             $restOfLines = $this->shortenService->shorten(

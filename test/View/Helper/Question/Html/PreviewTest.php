@@ -48,7 +48,7 @@ class PreviewTest extends TestCase
 
     public function test___invoke_oneLineShortMessage_expectedString()
     {
-        $shortMessage = 'short message less than 256 chars';
+        $shortMessage = 'short message less than 128 chars';
         $questionEntity = (new QuestionEntity\Question())
             ->setMessage($shortMessage)
             ;
