@@ -120,16 +120,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.271.7",
+            "version": "3.272.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d0fe1af38ef521e419004e5f990ceb8e0b2b001d"
+                "reference": "a0accaf4a16565c0b4438109c978602f27dff3a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d0fe1af38ef521e419004e5f990ceb8e0b2b001d",
-                "reference": "d0fe1af38ef521e419004e5f990ceb8e0b2b001d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a0accaf4a16565c0b4438109c978602f27dff3a0",
+                "reference": "a0accaf4a16565c0b4438109c978602f27dff3a0",
                 "shasum": ""
             },
             "require": {
@@ -209,9 +209,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.271.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.272.1"
             },
-            "time": "2023-06-02T18:21:03+00:00"
+            "time": "2023-06-09T18:21:02+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -2581,16 +2581,16 @@
         },
         {
             "name": "monthly-basis/website",
-            "version": "v2.3.2",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/website.git",
-                "reference": "81a4c5f7765ae9c665d7451f7d46df8a72854d9c"
+                "reference": "606082fad7da4ccca4195477f24c5d8bd3caf39b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/website/zipball/81a4c5f7765ae9c665d7451f7d46df8a72854d9c",
-                "reference": "81a4c5f7765ae9c665d7451f7d46df8a72854d9c",
+                "url": "https://api.github.com/repos/monthly-basis/website/zipball/606082fad7da4ccca4195477f24c5d8bd3caf39b",
+                "reference": "606082fad7da4ccca4195477f24c5d8bd3caf39b",
                 "shasum": ""
             },
             "require": {
@@ -2611,9 +2611,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/website/issues",
-                "source": "https://github.com/monthly-basis/website/tree/v2.3.2"
+                "source": "https://github.com/monthly-basis/website/tree/v2.4.0"
             },
-            "time": "2022-08-13T08:17:21+00:00"
+            "time": "2023-06-06T22:29:16+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -3283,16 +3283,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.2.0",
+            "version": "10.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3aad97fde1f3e490e2b316ba56bc4680310e3c3f"
+                "reference": "599b33294350e8f51163119d5670512f98b0490d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3aad97fde1f3e490e2b316ba56bc4680310e3c3f",
-                "reference": "3aad97fde1f3e490e2b316ba56bc4680310e3c3f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/599b33294350e8f51163119d5670512f98b0490d",
+                "reference": "599b33294350e8f51163119d5670512f98b0490d",
                 "shasum": ""
             },
             "require": {
@@ -3364,7 +3364,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.0"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.1"
             },
             "funding": [
                 {
@@ -3380,7 +3380,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-02T05:42:13+00:00"
+            "time": "2023-06-05T05:15:51+00:00"
         },
         {
             "name": "psr/cache",
