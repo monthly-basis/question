@@ -42,15 +42,15 @@ class Preview extends AbstractHelper
                 $firstLine,
                 256
             );
-            return '<h3 class="a-c-e">'
+            return '<b class="a-c-e">'
                 . $this->escapeService->escape($firstLine)
-                . '</h3>';
+                . '</b>';
         }
 
         $firstLineEscaped = $this->escapeService->escape($firstLine);
 
         if (count($lines) == 1) {
-            return '<h3>' . $firstLineEscaped . '</h3>';
+            return '<b>' . $firstLineEscaped . '</b>';
         }
 
         $restOfLines = array_slice($lines, 1);
@@ -64,15 +64,15 @@ class Preview extends AbstractHelper
                 $restOfLines,
                 $charactersRemaining
             );
-            return '<h3>' . $firstLineEscaped . '</h3>'
-                . '<p class="a-c-e">'
+            return '<b>' . $firstLineEscaped . '</b><br>'
+                . '<span class="a-c-e">'
                 . $this->escapeService->escape($restOfLines)
-                . '</p>';
+                . '</span>';
         }
 
-        return '<h3>' . $firstLineEscaped . '</h3>'
-            . '<p>'
+        return '<b>' . $firstLineEscaped . '</b><br>'
+            . '<span>'
             . $this->escapeService->escape($restOfLines)
-            . '</p>';
+            . '</span>';
     }
 }

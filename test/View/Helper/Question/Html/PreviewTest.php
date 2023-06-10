@@ -82,7 +82,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<h3>escape short message result</h3>',
+            '<b>escape short message result</b>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -124,7 +124,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<h3 class="a-c-e">shorten and escape long message result</h3>',
+            '<b class="a-c-e">shorten and escape long message result</b>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -178,7 +178,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<h3>first line escaped result</h3><p>rest of lines escaped result</p>',
+            '<b>first line escaped result</b><br><span>rest of lines escaped result</span>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -239,7 +239,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<h3>Line 1 escaped</h3><p class="a-c-e">Rest of lines escaped</p>',
+            '<b>Line 1 escaped</b><br><span class="a-c-e">Rest of lines escaped</span>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
