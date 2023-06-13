@@ -125,10 +125,10 @@ class QuestionTest extends TableTestCase
             null,
             null,
             'message',
-            'name',
+            null,
             '1.2.3.4',
             0,
-            'deleted question inserted with null subject',
+            'insert deleted with null subject and null name',
         );
         $this->assertSame(
             2,

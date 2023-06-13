@@ -22,7 +22,7 @@ class Deleted
             null,
             $_POST['subject'] ?? null,
             $_POST['message'],
-            $_POST['name'],
+            $_POST['name'] ?? null,
             $_SERVER['REMOTE_ADDR'],
             0,
             $reason,

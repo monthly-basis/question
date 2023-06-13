@@ -126,7 +126,7 @@ class Question extends LaminasDb\Table
         int $userId = null,
         string|null $subject,
         string $message,
-        string $createdName,
+        string|null $createdName,
         string $createdIp,
         string $deletedUserId,
         string $deletedReason
