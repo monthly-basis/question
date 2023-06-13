@@ -410,7 +410,7 @@ class Module
                 },
                 QuestionService\Answers\User::class => function ($sm) {
                     return new QuestionService\Answers\User(
-                        $sm->get(QuestionFactory\Answer::class),
+                        $sm->get(QuestionFactory\Answer\FromAnswerId::class),
                         $sm->get(QuestionTable\Answer::class),
                     );
                 },

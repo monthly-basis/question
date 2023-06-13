@@ -12,15 +12,15 @@ class UserTest extends TestCase
 {
     protected function setUp(): void
     {
-        $this->answerFactoryMock = $this->createMock(
-            QuestionFactory\Answer::class
+        $this->fromAnswerIdFactoryMock = $this->createMock(
+            QuestionFactory\Answer\FromAnswerId::class
         );
         $this->answerTableMock = $this->createMock(
             QuestionTable\Answer::class
         );
 
         $this->userAnswers = new QuestionService\Answers\User(
-            $this->answerFactoryMock,
+            $this->fromAnswerIdFactoryMock,
             $this->answerTableMock,
         );
     }

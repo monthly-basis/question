@@ -9,11 +9,9 @@ use MonthlyBasis\User\Model\Entity as UserEntity;
 class User
 {
     public function __construct(
-        QuestionFactory\Answer $answerFactory,
-        QuestionTable\Answer $answerTable
+        protected QuestionFactory\Answer\FromAnswerId $fromAnswerIdFactory,
+        protected QuestionTable\Answer $answerTable
     ) {
-        $this->answerFactory = $answerFactory;
-        $this->answerTable   = $answerTable;
     }
 
     public function getAnswers(
@@ -26,7 +24,8 @@ class User
             100
         );
         foreach ($result as $array) {
-            yield $this->answerFactory->buildFromArray($array);
+            $answerId = $array['answer_id'];
+            yield $this->fromAnswerIdFactory->buildFromAnswerId($answerId);
         }
     }
 }
