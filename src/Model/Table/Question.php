@@ -124,7 +124,7 @@ class Question extends LaminasDb\Table
 
     public function insertDeleted(
         int $userId = null,
-        string $subject,
+        string|null $subject,
         string $message,
         string $createdName,
         string $createdIp,

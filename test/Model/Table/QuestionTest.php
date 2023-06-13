@@ -95,7 +95,7 @@ class QuestionTest extends TableTestCase
         );
     }
 
-    public function testInsertDeleted()
+    public function test_insertDeleted()
     {
         $questionId = $this->questionTable->insertDeleted(
             null,
@@ -104,7 +104,7 @@ class QuestionTest extends TableTestCase
             'name',
             '1.2.3.4',
             0,
-            'foul language'
+            'foul language',
         );
         $this->assertSame(
             1,
@@ -119,6 +119,20 @@ class QuestionTest extends TableTestCase
         $this->assertSame(
             'foul language',
             $array['deleted_reason']
+        );
+
+        $questionId = $this->questionTable->insertDeleted(
+            null,
+            null,
+            'message',
+            'name',
+            '1.2.3.4',
+            0,
+            'deleted question inserted with null subject',
+        );
+        $this->assertSame(
+            2,
+            $questionId
         );
     }
 
