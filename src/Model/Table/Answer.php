@@ -238,8 +238,8 @@ class Answer extends LaminasDb\Table
         int $limitOffset,
         int $limitRowCount
     ): Result {
-        $sql = $this->getSelect()
-             . '
+        $sql = '
+            SELECT `answer`.`answer_id`
               FROM `answer`
 
               JOIN `question`
