@@ -14,6 +14,7 @@ CREATE TABLE `answer` (
     `deleted_user_id` int(10) default null,
     `deleted_reason` varchar(255) default null,
     PRIMARY KEY (`answer_id`),
+    KEY `question_id_user_id_deleted_datetime` (`question_id`, `user_id`, `deleted_datetime`),
     KEY `question_id_deleted_datetime_created_datetime` (`question_id`, `deleted_datetime`, `created_datetime`),
     KEY `user_id` (`user_id`),
     KEY `user_id_deleted_datetime_created_datetime_answer_id` (`user_id`, `deleted_datetime`, `created_datetime`, `answer_id`),
