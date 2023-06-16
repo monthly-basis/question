@@ -28,9 +28,14 @@ class View extends AbstractActionController
     {
         $slug = $this->params()->fromRoute('slug');
 
-        $questionEntity = $this->questionFromSlugFactory->buildFromSlug(
-            $slug
-        );
+        try {
+            $questionEntity = $this->questionFromSlugFactory->buildFromSlug(
+                $slug
+            );
+        } catch (Error) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
 
         $url = $this->urlService->getUrl($questionEntity);
         if ('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] != $url) {
