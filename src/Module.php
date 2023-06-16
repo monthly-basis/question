@@ -62,6 +62,7 @@ class Module
                     'getQuestionRootRelativeUrl'    => QuestionHelper\Question\RootRelativeUrl::class,
                     'getQuestionTitle'              => QuestionHelper\Question\Title::class,
                     'getQuestionUrl'                => QuestionHelper\Question\Url::class,
+                    'getTrendingQuestions'          => QuestionHelper\Questions\Trending::class,
                 ],
                 'factories' => [
                     QuestionHelper\Answer\Factory::class => function($sm) {
@@ -183,6 +184,11 @@ class Module
                     QuestionHelper\QuestionFromAnswer::class => function($sm) {
                         return new QuestionHelper\QuestionFromAnswer(
                             $sm->get(QuestionService\QuestionFromAnswer::class)
+                        );
+                    },
+                    QuestionHelper\Questions\Trending::class => function($sm) {
+                        return new QuestionHelper\Questions\Trending(
+                            $sm->get(QuestionService\Question\Questions\MostPopular\Hour::class)
                         );
                     },
                 ],
