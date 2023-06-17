@@ -39,7 +39,27 @@ return [
                     ],
                     'may_terminate' => true,
                 ],
-            ]
+            ],
+        ],
+        'monthly-basis-question-sitemaps' => [
+            'type' => Literal::class,
+            'options' => [
+                'route'    => '/sitemaps',
+            ],
+            'may_terminate' => false,
+            'child_routes' => [
+                'questions' => [
+                    'type' => Literal::class,
+                    'options' => [
+                        'route'    => '/questions.xml',
+                        'defaults' => [
+                            'controller' => QuestionController\Sitemaps\Questions::class,
+                            'action'     => 'questions',
+                        ],
+                    ],
+                    'may_terminate' => true,
+                ],
+            ],
         ],
     ],
 ];

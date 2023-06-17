@@ -28,6 +28,11 @@ return [
                 $sm->get(QuestionTable\Answer::class),
             );
         },
+        QuestionController\Sitemaps\Questions::class => function ($sm) {
+            return new QuestionController\Sitemaps\Questions(
+                $sm->get(QuestionService\Question\Questions::class),
+            );
+        },
         QuestionController\Questions\View::class => function ($sm) {
             return new QuestionController\Questions\View(
                 $sm->get(QuestionFactory\Answer::class),
