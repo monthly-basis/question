@@ -50,9 +50,7 @@ class Answers
                 $votesEntities[$answerEntity->getAnswerId()]->getUpVotes()
             );
             $answerEntity->setRating(
-                (($answerEntity->getUpVotes() + $answerEntity->getDownVotes()) >= 3)
-                ? $answerEntity->getUpVotes() - $answerEntity->getDownVotes()
-                : 0
+                $answerEntity->getUpVotes() - $answerEntity->getDownVotes()
             );
         }
 
