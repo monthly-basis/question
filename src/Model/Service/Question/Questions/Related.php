@@ -82,8 +82,8 @@ class Related
                 ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
                     query: $query,
                     questionId: $questionEntity->getQuestionId(),
-                    questionSearchMessageLimitOffset: 0,
-                    questionSearchMessageLimitRowCount: 100,
+                    questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
+                    questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
                     outerLimitOffset: $outerLimitOffset,
                     outerLimitRowCount: $outerLimitRowCount,
                 );

@@ -92,7 +92,7 @@ class RelatedTest extends TestCase
                 'headline and message',
                 123,
                 0,
-                100,
+                12,
                 0,
                 12
             )
@@ -169,7 +169,7 @@ class RelatedTest extends TestCase
                 'headline and message',
                 123,
                 0,
-                100,
+                12,
                 0,
                 12
             )
@@ -271,7 +271,7 @@ class RelatedTest extends TestCase
                 'headline and message',
                 123,
                 0,
-                100,
+                24,
                 0,
                 12
             )
@@ -315,7 +315,7 @@ class RelatedTest extends TestCase
         $generator = $this->relatedService->getRelated(
             questionEntity: $questionEntity,
             questionSearchMessageLimitOffset: 0,
-            questionSearchMessageLimitRowCount: 12,
+            questionSearchMessageLimitRowCount: 24,
             outerLimitOffset: 0,
             outerLimitRowCount: 12,
         );
