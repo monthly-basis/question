@@ -37,7 +37,7 @@ class Author extends AbstractHelper
             $href = '/visitors?name='
                 . $this->replaceAndUrlencodeHelper->__invoke($createdName);
             $innerHtml = $this->replaceAndEscapeHelper->__invoke($createdName);
-            return "<a href=\"$href\">" . $innerHtml . '</a>';
+            return "<a href=\"$href\" rel=\"nofollow\">$innerHtml</a>";
         } catch (Throwable) {
             // Do nothing.
         }

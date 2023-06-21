@@ -63,7 +63,7 @@ class AuthorTest extends TestCase
             ;
 
         $this->assertSame(
-            '<a href="/visitors?name=created+name">created name</a>',
+            '<a href="/visitors?name=created+name" rel="nofollow">created name</a>',
             $this->authorHelper->__invoke($questionEntity)
         );
     }
