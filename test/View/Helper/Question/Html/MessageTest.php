@@ -60,7 +60,7 @@ $messageHtml = <<<MESSAGE_HTML
 A message with only 1 line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
-<h1 class="message">A message with only 1 line.</h1>
+<h1 class="message" itemprop="name">A message with only 1 line.</h1>
 EXPECTED_HTML;
 
         $questionEntity = (new QuestionEntity\Question())
@@ -86,8 +86,8 @@ A message with only 2 lines.<br>
 This is the second line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
-<h1 class="message mb-0">A message with only 2 lines.</h1>
-<p class="message">
+<h1 class="message mb-0" itemprop="name">A message with only 2 lines.</h1>
+<p class="message" itemprop="text">
 This is the second line.
 </p>
 EXPECTED_HTML;
@@ -116,8 +116,8 @@ This is the second line.<br>
 This is the third line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
-<h1 class="message mb-0">A message with 3 lines.</h1>
-<p class="message">
+<h1 class="message mb-0" itemprop="name">A message with 3 lines.</h1>
+<p class="message" itemprop="text">
 This is the second line.<br>
 This is the third line.
 </p>
@@ -147,8 +147,8 @@ A message with 3 lines.<br>
 This is the third line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
-<h1 class="message">A message with 3 lines.</h1>
-<p class="message">
+<h1 class="message" itemprop="name">A message with 3 lines.</h1>
+<p class="message" itemprop="text">
 This is the third line.
 </p>
 EXPECTED_HTML;
@@ -178,8 +178,8 @@ This is the third line.<br>
 Welcome to the fourth line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
-<h1 class="message mb-0">A message with 4 lines.</h1>
-<p class="message">
+<h1 class="message mb-0" itemprop="name">A message with 4 lines.</h1>
+<p class="message" itemprop="text">
 The second line has content.<br>
 This is the third line.<br>
 Welcome to the fourth line.
@@ -211,8 +211,8 @@ This is the third line.<br>
 Welcome to the fourth line.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
-<h1 class="message">A message with 4 lines.</h1>
-<p class="message">
+<h1 class="message" itemprop="name">A message with 4 lines.</h1>
+<p class="message" itemprop="text">
 This is the third line.<br>
 Welcome to the fourth line.
 </p>

@@ -33,7 +33,7 @@ class Message extends AbstractHelper
         $numberOfMessageHtmlLines = count($messageHtmlLines);
 
         if ($numberOfMessageHtmlLines == 1) {
-            $messageHtml = '<h1 class="message">' . $messageHtmlLines[0] . '</h1>';
+            $messageHtml = '<h1 class="message" itemprop="name">' . $messageHtmlLines[0] . '</h1>';
             return $messageHtml;
         }
 
@@ -53,11 +53,11 @@ class Message extends AbstractHelper
             $h1Class = 'message mb-0';
         }
 
-        $messageHtml = '<h1 class="' . $h1Class . '">'
+        $messageHtml = '<h1 class="' . $h1Class . '" itemprop="name">'
             . $messageHtmlLines[0]
             . '</h1>' . "\n";
 
-        $messageHtml .= '<p class="message">' . "\n"
+        $messageHtml .= '<p class="message" itemprop="text">' . "\n"
             . implode("<br>\n", $restOfMessageHtmlLines) . "\n"
             . '</p>';
 
