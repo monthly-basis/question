@@ -14,7 +14,6 @@ class QuestionTest extends TestCase
 
     public function test___get()
     {
-        $this->assertNull($this->questionEntity->views);
         $this->questionEntity->setViews(123);
         $this->assertSame(
             123,
