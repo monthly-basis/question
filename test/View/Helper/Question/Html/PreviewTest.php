@@ -135,7 +135,7 @@ class PreviewTest extends TestCase
             ->willReturn('shorten long message result')
             ;
         $this->escapeServiceMock
-            ->expects($this->once())
+            ->expects($this->exactly(2))
             ->method('escape')
             ->willReturn('shorten and escape long message result')
             ;

@@ -50,6 +50,7 @@ class Preview extends AbstractHelper
                 $firstLine,
                 128
             );
+            $firstLineEscaped = $this->escapeService->escape($firstLine);
             return "<a href=\"$rru\" class=\"a-c-e\">$firstLineEscaped</a>";
         }
 
