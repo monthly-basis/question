@@ -6,6 +6,7 @@ use Laminas\View\Helper\AbstractHelper;
 use MonthlyBasis\ContentModeration\Model\Service as ContentModerationService;
 use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Service as QuestionService;
 
 class Preview extends AbstractHelper
 {
@@ -13,6 +14,7 @@ class Preview extends AbstractHelper
         protected ContentModerationService\Replace\BadWords $replaceBadWordsService,
         protected ContentModerationService\Replace\LineBreaks $replaceLineBreaksService,
         protected ContentModerationService\Replace\Spaces $replaceSpacesService,
+        protected QuestionService\Question\RootRelativeUrl $rootRelativeUrlService,
         protected StringService\Escape $escapeService,
         protected StringService\Shorten $shortenService,
     ) {}
@@ -29,6 +31,10 @@ class Preview extends AbstractHelper
             return '';
         }
 
+        $rru = $this->rootRelativeUrlService->getRootRelativeUrl(
+            $questionEntity
+        );
+
         $message = $this->replaceBadWordsService->replaceBadWords($message, '');
         $message = $this->replaceLineBreaksService->replaceLineBreaks($message);
         $message = trim($message);
@@ -37,20 +43,18 @@ class Preview extends AbstractHelper
         $firstLine = $lines[0];
         $firstLine = $this->replaceSpacesService->replaceSpaces($firstLine);
 
+        $firstLineEscaped = $this->escapeService->escape($firstLine);
+
         if (strlen($firstLine) > 128) {
             $firstLine = $this->shortenService->shorten(
                 $firstLine,
                 128
             );
-            return '<b class="a-c-e">'
-                . $this->escapeService->escape($firstLine)
-                . '</b>';
+            return "<a href=\"$rru\" class=\"a-c-e\">$firstLineEscaped</a>";
         }
 
-        $firstLineEscaped = $this->escapeService->escape($firstLine);
-
         if (count($lines) == 1) {
-            return '<b>' . $firstLineEscaped . '</b>';
+            return "<a href=\"$rru\">$firstLineEscaped</a>";
         }
 
         $restOfLines = array_slice($lines, 1);
@@ -64,13 +68,13 @@ class Preview extends AbstractHelper
                 $restOfLines,
                 $charactersRemaining
             );
-            return '<b>' . $firstLineEscaped . '</b><br>'
+            return "<a href=\"$rru\">$firstLineEscaped</a><br>"
                 . '<span class="a-c-e">'
                 . $this->escapeService->escape($restOfLines)
                 . '</span>';
         }
 
-        return '<b>' . $firstLineEscaped . '</b><br>'
+        return "<a href=\"$rru\">$firstLineEscaped</a><br>"
             . '<span>'
             . $this->escapeService->escape($restOfLines)
             . '</span>';

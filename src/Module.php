@@ -149,6 +149,7 @@ class Module
                             $sm->get(ContentModerationService\Replace\BadWords::class),
                             $sm->get(ContentModerationService\Replace\LineBreaks::class),
                             $sm->get(ContentModerationService\Replace\Spaces::class),
+                            $sm->get(QuestionService\Question\RootRelativeUrl::class),
                             $sm->get(StringService\Escape::class),
                             $sm->get(StringService\Shorten::class),
                         );

@@ -4,6 +4,7 @@ namespace MonthlyBasis\QuestionTest\View\Helper\Question\Html;
 use MonthlyBasis\ContentModeration\Model\Service as ContentModerationService;
 use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\View\Helper as QuestionHelper;
 use PHPUnit\Framework\TestCase;
 
@@ -20,6 +21,9 @@ class PreviewTest extends TestCase
         $this->replaceSpacesServiceMock = $this->createMock(
             ContentModerationService\Replace\Spaces::class
         );
+        $this->rootRelativeUrlServiceMock = $this->createMock(
+            QuestionService\Question\RootRelativeUrl::class
+        );
         $this->escapeServiceMock = $this->createMock(
             StringService\Escape::class
         );
@@ -31,6 +35,7 @@ class PreviewTest extends TestCase
             $this->replaceBadWordsServiceMock,
             $this->replaceLineBreaksServiceMock,
             $this->replaceSpacesServiceMock,
+            $this->rootRelativeUrlServiceMock,
             $this->escapeServiceMock,
             $this->shortenServiceMock,
         );
@@ -53,6 +58,12 @@ class PreviewTest extends TestCase
             ->setMessage($shortMessage)
             ;
 
+        $this->rootRelativeUrlServiceMock
+            ->expects($this->once())
+            ->method('getRootRelativeUrl')
+            ->with($questionEntity)
+            ->willReturn('/path/to/question')
+            ;
         $this->replaceBadWordsServiceMock
             ->expects($this->once())
             ->method('replaceBadWords')
@@ -82,7 +93,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<b>escape short message result</b>',
+            '<a href="/path/to/question">escape short message result</a>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -94,6 +105,12 @@ class PreviewTest extends TestCase
             ->setMessage($longMessage)
             ;
 
+        $this->rootRelativeUrlServiceMock
+            ->expects($this->once())
+            ->method('getRootRelativeUrl')
+            ->with($questionEntity)
+            ->willReturn('/path/to/question')
+            ;
         $this->replaceBadWordsServiceMock
             ->expects($this->once())
             ->method('replaceBadWords')
@@ -124,7 +141,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<b class="a-c-e">shorten and escape long message result</b>',
+            '<a href="/path/to/question" class="a-c-e">shorten and escape long message result</a>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -136,6 +153,12 @@ class PreviewTest extends TestCase
             ->setMessage($shortMessageWithMultipleLines)
             ;
 
+        $this->rootRelativeUrlServiceMock
+            ->expects($this->once())
+            ->method('getRootRelativeUrl')
+            ->with($questionEntity)
+            ->willReturn('/path/to/question')
+            ;
         $this->replaceBadWordsServiceMock
             ->expects($this->once())
             ->method('replaceBadWords')
@@ -178,7 +201,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<b>first line escaped result</b><br><span>rest of lines escaped result</span>',
+            '<a href="/path/to/question">first line escaped result</a><br><span>rest of lines escaped result</span>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -191,6 +214,12 @@ class PreviewTest extends TestCase
             ->setMessage($longMessageAcrossMultipleLines)
             ;
 
+        $this->rootRelativeUrlServiceMock
+            ->expects($this->once())
+            ->method('getRootRelativeUrl')
+            ->with($questionEntity)
+            ->willReturn('/path/to/question')
+            ;
         $this->replaceBadWordsServiceMock
             ->expects($this->once())
             ->method('replaceBadWords')
@@ -239,7 +268,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<b>Line 1 escaped</b><br><span class="a-c-e">Rest of lines escaped</span>',
+            '<a href="/path/to/question">Line 1 escaped</a><br><span class="a-c-e">Rest of lines escaped</span>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
