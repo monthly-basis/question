@@ -69,13 +69,13 @@ class Preview extends AbstractHelper
                 $restOfLines,
                 $charactersRemaining
             );
-            return "<a href=\"$rru\" class=\"heading\">$firstLineEscaped</a><br>"
+            return "<a href=\"$rru\" class=\"heading\">$firstLineEscaped</a>"
                 . '<span class="a-c-e">'
                 . $this->escapeService->escape($restOfLines)
                 . '</span>';
         }
 
-        return "<a href=\"$rru\" class=\"heading\">$firstLineEscaped</a><br>"
+        return "<a href=\"$rru\" class=\"heading\">$firstLineEscaped</a>"
             . '<span>'
             . $this->escapeService->escape($restOfLines)
             . '</span>';
