@@ -93,7 +93,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<a href="/path/to/question">escape short message result</a>',
+            '<a href="/path/to/question" class="heading">escape short message result</a>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -141,7 +141,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<a href="/path/to/question" class="a-c-e">shorten and escape long message result</a>',
+            '<a href="/path/to/question" class="heading a-c-e">shorten and escape long message result</a>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -201,7 +201,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<a href="/path/to/question">first line escaped result</a><br><span>rest of lines escaped result</span>',
+            '<a href="/path/to/question" class="heading">first line escaped result</a><br><span>rest of lines escaped result</span>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
@@ -268,7 +268,7 @@ class PreviewTest extends TestCase
             ;
 
         $this->assertSame(
-            '<a href="/path/to/question">Line 1 escaped</a><br><span class="a-c-e">Rest of lines escaped</span>',
+            '<a href="/path/to/question" class="heading">Line 1 escaped</a><br><span class="a-c-e">Rest of lines escaped</span>',
             $this->previewHelper->__invoke($questionEntity),
         );
     }
