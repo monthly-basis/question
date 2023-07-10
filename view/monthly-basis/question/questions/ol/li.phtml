@@ -19,9 +19,7 @@ try {
 
 ?>
 <li>
-    <a href="<?= $rootRelativeUrl ?>">
-        <?= $this->getQuestionPreviewHtml($questionEntity); ?>
-    </a>
+    <?= $this->getQuestionPreviewHtml($questionEntity); ?>
     <?php if ($showTags): ?>
         <?php
             $answersRru = $rootRelativeUrl . '#answers';
