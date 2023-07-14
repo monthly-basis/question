@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.48.0
 
     ALTER TABLE `question` ADD COLUMN `did_you_know` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AFTER `message`;
 
