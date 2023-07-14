@@ -5,6 +5,7 @@ CREATE TABLE `question` (
     `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL,
     `headline` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    `did_you_know` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     `views` int(10) unsigned NOT NULL DEFAULT '0',
     `views_not_bot_one_month` int(10) unsigned NOT NULL DEFAULT '0',
     `views_not_bot_one_week` int(10) unsigned NOT NULL DEFAULT '0',

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+    ALTER TABLE `question` ADD COLUMN `did_you_know` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AFTER `message`;
+
 ## v2.35.0
 
     ALTER TABLE `answer` ADD COLUMN `imported` tinyint(1) unsigned NOT NULL DEFAULT '0' AFTER `message`;
