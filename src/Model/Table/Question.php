@@ -30,6 +30,7 @@ class Question extends LaminasDb\Table
                  , `question`.`subject`
                  , `question`.`headline`
                  , `question`.`message`
+                 , `question`.`did_you_know`
                  , `question`.`views`
                  , `question`.`views_not_bot_one_month`
                  , `question`.`answer_count_cached`
