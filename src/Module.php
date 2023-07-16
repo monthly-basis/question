@@ -4,6 +4,7 @@ namespace MonthlyBasis\Question;
 use Laminas\Db as LaminasDb;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
+use MonthlyBasis\Category\Model\Factory as CategoryFactory;
 use MonthlyBasis\ContentModeration\View\Helper as ContentModerationHelper;
 use MonthlyBasis\Group\Model\Service as GroupService;
 use MonthlyBasis\Question\Controller as QuestionController;
@@ -454,6 +455,12 @@ class Module
                 QuestionService\QuestionSearchSimilar\Rotate::class => function ($sm) {
                     return new QuestionService\QuestionSearchSimilar\Rotate(
                         $sm->get(QuestionTable\QuestionSearchSimilar::class),
+                    );
+                },
+                QuestionService\Question\Categories::class => function ($sm) {
+                    return new QuestionService\Question\Categories(
+                        $sm->get(CategoryFactory\FromCategoryId::class),
+                        $sm->get(QuestionTable\CategoryQuestion::class),
                     );
                 },
                 QuestionService\Question\Deleted::class => function ($sm) {

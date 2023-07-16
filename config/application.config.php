@@ -4,6 +4,7 @@ return [
     'modules' => [
         'Laminas\Db',
         'Laminas\Router',
+        'MonthlyBasis\Category',
         'MonthlyBasis\ContentModeration',
         'MonthlyBasis\Flash',
         'MonthlyBasis\Group',
