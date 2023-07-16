@@ -1,5 +1,16 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## v2.49.0
+
+### Added
+
+- Service to get categories belonging to a question
+
 ## v2.48.0
 
     ALTER TABLE `question` ADD COLUMN `did_you_know` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AFTER `message`;
