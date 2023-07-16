@@ -12,7 +12,7 @@
         "laminas/laminas-db": "^2.9",
         "laminas/laminas-test": "^4.0",
         "monthly-basis/content-moderation": "^0.16",
-        "monthly-basis/category": "^0.0.5",
+        "monthly-basis/category": "^0.0",
         "monthly-basis/flash": "^2.0",
         "monthly-basis/group": "^2.0",
         "monthly-basis/laminas": "^0.0",

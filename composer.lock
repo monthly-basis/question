@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1523a727e0ee436d1681a701faf8e64f",
+    "content-hash": "99743b73936e9e10d06216b1282b8ae9",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2032,16 +2032,16 @@
         },
         {
             "name": "monthly-basis/category",
-            "version": "v0.0.5",
+            "version": "v0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/category.git",
-                "reference": "91ead0b2bbd7b3e73602e19085de89bfcc52c79d"
+                "reference": "edede02b2b68703b206e5dd981832a5cf48317f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/category/zipball/91ead0b2bbd7b3e73602e19085de89bfcc52c79d",
-                "reference": "91ead0b2bbd7b3e73602e19085de89bfcc52c79d",
+                "url": "https://api.github.com/repos/monthly-basis/category/zipball/edede02b2b68703b206e5dd981832a5cf48317f1",
+                "reference": "edede02b2b68703b206e5dd981832a5cf48317f1",
                 "shasum": ""
             },
             "require": {
@@ -2063,9 +2063,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/category/issues",
-                "source": "https://github.com/monthly-basis/category/tree/v0.0.5"
+                "source": "https://github.com/monthly-basis/category/tree/v0.0.6"
             },
-            "time": "2022-12-12T01:42:41+00:00"
+            "time": "2023-07-16T04:34:39+00:00"
         },
         {
             "name": "monthly-basis/content-moderation",
