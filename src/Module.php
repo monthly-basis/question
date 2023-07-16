@@ -864,6 +864,11 @@ class Module
                         $sm->get(QuestionDb\Sql::class)
                     );
                 },
+                QuestionTable\CategoryQuestion::class => function ($sm) {
+                    return new QuestionTable\CategoryQuestion(
+                        $sm->get(QuestionDb\Sql::class)
+                    );
+                },
                 QuestionTable\Post::class => function ($sm) {
                     return new QuestionTable\Post(
                         $sm->get(QuestionDb\Sql::class)
