@@ -28,4 +28,12 @@ class CategoryQuestionTest extends TableTestCase
         ]);
         $this->assertSame(1, $result->getAffectedRows());
     }
+
+    public function test_selectQuestionIdWhereCategoryId()
+    {
+        $result = $this->categoryQuestionTable->selectQuestionIdWhereCategoryId(
+            123
+        );
+        $this->assertEmpty($result);
+    }
 }

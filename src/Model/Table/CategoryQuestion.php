@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\Question\Model\Table;
 
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use MonthlyBasis\Laminas\Model\Db as LaminasDb;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
 
@@ -11,5 +12,22 @@ class CategoryQuestion extends LaminasDb\Table
     public function __construct(
         protected \Laminas\Db\Sql\Sql $sql
     ) {
+    }
+
+    public function selectQuestionIdWhereCategoryId(int $categoryId): Result
+    {
+        $sql = '
+            SELECT `question_id`
+              FROM `category_question`
+              JOIN `question`
+             USING (`question_id`)
+             WHERE `category_question`.`category_id` = ?
+               AND `question`.`deleted_datetime` IS NULL
+               AND `question`.`modified_datetime` IS NULL
+        ';
+        $parameters = [
+            $categoryId,
+        ];
+        return $this->sql->getAdapter()->query($sql)->execute($parameters);
     }
 }
