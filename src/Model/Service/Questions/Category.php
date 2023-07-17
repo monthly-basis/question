@@ -18,7 +18,7 @@ class Category
         CategoryEntity\Category $categoryEntity,
         int $page = 1,
     ): Generator {
-        $this->categoryQuestionTable->selectQuestionIdWhereCategoryId(
+        $result = $this->categoryQuestionTable->selectQuestionIdWhereCategoryId(
             $categoryEntity->categoryId
         );
 
