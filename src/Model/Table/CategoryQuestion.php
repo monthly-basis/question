@@ -24,6 +24,8 @@ class CategoryQuestion extends LaminasDb\Table
              WHERE `category_question`.`category_id` = ?
                AND `question`.`deleted_datetime` IS NULL
                AND `question`.`modified_datetime` IS NULL
+             LIMIT 100
+                 ;
         ';
         $parameters = [
             $categoryId,
