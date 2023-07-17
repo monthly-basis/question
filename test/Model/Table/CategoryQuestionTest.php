@@ -21,12 +21,14 @@ class CategoryQuestionTest extends TableTestCase
 
     public function test_insert_result()
     {
+        $this->setForeignKeyChecks(0);
         $result = $this->categoryQuestionTable->insert([
             'category_id' => 123,
             'question_id' => 123,
             'order'       => 0,
         ]);
         $this->assertSame(1, $result->getAffectedRows());
+        $this->setForeignKeyChecks(1);
     }
 
     public function test_selectQuestionIdWhereCategoryId()

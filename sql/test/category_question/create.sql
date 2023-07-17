@@ -5,5 +5,7 @@ CREATE TABLE `category_question` (
   `order` int unsigned NOT NULL,
   PRIMARY KEY (`category_question_id`),
   UNIQUE KEY `category_id_question_id` (`category_id`, `question_id`),
-  UNIQUE KEY `question_id_order` (`question_id`, `order`)
+  UNIQUE KEY `question_id_order` (`question_id`, `order`),
+  FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
+  FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
