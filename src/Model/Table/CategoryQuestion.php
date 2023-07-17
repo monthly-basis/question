@@ -19,7 +19,10 @@ class CategoryQuestion extends LaminasDb\Table
         $sql = '
             SELECT `question_id`
               FROM `category_question`
+
               JOIN `question`
+               USE INDEX (`views_one_hour_etc`)
+
              USING (`question_id`)
              WHERE `category_question`.`category_id` = ?
                AND `question`.`deleted_datetime` IS NULL
