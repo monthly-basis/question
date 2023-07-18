@@ -163,7 +163,9 @@ class Question extends LaminasDb\Table
             ->getGeneratedValue();
     }
 
-    public function selectQuestionIdOrderByViewsNotBotOneHour(): Result {
+    public function selectQuestionIdOrderByViewsNotBotOneHour(
+        int $limitRowCount = 100
+    ): Result {
         $sql = '
             SELECT `question_id`
               FROM (
@@ -172,7 +174,7 @@ class Question extends LaminasDb\Table
                         WHERE `question`.`deleted_datetime` IS NULL
                         ORDER
                            BY `question`.`views_not_bot_one_hour` DESC
-                        LIMIT 100
+                        LIMIT ?
                    ) AS `question_sub_query`
 
               JOIN `question` USING (`question_id`)
@@ -185,7 +187,10 @@ class Question extends LaminasDb\Table
                  , `question`.`views` DESC
                  ;
         ';
-        return $this->adapter->query($sql)->execute();
+        $parameters = [
+            $limitRowCount,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function selectWhereDeletedDatetimeIsNullOrderByCreatedDateTimeDesc(

@@ -15,9 +15,11 @@ class Hour
         $this->questionTable         = $questionTable;
     }
 
-    public function getQuestions(): Generator
+    public function getQuestions(int $limit = 100): Generator
     {
-        $result = $this->questionTable->selectQuestionIdOrderByViewsNotBotOneHour();
+        $result = $this->questionTable->selectQuestionIdOrderByViewsNotBotOneHour(
+            limitRowCount: $limit
+        );
 
         foreach ($result as $array) {
             yield $this->fromQuestionIdFactory->buildFromQuestionId(
