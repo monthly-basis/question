@@ -22,9 +22,12 @@ class ConditionallyInsert
     public function conditionallyInsert(
         QuestionEntity\Question $questionEntity
     ): bool {
+        /*
+         * Comment out for now while we insert all views.
         if ($this->botService->isBot()) {
             return false;
         }
+         */
 
         /*
          * Only insert if referer is exactly:
@@ -41,9 +44,12 @@ class ConditionallyInsert
          * match the entire 'https://www.google.com/' string.
          */
         $serverHttpReferer = $_SERVER['HTTP_REFERER'] ?? '';
+        /*
+         * Comment out for now while we insert all views.
         if ($serverHttpReferer != 'https://www.google.com/') {
             return false;
         }
+         */
 
         /*
          * International traffic usually starts with many other language
