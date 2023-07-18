@@ -15,12 +15,13 @@ class Newest
         $this->deletedDatetimeCreatedDatetimeTable = $deletedDatetimeCreatedDatetimeTable;
     }
 
-    public function getNewestQuestions(): Generator
-    {
+    public function getNewestQuestions(
+        int $limit = 100
+    ): Generator {
         $generator = $this->deletedDatetimeCreatedDatetimeTable
             ->selectWhereDeletedDatetimeIsNullOrderByCreatedDatetimeDesc(
                 0,
-                100
+                $limit
             );
         foreach ($generator as $array) {
             yield $this->questionFactory->buildFromArray($array);
