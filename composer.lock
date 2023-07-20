@@ -120,16 +120,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.275.9",
+            "version": "3.276.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1ef08ba5109591751257ad1eaa52c2e2fbd53cf1"
+                "reference": "ae3ea70a1e189501ef3d1e923b9eb8ae2525c365"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1ef08ba5109591751257ad1eaa52c2e2fbd53cf1",
-                "reference": "1ef08ba5109591751257ad1eaa52c2e2fbd53cf1",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ae3ea70a1e189501ef3d1e923b9eb8ae2525c365",
+                "reference": "ae3ea70a1e189501ef3d1e923b9eb8ae2525c365",
                 "shasum": ""
             },
             "require": {
@@ -209,9 +209,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.275.9"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.276.0"
             },
-            "time": "2023-07-18T18:20:13+00:00"
+            "time": "2023-07-19T18:24:20+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -2032,23 +2032,24 @@
         },
         {
             "name": "monthly-basis/category",
-            "version": "v0.0.6",
+            "version": "v0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/category.git",
-                "reference": "edede02b2b68703b206e5dd981832a5cf48317f1"
+                "reference": "f05a117c17f260a129189548972cf522ebc8854f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/category/zipball/edede02b2b68703b206e5dd981832a5cf48317f1",
-                "reference": "edede02b2b68703b206e5dd981832a5cf48317f1",
+                "url": "https://api.github.com/repos/monthly-basis/category/zipball/f05a117c17f260a129189548972cf522ebc8854f",
+                "reference": "f05a117c17f260a129189548972cf522ebc8854f",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-db": "^2.9",
                 "laminas/laminas-test": "^4.0",
                 "monthly-basis/laminas": "^0.0",
-                "monthly-basis/laminas-test": "^2.0"
+                "monthly-basis/laminas-test": "^2.0",
+                "monthly-basis/string": "^3.6"
             },
             "type": "library",
             "autoload": {
@@ -2063,9 +2064,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/category/issues",
-                "source": "https://github.com/monthly-basis/category/tree/v0.0.6"
+                "source": "https://github.com/monthly-basis/category/tree/v0.0.10"
             },
-            "time": "2023-07-16T04:34:39+00:00"
+            "time": "2023-07-20T02:05:29+00:00"
         },
         {
             "name": "monthly-basis/content-moderation",
@@ -2249,16 +2250,16 @@
         },
         {
             "name": "monthly-basis/laminas",
-            "version": "v0.0.9",
+            "version": "v0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/laminas.git",
-                "reference": "92ef3bc753f226f7ae68bc6e026b334eb95f058f"
+                "reference": "fb251ae5ce2369ac171c53abbb0cd97ac7ccebfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/laminas/zipball/92ef3bc753f226f7ae68bc6e026b334eb95f058f",
-                "reference": "92ef3bc753f226f7ae68bc6e026b334eb95f058f",
+                "url": "https://api.github.com/repos/monthly-basis/laminas/zipball/fb251ae5ce2369ac171c53abbb0cd97ac7ccebfc",
+                "reference": "fb251ae5ce2369ac171c53abbb0cd97ac7ccebfc",
                 "shasum": ""
             },
             "require": {
@@ -2278,9 +2279,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/laminas/issues",
-                "source": "https://github.com/monthly-basis/laminas/tree/v0.0.9"
+                "source": "https://github.com/monthly-basis/laminas/tree/v0.0.10"
             },
-            "time": "2022-11-11T18:30:04+00:00"
+            "time": "2023-07-20T01:08:52+00:00"
         },
         {
             "name": "monthly-basis/laminas-test",
@@ -4379,16 +4380,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "aab257c712de87b90194febd52e4d184551c2d44"
+                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/aab257c712de87b90194febd52e4d184551c2d44",
-                "reference": "aab257c712de87b90194febd52e4d184551c2d44",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/7ea9ead78f6d380d2a667864c132c2f7b83055e4",
+                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4",
                 "shasum": ""
             },
             "require": {
@@ -4428,7 +4429,8 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.0"
+                "security": "https://github.com/sebastianbergmann/global-state/security/policy",
+                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.1"
             },
             "funding": [
                 {
@@ -4436,7 +4438,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-03T07:07:38+00:00"
+            "time": "2023-07-19T07:19:23+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
