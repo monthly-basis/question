@@ -24,7 +24,7 @@ class CategoryQuestion extends LaminasDb\Table
 
              WHERE `category_question`.`category_id` = ?
                AND `question`.`deleted_datetime` IS NULL
-               AND `question`.`modified_datetime` IS NULL
+               AND `question`.`moved_datetime` IS NULL
              ORDER
                 BY `question`.`views_not_bot_one_hour` DESC
                  , `question`.`views_not_bot_one_day` DESC
