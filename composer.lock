@@ -120,16 +120,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.276.0",
+            "version": "3.276.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ae3ea70a1e189501ef3d1e923b9eb8ae2525c365"
+                "reference": "80509b932c7e8e917a5026a89bd7af1f2b34ed59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ae3ea70a1e189501ef3d1e923b9eb8ae2525c365",
-                "reference": "ae3ea70a1e189501ef3d1e923b9eb8ae2525c365",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/80509b932c7e8e917a5026a89bd7af1f2b34ed59",
+                "reference": "80509b932c7e8e917a5026a89bd7af1f2b34ed59",
                 "shasum": ""
             },
             "require": {
@@ -209,9 +209,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.276.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.276.4"
             },
-            "time": "2023-07-19T18:24:20+00:00"
+            "time": "2023-07-24T18:15:58+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -1865,16 +1865,16 @@
         },
         {
             "name": "laminas/laminas-view",
-            "version": "2.28.0",
+            "version": "2.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-view.git",
-                "reference": "c43dd9f89febb79a76cfa01c5cb2b90836d7d748"
+                "reference": "b3ae82de4783e899717d2db7bb82b33542c12908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-view/zipball/c43dd9f89febb79a76cfa01c5cb2b90836d7d748",
-                "reference": "c43dd9f89febb79a76cfa01c5cb2b90836d7d748",
+                "url": "https://api.github.com/repos/laminas/laminas-view/zipball/b3ae82de4783e899717d2db7bb82b33542c12908",
+                "reference": "b3ae82de4783e899717d2db7bb82b33542c12908",
                 "shasum": ""
             },
             "require": {
@@ -1908,10 +1908,10 @@
                 "laminas/laminas-mvc-plugin-flashmessenger": "^1.9",
                 "laminas/laminas-navigation": "^2.18.1",
                 "laminas/laminas-paginator": "^2.17",
-                "laminas/laminas-permissions-acl": "^2.14",
+                "laminas/laminas-permissions-acl": "^2.15",
                 "laminas/laminas-router": "^3.11.1",
                 "laminas/laminas-uri": "^2.10",
-                "phpunit/phpunit": "^9.6.8",
+                "phpunit/phpunit": "^10.1.3",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "vimeo/psalm": "^5.12"
             },
@@ -1961,7 +1961,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-05-30T11:38:25+00:00"
+            "time": "2023-07-20T08:57:28+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -2539,16 +2539,16 @@
         },
         {
             "name": "monthly-basis/user",
-            "version": "v3.1.1",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/user.git",
-                "reference": "fb86a64385a443c416b9f31099268579f935be3e"
+                "reference": "a8397923049a152ac28980a3daa12ebd2322f6e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/user/zipball/fb86a64385a443c416b9f31099268579f935be3e",
-                "reference": "fb86a64385a443c416b9f31099268579f935be3e",
+                "url": "https://api.github.com/repos/monthly-basis/user/zipball/a8397923049a152ac28980a3daa12ebd2322f6e0",
+                "reference": "a8397923049a152ac28980a3daa12ebd2322f6e0",
                 "shasum": ""
             },
             "require": {
@@ -2576,9 +2576,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/user/issues",
-                "source": "https://github.com/monthly-basis/user/tree/v3.1.1"
+                "source": "https://github.com/monthly-basis/user/tree/v3.2.1"
             },
-            "time": "2023-04-10T05:33:31+00:00"
+            "time": "2023-07-24T08:42:08+00:00"
         },
         {
             "name": "monthly-basis/vote",
