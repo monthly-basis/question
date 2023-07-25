@@ -116,10 +116,10 @@ class QuestionSearchMessage extends LaminasDb\Table
               JOIN `question`
              USING (`question_id`)
              ORDER
-                BY `question`.`views_not_bot_one_hour` DESC
-                 , `question`.`views_not_bot_one_day` DESC
+                BY `question`.`views_not_bot_one_month` DESC
                  , `question`.`views_not_bot_one_week` DESC
-                 , `question`.`views_not_bot_one_month` DESC
+                 , `question`.`views_not_bot_one_day` DESC
+                 , `question`.`views_not_bot_one_hour` DESC
                  , `question_search_message`.`score` DESC
              LIMIT :outerLimitOffset, :outerLimitRowCount
                  ;
