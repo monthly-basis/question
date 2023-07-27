@@ -45,6 +45,7 @@ class Module
                     'canBeUndeleted'                => QuestionHelper\Post\CanBeUndeleted::class,
                     'getAnswerFactory'              => QuestionHelper\Answer\Factory::class,
                     'getAnswerRootRelativeUrl'      => QuestionHelper\Answer\RootRelativeUrl::class,
+                    'getAnswerTitle'                => QuestionHelper\Answer\Title::class,
                     'getAnswerUrl'                  => QuestionHelper\Answer\Url::class,
                     'getLinkToQuestionHtml'         => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionAuthor'             => QuestionHelper\Question\Author::class,
@@ -75,6 +76,11 @@ class Module
                     QuestionHelper\Answer\RootRelativeUrl::class => function($sm) {
                         return new QuestionHelper\Answer\RootRelativeUrl(
                             $sm->get(QuestionService\Answer\RootRelativeUrl::class)
+                        );
+                    },
+                    QuestionHelper\Answer\Title::class => function($sm) {
+                        return new QuestionHelper\Answer\Title(
+                            $sm->get(QuestionService\Answer\Title::class)
                         );
                     },
                     QuestionHelper\Answer\Url::class => function($sm) {
