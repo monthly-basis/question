@@ -877,6 +877,11 @@ class Module
                         $sm->get(QuestionDb\Sql::class)
                     );
                 },
+                QuestionTable\AnswerSearchMessage::class => function ($sm) {
+                    return new QuestionTable\AnswerSearchMessage(
+                        $sm->get(QuestionDb\Sql::class),
+                    );
+                },
                 QuestionTable\CategoryQuestion::class => function ($sm) {
                     return new QuestionTable\CategoryQuestion(
                         $sm->get(QuestionDb\Sql::class)
