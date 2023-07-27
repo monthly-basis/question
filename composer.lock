@@ -120,16 +120,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.276.5",
+            "version": "3.277.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "bd01bbc5ea4d62a070c7064a386bf0008871c6a5"
+                "reference": "46374d15dc676f37d956adc39e263d9f05120d11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bd01bbc5ea4d62a070c7064a386bf0008871c6a5",
-                "reference": "bd01bbc5ea4d62a070c7064a386bf0008871c6a5",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/46374d15dc676f37d956adc39e263d9f05120d11",
+                "reference": "46374d15dc676f37d956adc39e263d9f05120d11",
                 "shasum": ""
             },
             "require": {
@@ -209,9 +209,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.276.5"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.277.1"
             },
-            "time": "2023-07-25T18:12:23+00:00"
+            "time": "2023-07-27T18:09:34+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -2539,16 +2539,16 @@
         },
         {
             "name": "monthly-basis/user",
-            "version": "v3.2.1",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/user.git",
-                "reference": "a8397923049a152ac28980a3daa12ebd2322f6e0"
+                "reference": "95e7bb893af666ac7a961a4b562418054fec0bfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/user/zipball/a8397923049a152ac28980a3daa12ebd2322f6e0",
-                "reference": "a8397923049a152ac28980a3daa12ebd2322f6e0",
+                "url": "https://api.github.com/repos/monthly-basis/user/zipball/95e7bb893af666ac7a961a4b562418054fec0bfc",
+                "reference": "95e7bb893af666ac7a961a4b562418054fec0bfc",
                 "shasum": ""
             },
             "require": {
@@ -2556,6 +2556,7 @@
                 "laminas/laminas-mvc": "^3.0",
                 "laminas/laminas-test": "^4.0",
                 "monthly-basis/flash": "^2.0",
+                "monthly-basis/laminas": "^0.0",
                 "monthly-basis/laminas-test": "^2.0",
                 "monthly-basis/re-captcha": "^3.0",
                 "monthly-basis/simple-email-service": "^0.2",
@@ -2576,9 +2577,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/user/issues",
-                "source": "https://github.com/monthly-basis/user/tree/v3.2.1"
+                "source": "https://github.com/monthly-basis/user/tree/v3.3.0"
             },
-            "time": "2023-07-24T08:42:08+00:00"
+            "time": "2023-07-26T15:49:00+00:00"
         },
         {
             "name": "monthly-basis/vote",
@@ -3001,16 +3002,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "10.1.2",
+            "version": "10.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "db1497ec8dd382e82c962f7abbe0320e4882ee4e"
+                "reference": "be1fe461fdc917de2a29a452ccf2657d325b443d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/db1497ec8dd382e82c962f7abbe0320e4882ee4e",
-                "reference": "db1497ec8dd382e82c962f7abbe0320e4882ee4e",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/be1fe461fdc917de2a29a452ccf2657d325b443d",
+                "reference": "be1fe461fdc917de2a29a452ccf2657d325b443d",
                 "shasum": ""
             },
             "require": {
@@ -3067,7 +3068,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.2"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.3"
             },
             "funding": [
                 {
@@ -3075,7 +3076,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-22T09:04:27+00:00"
+            "time": "2023-07-26T13:45:28+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

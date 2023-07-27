@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v2.51.0
+
+### Added
+
+- Service to get related answers
+- Service to rotate `answer_search_message` table
+- `answer_search_message` table
+        CREATE TABLE `answer_search_message` (
+            `answer_id` int(10) unsigned NOT NULL,
+            `message` text COLLATE utf8mb4_unicode_ci,
+            PRIMARY KEY (`answer_id`),
+            FULLTEXT KEY `message` (`message`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+
 ## v2.50.3
 
 ### Added
