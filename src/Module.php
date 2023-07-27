@@ -416,6 +416,12 @@ class Module
                         $sm->get(QuestionService\Answer\RootRelativeUrl::class),
                     );
                 },
+                QuestionService\Answers\Related::class => function ($sm) {
+                    return new QuestionService\Answers\Related(
+                        $sm->get(QuestionFactory\Answer\FromAnswerId::class),
+                        $sm->get(QuestionTable\AnswerSearchMessage::class),
+                    );
+                },
                 QuestionService\Answers\User::class => function ($sm) {
                     return new QuestionService\Answers\User(
                         $sm->get(QuestionFactory\Answer\FromAnswerId::class),
