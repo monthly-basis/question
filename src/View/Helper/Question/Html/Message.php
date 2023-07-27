@@ -33,7 +33,7 @@ class Message extends AbstractHelper
         $numberOfMessageHtmlLines = count($messageHtmlLines);
 
         if ($numberOfMessageHtmlLines == 1) {
-            $messageHtml = '<h1 class="message" itemprop="name">' . $messageHtmlLines[0] . '</h1>';
+            $messageHtml = '<h1 itemprop="name">' . $messageHtmlLines[0] . '</h1>';
             return $messageHtml;
         }
 
@@ -47,17 +47,17 @@ class Message extends AbstractHelper
          * If it has strlen > 0, then margin-bottom of h1 should be 0.
          */
         if (strlen($restOfMessageHtmlLines[0]) == 0) {
-            $h1Class = 'message';
+            $h1ClassKeyValue = '';
             array_shift($restOfMessageHtmlLines);
         } else {
-            $h1Class = 'message mb-0';
+            $h1ClassKeyValue = ' class="mb-0"';
         }
 
-        $messageHtml = '<h1 class="' . $h1Class . '" itemprop="name">'
+        $messageHtml = '<h1' . $h1ClassKeyValue . ' itemprop="name">'
             . $messageHtmlLines[0]
             . '</h1>' . "\n";
 
-        $messageHtml .= '<p class="message" itemprop="text">' . "\n"
+        $messageHtml .= '<p itemprop="text">' . "\n"
             . implode("<br>\n", $restOfMessageHtmlLines) . "\n"
             . '</p>';
 
