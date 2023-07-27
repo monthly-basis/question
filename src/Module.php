@@ -428,6 +428,11 @@ class Module
                         $sm->get(QuestionTable\Answer::class),
                     );
                 },
+                QuestionService\AnswerSearchMessage\Rotate::class => function ($sm) {
+                    return new QuestionService\AnswerSearchMessage\Rotate(
+                        $sm->get(QuestionTable\AnswerSearchMessage::class),
+                    );
+                },
                 QuestionService\Post\CanBeUndeleted::class => function ($sm) {
                     return new QuestionService\Post\CanBeUndeleted(
                         $sm->get(GroupService\LoggedInUserInGroupName::class),
