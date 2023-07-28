@@ -14,8 +14,14 @@ class Message extends AbstractHelper
         $this->toHtmlService = $toHtmlService;
     }
 
-    public function __invoke(QuestionEntity\Question $questionEntity): string
-    {
+    public function __invoke(
+        QuestionEntity\Question $questionEntity,
+        string $headingTagEscaped = 'h1',
+    ): string {
+        if (!in_array($headingTagEscaped, ['h1', 'h2', 'h3'])) {
+            $headingTagEscaped = 'h1';
+        }
+
         try {
             $message = $questionEntity->getMessage();
         } catch (Error $error) {
@@ -33,7 +39,10 @@ class Message extends AbstractHelper
         $numberOfMessageHtmlLines = count($messageHtmlLines);
 
         if ($numberOfMessageHtmlLines == 1) {
-            $messageHtml = '<h1 itemprop="name">' . $messageHtmlLines[0] . '</h1>';
+            $messageHtml = "<$headingTagEscaped "
+                . 'itemprop="name">'
+                . $messageHtmlLines[0]
+                . "</$headingTagEscaped>";
             return $messageHtml;
         }
 
@@ -53,9 +62,9 @@ class Message extends AbstractHelper
             $h1ClassKeyValue = ' class="mb-0"';
         }
 
-        $messageHtml = '<h1' . $h1ClassKeyValue . ' itemprop="name">'
+        $messageHtml = "<$headingTagEscaped" . $h1ClassKeyValue . ' itemprop="name">'
             . $messageHtmlLines[0]
-            . '</h1>' . "\n";
+            . "</$headingTagEscaped>" . "\n";
 
         $messageHtml .= '<p itemprop="text">' . "\n"
             . implode("<br>\n", $restOfMessageHtmlLines) . "\n"

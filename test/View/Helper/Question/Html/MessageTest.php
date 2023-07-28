@@ -79,6 +79,31 @@ EXPECTED_HTML;
         );
     }
 
+    public function test___invoke_messageHasOneLineAndH2HeadingTag_expectedString()
+    {
+$messageHtml = <<<MESSAGE_HTML
+A message with only 1 line.
+MESSAGE_HTML;
+$expectedHtml = <<<EXPECTED_HTML
+<h2 itemprop="name">A message with only 1 line.</h2>
+EXPECTED_HTML;
+
+        $questionEntity = (new QuestionEntity\Question())
+            ->setMessage('The message.')
+            ;
+        $this->toHtmlServiceMock
+            ->expects($this->once())
+            ->method('toHtml')
+            ->with($questionEntity->message)
+            ->willReturn($messageHtml);
+            ;
+
+        $this->assertSame(
+            $expectedHtml,
+            $this->messageHelper->__invoke($questionEntity, 'h2'),
+        );
+    }
+
     public function test___invoke_messageHasTwoLines_expectedString()
     {
 $messageHtml = <<<MESSAGE_HTML
