@@ -43,7 +43,7 @@ class Related
 
         foreach ($result as $array) {
             $answerEntity = $this->fromAnswerIdFactory->buildFromAnswerId(
-                (int) $array['question_id']
+                (int) $array['answer_id']
             );
 
             if (isset($answerEntity->deletedDateTime)) {
