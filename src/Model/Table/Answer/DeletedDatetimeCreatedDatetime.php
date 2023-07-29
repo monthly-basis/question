@@ -7,17 +7,10 @@ use Laminas\Db\Adapter\Adapter;
 
 class DeletedDatetimeCreatedDatetime
 {
-    /**
-     * @var Adapter
-     */
-    protected $adapter;
-
     public function __construct(
-        Adapter $adapter,
-        QuestionTable\Answer $answerTable
+        protected Adapter $adapter,
+        protected QuestionTable\Answer $answerTable
     ) {
-        $this->adapter     = $adapter;
-        $this->answerTable = $answerTable;
     }
 
     public function selectWhereDeletedDatetimeIsNullOrderByCreatedDatetimeDesc(): Generator {
