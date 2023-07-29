@@ -18,7 +18,7 @@ class Month
         $this->questionTable   = $questionTable;
     }
 
-    public function getQuestions(): Generator
+    public function getQuestions(int $limit = 100): Generator
     {
         $select = $this->sql
             ->select('question')
@@ -27,7 +27,7 @@ class Month
                 'deleted_datetime' => null,
             ])
             ->order('views_not_bot_one_month DESC')
-            ->limit(100)
+            ->limit($limit)
             ;
         $result = $this->sql->prepareStatementForSqlObject($select)->execute();
 
