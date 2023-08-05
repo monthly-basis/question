@@ -2,7 +2,7 @@ CREATE TABLE `question_history` (
     `question_history_id` int(10) unsigned auto_increment,
     `question_id` int(10) unsigned not null,
     `name` varchar(255) default null,
-    `subject` varchar(255) not null,
+    `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL,
     `message` text,
     `modified_datetime` DATETIME DEFAULT NULL,
     `modified_user_id` INT(10) UNSIGNED DEFAULT NULL,
