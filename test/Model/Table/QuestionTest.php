@@ -270,7 +270,7 @@ class QuestionTest extends TableTestCase
 
         $result = $this->questionTable->updateWhereQuestionId(
             null,
-            'modified subject',
+            null,
             'modified message',
             10,
             'modified reason',

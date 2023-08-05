@@ -296,8 +296,8 @@ class Question extends LaminasDb\Table
     }
 
     public function updateWhereQuestionId(
-        string $name = null,
-        string $subject,
+        string|null $name,
+        string|null $subject,
         string $message,
         int $modifiedUserId,
         string $modifiedReason,
