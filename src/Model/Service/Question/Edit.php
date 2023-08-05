@@ -25,7 +25,7 @@ class Edit
     public function edit(
         QuestionEntity\Question $questionEntity,
         string|null $name,
-        $subject,
+        string|null $subject,
         $message,
         $modifiedUserId,
         $modifiedReason
