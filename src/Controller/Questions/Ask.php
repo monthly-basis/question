@@ -46,7 +46,7 @@ class Ask extends AbstractActionController
         if ($errors) {
             $this->flashService->set('message', $_POST['message']);
             $this->flashService->set('errors', $errors);
-            return $this->redirect()->toRoute('monthly-basis-question-questions/ask')->setStatusCode(303);
+            return $this->redirect()->toRoute('monthly-basis/question/questions/ask')->setStatusCode(303);
         }
 
         try {
