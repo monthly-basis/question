@@ -250,7 +250,7 @@ class Answer extends LaminasDb\Table
                AND `question`.`deleted_datetime` IS NULL
 
              ORDER
-                BY `question`.`created_datetime` DESC
+                BY `answer`.`created_datetime` DESC
 
              LIMIT ?, ?
                  ;
