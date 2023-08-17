@@ -17,9 +17,12 @@ class Category
     public function getQuestions(
         CategoryEntity\Category $categoryEntity,
         int $page = 1,
+        int $questionsPerPage = 100,
     ): Generator {
         $result = $this->categoryQuestionTable->selectQuestionIdWhereCategoryId(
-            $categoryEntity->categoryId
+            categoryId: $categoryEntity->categoryId,
+            limitOffset: $questionsPerPage * ($page - 1),
+            limitRowCount: $questionsPerPage,
         );
 
         foreach ($result as $array) {
