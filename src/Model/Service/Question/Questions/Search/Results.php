@@ -27,12 +27,15 @@ class Results
         $this->keepFirstWordsService      = $keepFirstWordsService;
     }
 
-    public function getResults(string $query, int $page): Generator
-    {
+    public function getResults(
+        string $query,
+        int $page,
+        int $queryWordCount = 30,
+    ): Generator {
         $query = strtolower($query);
         $query = $this->keepFirstWordsService->keepFirstWords(
             $query,
-            16
+            $queryWordCount,
         );
 
         $result = $this->getPdoResult($query, $page);
