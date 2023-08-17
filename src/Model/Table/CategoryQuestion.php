@@ -43,4 +43,24 @@ class CategoryQuestion extends LaminasDb\Table
         ];
         return $this->sql->getAdapter()->query($sql)->execute($parameters);
     }
+
+    public function selectCountWhereCategoryId(
+        int $categoryId,
+    ): Result {
+        $sql = '
+            SELECT COUNT(*)
+              FROM `category_question`
+              JOIN `question`
+             USING (`question_id`)
+
+             WHERE `category_question`.`category_id` = ?
+               AND `question`.`deleted_datetime` IS NULL
+               AND `question`.`moved_datetime` IS NULL
+                 ;
+        ';
+        $parameters = [
+            $categoryId,
+        ];
+        return $this->sql->getAdapter()->query($sql)->execute($parameters);
+    }
 }

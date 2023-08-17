@@ -38,4 +38,13 @@ class CategoryQuestionTest extends TableTestCase
         );
         $this->assertEmpty($result);
     }
+
+    public function test_selectCountWhereCategoryId()
+    {
+        $result = $this->categoryQuestionTable->selectCountWhereCategoryId(123);
+        $this->assertSame(
+            0,
+            $result->current()['COUNT(*)']
+        );
+    }
 }
