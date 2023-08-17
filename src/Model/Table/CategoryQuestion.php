@@ -14,8 +14,11 @@ class CategoryQuestion extends LaminasDb\Table
     ) {
     }
 
-    public function selectQuestionIdWhereCategoryId(int $categoryId): Result
-    {
+    public function selectQuestionIdWhereCategoryId(
+        int $categoryId,
+        int $limitOffset = 0,
+        int $limitRowCount = 100,
+    ): Result {
         $sql = '
             SELECT `question_id`
               FROM `category_question`
@@ -30,11 +33,13 @@ class CategoryQuestion extends LaminasDb\Table
                  , `question`.`views_not_bot_one_day` DESC
                  , `question`.`views_not_bot_one_week` DESC
                  , `question`.`views_not_bot_one_month` DESC
-             LIMIT 100
+             LIMIT ?, ?
                  ;
         ';
         $parameters = [
             $categoryId,
+            $limitOffset,
+            $limitRowCount,
         ];
         return $this->sql->getAdapter()->query($sql)->execute($parameters);
     }
