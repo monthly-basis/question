@@ -708,6 +708,11 @@ class Module
                         $sm->get(QuestionTable\CategoryQuestion::class),
                     );
                 },
+                QuestionService\Questions\Category\Count::class => function ($sm) {
+                    return new QuestionService\Questions\Category\Count(
+                        $sm->get(QuestionTable\CategoryQuestion::class),
+                    );
+                },
                 QuestionService\Questions\Subject::class => function ($sm) {
                     return new QuestionService\Questions\Subject(
                         $sm->get(QuestionDb\Sql::class),
