@@ -34,14 +34,15 @@ class Related
         int $questionSearchMessageLimitRowCount = 20,
         int $outerLimitOffset = 0,
         int $outerLimitRowCount = 20,
+        int $queryWordCount = 30,
     ): Generator {
         $query = $this->headlineAndMessageService->getHeadlineAndMessage(
             $questionEntity
         );
         $query = strip_tags($query);
         $query = preg_replace('/\s+/s', ' ', $query);
-        $words = explode(' ', $query, 21);
-        $query = implode(' ', array_slice($words, 0, 16));
+        $words = explode(' ', $query, ($queryWordCount + 1));
+        $query = implode(' ', array_slice($words, 0, $queryWordCount));
         $query = strtolower($query);
 
         $result = $this->getPdoResult(
