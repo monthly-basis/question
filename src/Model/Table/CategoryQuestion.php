@@ -50,12 +50,7 @@ class CategoryQuestion extends LaminasDb\Table
         $sql = '
             SELECT COUNT(*)
               FROM `category_question`
-              JOIN `question`
-             USING (`question_id`)
-
              WHERE `category_question`.`category_id` = ?
-               AND `question`.`deleted_datetime` IS NULL
-               AND `question`.`moved_datetime` IS NULL
                  ;
         ';
         $parameters = [
