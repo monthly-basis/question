@@ -7,11 +7,9 @@ use MonthlyBasis\Question\Model\Service as QuestionService;
 class RootRelativeUrl
 {
     public function __construct(
-        QuestionEntity\Config $configEntity,
-        QuestionService\Question\Slug $slugService
+        protected QuestionEntity\Config $configEntity,
+        protected QuestionService\Question\Slug $slugService
     ) {
-        $this->configEntity = $configEntity;
-        $this->slugService  = $slugService;
     }
 
     public function getRootRelativeUrl(
