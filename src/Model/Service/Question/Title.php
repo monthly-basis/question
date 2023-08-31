@@ -24,7 +24,7 @@ class Title
 
         return $this->stripTagsAndShortenService->stripTagsAndShorten(
             $questionEntity->getMessage(),
-            90
+            60
         );
 
         /*
