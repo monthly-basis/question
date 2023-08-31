@@ -402,6 +402,7 @@ class Module
                 },
                 QuestionService\Answer\RootRelativeUrl::class => function ($sm) {
                     return new QuestionService\Answer\RootRelativeUrl(
+                        $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionService\Answer\Slug::class),
                     );
                 },
