@@ -30,14 +30,14 @@ class Author extends AbstractHelper
         if (isset($questionEntity->createdName)) {
             $createdName = $questionEntity->getCreatedName();
 
-            $createdNameReplacedAndEncoded = $this->replaceAndUrlencodeHelper->__invoke(
-                $createdName
-            );
             $createdNameReplacedAndEscaped = $this->replaceAndEscapeHelper->__invoke(
                 $createdName
             );
+            $createdNameReplacedAndUrlencoded = $this->replaceAndUrlencodeHelper->__invoke(
+                $createdName
+            );
 
-            $href = '/visitors?name=' . $createdNameReplacedAndEncoded;
+            $href = '/visitors?name=' . $createdNameReplacedAndUrlencoded;
             return "<a href=\"$href\" rel=\"nofollow\">$createdNameReplacedAndEscaped</a>";
         }
 
