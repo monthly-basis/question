@@ -120,16 +120,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.280.0",
+            "version": "3.280.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "bf4f3079bc59af44a752677cfbcd43f7953c4343"
+                "reference": "d68b83b3bc39b70bf33e9b8b5166facbe3e4fe9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bf4f3079bc59af44a752677cfbcd43f7953c4343",
-                "reference": "bf4f3079bc59af44a752677cfbcd43f7953c4343",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d68b83b3bc39b70bf33e9b8b5166facbe3e4fe9b",
+                "reference": "d68b83b3bc39b70bf33e9b8b5166facbe3e4fe9b",
                 "shasum": ""
             },
             "require": {
@@ -209,9 +209,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.280.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.280.2"
             },
-            "time": "2023-08-30T18:19:33+00:00"
+            "time": "2023-09-01T18:06:10+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -2075,16 +2075,16 @@
         },
         {
             "name": "monthly-basis/content-moderation",
-            "version": "v0.16.7",
+            "version": "v0.16.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/content-moderation.git",
-                "reference": "e1ea9be728a70e89034c17ea6fc5db5fcaa62f44"
+                "reference": "b4293cf0549450349da5593f9ae4aa8fceb85d92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/e1ea9be728a70e89034c17ea6fc5db5fcaa62f44",
-                "reference": "e1ea9be728a70e89034c17ea6fc5db5fcaa62f44",
+                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/b4293cf0549450349da5593f9ae4aa8fceb85d92",
+                "reference": "b4293cf0549450349da5593f9ae4aa8fceb85d92",
                 "shasum": ""
             },
             "require": {
@@ -2106,9 +2106,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/content-moderation/issues",
-                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.16.7"
+                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.16.8"
             },
-            "time": "2023-08-15T15:32:12+00:00"
+            "time": "2023-09-01T20:11:00+00:00"
         },
         {
             "name": "monthly-basis/entity",
