@@ -33,10 +33,12 @@ class Author extends AbstractHelper
             $createdNameReplacedAndEncoded = $this->replaceAndUrlencodeHelper->__invoke(
                 $createdName
             );
+            $createdNameReplacedAndEscaped = $this->replaceAndEscapeHelper->__invoke(
+                $createdName
+            );
 
             $href = '/visitors?name=' . $createdNameReplacedAndEncoded;
-            $innerHtml = $this->replaceAndEscapeHelper->__invoke($createdName);
-            return "<a href=\"$href\" rel=\"nofollow\">$innerHtml</a>";
+            return "<a href=\"$href\" rel=\"nofollow\">$createdNameReplacedAndEscaped</a>";
         }
 
         return null;
