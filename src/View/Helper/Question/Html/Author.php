@@ -37,6 +37,14 @@ class Author extends AbstractHelper
                 $createdName
             );
 
+            if (
+                (strlen($createdNameReplacedAndEscaped) == 0)
+                || (strlen($createdNameReplacedAndUrlencoded) == 0)
+            ) {
+                return null;
+            }
+
+
             $href = '/visitors?name=' . $createdNameReplacedAndUrlencoded;
             return "<a href=\"$href\" rel=\"nofollow\">$createdNameReplacedAndEscaped</a>";
         }

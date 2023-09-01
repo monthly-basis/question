@@ -67,6 +67,70 @@ class AuthorTest extends TestCase
         );
     }
 
+    public function test___invoke_replacedAndEscapedIsEmptyString_null()
+    {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setCreatedName('created name')
+            ;
+
+        $this->userFactoryMock
+            ->expects($this->exactly(0))
+            ->method('buildFromUserId')
+            ;
+        $this->userHtmlHelperMock
+            ->expects($this->exactly(0))
+            ->method('__invoke')
+            ;
+        $this->replaceAndUrlencodeHelperMock
+            ->expects($this->once())
+            ->method('__invoke')
+            ->with('created name')
+            ->willReturn('created+name')
+            ;
+        $this->replaceAndEscapeHelperMock
+            ->expects($this->once())
+            ->method('__invoke')
+            ->with('created name')
+            ->willReturn('')
+            ;
+
+        $this->assertNull(
+            $this->authorHelper->__invoke($questionEntity)
+        );
+    }
+
+    public function test___invoke_replacedAndUrlEncodedIsEmptyString_null()
+    {
+        $questionEntity = (new QuestionEntity\Question())
+            ->setCreatedName('created name')
+            ;
+
+        $this->userFactoryMock
+            ->expects($this->exactly(0))
+            ->method('buildFromUserId')
+            ;
+        $this->userHtmlHelperMock
+            ->expects($this->exactly(0))
+            ->method('__invoke')
+            ;
+        $this->replaceAndUrlencodeHelperMock
+            ->expects($this->once())
+            ->method('__invoke')
+            ->with('created name')
+            ->willReturn('')
+            ;
+        $this->replaceAndEscapeHelperMock
+            ->expects($this->once())
+            ->method('__invoke')
+            ->with('created name')
+            ->willReturn('created name')
+            ;
+
+        $this->assertNull(
+            $this->authorHelper->__invoke($questionEntity)
+        );
+    }
+
     public function test___invoke_userIdSet_displayNameOrUsername()
     {
         $questionEntity = (new QuestionEntity\Question())
