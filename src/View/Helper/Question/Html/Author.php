@@ -20,12 +20,11 @@ class Author extends AbstractHelper
 
     public function __invoke(QuestionEntity\Question $questionEntity): string|null
     {
-        try {
-            $userId     = $questionEntity->getCreatedUserId();
-            $userEntity = $this->userFactory->buildFromUserId($userId);
+        if (isset($questionEntity->createdUserId)) {
+            $userEntity = $this->userFactory->buildFromUserId(
+                $questionEntity->createdUserId
+            );
             return $this->userHtmlHelper->__invoke($userEntity);
-        } catch (Throwable) {
-            // Do nothing.
         }
 
         try {
