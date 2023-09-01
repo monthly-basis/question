@@ -27,14 +27,12 @@ class Author extends AbstractHelper
             return $this->userHtmlHelper->__invoke($userEntity);
         }
 
-        try {
+        if (isset($questionEntity->createdName)) {
             $createdName = $questionEntity->getCreatedName();
             $href = '/visitors?name='
                 . $this->replaceAndUrlencodeHelper->__invoke($createdName);
             $innerHtml = $this->replaceAndEscapeHelper->__invoke($createdName);
             return "<a href=\"$href\" rel=\"nofollow\">$innerHtml</a>";
-        } catch (Throwable) {
-            // Do nothing.
         }
 
         return null;
