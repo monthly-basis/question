@@ -4,7 +4,6 @@ namespace MonthlyBasis\Question\View\Helper\Question\Html;
 use Laminas\View\Helper\AbstractHelper;
 use MonthlyBasis\ContentModeration\View\Helper as ContentModerationHelper;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
-use MonthlyBasis\Question\Model\Exception as QuestionException;
 use MonthlyBasis\User\Model\Factory as UserFactory;
 use MonthlyBasis\User\View\Helper as UserHelper;
 use Throwable;
@@ -19,10 +18,7 @@ class Author extends AbstractHelper
     ) {
     }
 
-    /**
-     * @throws QuestionException
-     */
-    public function __invoke(QuestionEntity\Question $questionEntity): string
+    public function __invoke(QuestionEntity\Question $questionEntity): string|null
     {
         try {
             $userId     = $questionEntity->getCreatedUserId();
@@ -42,6 +38,6 @@ class Author extends AbstractHelper
             // Do nothing.
         }
 
-        throw new QuestionException('Could not get author HTML of question.');
+        return null;
     }
 }

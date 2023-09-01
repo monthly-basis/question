@@ -3,7 +3,6 @@ namespace MonthlyBasis\QuestionTest\View\Helper\Question\Html;
 
 use MonthlyBasis\ContentModeration\View\Helper as ContentModerationHelper;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
-use MonthlyBasis\Question\Model\Exception as QuestionException;
 use MonthlyBasis\Question\View\Helper as QuestionHelper;
 use MonthlyBasis\User\Model\Entity as UserEntity;
 use MonthlyBasis\User\Model\Factory as UserFactory;
@@ -137,7 +136,7 @@ class AuthorTest extends TestCase
         );
     }
 
-    public function test___invoke_neitherCreatedNameNorUserIdSet_throwException()
+    public function test___invoke_neitherCreatedNameNorUserIdSet_null()
     {
         $questionEntity = new QuestionEntity\Question();
 
@@ -158,7 +157,8 @@ class AuthorTest extends TestCase
             ->method('__invoke')
             ;
 
-        $this->expectException(QuestionException::class);
-        $this->authorHelper->__invoke($questionEntity);
+        $this->assertNull(
+            $this->authorHelper->__invoke($questionEntity)
+        );
     }
 }
