@@ -37,8 +37,8 @@ class ConditionallyInsert
          */
         $serverHttpReferer = $_SERVER['HTTP_REFERER'] ?? '';
         if (
-            !$this->startsWithService->startsWith($serverHttpReferer, 'https://www.bing.')
-            && !$this->startsWithService->startsWith($serverHttpReferer, 'https://www.google.')
+            // !$this->startsWithService->startsWith($serverHttpReferer, 'https://www.bing.')
+            !$this->startsWithService->startsWith($serverHttpReferer, 'https://www.google.')
         ) {
             return false;
         }
