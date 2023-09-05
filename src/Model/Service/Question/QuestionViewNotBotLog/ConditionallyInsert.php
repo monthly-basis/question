@@ -10,13 +10,10 @@ use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 class ConditionallyInsert
 {
     public function __construct(
-        TableGateway $questionViewNotBotLogTableGateway,
-        StringService\StartsWith $startsWithService,
-        SuperglobalService\Server\HttpUserAgent\Bot $botService
+        protected TableGateway $questionViewNotBotLogTableGateway,
+        protected StringService\StartsWith $startsWithService,
+        protected SuperglobalService\Server\HttpUserAgent\Bot $botService,
     ) {
-        $this->questionViewNotBotLogTableGateway = $questionViewNotBotLogTableGateway;
-        $this->startsWithService                 = $startsWithService;
-        $this->botService                        = $botService;
     }
 
     public function conditionallyInsert(
