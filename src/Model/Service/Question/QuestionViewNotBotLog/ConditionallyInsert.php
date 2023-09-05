@@ -22,12 +22,9 @@ class ConditionallyInsert
     public function conditionallyInsert(
         QuestionEntity\Question $questionEntity
     ): bool {
-        /*
-         * Comment out for now while we insert all views.
         if ($this->botService->isBot()) {
             return false;
         }
-         */
 
         /*
          * Only insert if referer is exactly:
