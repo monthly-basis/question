@@ -21,10 +21,6 @@ class ConditionallyInsert
     public function conditionallyInsert(
         QuestionEntity\Question $questionEntity
     ): bool {
-        if ($this->botService->isBot()) {
-            return false;
-        }
-
         /*
          * Only insert if referer is exactly:
          * https://www.google.com/
@@ -36,16 +32,20 @@ class ConditionallyInsert
          * https://www.google.com.ph/
          * https://www.google.com.vn/
          *
-         * Therefore you cannot simply match 'google.com'. Instead, you must
-         * match the entire 'https://www.google.com/' string.
+         * Therefore, to target US traffic, you must match the entire
+         * 'https://www.google.com/' string.
          */
         $serverHttpReferer = $_SERVER['HTTP_REFERER'] ?? '';
-        /*
-         * Comment out for now while we insert all views.
-        if ($serverHttpReferer != 'https://www.google.com/') {
+        if (
+            !$this->startsWithService->startsWith($serverHttpReferer, 'https://www.bing.')
+            && !$this->startsWithService->startsWith($serverHttpReferer, 'https://www.google.')
+        ) {
             return false;
         }
-         */
+
+        if ($this->botService->isBot()) {
+            return false;
+        }
 
         /*
          * International traffic usually starts with many other language
@@ -68,11 +68,14 @@ class ConditionallyInsert
          * primary language. We may expand this logic later to log and target
          * traffic from different countries.
          */
+        /*
+         * Comment out for now while we accept browsers using all languages.
         $serverHttpAcceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
         if (!$this->startsWithService->startsWith($serverHttpAcceptLanguage, 'en')) {
             return false;
         }
         $serverHttpAcceptLanguage = substr($serverHttpAcceptLanguage, 0, 255);
+         */
 
         try {
             $this->questionViewNotBotLogTableGateway
