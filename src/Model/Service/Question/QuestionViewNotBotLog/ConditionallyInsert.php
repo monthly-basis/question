@@ -68,9 +68,9 @@ class ConditionallyInsert
          * primary language. We may expand this logic later to log and target
          * traffic from different countries.
          */
+        $serverHttpAcceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
         /*
          * Comment out for now while we accept browsers using all languages.
-        $serverHttpAcceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
         if (!$this->startsWithService->startsWith($serverHttpAcceptLanguage, 'en')) {
             return false;
         }

@@ -252,32 +252,26 @@ class ConditionallyInsertTest extends TestCase
      */
     public function test_conditionallyInsert_isNotBotRefererIsGoogleStartsWithEnUsNoExceptionThrown_true()
     {
-		$this->markTestSkipped(
-			'Skipping for now while we insert all views.'
-		);
-
         $_SERVER = [
             'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9',
             'HTTP_REFERER'         => 'https://www.google.com/',
             'REMOTE_ADDR'          => '1.2.3.4',
         ];
-
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
+            ;
+
+        $this->startsWithServiceMock
+            ->expects($this->once())
+            ->method('startsWith')
+            ->with('https://www.google.com/', 'https://www.google.')
+            ->willReturn(true)
             ;
         $this->botServiceMock
             ->expects($this->once())
             ->method('isBot')
             ->willReturn(false)
             ;
-        /*
-        $this->startsWithServiceMock
-            ->expects($this->once())
-            ->method('startsWith')
-            ->with('en-US,en;q=0.9', 'en-US')
-            ->willReturn(true)
-            ;
-         */
         $this->questionViewNotBotLogTableGatewayMock
             ->expects($this->once())
             ->method('insert')
