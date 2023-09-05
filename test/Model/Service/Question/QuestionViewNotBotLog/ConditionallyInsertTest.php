@@ -3,6 +3,7 @@ namespace MonthlyBasis\QuestionTest\Model\Service\Question\QuestionViewNotBotLog
 
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use Laminas\Db\TableGateway\TableGateway;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\String\Model\Service as StringService;
@@ -13,6 +14,9 @@ class ConditionallyInsertTest extends TestCase
 {
     protected function setUp(): void
     {
+        $this->memcachedServiceMock = $this->createMock(
+            MemcachedService\Memcached::class
+        );
         $this->questionViewNotBotLogTableGatewayMock = $this->createMock(
             TableGateway::class
         );
@@ -24,6 +28,7 @@ class ConditionallyInsertTest extends TestCase
         );
 
         $this->conditionallyInsertService = new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
+            $this->memcachedServiceMock,
             $this->questionViewNotBotLogTableGatewayMock,
             $this->startsWithServiceMock,
             $this->botServiceMock,

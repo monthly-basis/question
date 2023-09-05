@@ -3,6 +3,7 @@ namespace MonthlyBasis\Question\Model\Service\Question\QuestionViewNotBotLog;
 
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use Laminas\Db\TableGateway\TableGateway;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
@@ -10,6 +11,7 @@ use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 class ConditionallyInsert
 {
     public function __construct(
+        protected MemcachedService\Memcached $memcachedService,
         protected TableGateway $questionViewNotBotLogTableGateway,
         protected StringService\StartsWith $startsWithService,
         protected SuperglobalService\Server\HttpUserAgent\Bot $botService,
