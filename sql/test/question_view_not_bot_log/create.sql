@@ -8,6 +8,7 @@ CREATE TABLE `question_view_not_bot_log` (
     PRIMARY KEY (`question_view_not_bot_log_id`),
     KEY `created_question_id_ip` (`created`, `question_id`, `ip`),
     KEY `question_id` (`question_id`),
+    KEY `server_http_referer` (`server_http_referer`),
     KEY `ip` (`ip`),
     CONSTRAINT FOREIGN KEY (`question_id`)
         REFERENCES `question` (`question_id`)
