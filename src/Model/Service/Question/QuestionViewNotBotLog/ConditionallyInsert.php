@@ -68,17 +68,14 @@ class ConditionallyInsert
          * en
          * ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
          *
-         * At the present time let's only log visitors with en-US set as
+         * At the present time let's only log visitors with en set as
          * primary language. We may expand this logic later to log and target
          * traffic from different countries.
          */
         $serverHttpAcceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
-        /*
-         * For now, comment out logic which excludes international traffic.
-        if (!$this->startsWithService->startsWith($serverHttpAcceptLanguage, 'en-US')) {
+        if (!$this->startsWithService->startsWith($serverHttpAcceptLanguage, 'en')) {
             return false;
         }
-         */
         $serverHttpAcceptLanguage = substr($serverHttpAcceptLanguage, 0, 255);
 
         try {
