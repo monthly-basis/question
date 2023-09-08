@@ -42,6 +42,9 @@ class Question
         if (isset($array['views'])) {
             $questionEntity->setViews((int) $array['views']);
         }
+        if (isset($array['views_one_year'])) {
+            $questionEntity->viewsOneYear = intval($array['views_one_year']);
+        }
         if (isset($array['deleted_datetime'])) {
             $questionEntity->setDeletedDateTime(new DateTime($array['deleted_datetime']));
         }
