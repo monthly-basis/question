@@ -8,11 +8,9 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class Hour
 {
     public function __construct(
-        QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
-        QuestionTable\Question $questionTable
+        protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
+        protected QuestionTable\Question $questionTable
     ) {
-        $this->fromQuestionIdFactory = $fromQuestionIdFactory;
-        $this->questionTable         = $questionTable;
     }
 
     public function getQuestions(int $limit = 100): Generator

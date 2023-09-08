@@ -9,13 +9,10 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class Month
 {
     public function __construct(
-        LaminasDb\Sql\Sql $sql,
-        QuestionFactory\Question $questionFactory,
-        QuestionTable\Question $questionTable
+        protected LaminasDb\Sql\Sql $sql,
+        protected QuestionFactory\Question $questionFactory,
+        protected QuestionTable\Question $questionTable
     ) {
-        $this->sql             = $sql;
-        $this->questionFactory = $questionFactory;
-        $this->questionTable   = $questionTable;
     }
 
     public function getQuestions(int $limit = 100): Generator
