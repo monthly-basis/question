@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `question` views columns
+```
+ALTER TABLE `question` ADD COLUMN `views_one_hour` int unsigned NOT NULL DEFAULT '0' AFTER `views`;
+ALTER TABLE `question` ADD COLUMN `views_one_day` int unsigned NOT NULL DEFAULT '0' AFTER `views_one_hour`;
+ALTER TABLE `question` ADD COLUMN `views_one_week` int unsigned NOT NULL DEFAULT '0' AFTER `views_one_day`;
+ALTER TABLE `question` ADD COLUMN `views_one_month` int unsigned NOT NULL DEFAULT '0' AFTER `views_one_week`;
+```
+
 - `question`.`views_one_year` column
 ```
 ALTER TABLE `question` ADD COLUMN `views_one_year` int unsigned NOT NULL DEFAULT '0' AFTER `views`;
