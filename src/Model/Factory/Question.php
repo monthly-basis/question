@@ -10,13 +10,10 @@ use MonthlyBasis\User\Model\Service as UserService;
 class Question
 {
     public function __construct(
-        QuestionTable\Question $questionTable,
-        UserFactory\User $userFactory,
-        UserService\DisplayNameOrUsername $displayNameOrUsernameService
+        protected QuestionTable\Question $questionTable,
+        protected UserFactory\User $userFactory,
+        protected UserService\DisplayNameOrUsername $displayNameOrUsernameService
     ) {
-        $this->questionTable                = $questionTable;
-        $this->userFactory                  = $userFactory;
-        $this->displayNameOrUsernameService = $displayNameOrUsernameService;
     }
 
     public function buildFromArray(
