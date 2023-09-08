@@ -33,6 +33,7 @@ class Question extends QuestionEntity\Post
     protected $subject;
 
     protected int $views;
+    protected int $viewsOneYear;
 
     public function __get(string $name): mixed
     {
