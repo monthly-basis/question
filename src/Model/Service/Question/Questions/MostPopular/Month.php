@@ -9,7 +9,6 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class Month
 {
     public function __construct(
-        protected LaminasDb\Sql\Sql $sql,
         protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
         protected QuestionTable\Question $questionTable
     ) {
@@ -17,18 +16,18 @@ class Month
 
     public function getQuestions(int $limit = 100): Generator
     {
-        $select = $this->sql
-            ->select('question')
-            ->columns([
+        $result = $this->questionTable->select(
+            columns: [
                 'question_id'
-            ])
-            ->where([
+            ],
+            where: [
                 'deleted_datetime' => null,
-            ])
-            ->order('views_not_bot_one_month DESC')
-            ->limit($limit)
-            ;
-        $result = $this->sql->prepareStatementForSqlObject($select)->execute();
+            ],
+            order: [
+                'views_not_bot_one_month DESC'
+            ],
+            limit: $limit
+        );
 
         foreach ($result as $array) {
             yield $this->fromQuestionIdFactory->buildFromQuestionId(
