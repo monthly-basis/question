@@ -185,7 +185,6 @@ class Question extends LaminasDb\Table
                  , `question`.`views_not_bot_one_day` DESC
                  , `question`.`views_not_bot_one_week` DESC
                  , `question`.`views_not_bot_one_month` DESC
-                 , `question`.`views` DESC
                  ;
         ';
         $parameters = [
