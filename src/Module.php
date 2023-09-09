@@ -652,6 +652,12 @@ class Module
                         $sm->get(QuestionTable\Question::class)
                     );
                 },
+                QuestionService\Question\Questions\MostPopular\Year::class => function ($sm) {
+                    return new QuestionService\Question\Questions\MostPopular\Year(
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class),
+                        $sm->get(QuestionTable\Question::class)
+                    );
+                },
                 QuestionService\Question\Questions\Newest::class => function ($sm) {
                     return new QuestionService\Question\Questions\Newest(
                         $sm->get(QuestionFactory\Question::class),
