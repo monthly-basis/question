@@ -174,6 +174,12 @@ class QuestionTest extends TableTestCase
         $this->assertEmpty($result);
     }
 
+    public function test_selectQuestionIdOrderByViewsOneYearDesc()
+    {
+        $result = $this->questionTable->selectQuestionIdOrderByViewsOneYearDesc();
+        $this->assertEmpty($result);
+    }
+
     public function testSelectWhereQuestionId()
     {
         $this->questionTable->insertDeprecated(

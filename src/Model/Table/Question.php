@@ -193,6 +193,25 @@ class Question extends LaminasDb\Table
         return $this->adapter->query($sql)->execute($parameters);
     }
 
+    public function selectQuestionIdOrderByViewsOneYearDesc(
+        int $limitRowCount = 100
+    ): Result {
+        $sql = '
+            SELECT `question_id`
+              FROM `question`
+             WHERE `views_one_year` > 0
+               AND `deleted_datetime` IS NULL
+             ORDER
+                BY `views_one_year` DESC
+             LIMIT ?
+                 ;
+        ';
+        $parameters = [
+            $limitRowCount,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectWhereDeletedDatetimeIsNullOrderByCreatedDateTimeDesc(
         int $limitOffset,
         int $limitRowCount
