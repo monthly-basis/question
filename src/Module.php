@@ -434,6 +434,11 @@ class Module
                         $sm->get(QuestionService\Answer\RootRelativeUrl::class),
                     );
                 },
+                QuestionService\Answers\CreatedName\Count::class => function ($sm) {
+                    return new QuestionService\Answers\CreatedName\Count(
+                        $sm->get(QuestionTable\Answer\CreatedName::class),
+                    );
+                },
                 QuestionService\Answers\Related::class => function ($sm) {
                     return new QuestionService\Answers\Related(
                         $sm->get(QuestionFactory\Answer\FromAnswerId::class),
