@@ -4,6 +4,7 @@ namespace MonthlyBasis\Question\Model\Table\Question;
 use Generator;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 
 class CreatedName
 {
@@ -22,9 +23,9 @@ class CreatedName
 
     public function selectCountWhereCreatedName(
         string $createdName
-    ): int {
+    ): Result {
         $sql = '
-            SELECT COUNT(*) AS `count`
+            SELECT COUNT(*)
               FROM `question`
              WHERE `question`.`created_name` = ?
                AND `question`.`deleted_datetime` IS NULL
@@ -33,10 +34,7 @@ class CreatedName
         $parameters = [
             $createdName,
         ];
-        return (int) $this->adapter
-            ->query($sql)
-            ->execute($parameters)
-            ->current()['count'];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     /**

@@ -12,8 +12,9 @@ class Count
 
     public function getCount(string $createdName): int
     {
-        return $this->createdNameTable->selectCountWhereCreatedName(
+        $result = $this->createdNameTable->selectCountWhereCreatedName(
             $createdName
         );
+        return intval($result->current()['COUNT(*)']);
     }
 }
