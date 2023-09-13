@@ -720,6 +720,11 @@ class Module
                         $sm->get(QuestionTable\CategoryQuestion::class),
                     );
                 },
+                QuestionService\Questions\CreatedName\Count::class => function ($sm) {
+                    return new QuestionService\Questions\CreatedName\Count(
+                        $sm->get(QuestionTable\Question\CreatedName::class),
+                    );
+                },
                 QuestionService\Questions\Subject::class => function ($sm) {
                     return new QuestionService\Questions\Subject(
                         $sm->get(QuestionDb\Sql::class),
