@@ -17,6 +17,22 @@ class CreatedName
         $this->answerTable = $answerTable;
     }
 
+    public function selectCountWhereCreatedName(
+        string $createdName
+    ): Result {
+        $sql = '
+            SELECT COUNT(*)
+              FROM `answer`
+             WHERE `answer`.`created_name` = ?
+               AND `answer`.`deleted_datetime` IS NULL
+                 ;
+        ';
+        $parameters = [
+            $createdName,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectWhereCreatedName(
         string $createdName,
         int $limitRowCount
