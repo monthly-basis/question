@@ -35,6 +35,9 @@ class Preview extends AbstractHelper
             $questionEntity
         );
 
+        // Remove BOM (Byte Order Mark)
+        $message = preg_replace("/\xef\xbb\xbf/", '', $message);
+
         $message = $this->replaceBadWordsService->replaceBadWords($message, '');
         $message = $this->replaceLineBreaksService->replaceLineBreaks($message);
         $message = trim($message);
