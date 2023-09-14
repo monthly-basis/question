@@ -11,6 +11,22 @@ class UserId
     ) {
     }
 
+    public function selectCountWhereUserId(
+        int $userId
+    ): Result {
+        $sql = '
+            SELECT COUNT(*)
+              FROM `question`
+             WHERE `question`.`user_id` = ?
+               AND `question`.`deleted_datetime` IS NULL
+                 ;
+        ';
+        $parameters = [
+            $userId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectUserIdOrderByMaxCreatedDatetime(): Result
     {
         $sql = '
