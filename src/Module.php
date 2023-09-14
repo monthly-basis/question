@@ -902,6 +902,11 @@ class Module
                         $sm->get('question')
                     );
                 },
+                QuestionTable\Answer\UserId::class => function ($sm) {
+                    return new QuestionTable\Answer\UserId(
+                        $sm->get('question'),
+                    );
+                },
                 QuestionTable\AnswerDeleteQueue::class => function ($sm) {
                     return new QuestionTable\AnswerDeleteQueue(
                         $sm->get('question')
