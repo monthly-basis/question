@@ -747,6 +747,11 @@ class Module
                         $sm->get(QuestionTable\Question::class),
                     );
                 },
+                QuestionService\Questions\User\Count::class => function ($sm) {
+                    return new QuestionService\Questions\User\Count(
+                        $sm->get(QuestionTable\Question\UserId::class),
+                    );
+                },
                 QuestionService\Question\Questions\Year::class => function ($sm) {
                     return new QuestionService\Question\Questions\Year(
                         $sm->get('laminas-db-sql-sql'),
