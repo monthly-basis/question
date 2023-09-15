@@ -451,6 +451,11 @@ class Module
                         $sm->get(QuestionTable\Answer::class),
                     );
                 },
+                QuestionService\Answers\User\Count::class => function ($sm) {
+                    return new QuestionService\Answers\User\Count(
+                        $sm->get(QuestionTable\Answer\UserId::class),
+                    );
+                },
                 QuestionService\AnswerSearchMessage\Rotate::class => function ($sm) {
                     return new QuestionService\AnswerSearchMessage\Rotate(
                         $sm->get(QuestionTable\AnswerSearchMessage::class),
