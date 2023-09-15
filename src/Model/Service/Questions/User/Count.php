@@ -11,7 +11,7 @@ class Count
     ) {
     }
 
-    public function getCount(UserEntity $userEntity): int
+    public function getCount(UserEntity\User $userEntity): int
     {
         $result = $this->userIdTable->selectCountWhereUserId(
             $userEntity->userId
