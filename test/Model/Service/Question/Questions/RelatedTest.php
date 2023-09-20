@@ -348,7 +348,6 @@ class RelatedTest extends TestCase
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Related::class);
         $method = $class->getMethod('getPdoResult');
-        $method->setAccessible(true);
         $method->invokeArgs(
             $this->relatedService,
             [
@@ -389,7 +388,6 @@ class RelatedTest extends TestCase
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Related::class);
         $method = $class->getMethod('getPdoResult');
-        $method->setAccessible(true);
 
         try {
             $method->invokeArgs(

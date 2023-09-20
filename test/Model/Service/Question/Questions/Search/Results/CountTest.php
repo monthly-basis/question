@@ -116,7 +116,6 @@ class CountTest extends TestCase
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results\Count::class);
         $method = $class->getMethod('getPdoResult');
-        $method->setAccessible(true);
         $method->invokeArgs($this->countService, ['the amazing search query']);
     }
 
@@ -148,7 +147,6 @@ class CountTest extends TestCase
         try {
             $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results\Count::class);
             $method = $class->getMethod('getPdoResult');
-            $method->setAccessible(true);
             $method->invokeArgs($this->countService, ['the amazing search query']);
             $this->fail();
         } catch (Exception $exception) {

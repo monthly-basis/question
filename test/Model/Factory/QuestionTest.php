@@ -208,7 +208,6 @@ class QuestionTest extends TestCase
     {
         $reflectionClass = new ReflectionClass(QuestionFactory\Question::class);
         $method = $reflectionClass->getMethod('getNewInstance');
-        $method->setAccessible(true);
 
         $this->assertInstanceOf(
             QuestionEntity\Question::class,

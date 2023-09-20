@@ -336,7 +336,6 @@ class SimilarTest extends TestCase
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Similar::class);
         $method = $class->getMethod('getPdoResult');
-        $method->setAccessible(true);
         $method->invokeArgs(
             $this->similarService,
             [
@@ -377,7 +376,6 @@ class SimilarTest extends TestCase
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Similar::class);
         $method = $class->getMethod('getPdoResult');
-        $method->setAccessible(true);
 
         try {
             $method->invokeArgs(

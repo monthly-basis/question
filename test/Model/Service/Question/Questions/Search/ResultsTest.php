@@ -72,7 +72,6 @@ class ResultsTest extends TestCase
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results::class);
         $method = $class->getMethod('getPdoResult');
-        $method->setAccessible(true);
         $method->invokeArgs($this->resultsService, ['the amazing search query', 7]);
     }
 
@@ -104,7 +103,6 @@ class ResultsTest extends TestCase
         try {
             $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results::class);
             $method = $class->getMethod('getPdoResult');
-            $method->setAccessible(true);
             $method->invokeArgs($this->resultsService, ['the amazing search query', 7]);
             $this->fail();
         } catch (Exception $exception) {
