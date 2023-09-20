@@ -6,6 +6,8 @@ use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 
 class QuestionFromAnswer
 {
+    protected array $cache;
+
     public function __construct(
         protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory
     ) {
@@ -14,8 +16,15 @@ class QuestionFromAnswer
     public function getQuestionFromAnswer(
         QuestionEntity\Answer $answerEntity
     ): QuestionEntity\Question {
-        return $this->fromQuestionIdFactory->buildFromQuestionId(
+        if (isset($this->cache[$answerEntity->answerId])) {
+            return $this->cache[$answerEntity->answerId];
+        }
+
+        $questionEntity = $this->fromQuestionIdFactory->buildFromQuestionId(
             $answerEntity->getQuestionId()
         );
+
+        $this->cache[$answerEntity->answerId] = $questionEntity;
+        return $questionEntity;
     }
 }
