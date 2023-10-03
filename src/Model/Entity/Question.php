@@ -18,6 +18,7 @@ class Question extends QuestionEntity\Post
     protected string $didYouKnow;
     protected string $headline;
     protected $history;
+    public string $imageRru;
     protected $message;
     protected DateTime $modifiedDateTime;
     protected string $modifiedReason;
