@@ -2037,16 +2037,16 @@
         },
         {
             "name": "monthly-basis/category",
-            "version": "v0.0.20",
+            "version": "v0.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/category.git",
-                "reference": "8de3e7e6a0d6b5805ef57555c45dfd1a880a32dd"
+                "reference": "013d9c5c4a9d8f844de53a85dab0590494a0efda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/category/zipball/8de3e7e6a0d6b5805ef57555c45dfd1a880a32dd",
-                "reference": "8de3e7e6a0d6b5805ef57555c45dfd1a880a32dd",
+                "url": "https://api.github.com/repos/monthly-basis/category/zipball/013d9c5c4a9d8f844de53a85dab0590494a0efda",
+                "reference": "013d9c5c4a9d8f844de53a85dab0590494a0efda",
                 "shasum": ""
             },
             "require": {
@@ -2069,9 +2069,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/category/issues",
-                "source": "https://github.com/monthly-basis/category/tree/v0.0.20"
+                "source": "https://github.com/monthly-basis/category/tree/v0.0.22"
             },
-            "time": "2023-10-03T03:11:54+00:00"
+            "time": "2023-10-03T16:59:58+00:00"
         },
         {
             "name": "monthly-basis/content-moderation",
