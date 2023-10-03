@@ -30,6 +30,7 @@ class Question extends LaminasDb\Table
                  , `question`.`subject`
                  , `question`.`headline`
                  , `question`.`message`
+                 , `question`.`image_rru`
                  , `question`.`did_you_know`
                  , `question`.`views`
                  , `question`.`views_one_year`
