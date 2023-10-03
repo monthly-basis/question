@@ -29,10 +29,7 @@ class CategoryQuestion extends LaminasDb\Table
                AND `question`.`deleted_datetime` IS NULL
                AND `question`.`moved_datetime` IS NULL
              ORDER
-                BY `question`.`views_not_bot_one_hour` DESC
-                 , `question`.`views_not_bot_one_day` DESC
-                 , `question`.`views_not_bot_one_week` DESC
-                 , `question`.`views_not_bot_one_month` DESC
+                BY `question`.`views_not_bot_one_month` DESC
              LIMIT ?, ?
                  ;
         ';
