@@ -50,6 +50,7 @@ class QuestionTest extends TestCase
             'did_you_know'        => 'interesting blurb',
             'deleted_datetime'    => '2018-09-17 21:42:45',
             'headline'            => 'This is the headline.',
+            'image_rru'           => '/path/to/image.jpeg',
             'message'             => 'message',
             'modified_datetime'   => '2022-07-13 20:25:11',
             'modified_user_id'    => '54321',
@@ -84,6 +85,7 @@ class QuestionTest extends TestCase
             ->setSlug($array['slug'])
             ;
         $questionEntity->didYouKnow = 'interesting blurb';
+        $questionEntity->imageRru = '/path/to/image.jpeg';
 
         $this->assertEquals(
             $questionEntity,
@@ -131,7 +133,6 @@ class QuestionTest extends TestCase
             ->setQuestionId($array['question_id'])
             ->setSubject($array['subject'])
             ;
-
         $questionEntity->viewsOneYear = 12345;
 
         $this->assertEquals(

@@ -36,6 +36,9 @@ class Question
         if (isset($array['did_you_know'])) {
             $questionEntity->didYouKnow = $array['did_you_know'];
         }
+        if (isset($array['image_rru'])) {
+            $questionEntity->imageRru = $array['image_rru'];
+        }
         if (isset($array['message'])) {
             $questionEntity->setMessage($array['message']);
         }
