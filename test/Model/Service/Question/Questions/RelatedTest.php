@@ -96,14 +96,12 @@ class RelatedTest extends TestCase
         );
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
                 'headline and message',
                 123,
                 0,
-                12,
-                0,
-                12
+                5,
             )
             ->willReturn($resultMock)
             ;
@@ -129,10 +127,7 @@ class RelatedTest extends TestCase
             ;
         $generator = $this->relatedService->getRelated(
             questionEntity: $questionEntity,
-            questionSearchMessageLimitOffset: 0,
-            questionSearchMessageLimitRowCount: 12,
-            outerLimitOffset: 0,
-            outerLimitRowCount: 12,
+            limit: 5,
         );
         $this->assertSame(
             5,
@@ -198,14 +193,12 @@ class RelatedTest extends TestCase
         );
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
                 'headline and message',
                 123,
                 0,
-                24,
-                0,
-                12
+                12,
             )
             ->willReturn($resultMock)
             ;
@@ -246,10 +239,7 @@ class RelatedTest extends TestCase
             ;
         $generator = $this->relatedService->getRelated(
             questionEntity: $questionEntity,
-            questionSearchMessageLimitOffset: 0,
-            questionSearchMessageLimitRowCount: 24,
-            outerLimitOffset: 0,
-            outerLimitRowCount: 12,
+            limit: 12,
         );
         $this->assertSame(
             12,
@@ -271,14 +261,12 @@ class RelatedTest extends TestCase
 
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
                 'headline and message will result in exception',
                 123,
                 0,
-                24,
-                0,
-                12
+                10,
             )
              ->will(
                  $this->throwException(new InvalidQueryException()),
@@ -290,10 +278,7 @@ class RelatedTest extends TestCase
             ;
         $generator = $this->relatedService->getRelated(
             questionEntity: $questionEntity,
-            questionSearchMessageLimitOffset: 0,
-            questionSearchMessageLimitRowCount: 24,
-            outerLimitOffset: 0,
-            outerLimitRowCount: 12,
+            limit: 10,
         );
         $this->assertEmpty(iterator_to_array($generator));
     }

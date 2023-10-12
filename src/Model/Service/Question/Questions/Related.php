@@ -30,10 +30,7 @@ class Related
 
     public function getRelated(
         QuestionEntity\Question $questionEntity,
-        int $questionSearchMessageLimitOffset = 0,
-        int $questionSearchMessageLimitRowCount = 20,
-        int $outerLimitOffset = 0,
-        int $outerLimitRowCount = 20,
+        int $limit = 10,
         int $queryWordCount = 30,
     ): Generator {
         $query = $this->headlineAndMessageService->getHeadlineAndMessage(
@@ -47,13 +44,11 @@ class Related
 
         try {
             $result = $this->questionSearchMessageTable
-                ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
+                ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
-                    questionId: $questionEntity->getQuestionId(),
-                    questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
-                    questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
-                    outerLimitOffset: $outerLimitOffset,
-                    outerLimitRowCount: $outerLimitRowCount,
+                    questionId: $questionEntity->questionId,
+                    limitOffset: 0,
+                    limitRowCount: $limit,
                 );
 
             foreach ($result as $array) {
