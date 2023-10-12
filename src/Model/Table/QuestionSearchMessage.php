@@ -19,7 +19,7 @@ class QuestionSearchMessage extends LaminasDb\Table
     public function rotate(): Result
     {
         $sql = '
-            SET SESSION `long_query_time` = 60;
+            SET SESSION `long_query_time` = 120;
             SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
             drop table if exists question_search_message_new;
