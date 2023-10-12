@@ -59,74 +59,6 @@ class RelatedTest extends TestCase
         $this->countableIteratorHydrator = new LaminasTestHydrator\CountableIterator();
     }
 
-    public function test_getRelated_3found_2returned()
-    {
-        $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(123)
-            ;
-        $this->headlineAndMessageServiceMock
-            ->expects($this->once())
-            ->method('getHeadlineAndMessage')
-            ->with($questionEntity)
-            ->willReturn('headline and message')
-        ;
-
-        $resultMock = $this->createMock(
-            Result::class
-        );
-        $this->countableIteratorHydrator->hydrate(
-            $resultMock,
-            [
-                [
-                    'question_id' => '456',
-                ],
-                [
-                    'question_id' => '789',
-                ],
-            ]
-        );
-        $this->questionSearchMessageTableMock
-            ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
-            ->with(
-                'headline and message',
-                123,
-                0,
-                12,
-                0,
-                12
-            )
-            ->willReturn($resultMock)
-            ;
-
-        $this->questionFactoryMock
-            ->expects($this->exactly(2))
-            ->method('buildFromQuestionId')
-            /*
-            ->withConsecutive(
-                [456],
-                [789]
-            )
-             */
-            ->willReturnOnConsecutiveCalls(
-                $this->relatedQuestions[0],
-                $this->relatedQuestions[1]
-            )
-            ;
-        $generator = $this->relatedService->getRelated(
-            questionEntity: $questionEntity,
-            questionSearchMessageLimitOffset: 0,
-            questionSearchMessageLimitRowCount: 12,
-            outerLimitOffset: 0,
-            outerLimitRowCount: 12,
-        );
-
-        $this->assertSame(
-            2,
-            count(iterator_to_array($generator))
-        );
-    }
-
     public function test_getRelated_5found_5returned()
     {
         $questionEntity = (new QuestionEntity\Question())
@@ -325,88 +257,45 @@ class RelatedTest extends TestCase
         );
     }
 
-    public function test_getPdoResult_tableModelThrows2Exceptions_resultAfterRecursiveCalls()
+    public function test_getRelated_exceptionThrown_emptyGenerator()
     {
-        $this->questionSearchMessageTableMock
-             ->expects($this->exactly(3))
-             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
-             /*
-             ->withConsecutive(
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-             )
-              */
-             ->will(
-                 $this->onConsecutiveCalls(
-                     $this->throwException(new InvalidQueryException()),
-                     $this->throwException(new InvalidQueryException()),
-                     new Result()
-                 )
-             )
-             ;
+        $questionEntity = (new QuestionEntity\Question())
+            ->setQuestionId(123)
+            ;
+        $this->headlineAndMessageServiceMock
+            ->expects($this->once())
+            ->method('getHeadlineAndMessage')
+            ->with($questionEntity)
+            ->willReturn('headline and message will result in exception')
+        ;
 
-        $class = new \ReflectionClass(QuestionService\Question\Questions\Related::class);
-        $method = $class->getMethod('getPdoResult');
-        $method->invokeArgs(
-            $this->relatedService,
-            [
-                (new QuestionEntity\Question())->setQuestionId(123),
-                'the query is the message field of the question entity',
+        $this->questionSearchMessageTableMock
+            ->expects($this->once())
+            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
+            ->with(
+                'headline and message will result in exception',
+                123,
                 0,
-                12,
+                24,
                 0,
-                12,
-            ]
+                12
+            )
+             ->will(
+                 $this->throwException(new InvalidQueryException()),
+             )
+            ;
+        $this->questionFactoryMock
+            ->expects($this->exactly(0))
+            ->method('buildFromQuestionId')
+            ;
+        $generator = $this->relatedService->getRelated(
+            questionEntity: $questionEntity,
+            questionSearchMessageLimitOffset: 0,
+            questionSearchMessageLimitRowCount: 24,
+            outerLimitOffset: 0,
+            outerLimitRowCount: 12,
         );
-    }
-
-    public function test_getPdoResult_tableModelThrows5Exceptions_exceptionAfterRecursiveCalls()
-    {
-        $this->questionSearchMessageTableMock
-             ->expects($this->exactly(5))
-             ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
-             /*
-             ->withConsecutive(
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-                ['the query is the message field of the question entity', 123, 0, 100, 0, 12],
-             )
-              */
-             ->will(
-                 $this->onConsecutiveCalls(
-                     $this->throwException(new InvalidQueryException()),
-                     $this->throwException(new InvalidQueryException()),
-                     $this->throwException(new InvalidQueryException()),
-                     $this->throwException(new InvalidQueryException()),
-                     $this->throwException(new InvalidQueryException()),
-                 )
-             )
-             ;
-
-        $class = new \ReflectionClass(QuestionService\Question\Questions\Related::class);
-        $method = $class->getMethod('getPdoResult');
-
-        try {
-            $method->invokeArgs(
-                $this->relatedService,
-                [
-                    (new QuestionEntity\Question())->setQuestionId(123),
-                    'the query is the message field of the question entity',
-                    0,
-                    12,
-                    0,
-                    12,
-                ]
-            );
-            $this->fail();
-        } catch (Exception $exception) {
-            $this->assertSame(
-                'Unable to get PDO result.',
-                $exception->getMessage(),
-            );
-        }
+        $this->assertEmpty(iterator_to_array($generator));
     }
 }
+

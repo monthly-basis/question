@@ -45,41 +45,8 @@ class Related
         $query = implode(' ', array_slice($words, 0, $queryWordCount));
         $query = strtolower($query);
 
-        $result = $this->getPdoResult(
-            questionEntity: $questionEntity,
-            query: $query,
-            questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
-            questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
-            outerLimitOffset: $outerLimitOffset,
-            outerLimitRowCount: $outerLimitRowCount,
-        );
-
-        foreach ($result as $array) {
-            $questionEntity = $this->questionFactory->buildFromQuestionId(
-                (int) $array['question_id']
-            );
-
-            try {
-                $questionEntity->getDeletedDatetime();
-                continue;
-            } catch (TypeError $typeError) {
-                // Do nothing.
-            }
-
-            yield $questionEntity;
-        }
-    }
-
-    protected function getPdoResult(
-        QuestionEntity\Question $questionEntity,
-        string $query,
-        int $questionSearchMessageLimitOffset,
-        int $questionSearchMessageLimitRowCount,
-        int $outerLimitOffset,
-        int $outerLimitRowCount,
-    ): Result {
         try {
-            return $this->questionSearchMessageTable
+            $result = $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
                     query: $query,
                     questionId: $questionEntity->getQuestionId(),
@@ -88,20 +55,23 @@ class Related
                     outerLimitOffset: $outerLimitOffset,
                     outerLimitRowCount: $outerLimitRowCount,
                 );
-        } catch (InvalidQueryException $invalidQueryException) {
-            sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
-            $this->recursionIteration++;
-            if ($this->recursionIteration >= 5) {
-                throw new Exception('Unable to get PDO result.');
+
+            foreach ($result as $array) {
+                $questionEntity = $this->questionFactory->buildFromQuestionId(
+                    (int) $array['question_id']
+                );
+
+                try {
+                    $questionEntity->getDeletedDatetime();
+                    continue;
+                } catch (TypeError $typeError) {
+                    // Do nothing.
+                }
+
+                yield $questionEntity;
             }
-            return $this->getPdoResult(
-                questionEntity: $questionEntity,
-                query: $query,
-                questionSearchMessageLimitOffset: $questionSearchMessageLimitOffset,
-                questionSearchMessageLimitRowCount: $questionSearchMessageLimitRowCount,
-                outerLimitOffset: $outerLimitOffset,
-                outerLimitRowCount: $outerLimitRowCount,
-            );
+        } catch (InvalidQueryException) {
+            yield from [];
         }
     }
 }
