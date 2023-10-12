@@ -36,8 +36,6 @@ class QuestionSearchMessage extends LaminasDb\Table
             rename table question_search_message to question_search_message_old;
             rename table question_search_message_new to question_search_message;
             drop table question_search_message_old;
-
-            SET SESSION `long_query_time` = 5;
         ';
         return $this->adapter->createStatement($sql)->execute();
     }
