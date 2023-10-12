@@ -54,11 +54,11 @@ class Preview extends AbstractHelper
                 128
             );
             $firstLineEscaped = $this->escapeService->escape($firstLine);
-            return "<a href=\"$rru\" class=\"heading a-c-e\" itemprop=\"url\">$firstLineEscaped</a>";
+            return "<a href=\"$rru\" class=\"heading a-c-e\">$firstLineEscaped</a>";
         }
 
         if (count($lines) == 1) {
-            return "<a href=\"$rru\" class=\"heading\" itemprop=\"url\">$firstLineEscaped</a>";
+            return "<a href=\"$rru\" class=\"heading\">$firstLineEscaped</a>";
         }
 
         $restOfLines = array_slice($lines, 1);
@@ -72,13 +72,13 @@ class Preview extends AbstractHelper
                 $restOfLines,
                 $charactersRemaining
             );
-            return "<a href=\"$rru\" class=\"heading\" itemprop=\"url\">$firstLineEscaped</a>"
+            return "<a href=\"$rru\" class=\"heading\">$firstLineEscaped</a>"
                 . '<span class="a-c-e">'
                 . $this->escapeService->escape($restOfLines)
                 . '</span>';
         }
 
-        return "<a href=\"$rru\" class=\"heading\" itemprop=\"url\">$firstLineEscaped</a>"
+        return "<a href=\"$rru\" class=\"heading\">$firstLineEscaped</a>"
             . '<span>'
             . $this->escapeService->escape($restOfLines)
             . '</span>';
