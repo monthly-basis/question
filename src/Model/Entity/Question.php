@@ -28,7 +28,7 @@ class Question extends QuestionEntity\Post
     protected string $movedLanguage;
     protected int $movedQuestionId;
     protected int $movedUserId;
-    protected $questionId;
+    protected int $questionId;
     protected float $rating;
     protected string $slug;
     protected $subject;

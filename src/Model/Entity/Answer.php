@@ -6,7 +6,7 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 
 class Answer extends QuestionEntity\Post
 {
-    protected $answerId;
+    protected int $answerId;
     protected $createdDateTime;
     protected $createdIp;
     protected $createdName;
