@@ -44,7 +44,7 @@ class Module
                 'aliases' => [
                     'canBeUndeleted'                => QuestionHelper\Post\CanBeUndeleted::class,
                     'getAnswerFactory'              => QuestionHelper\Answer\Factory::class,
-                    'getAnswerHtml'                 => QuestionHelper\Answer\Html::class,
+                    'getAnswerMessageHtml'          => QuestionHelper\Answer\Html\Message::class,
                     'getAnswerRootRelativeUrl'      => QuestionHelper\Answer\RootRelativeUrl::class,
                     'getAnswerTitle'                => QuestionHelper\Answer\Title::class,
                     'getAnswerUrl'                  => QuestionHelper\Answer\Url::class,
@@ -74,8 +74,8 @@ class Module
                             $sm->get(QuestionFactory\Answer::class)
                         );
                     },
-                    QuestionHelper\Answer\Html::class => function($sm) {
-                        return new QuestionHelper\Answer\Html(
+                    QuestionHelper\Answer\Html\Message::class => function($sm) {
+                        return new QuestionHelper\Answer\Html\Message(
                             $sm->get(ContentModerationService\ToHtml::class),
                         );
                     },

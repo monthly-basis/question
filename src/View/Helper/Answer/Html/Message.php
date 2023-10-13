@@ -1,12 +1,12 @@
 <?php
-namespace MonthlyBasis\Question\View\Helper\Answer;
+namespace MonthlyBasis\Question\View\Helper\Answer\Html;
 
 use Error;
 use Laminas\View\Helper\AbstractHelper;
 use MonthlyBasis\ContentModeration\Model\Service as ContentModerationService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 
-class Html extends AbstractHelper
+class Message extends AbstractHelper
 {
     public function __construct(
         protected ContentModerationService\ToHtml $toHtmlService
