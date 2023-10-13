@@ -2543,16 +2543,16 @@
         },
         {
             "name": "monthly-basis/user",
-            "version": "v3.8.0",
+            "version": "v3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/user.git",
-                "reference": "361c9eceffcdd0408791d05b9059046c720daf62"
+                "reference": "237366020621cdb4a242443f6d6857c6d69d251d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/user/zipball/361c9eceffcdd0408791d05b9059046c720daf62",
-                "reference": "361c9eceffcdd0408791d05b9059046c720daf62",
+                "url": "https://api.github.com/repos/monthly-basis/user/zipball/237366020621cdb4a242443f6d6857c6d69d251d",
+                "reference": "237366020621cdb4a242443f6d6857c6d69d251d",
                 "shasum": ""
             },
             "require": {
@@ -2581,9 +2581,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/user/issues",
-                "source": "https://github.com/monthly-basis/user/tree/v3.8.0"
+                "source": "https://github.com/monthly-basis/user/tree/v3.8.1"
             },
-            "time": "2023-10-01T19:01:11+00:00"
+            "time": "2023-10-13T18:52:38+00:00"
         },
         {
             "name": "monthly-basis/vote",
