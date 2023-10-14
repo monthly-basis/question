@@ -38,10 +38,17 @@ class Message extends AbstractHelper
         $numberOfMessageHtmlLines = count($messageHtmlLines);
 
         if ($numberOfMessageHtmlLines == 1) {
-            $messageHtml = "<$headingTagEscaped>"
-                . $messageHtmlLines[0]
-                . "</$headingTagEscaped>";
-            return $messageHtml;
+            if (strlen($messageHtmlLines[0]) > 200) {
+                $messageHtml = "<$headingTagEscaped class=\"fw-n\">"
+                    . $messageHtmlLines[0]
+                    . "</$headingTagEscaped>";
+                return $messageHtml;
+            } else {
+                $messageHtml = "<$headingTagEscaped>"
+                    . $messageHtmlLines[0]
+                    . "</$headingTagEscaped>";
+                return $messageHtml;
+            }
         }
 
         $restOfMessageHtmlLines = array_slice($messageHtmlLines, 1);
