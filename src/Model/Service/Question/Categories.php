@@ -7,6 +7,8 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class Categories
 {
+    protected array $cache;
+
     public function __construct(
         protected CategoryFactory\FromCategoryId $fromCategoryIdFactory,
         protected QuestionTable\CategoryQuestion $categoryQuestionTable,
@@ -16,6 +18,10 @@ class Categories
     public function getCategories(
         QuestionEntity\Question $questionEntity
     ): array {
+        if (isset($this->cache[$questionEntity->questionId])) {
+            return $this->cache[$questionEntity->questionId];
+        }
+
         $categories = [];
 
         $result = $this->categoryQuestionTable->select(
@@ -36,6 +42,7 @@ class Categories
             );
         }
 
+        $this->cache[$questionEntity->questionId] = $categories;
         return $categories;
     }
 }

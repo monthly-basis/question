@@ -45,5 +45,18 @@ class CategoriesTest extends TestCase
         $this->assertEmpty(
             $this->categoriesService->getCategories($questionEntity)
         );
+
+		$reflectionClass = new \ReflectionClass($this->categoriesService);
+        $reflectionProperty = $reflectionClass->getProperty('cache');
+        $this->assertSame(
+            [],
+            $reflectionProperty->getValue($this->categoriesService)[12345]
+        );
+
+        /*
+         * Call service again to ensure return value is returned from cache.
+         * Otherwise, mock method above would be called more than once.
+         */
+        $this->categoriesService->getCategories($questionEntity);
     }
 }
