@@ -40,12 +40,12 @@ class Message extends AbstractHelper
 
         if ($numberOfMessageHtmlLines == 1) {
             if (strlen($messageHtmlLines[0]) > 200) {
-                $messageHtml = "<$headingTagEscaped class=\"fw-n\" itemprop=\"name\">"
+                $messageHtml = "<$headingTagEscaped class=\"fw-n\">"
                     . $messageHtmlLines[0]
                     . "</$headingTagEscaped>";
                 return $messageHtml;
             } else {
-                $messageHtml = "<$headingTagEscaped itemprop=\"name\">"
+                $messageHtml = "<$headingTagEscaped>"
                     . $messageHtmlLines[0]
                     . "</$headingTagEscaped>";
                 return $messageHtml;
@@ -68,11 +68,11 @@ class Message extends AbstractHelper
             $h1ClassKeyValue = ' class="mb-0"';
         }
 
-        $messageHtml = "<$headingTagEscaped" . $h1ClassKeyValue . ' itemprop="name">'
+        $messageHtml = "<$headingTagEscaped" . $h1ClassKeyValue . '>'
             . $messageHtmlLines[0]
             . "</$headingTagEscaped>" . "\n";
 
-        $messageHtml .= '<p itemprop="text">' . "\n"
+        $messageHtml .= '<p>' . "\n"
             . implode("<br>\n", $restOfMessageHtmlLines) . "\n"
             . '</p>';
 
