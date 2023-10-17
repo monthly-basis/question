@@ -12,14 +12,14 @@ class YearMonthTest extends TestCase
 {
     protected function setUp(): void
     {
-        $this->questionFactoryMock = $this->createMock(
-            QuestionFactory\Question::class
+        $this->fromQuestionIdFactoryMock = $this->createMock(
+            QuestionFactory\Question\FromQuestionId::class
         );
         $this->questionTableMock = $this->createMock(
             QuestionTable\Question::class
         );
         $this->yearMonthService = new QuestionService\Question\Questions\YearMonth(
-            $this->questionFactoryMock,
+            $this->fromQuestionIdFactoryMock,
             $this->questionTableMock
         );
     }
@@ -27,9 +27,6 @@ class YearMonthTest extends TestCase
     public function test_getQuestions()
     {
         $generator = $this->yearMonthService->getQuestions(2017, 2);
-        $this->assertInstanceOf(
-            Generator::class,
-            $generator
-        );
+        $this->assertEmpty(iterator_to_array($generator));
     }
 }

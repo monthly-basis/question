@@ -772,7 +772,7 @@ class Module
                 },
                 QuestionService\Question\Questions\YearMonth::class => function ($sm) {
                     return new QuestionService\Question\Questions\YearMonth(
-                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class),
                         $sm->get(QuestionTable\Question::class),
                     );
                 },

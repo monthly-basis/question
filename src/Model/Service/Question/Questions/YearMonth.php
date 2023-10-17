@@ -12,11 +12,9 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class YearMonth
 {
     public function __construct(
-        QuestionFactory\Question $questionFactory,
-        QuestionTable\Question $questionTable
+        protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
+        protected QuestionTable\Question $questionTable
     ) {
-        $this->questionFactory = $questionFactory;
-        $this->questionTable   = $questionTable;
     }
 
     public function getQuestions(
@@ -32,7 +30,7 @@ class YearMonth
             ;
 
         $result = $this->questionTable->select(
-            columns: $this->questionTable->getSelectColumns(),
+            columns: ['question_id'],
             where: [
                 new LaminasDb\Sql\Predicate\Between(
                     'created_datetime',
@@ -48,7 +46,9 @@ class YearMonth
         );
 
         foreach ($result as $array) {
-            yield $this->questionFactory->buildFromArray($array);
+            yield $this->fromQuestionIdFactory->buildFromQuestionId(
+                $array['question_id']
+            );
         }
     }
 }
