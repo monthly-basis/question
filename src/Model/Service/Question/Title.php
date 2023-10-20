@@ -16,12 +16,6 @@ class Title
     public function getTitle(
         QuestionEntity\Question $questionEntity
     ): string {
-        try {
-            return $questionEntity->getHeadline();
-        } catch (Error $error) {
-            // Do nothing.
-        }
-
         return $this->stripTagsAndShortenService->stripTagsAndShorten(
             $questionEntity->getMessage(),
             60
