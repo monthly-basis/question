@@ -40,7 +40,7 @@ MESSAGE;
         $questionEntity->setMessage($message);
 
         $this->assertSame(
-            '1. Lincoln\'s reelection was assured in 1864 because A.',
+            '1. Lincoln\'s reelection was assured in 1864 because A. Lincoln created',
             $this->titleService->getTitle($questionEntity)
         );
 
@@ -50,7 +50,7 @@ MESSAGE;
         $questionEntity->setMessage($message);
 
         $this->assertSame(
-            'Troy signed up for a new cell phone plan which charges him a',
+            'Troy signed up for a new cell phone plan which charges him a fee of',
             $this->titleService->getTitle($questionEntity)
         );
 
@@ -59,7 +59,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 MESSAGE;
         $questionEntity->setMessage($message);
         $this->assertSame(
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
             $this->titleService->getTitle($questionEntity)
         );
     }
