@@ -37,9 +37,13 @@ class Categories
         );
 
         foreach ($result as $array) {
-            $categories[] = $this->fromCategoryIdFactory->buildFromCategoryId(
+            $categoryEntity = $this->fromCategoryIdFactory->buildFromCategoryId(
                 $array['category_id']
             );
+            if (!$categoryEntity->active) {
+                continue;
+            }
+            $categories[] = $categoryEntity;
         }
 
         $this->cache[$questionEntity->questionId] = $categories;
