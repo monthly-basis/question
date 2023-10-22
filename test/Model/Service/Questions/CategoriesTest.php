@@ -25,6 +25,7 @@ class CategoriesTest extends TestCase
             new QuestionEntity\Question(),
             new QuestionEntity\Question(),
             new QuestionEntity\Question(),
+            new QuestionEntity\Question(),
         ];
 
         $categoryEntityMath = new CategoryEntity\Category();
@@ -39,17 +40,33 @@ class CategoriesTest extends TestCase
         $categoryEntityArt->categoryId = 3;
         $categoryEntityArt->name       = 'Art';
 
+        $categoryEntityArt = new CategoryEntity\Category();
+        $categoryEntityArt->categoryId = 3;
+        $categoryEntityArt->name       = 'Art';
+
+        $categoryEntityGeography = new CategoryEntity\Category();
+        $categoryEntityGeography->categoryId = 4;
+        $categoryEntityGeography->name       = 'Geography';
+
+        $categoryEntityAlgebra = new CategoryEntity\Category();
+        $categoryEntityAlgebra->categoryId = 5;
+        $categoryEntityAlgebra->name       = 'Algebra';
+
         $this->questionCategoriesServiceMock
-            ->expects($this->exactly(3))
+            ->expects($this->exactly(4))
             ->method('getCategories')
             ->willReturnOnConsecutiveCalls(
                 [
                     $categoryEntityMath,
                     $categoryEntityArt,
+                    $categoryEntityGeography,
                 ],
                 [
                     $categoryEntityMath,
                     $categoryEntityScience,
+                ],
+                [
+                    $categoryEntityAlgebra,
                 ],
                 []
             )
@@ -57,9 +74,9 @@ class CategoriesTest extends TestCase
 
         $this->assertSame(
             [
+                $categoryEntityAlgebra,
                 $categoryEntityArt,
                 $categoryEntityMath,
-                $categoryEntityScience,
             ],
             $this->questionsCategoriesService->getQuestionsCategories($questionEntities)
         );

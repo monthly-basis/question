@@ -19,8 +19,16 @@ class Categories
             $questionCategories = $this->questionCategoriesService->getCategories(
                 $questionEntity
             );
-            foreach ($questionCategories as $categoryEntity) {
-                $questionsCategories[$categoryEntity->categoryId] = $categoryEntity;
+            if (!empty($questionCategories)) {
+                if (count($questionCategories) == 3) {
+                    $categoryEntity = $questionCategories[0];
+                    $questionsCategories[$categoryEntity->categoryId] = $categoryEntity;
+                    $categoryEntity = $questionCategories[1];
+                    $questionsCategories[$categoryEntity->categoryId] = $categoryEntity;
+                } else {
+                    $categoryEntity = $questionCategories[0];
+                    $questionsCategories[$categoryEntity->categoryId] = $categoryEntity;
+                }
             }
         }
 
