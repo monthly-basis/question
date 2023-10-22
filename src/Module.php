@@ -725,6 +725,11 @@ class Module
                         $sm->get(QuestionTable\QuestionSearchSimilar::class),
                     );
                 },
+                QuestionService\Questions\Categories::class => function ($sm) {
+                    return new QuestionService\Questions\Categories(
+                        $sm->get(QuestionService\Question\Categories::class),
+                    );
+                },
                 QuestionService\Questions\Category::class => function ($sm) {
                     return new QuestionService\Questions\Category(
                         $sm->get(QuestionFactory\Question\FromQuestionId::class),
