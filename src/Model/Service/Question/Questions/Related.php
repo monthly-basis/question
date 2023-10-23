@@ -17,13 +17,10 @@ class Related
     protected int $recursionIteration = 0;
 
     public function __construct(
-        QuestionEntity\Config $configEntity,
-        QuestionFactory\Question $questionFactory,
-        QuestionTable\QuestionSearchMessage $questionSearchMessageTable
+        protected QuestionEntity\Config $configEntity,
+        protected QuestionFactory\Question $questionFactory,
+        protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable
     ) {
-        $this->configEntity               = $configEntity;
-        $this->questionFactory            = $questionFactory;
-        $this->questionSearchMessageTable = $questionSearchMessageTable;
     }
 
     public function getRelated(
