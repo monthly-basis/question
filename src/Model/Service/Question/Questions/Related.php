@@ -19,12 +19,10 @@ class Related
     public function __construct(
         QuestionEntity\Config $configEntity,
         QuestionFactory\Question $questionFactory,
-        QuestionService\Question\HeadlineAndMessage $headlineAndMessageService,
         QuestionTable\QuestionSearchMessage $questionSearchMessageTable
     ) {
         $this->configEntity               = $configEntity;
         $this->questionFactory            = $questionFactory;
-        $this->headlineAndMessageService  = $headlineAndMessageService;
         $this->questionSearchMessageTable = $questionSearchMessageTable;
     }
 
@@ -33,9 +31,7 @@ class Related
         int $limit = 10,
         int $queryWordCount = 30,
     ): Generator {
-        $query = $this->headlineAndMessageService->getHeadlineAndMessage(
-            $questionEntity
-        );
+        $query = $questionEntity->message;
         $query = strip_tags($query);
         $query = preg_replace('/\s+/s', ' ', $query);
         $words = explode(' ', $query, ($queryWordCount + 1));

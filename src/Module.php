@@ -697,7 +697,6 @@ class Module
                     return new QuestionService\Question\Questions\Related(
                         $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionFactory\Question::class),
-                        $sm->get(QuestionService\Question\HeadlineAndMessage::class),
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
                     );
                 },

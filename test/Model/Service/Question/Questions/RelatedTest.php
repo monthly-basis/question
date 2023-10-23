@@ -23,16 +23,12 @@ class RelatedTest extends TestCase
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
-        $this->headlineAndMessageServiceMock = $this->createMock(
-            QuestionService\Question\HeadlineAndMessage::class
-        );
         $this->questionSearchMessageTableMock = $this->createMock(
             QuestionTable\QuestionSearchMessage::class
         );
         $this->relatedService = new QuestionService\Question\Questions\Related(
             $this->configEntity,
             $this->questionFactoryMock,
-            $this->headlineAndMessageServiceMock,
             $this->questionSearchMessageTableMock,
         );
 
@@ -61,15 +57,9 @@ class RelatedTest extends TestCase
 
     public function test_getRelated_5found_5returned()
     {
-        $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(123)
-            ;
-        $this->headlineAndMessageServiceMock
-            ->expects($this->once())
-            ->method('getHeadlineAndMessage')
-            ->with($questionEntity)
-            ->willReturn('headline and message')
-        ;
+        $questionEntity             = new QuestionEntity\Question();
+        $questionEntity->questionId = 123;
+        $questionEntity->message    = 'the message';
 
         $resultMock = $this->createMock(
             Result::class
@@ -98,7 +88,7 @@ class RelatedTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
-                'headline and message',
+                'the message',
                 123,
                 0,
                 5,
@@ -137,15 +127,9 @@ class RelatedTest extends TestCase
 
     public function test_getRelated_12found_12returned()
     {
-        $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(123)
-            ;
-        $this->headlineAndMessageServiceMock
-            ->expects($this->once())
-            ->method('getHeadlineAndMessage')
-            ->with($questionEntity)
-            ->willReturn('headline and message')
-        ;
+        $questionEntity             = new QuestionEntity\Question();
+        $questionEntity->questionId = 123;
+        $questionEntity->message    = 'the message';
 
         $resultMock = $this->createMock(
             Result::class
@@ -195,7 +179,7 @@ class RelatedTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
-                'headline and message',
+                'the message',
                 123,
                 0,
                 12,
@@ -249,21 +233,15 @@ class RelatedTest extends TestCase
 
     public function test_getRelated_exceptionThrown_emptyGenerator()
     {
-        $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(123)
-            ;
-        $this->headlineAndMessageServiceMock
-            ->expects($this->once())
-            ->method('getHeadlineAndMessage')
-            ->with($questionEntity)
-            ->willReturn('headline and message will result in exception')
-        ;
+        $questionEntity             = new QuestionEntity\Question();
+        $questionEntity->questionId = 123;
+        $questionEntity->message    = 'the message';
 
         $this->questionSearchMessageTableMock
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
-                'headline and message will result in exception',
+                'the message',
                 123,
                 0,
                 10,
