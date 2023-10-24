@@ -27,7 +27,7 @@ class Results
         string $query,
         int $page,
         int $queryWordCount = 30,
-    ): Generator {
+    ): array {
         $query = strtolower($query);
         $query = $this->keepFirstWordsService->keepFirstWords(
             $query,
@@ -35,6 +35,8 @@ class Results
         );
 
         $result = $this->getPdoResult($query, $page);
+
+        $questionEntities = [];
 
         foreach ($result as $array) {
             $questionEntity = $this->questionFactory->buildFromQuestionId($array['question_id']);
@@ -46,8 +48,10 @@ class Results
                 // Do nothing.
             }
 
-            yield $questionEntity;
+            $questionEntities[] = $questionEntity;
         }
+
+        return $questionEntities;
     }
 
     protected function getPdoResult(string $query, int $page): Result

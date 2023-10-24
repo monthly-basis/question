@@ -44,9 +44,7 @@ class ResultsTest extends TestCase
             'the search query',
             7
         );
-        $this->assertEmpty(
-            iterator_to_array($results)
-        );
+        $this->assertEmpty($results);
     }
 
     public function test_getPdoResult_tableModelThrows2Exceptions_resultAfterRecursiveCalls()
