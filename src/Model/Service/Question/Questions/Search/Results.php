@@ -9,7 +9,6 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
-use TypeError;
 
 class Results
 {
@@ -41,11 +40,8 @@ class Results
         foreach ($result as $array) {
             $questionEntity = $this->questionFactory->buildFromQuestionId($array['question_id']);
 
-            try {
-                $questionEntity->getDeletedDatetime();
+            if (isset($questionEntity->deletedDatetime)) {
                 continue;
-            } catch (TypeError $typeError) {
-                // Do nothing.
             }
 
             $questionEntities[] = $questionEntity;
