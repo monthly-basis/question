@@ -16,7 +16,7 @@ class Day
 
     public function getQuestions(int $limit = 100): array
     {
-        $memcachedKey = md5(__METHOD__ . $limit);
+        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
         if (null !== ($questionEntities = $this->memcachedService->get($memcachedKey))) {
             return $questionEntities;
         }
