@@ -37,18 +37,16 @@ class Results
             return $questionEntities;
         }
 
-        $query = strtolower($query);
-        $query = $this->keepFirstWordsService->keepFirstWords(
+        $questionIds = $this->getQuestionIds(
             $query,
+            $page,
             $queryWordCount,
         );
 
-        $result = $this->getPdoResult($query, $page);
-
         $questionEntities = [];
 
-        foreach ($result as $array) {
-            $questionEntity = $this->questionFactory->buildFromQuestionId($array['question_id']);
+        foreach ($questionIds as $questionId) {
+            $questionEntity = $this->questionFactory->buildFromQuestionId(intval($questionId));
 
             if (isset($questionEntity->deletedDateTime)) {
                 continue;
@@ -63,6 +61,27 @@ class Results
             1
         );
         return $questionEntities;
+    }
+
+    protected function getQuestionIds(
+        string $query,
+        int $page,
+        int $queryWordCount = 30,
+    ): array {
+        $query = strtolower($query);
+        $query = $this->keepFirstWordsService->keepFirstWords(
+            $query,
+            $queryWordCount,
+        );
+
+        $questionIds = [];
+
+        $result = $this->getPdoResult($query, $page);
+        foreach ($result as $array) {
+            $questionIds[] = $array['question_id'];
+        }
+
+        return $questionIds;
     }
 
     protected function getPdoResult(string $query, int $page): Result
