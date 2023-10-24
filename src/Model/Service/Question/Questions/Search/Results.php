@@ -23,20 +23,11 @@ class Results
     ) {
     }
 
-    /**
-     * Search results may include deleted questions. So, if necessary, skip
-     * deleted questions when looping through questions in your application.
-     */
     public function getResults(
         string $query,
         int $page,
         int $queryWordCount = 30,
     ): array {
-        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
-        if (null !== ($questionEntities = $this->memcachedService->get($memcachedKey))) {
-            return $questionEntities;
-        }
-
         $questionIds = $this->getQuestionIds(
             $query,
             $page,
@@ -55,11 +46,6 @@ class Results
             $questionEntities[] = $questionEntity;
         }
 
-        $this->memcachedService->setForDays(
-            $memcachedKey,
-            $questionEntities,
-            1
-        );
         return $questionEntities;
     }
 
@@ -68,6 +54,11 @@ class Results
         int $page,
         int $queryWordCount = 30,
     ): array {
+        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
+        if (null !== ($questionIds = $this->memcachedService->get($memcachedKey))) {
+            return $questionIds;
+        }
+
         $query = strtolower($query);
         $query = $this->keepFirstWordsService->keepFirstWords(
             $query,
@@ -81,6 +72,11 @@ class Results
             $questionIds[] = $array['question_id'];
         }
 
+        $this->memcachedService->setForDays(
+            $memcachedKey,
+            $questionIds,
+            1
+        );
         return $questionIds;
     }
 
