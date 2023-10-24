@@ -16,8 +16,8 @@ class DayTest extends TestCase
         $this->memcachedServiceMock = $this->createMock(
             MemcachedService\Memcached::class
         );
-        $this->questionFactoryMock = $this->createMock(
-            QuestionFactory\Question::class
+        $this->fromQuestionIdFactoryMock = $this->createMock(
+            QuestionFactory\Question\FromQuestionId::class
         );
         $this->questionTableMock = $this->createMock(
             QuestionTable\Question::class
@@ -25,7 +25,7 @@ class DayTest extends TestCase
 
         $this->dayService = new QuestionService\Question\Questions\MostPopular\Day(
             $this->memcachedServiceMock,
-            $this->questionFactoryMock,
+            $this->fromQuestionIdFactoryMock,
             $this->questionTableMock,
         );
     }
@@ -45,9 +45,9 @@ class DayTest extends TestCase
             ->method('select')
             ->willReturn($this->createMock(Result::class))
             ;
-        $this->questionFactoryMock
+        $this->fromQuestionIdFactoryMock
             ->expects($this->exactly(0))
-            ->method('buildFromArray')
+            ->method('buildFromQuestionId')
             ;
 
         $questionEntities = $this->dayService->getQuestions();

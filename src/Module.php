@@ -645,7 +645,7 @@ class Module
                 QuestionService\Question\Questions\MostPopular\Day::class => function ($sm) {
                     return new QuestionService\Question\Questions\MostPopular\Day(
                         $sm->get(MemcachedService\Memcached::class),
-                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class),
                         $sm->get(QuestionTable\Question::class)
                     );
                 },

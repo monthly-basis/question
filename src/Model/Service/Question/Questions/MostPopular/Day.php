@@ -9,7 +9,7 @@ class Day
 {
     public function __construct(
         protected MemcachedService\Memcached $memcachedService,
-        protected QuestionFactory\Question $questionFactory,
+        protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
         protected QuestionTable\Question $questionTable
     ) {
     }
@@ -24,7 +24,7 @@ class Day
         $questionEntities = [];
 
         $result = $this->questionTable->select(
-            columns: $this->questionTable->getSelectColumns(),
+            columns: ['question_id'],
             where: [
                 'deleted_datetime' => null,
             ],
@@ -33,7 +33,9 @@ class Day
         );
 
         foreach ($result as $array) {
-            $questionEntities[] = $this->questionFactory->buildFromArray($array);
+            $questionEntities[] = $this->fromQuestionIdFactory->buildFromQuestionId(
+                intval($array['question_id'])
+            );
         }
 
         $this->memcachedService->setForHours(
