@@ -15,8 +15,10 @@ class Day
     ) {
     }
 
-    public function getQuestions(int $limit = 100): Generator
+    public function getQuestions(int $limit = 100): array
     {
+        $questionEntities = [];
+
         $select = $this->sql
             ->select('question')
             ->columns($this->questionTable->getSelectColumns())
@@ -29,7 +31,9 @@ class Day
         $result = $this->sql->prepareStatementForSqlObject($select)->execute();
 
         foreach ($result as $array) {
-            yield $this->questionFactory->buildFromArray($array);
+            $questionEntities[] = $this->questionFactory->buildFromArray($array);
         }
+
+        return $questionEntities;
     }
 }
