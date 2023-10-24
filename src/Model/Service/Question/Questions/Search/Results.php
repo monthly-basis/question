@@ -2,9 +2,9 @@
 namespace MonthlyBasis\Question\Model\Service\Question\Questions\Search;
 
 use Exception;
-use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
@@ -15,6 +15,7 @@ class Results
     protected int $recursionIteration = 0;
 
     public function __construct(
+        protected MemcachedService\Memcached $memcachedService,
         protected QuestionEntity\Config $configEntity,
         protected QuestionFactory\Question $questionFactory,
         protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable,
@@ -27,6 +28,11 @@ class Results
         int $page,
         int $queryWordCount = 30,
     ): array {
+        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
+        if (null !== ($questionEntities = $this->memcachedService->get($memcachedKey))) {
+            return $questionEntities;
+        }
+
         $query = strtolower($query);
         $query = $this->keepFirstWordsService->keepFirstWords(
             $query,
@@ -47,6 +53,11 @@ class Results
             $questionEntities[] = $questionEntity;
         }
 
+        $this->memcachedService->setForDays(
+            $memcachedKey,
+            $questionEntities,
+            1
+        );
         return $questionEntities;
     }
 

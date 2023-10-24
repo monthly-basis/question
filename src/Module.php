@@ -702,6 +702,7 @@ class Module
                 },
                 QuestionService\Question\Questions\Search\Results::class => function ($sm) {
                     return new QuestionService\Question\Questions\Search\Results(
+                        $sm->get(MemcachedService\Memcached::class),
                         $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionFactory\Question::class),
                         $sm->get(QuestionTable\QuestionSearchMessage::class),

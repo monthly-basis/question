@@ -4,6 +4,7 @@ namespace MonthlyBasis\QuestionTest\Model\Service\Question\Questions\Search;
 use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
@@ -20,6 +21,9 @@ class ResultsTest extends TestCase
         $this->configEntity = new QuestionEntity\Config(
             $configArray
         );
+        $this->memcachedServiceMock = $this->createMock(
+            MemcachedService\Memcached::class
+        );
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
@@ -31,6 +35,7 @@ class ResultsTest extends TestCase
         );
 
         $this->resultsService = new QuestionService\Question\Questions\Search\Results(
+            $this->memcachedServiceMock,
             $this->configEntity,
             $this->questionFactoryMock,
             $this->questionSearchMessageTableMock,
