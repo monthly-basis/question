@@ -23,6 +23,10 @@ class Results
     ) {
     }
 
+    /**
+     * Search results may include deleted questions. So, if necessary, skip
+     * deleted questions when looping through questions in your application.
+     */
     public function getResults(
         string $query,
         int $page,
