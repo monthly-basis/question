@@ -7,6 +7,7 @@ use Laminas\Router\Http\Segment;
 use MonthlyBasis\Category\Model\Factory as CategoryFactory;
 use MonthlyBasis\ContentModeration\View\Helper as ContentModerationHelper;
 use MonthlyBasis\Group\Model\Service as GroupService;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Controller as QuestionController;
 use MonthlyBasis\Question\Model\Command as QuestionCommand;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
@@ -15,7 +16,6 @@ use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\Question\View\Helper as QuestionHelper;
-use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 use MonthlyBasis\User\Model\Factory as UserFactory;
@@ -644,7 +644,7 @@ class Module
                 },
                 QuestionService\Question\Questions\MostPopular\Day::class => function ($sm) {
                     return new QuestionService\Question\Questions\MostPopular\Day(
-                        $sm->get('laminas-db-sql-sql'),
+                        $sm->get(MemcachedService\Memcached::class),
                         $sm->get(QuestionFactory\Question::class),
                         $sm->get(QuestionTable\Question::class)
                     );
