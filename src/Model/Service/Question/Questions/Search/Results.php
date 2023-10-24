@@ -16,15 +16,11 @@ class Results
     protected int $recursionIteration = 0;
 
     public function __construct(
-        QuestionEntity\Config $configEntity,
-        QuestionFactory\Question $questionFactory,
-        QuestionTable\QuestionSearchMessage $questionSearchMessageTable,
-        StringService\KeepFirstWords $keepFirstWordsService
+        protected QuestionEntity\Config $configEntity,
+        protected QuestionFactory\Question $questionFactory,
+        protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable,
+        protected StringService\KeepFirstWords $keepFirstWordsService
     ) {
-        $this->configEntity               = $configEntity;
-        $this->questionFactory            = $questionFactory;
-        $this->questionSearchMessageTable = $questionSearchMessageTable;
-        $this->keepFirstWordsService      = $keepFirstWordsService;
     }
 
     public function getResults(
