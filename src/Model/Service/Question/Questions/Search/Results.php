@@ -40,7 +40,7 @@ class Results
         foreach ($result as $array) {
             $questionEntity = $this->questionFactory->buildFromQuestionId($array['question_id']);
 
-            if (isset($questionEntity->deletedDatetime)) {
+            if (isset($questionEntity->deletedDateTime)) {
                 continue;
             }
 
