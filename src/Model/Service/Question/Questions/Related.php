@@ -35,6 +35,32 @@ class Related
         $query = implode(' ', array_slice($words, 0, $queryWordCount));
         $query = strtolower($query);
 
+        $questionIds = $this->getQuestionIds(
+            $questionEntity,
+            $query,
+            $limit,
+        );
+
+        foreach ($questionIds as $questionId) {
+            $questionEntity = $this->questionFactory->buildFromQuestionId(
+                $questionId
+            );
+
+            if (isset($questionEntity->deletedDateTime)) {
+                continue;
+            }
+
+            yield $questionEntity;
+        }
+    }
+
+    protected function getQuestionIds(
+        QuestionEntity\Question $questionEntity,
+        string $query,
+        int $limit,
+    ): array {
+        $questionIds = [];
+
         try {
             $result = $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
@@ -43,23 +69,14 @@ class Related
                     limitOffset: 0,
                     limitRowCount: $limit,
                 );
-
-            foreach ($result as $array) {
-                $questionEntity = $this->questionFactory->buildFromQuestionId(
-                    (int) $array['question_id']
-                );
-
-                try {
-                    $questionEntity->getDeletedDatetime();
-                    continue;
-                } catch (TypeError $typeError) {
-                    // Do nothing.
-                }
-
-                yield $questionEntity;
-            }
         } catch (InvalidQueryException) {
-            yield from [];
+            return [];
         }
+
+        foreach ($result as $array) {
+            $questionIds[] = intval($array['question_id']);
+        }
+
+        return $questionIds;
     }
 }
