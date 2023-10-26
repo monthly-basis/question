@@ -6,6 +6,7 @@ use Exception;
 use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
@@ -17,6 +18,7 @@ class Related
     protected int $recursionIteration = 0;
 
     public function __construct(
+        protected MemcachedService\Memcached $memcachedService,
         protected QuestionEntity\Config $configEntity,
         protected QuestionFactory\Question $questionFactory,
         protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable
@@ -59,6 +61,11 @@ class Related
         string $query,
         int $limit,
     ): array {
+        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
+        if (null !== ($questionIds = $this->memcachedService->get($memcachedKey))) {
+            return $questionIds;
+        }
+
         $questionIds = [];
 
         try {
@@ -77,6 +84,11 @@ class Related
             $questionIds[] = intval($array['question_id']);
         }
 
+        $this->memcachedService->setForDays(
+            $memcachedKey,
+            $questionIds,
+            1
+        );
         return $questionIds;
     }
 }

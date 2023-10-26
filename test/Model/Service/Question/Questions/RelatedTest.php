@@ -1,9 +1,9 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Service;
 
-use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
@@ -15,6 +15,9 @@ class RelatedTest extends TestCase
 {
     protected function setUp(): void
     {
+        $this->memcachedServiceMock = $this->createMock(
+            MemcachedService\Memcached::class
+        );
         $configPath  = __DIR__ . '/../../../../../config/autoload/local.php';
         $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
         $this->configEntity = new QuestionEntity\Config(
@@ -27,6 +30,7 @@ class RelatedTest extends TestCase
             QuestionTable\QuestionSearchMessage::class
         );
         $this->relatedService = new QuestionService\Question\Questions\Related(
+            $this->memcachedServiceMock,
             $this->configEntity,
             $this->questionFactoryMock,
             $this->questionSearchMessageTableMock,
