@@ -38,7 +38,7 @@ class Related
         $query = strtolower($query);
 
         $questionIds = $this->getQuestionIds(
-            $questionEntity,
+            $questionEntity->questionId,
             $query,
             $limit,
         );
@@ -57,7 +57,7 @@ class Related
     }
 
     protected function getQuestionIds(
-        QuestionEntity\Question $questionEntity,
+        int $questionId,
         string $query,
         int $limit,
     ): array {
@@ -72,7 +72,7 @@ class Related
             $result = $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
-                    questionId: $questionEntity->questionId,
+                    questionId: $questionId,
                     limitOffset: 0,
                     limitRowCount: $limit,
                 );
