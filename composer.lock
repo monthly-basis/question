@@ -2036,16 +2036,16 @@
         },
         {
             "name": "monthly-basis/category",
-            "version": "v0.0.31",
+            "version": "v0.0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/category.git",
-                "reference": "3ffa3c70334586b7fbbde4a730f5c43db297216d"
+                "reference": "57c3526f2700f1365a41b53ff78f1a8666260ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/category/zipball/3ffa3c70334586b7fbbde4a730f5c43db297216d",
-                "reference": "3ffa3c70334586b7fbbde4a730f5c43db297216d",
+                "url": "https://api.github.com/repos/monthly-basis/category/zipball/57c3526f2700f1365a41b53ff78f1a8666260ae3",
+                "reference": "57c3526f2700f1365a41b53ff78f1a8666260ae3",
                 "shasum": ""
             },
             "require": {
@@ -2053,6 +2053,7 @@
                 "laminas/laminas-test": "^4.0",
                 "monthly-basis/laminas": "^0.0",
                 "monthly-basis/laminas-test": "^2.0",
+                "monthly-basis/memcached": "^2.0",
                 "monthly-basis/string": "^3.6"
             },
             "type": "library",
@@ -2068,9 +2069,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/category/issues",
-                "source": "https://github.com/monthly-basis/category/tree/v0.0.31"
+                "source": "https://github.com/monthly-basis/category/tree/v0.0.32"
             },
-            "time": "2023-10-25T15:49:43+00:00"
+            "time": "2023-10-28T16:07:31+00:00"
         },
         {
             "name": "monthly-basis/content-moderation",
@@ -2842,16 +2843,16 @@
         },
         {
             "name": "orhanerday/open-ai",
-            "version": "4.8",
+            "version": "4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orhanerday/open-ai.git",
-                "reference": "896665e293689d68de4b1e9813a2e0b00a06f5ef"
+                "reference": "14ba8185120d6366756fcf7c5b403c63f3efd852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orhanerday/open-ai/zipball/896665e293689d68de4b1e9813a2e0b00a06f5ef",
-                "reference": "896665e293689d68de4b1e9813a2e0b00a06f5ef",
+                "url": "https://api.github.com/repos/orhanerday/open-ai/zipball/14ba8185120d6366756fcf7c5b403c63f3efd852",
+                "reference": "14ba8185120d6366756fcf7c5b403c63f3efd852",
                 "shasum": ""
             },
             "require": {
@@ -2889,7 +2890,7 @@
             ],
             "support": {
                 "issues": "https://github.com/orhanerday/open-ai/issues",
-                "source": "https://github.com/orhanerday/open-ai/tree/4.8"
+                "source": "https://github.com/orhanerday/open-ai/tree/4.9"
             },
             "funding": [
                 {
@@ -2897,7 +2898,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-11T09:25:47+00:00"
+            "time": "2023-10-28T17:36:07+00:00"
         },
         {
             "name": "phar-io/manifest",
