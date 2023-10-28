@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Added
+
+- Index `category_id_question_views_one_month_cached_desc`
+```
+ALTER TABLE `category_question` ADD KEY `category_id_question_views_one_month_cached_desc` (`category_id`, `question_views_one_month_cached` DESC);
+```
+
+- Column `category_question`.`question_views_one_month_cached`
 ```
 ALTER TABLE `category_question`
 ADD COLUMN `question_views_one_month_cached` int unsigned DEFAULT NULL;
