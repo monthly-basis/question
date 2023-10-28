@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+```
+ALTER TABLE `category_question`
+ADD COLUMN `question_views_one_month_cached` int unsigned DEFAULT NULL;
+```
+
 ## v2.63.3
 
 ### Changed
