@@ -19,10 +19,16 @@ class Category
         int $page = 1,
         int $questionsPerPage = 100,
     ): Generator {
-        $result = $this->categoryQuestionTable->selectQuestionIdWhereCategoryId(
-            categoryId: $categoryEntity->categoryId,
-            limitOffset: $questionsPerPage * ($page - 1),
-            limitRowCount: $questionsPerPage,
+        $result = $this->categoryQuestionTable->select(
+            columns: [
+                'question_id'
+            ],
+            where: [
+                'category_id' => $categoryEntity->categoryId,
+            ],
+            order: 'question_views_one_month_cached DESC',
+            limit: $questionsPerPage,
+            offset: $questionsPerPage * ($page - 1),
         );
 
         foreach ($result as $array) {
