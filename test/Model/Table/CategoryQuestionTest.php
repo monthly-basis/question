@@ -31,14 +31,6 @@ class CategoryQuestionTest extends TableTestCase
         $this->setForeignKeyChecks(1);
     }
 
-    public function test_selectQuestionIdWhereCategoryId()
-    {
-        $result = $this->categoryQuestionTable->selectQuestionIdWhereCategoryId(
-            123
-        );
-        $this->assertEmpty($result);
-    }
-
     public function test_selectCountWhereCategoryId()
     {
         $result = $this->categoryQuestionTable->selectCountWhereCategoryId(123);

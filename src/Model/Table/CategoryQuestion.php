@@ -14,33 +14,6 @@ class CategoryQuestion extends LaminasDb\Table
     ) {
     }
 
-    public function selectQuestionIdWhereCategoryId(
-        int $categoryId,
-        int $limitOffset = 0,
-        int $limitRowCount = 100,
-    ): Result {
-        $sql = '
-            SELECT `question_id`
-              FROM `category_question`
-              JOIN `question`
-             USING (`question_id`)
-
-             WHERE `category_question`.`category_id` = ?
-               AND `question`.`moved_datetime` IS NULL
-               AND `question`.`deleted_datetime` IS NULL
-             ORDER
-                BY `question`.`views_not_bot_one_month` DESC
-             LIMIT ?, ?
-                 ;
-        ';
-        $parameters = [
-            $categoryId,
-            $limitOffset,
-            $limitRowCount,
-        ];
-        return $this->sql->getAdapter()->query($sql)->execute($parameters);
-    }
-
     public function selectCountWhereCategoryId(
         int $categoryId,
     ): Result {
