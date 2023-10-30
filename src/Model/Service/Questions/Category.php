@@ -32,9 +32,18 @@ class Category
         );
 
         foreach ($result as $array) {
-            yield $this->fromQuestionIdFactory->buildFromQuestionid(
+            $questionEntity = $this->fromQuestionIdFactory->buildFromQuestionid(
                 $array['question_id']
             );
+
+            if (
+                isset($questionEntity->deletedDateTime)
+                || isset($questionEntity->movedDateTime)
+            ) {
+                continue;
+            }
+
+            yield $questionEntity;
         }
     }
 }
