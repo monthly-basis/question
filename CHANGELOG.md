@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+```
+ALTER TABLE `question` ADD KEY `views_one_day` (`views_one_day` DESC);
+```
+
 ## v2.66.0
 
 ### Added

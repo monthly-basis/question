@@ -61,6 +61,7 @@ CREATE TABLE `question` (
     KEY `message_255` (`message`(255)),
     KEY `views_one_hour_etc` (`views_not_bot_one_hour` DESC, `views_not_bot_one_day` DESC, `views_not_bot_one_week` DESC, `views_not_bot_one_month` DESC),
     KEY `views_one_month_etc` (`views_not_bot_one_month` DESC, `views_not_bot_one_week` DESC, `views_not_bot_one_day` DESC, `views_not_bot_one_hour` DESC),
+    KEY `views_one_day` (`views_one_day` DESC),
     KEY `views_one_year` (`views_one_year` DESC),
     KEY `views_one_month` (`views_one_month` DESC)
 ) CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
