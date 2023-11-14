@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `question`.`image_rru` columns
+```
+ALTER TABLE `question` ADD COLUMN `image_rru_128x128` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `image_rru`;
+ALTER TABLE `question` ADD COLUMN `image_rru_256x256` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `image_rru_128x128`;
+ALTER TABLE `question` ADD COLUMN `image_rru_512x512` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `image_rru_256x256`;
+ALTER TABLE `question` ADD COLUMN `image_rru_1024x1024` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `image_rru_512x512`;
+```
+
 ## v2.65.12
 
 ### Added
