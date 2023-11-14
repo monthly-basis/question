@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.66.3
 
 ```
 ALTER TABLE `question` ADD KEY `views_one_day` (`views_one_day` DESC);
