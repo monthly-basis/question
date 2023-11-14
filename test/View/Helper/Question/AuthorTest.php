@@ -101,10 +101,9 @@ class AuthorTest extends TestCase
         );
     }
 
-    public function test___invoke_neitherCreatedNameNorUserIdSet_throwException()
+    public function test___invoke_neitherCreatedNameNorUserIdSet_null()
     {
         $questionEntity = new QuestionEntity\Question();
-        $userEntity     = new UserEntity\User();
 
         $this->userFactoryMock
             ->expects($this->exactly(0))
@@ -115,7 +114,8 @@ class AuthorTest extends TestCase
             ->method('getDisplayNameOrUsername')
             ;
 
-        $this->expectException(QuestionException::class);
-        $this->authorHelper->__invoke($questionEntity);
+        $this->assertNull(
+            $this->authorHelper->__invoke($questionEntity)
+        );
     }
 }
