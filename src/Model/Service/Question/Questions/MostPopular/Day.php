@@ -25,7 +25,7 @@ class Day
                 $questionId
             );
 
-            if (isset($questionEntities->deletedDateTime)) {
+            if (isset($questionEntity->deletedDateTime)) {
                 continue;
             }
 
