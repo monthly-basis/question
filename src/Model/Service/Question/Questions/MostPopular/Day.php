@@ -22,7 +22,7 @@ class Day
 
         foreach ($questionIds as $questionId) {
             $questionEntity = $this->fromQuestionIdFactory->buildFromQuestionId(
-                intval($array['question_id'])
+                $questionId
             );
 
             if (isset($questionEntities->deletedDateTime)) {
