@@ -16,33 +16,48 @@ class Day
 
     public function getQuestions(int $limit = 100): array
     {
-        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
-        if (null !== ($questionEntities = $this->memcachedService->get($memcachedKey))) {
-            return $questionEntities;
-        }
+        $questionIds = $this->getQuestionIds($limit);
 
         $questionEntities = [];
 
+        foreach ($questionIds as $questionId) {
+            $questionEntity = $this->fromQuestionIdFactory->buildFromQuestionId(
+                intval($array['question_id'])
+            );
+
+            if (isset($questionEntities->deletedDateTime)) {
+                continue;
+            }
+
+            $questionEntities[] = $questionEntity;
+        }
+
+        return $questionEntities;
+    }
+
+    protected function getQuestionIds(int $limit): array
+    {
+        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
+        if (null !== ($questionIds = $this->memcachedService->get($memcachedKey))) {
+            return $questionIds;
+        }
+
         $result = $this->questionTable->select(
             columns: ['question_id'],
-            where: [
-                'deleted_datetime' => null,
-            ],
             order: 'views_one_day DESC',
             limit: $limit,
         );
 
+        $questionIds = [];
         foreach ($result as $array) {
-            $questionEntities[] = $this->fromQuestionIdFactory->buildFromQuestionId(
-                intval($array['question_id'])
-            );
+            $questionIds[] = intval($array['question_id']);
         }
 
         $this->memcachedService->setForHours(
             $memcachedKey,
-            $questionEntities,
+            $questionIds,
             1
         );
-        return $questionEntities;
+        return $questionIds;
     }
 }
