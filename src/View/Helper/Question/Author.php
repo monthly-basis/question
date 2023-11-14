@@ -26,10 +26,8 @@ class Author extends AbstractHelper
             );
         }
 
-        if (isset($questionEntity->createdName)) {
-            return $questionEntity->createdName;
-        }
-
-        return null;
+        return isset($questionEntity->createdName)
+            ? $questionEntity->createdName
+            : null;
     }
 }
