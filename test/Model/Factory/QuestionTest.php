@@ -51,6 +51,10 @@ class QuestionTest extends TestCase
             'deleted_datetime'    => '2018-09-17 21:42:45',
             'headline'            => 'This is the headline.',
             'image_rru'           => '/path/to/image.jpeg',
+            'image_rru_128x128'   => '/path/to/128x128.webp',
+            'image_rru_256x256'   => '/path/to/256x256.webp',
+            'image_rru_512x512'   => '/path/to/512x512.webp',
+            'image_rru_1024x1024' => '/path/to/1024x1024.jpeg',
             'message'             => 'message',
             'modified_datetime'   => '2022-07-13 20:25:11',
             'modified_user_id'    => '54321',
@@ -86,6 +90,10 @@ class QuestionTest extends TestCase
             ;
         $questionEntity->didYouKnow = 'interesting blurb';
         $questionEntity->imageRru = '/path/to/image.jpeg';
+        $questionEntity->imageRru128x128 = '/path/to/128x128.webp';
+        $questionEntity->imageRru256x256 = '/path/to/256x256.webp';
+        $questionEntity->imageRru512x512 = '/path/to/512x512.webp';
+        $questionEntity->imageRru1024x1024 = '/path/to/1024x1024.jpeg';
 
         $this->assertEquals(
             $questionEntity,
