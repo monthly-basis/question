@@ -28,7 +28,7 @@ class Day
             where: [
                 'deleted_datetime' => null,
             ],
-            order: 'views_not_bot_one_day DESC',
+            order: 'views_one_day DESC',
             limit: $limit,
         );
 
