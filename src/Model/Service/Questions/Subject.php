@@ -45,13 +45,7 @@ class Subject
                 'deleted_datetime' => null,
             ])
             ->order([
-                'views_not_bot_one_hour DESC',
-                'views_not_bot_one_day DESC',
-                'views_not_bot_one_week DESC',
-                'views_not_bot_one_month DESC',
-                'views DESC',
-                'created_datetime DESC',
-                'question_id DESC',
+                'views_one_year DESC',
             ])
             ->limit(100)
             ->offset(($page - 1) * 100)
