@@ -51,10 +51,13 @@ class YearMonthDay
              INDEX (`created_datetime_deleted_datetime_views_not_bot_one_month`)
 
              WHERE `created_datetime` BETWEEN ? AND ?
+               AND `moved_datetime` IS NULL
                AND `deleted_datetime` IS NULL
 
              ORDER
-                BY `views_not_bot_one_month` DESC
+                BY `views_one_month` DESC
+
+             LIMIT 100
         ";
         $parameters = [
             $dateTimeMin->format('Y-m-d H:i:s'),
