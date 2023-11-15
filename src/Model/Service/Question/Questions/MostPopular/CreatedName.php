@@ -29,7 +29,7 @@ class CreatedName
                 'created_name'     => $createdName,
                 'deleted_datetime' => null,
             ])
-            ->order('views_not_bot_one_month DESC')
+            ->order('views_one_month DESC')
             ->limit(100)
             ->offset(($page - 1) * 100)
             ;
