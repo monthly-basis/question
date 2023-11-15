@@ -32,20 +32,20 @@ class QuestionSearchMessageTest extends TableTestCase
         $this->questionTable->insert(
             values: [
                 'message' => 'message of question with 0 views',
-                'views_not_bot_one_month' => 0,
+                'views_one_month' => 0,
                 'moved_datetime' => '2022-10-31 13:56:24',
             ]
         );
         $this->questionTable->insert(
             values: [
                 'message' => 'message of question with 1 view',
-                'views_not_bot_one_month' => 0,
+                'views_one_month' => 0,
             ]
         );
         $this->questionTable->insert(
             values: [
                 'message' => 'message of question with 100 views',
-                'views_not_bot_one_month' => 100,
+                'views_one_month' => 100,
             ]
         );
         $this->questionSearchMessageTable->rotate();

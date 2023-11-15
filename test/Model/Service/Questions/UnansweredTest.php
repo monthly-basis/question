@@ -32,7 +32,7 @@ class UnansweredTest extends TableTestCase
         $this->questionTable->insert(
             values: [
                 'answer_count_cached'     => 0,
-                'views_not_bot_one_month' => 99,
+                'views_one_month' => 99,
             ]
         );
         $this->questionTable->insert(
@@ -43,7 +43,7 @@ class UnansweredTest extends TableTestCase
         $this->questionTable->insert(
             values: [
                 'answer_count_cached'     => 0,
-                'views_not_bot_one_month' => 3,
+                'views_one_month' => 3,
             ]
         );
 
