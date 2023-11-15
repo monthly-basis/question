@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Removed
+
+- Remove `answer_count_cached_etc` index
+```
+ALTER TABLE `question` DROP KEY `answer_count_cached_etc`;
+```
+
 ### Added
 
 - `answer_count_cached` index
