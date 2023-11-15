@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Index on `question` table
+```
+ALTER TABLE `question` ADD KEY `views_one_hour_etc_2` (`views_one_hour` DESC, `views_one_day` DESC, `views_one_week` DESC, `views_one_month` DESC);
+```
+
 ## v2.66.7
 
 ### Changed

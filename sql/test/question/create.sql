@@ -59,6 +59,7 @@ CREATE TABLE `question` (
     KEY `deleted_user_id_deleted_datetime` (`deleted_user_id`, `deleted_datetime`),
     KEY `message_255` (`message`(255)),
     KEY `views_one_hour_etc` (`views_not_bot_one_hour` DESC, `views_not_bot_one_day` DESC, `views_not_bot_one_week` DESC, `views_not_bot_one_month` DESC),
+    KEY `views_one_hour_etc_2` (`views_one_hour` DESC, `views_one_day` DESC, `views_one_week` DESC, `views_one_month` DESC),
     KEY `views_one_month_etc` (`views_not_bot_one_month` DESC, `views_not_bot_one_week` DESC, `views_not_bot_one_day` DESC, `views_not_bot_one_hour` DESC),
     KEY `views_one_day` (`views_one_day` DESC),
     KEY `views_one_year` (`views_one_year` DESC),
