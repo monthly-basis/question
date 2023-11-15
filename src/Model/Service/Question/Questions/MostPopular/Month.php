@@ -19,19 +19,22 @@ class Month
             columns: [
                 'question_id'
             ],
-            where: [
-                'deleted_datetime' => null,
-            ],
             order: [
-                'views_not_bot_one_month DESC'
+                'views_one_month DESC'
             ],
             limit: $limit
         );
 
         foreach ($result as $array) {
-            yield $this->fromQuestionIdFactory->buildFromQuestionId(
+            $questionEntity = $this->fromQuestionIdFactory->buildFromQuestionId(
                 $array['question_id']
             );
+
+            if (isset($questionEntity->deletedDateTime)) {
+                continue;
+            }
+
+            yield $questionEntity;
         }
     }
 }
