@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `created_datetime_etc_2` index
+```
+ALTER TABLE `question` ADD KEY `created_datetime_etc_2` (`created_datetime`, `moved_datetime`, `deleted_datetime`, `views_one_month` DESC);
+```
+
 ## v2.66.9
 
 ### Added
