@@ -201,6 +201,10 @@ class Answer extends LaminasDb\Table
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
 
+    /**
+     * This method is currently not in use.
+     * Before using it again, make sure it is performant.
+     */
     public function selectWhereUserId(
         int $userId,
         int $limitOffset,
@@ -218,7 +222,7 @@ class Answer extends LaminasDb\Table
                AND `question`.`deleted_datetime` IS NULL
 
              ORDER
-                BY `question`.`views_not_bot_one_month` DESC
+                BY `question`.`views_one_month` DESC
 
              LIMIT ?, ?
                  ;
