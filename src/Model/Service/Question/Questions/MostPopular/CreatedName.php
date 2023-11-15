@@ -9,13 +9,10 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class CreatedName
 {
     public function __construct(
-        LaminasDb\Sql\Sql $sql,
-        QuestionFactory\Question $questionFactory,
-        QuestionTable\Question $questionTable
+        protected LaminasDb\Sql\Sql $sql,
+        protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
+        protected QuestionTable\Question $questionTable
     ) {
-        $this->sql             = $sql;
-        $this->questionFactory = $questionFactory;
-        $this->questionTable   = $questionTable;
     }
 
     public function getMostPopularQuestions(
@@ -24,7 +21,7 @@ class CreatedName
     ): Generator {
         $select = $this->sql
             ->select('question')
-            ->columns($this->questionTable->getSelectColumns())
+            ->columns(['question_id'])
             ->where([
                 'created_name'     => $createdName,
                 'deleted_datetime' => null,
@@ -36,7 +33,9 @@ class CreatedName
         $result = $this->sql->prepareStatementForSqlObject($select)->execute();
 
         foreach ($result as $array) {
-            yield $this->questionFactory->buildFromArray($array);
+            yield $this->fromQuestionIdFactory->buildFromQuestionId(
+                $array['question_id']
+            );
         }
     }
 }
