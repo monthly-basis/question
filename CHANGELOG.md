@@ -5,7 +5,6 @@
 ### Changed
 
 - Indexes on `question` table
-
 ```
 ALTER TABLE `question` DROP KEY `subject_moved_datetime_deleted_datetime_views_not_bot_one_month`;
 ALTER TABLE `question` DROP KEY `subject_etc`;
@@ -14,6 +13,9 @@ ALTER TABLE `question` ADD KEY `subject_etc` (`subject`,`moved_datetime`,`delete
 
 ## v2.66.3
 
+### Added
+
+- Index on `question`.`views_one_day` column
 ```
 ALTER TABLE `question` ADD KEY `views_one_day` (`views_one_day` DESC);
 ```
