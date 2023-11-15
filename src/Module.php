@@ -974,6 +974,11 @@ class Module
                         $sm->get(QuestionDb\Sql::class),
                     );
                 },
+                QuestionTable\QuestionViewNotBotLog::class => function ($sm) {
+                    return new QuestionTable\QuestionViewNotBotLog(
+                        $sm->get(QuestionDb\Sql::class),
+                    );
+                },
                 QuestionTable\Question\CreatedNameDeletedCreatedDatetime::class => function ($sm) {
                     return new QuestionTable\Question\CreatedNameDeletedCreatedDatetime(
                         $sm->get('question'),
