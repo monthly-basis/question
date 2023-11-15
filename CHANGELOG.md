@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Index on `question`.`views_one_week` column
+```
+ALTER TABLE `question` ADD KEY `views_one_week` (`views_one_week` DESC);
+```
+
 ## v2.66.8
 
 ### Added
