@@ -168,9 +168,9 @@ class QuestionTest extends TableTestCase
     /**
      * @todo Update unit test to use actual data.
      */
-    public function test_selectQuestionIdOrderByViewsNotBotOneHour_result()
+    public function test_selectQuestionIdOrderByViewsOneHour_result()
     {
-        $result = $this->questionTable->selectQuestionIdOrderByViewsNotBotOneHour();
+        $result = $this->questionTable->selectQuestionIdOrderByViewsOneHour();
         $this->assertEmpty($result);
     }
 

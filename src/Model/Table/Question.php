@@ -169,7 +169,7 @@ class Question extends LaminasDb\Table
             ->getGeneratedValue();
     }
 
-    public function selectQuestionIdOrderByViewsNotBotOneHour(
+    public function selectQuestionIdOrderByViewsOneHour(
         int $limitRowCount = 100
     ): Result {
         $sql = '

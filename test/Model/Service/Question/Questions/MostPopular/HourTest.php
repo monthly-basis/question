@@ -33,7 +33,7 @@ class HourTest extends TestCase
     {
         $this->questionTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdOrderByViewsNotBotOneHour')
+            ->method('selectQuestionIdOrderByViewsOneHour')
             ->willReturn($this->createMock(Result::class))
             ;
         $this->fromQuestionIdFactoryMock

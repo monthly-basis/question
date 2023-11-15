@@ -15,7 +15,7 @@ class Hour
 
     public function getQuestions(int $limit = 100): Generator
     {
-        $result = $this->questionTable->selectQuestionIdOrderByViewsNotBotOneHour(
+        $result = $this->questionTable->selectQuestionIdOrderByViewsOneHour(
             limitRowCount: $limit
         );
 
