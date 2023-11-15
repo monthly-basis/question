@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `answer_count_cached` index
+```
+ALTER TABLE `question` ADD KEY `answer_count_cached` (`answer_count_cached`);
+```
+
 ## v2.66.14
 
 ### Added
