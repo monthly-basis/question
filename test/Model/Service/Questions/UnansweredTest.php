@@ -14,15 +14,15 @@ class UnansweredTest extends TableTestCase
         $this->dropAndCreateTable('question');
         $this->setForeignKeyChecks(1);
 
-        $this->questionFactoryMock = $this->createMock(
-            QuestionFactory\Question::class
+        $this->fromQuestionIdFactoryMock = $this->createMock(
+            QuestionFactory\Question\FromQuestionId::class
         );
         $this->questionTable = new QuestionTable\Question(
             $this->getSql()
         );
 
         $this->unansweredService = new QuestionService\Questions\Unanswered(
-            $this->questionFactoryMock,
+            $this->fromQuestionIdFactoryMock,
             $this->questionTable
         );
     }
@@ -47,9 +47,9 @@ class UnansweredTest extends TableTestCase
             ]
         );
 
-        $this->questionFactoryMock
+        $this->fromQuestionIdFactoryMock
             ->expects($this->exactly(2))
-            ->method('buildFromArray')
+            ->method('buildFromQuestionId')
         ;
 
         $generator = $this->unansweredService->getUnansweredQuestions();

@@ -8,14 +8,14 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class Unanswered
 {
     public function __construct(
-        protected QuestionFactory\Question $questionFactory,
+        protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
         protected QuestionTable\Question $questionTable,
     ) {}
 
     public function getUnansweredQuestions(): Generator
     {
         $result = $this->questionTable->select(
-            columns: $this->questionTable->getSelectColumns(),
+            columns: ['question_id'],
             where: [
                 'answer_count_cached' => 0,
                 'moved_datetime'      => null,
@@ -25,7 +25,9 @@ class Unanswered
             limit: 100,
         );
         foreach ($result as $array) {
-            yield $this->questionFactory->buildFromArray($array);
+            yield $this->fromQuestionIdFactory->buildFromQuestionId(
+                $array['question_id']
+            );
         }
     }
 }

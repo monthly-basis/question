@@ -760,7 +760,7 @@ class Module
                 },
                 QuestionService\Questions\Unanswered::class => function ($sm) {
                     return new QuestionService\Questions\Unanswered(
-                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class),
                         $sm->get(QuestionTable\Question::class),
                     );
                 },
