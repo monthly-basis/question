@@ -49,6 +49,7 @@ CREATE TABLE `question` (
     KEY `created_datetime_etc_2` (`created_datetime`, `moved_datetime`, `deleted_datetime`, `views_one_month` DESC),
     KEY `created_name_deleted_datetime_created_datetime` (`created_name`, `deleted_datetime`, `created_datetime`),
     KEY `created_name_deleted_datetime_views_not_bot_one_month` (`created_name`, `deleted_datetime`, `views_not_bot_one_month`),
+    KEY `created_name_etc` (`created_name`, `deleted_datetime`, `views_one_month` DESC),
     KEY `created_ip_created_datetime` (`created_ip`, `created_datetime`),
     KEY `created_ip_and_3_more_columns` (`created_ip`, `deleted_datetime`, `deleted_user_id`, `deleted_reason`),
     KEY `moved_datetime_deleted_datetime_created_datetime` (`moved_datetime`,`deleted_datetime`,`created_datetime`),

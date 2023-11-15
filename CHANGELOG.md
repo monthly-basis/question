@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `created_name_etc` index
+```
+ALTER TABLE `question` ADD KEY `created_name_etc` (`created_name`, `deleted_datetime`, `views_one_month` DESC);
+```
+
 ## v2.66.10
 
 ### Added
