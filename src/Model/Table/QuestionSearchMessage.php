@@ -89,6 +89,10 @@ class QuestionSearchMessage extends LaminasDb\Table
         return $this->adapter->query($sql)->execute($parameters);
     }
 
+    /**
+     * This method currently not in use.
+     * Before using it again, make sure it is performant.
+     */
     public function selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
         string $query,
         int $questionId,
@@ -115,10 +119,6 @@ class QuestionSearchMessage extends LaminasDb\Table
              USING (`question_id`)
              ORDER
                 BY `question`.`views_one_year` DESC
-                 , `question`.`views_not_bot_one_month` DESC
-                 , `question`.`views_not_bot_one_week` DESC
-                 , `question`.`views_not_bot_one_day` DESC
-                 , `question`.`views_not_bot_one_hour` DESC
                  , `question_search_message`.`score` DESC
              LIMIT :outerLimitOffset, :outerLimitRowCount
                  ;
