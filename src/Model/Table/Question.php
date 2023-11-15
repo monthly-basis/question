@@ -179,17 +179,17 @@ class Question extends LaminasDb\Table
                          FROM `question`
                         WHERE `question`.`deleted_datetime` IS NULL
                         ORDER
-                           BY `question`.`views_not_bot_one_hour` DESC
+                           BY `question`.`views_one_hour` DESC
                         LIMIT ?
                    ) AS `question_sub_query`
 
               JOIN `question` USING (`question_id`)
 
              ORDER
-                BY `question`.`views_not_bot_one_hour` DESC
-                 , `question`.`views_not_bot_one_day` DESC
-                 , `question`.`views_not_bot_one_week` DESC
-                 , `question`.`views_not_bot_one_month` DESC
+                BY `question`.`views_one_hour` DESC
+                 , `question`.`views_one_day` DESC
+                 , `question`.`views_one_week` DESC
+                 , `question`.`views_one_month` DESC
                  ;
         ';
         $parameters = [
