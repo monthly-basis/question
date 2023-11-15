@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.66.7
+
+### Changed
+
+- Indexes on `question` table
+
+```
+ALTER TABLE `question` DROP KEY `subject_moved_datetime_deleted_datetime_views_not_bot_one_month`;
+ALTER TABLE `question` DROP KEY `subject_etc`;
+ALTER TABLE `question` ADD KEY `subject_etc` (`subject`,`moved_datetime`,`deleted_datetime`,`views_one_year` DESC);
+```
+
 ## v2.66.3
 
 ```
