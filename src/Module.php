@@ -227,12 +227,6 @@ class Module
                         $sm->get('question')
                     );
                 },
-                'laminas-db-table-gateway-table-gateway-question_view_not_bot_log' => function ($sm) {
-                    return new LaminasDb\TableGateway\TableGateway(
-                        'question_view_not_bot_log',
-                        $sm->get('question')
-                    );
-                },
                 QuestionCommand\Answers\Import::class => function ($sm) {
                     return new QuestionCommand\Answers\Import(
                         $sm->get('config')['monthly-basis']['open-ai'],
@@ -569,7 +563,7 @@ class Module
                 QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert::class => function ($sm) {
                     return new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
                         $sm->get(MemcachedService\Memcached::class),
-                        $sm->get('laminas-db-table-gateway-table-gateway-question_view_not_bot_log'),
+                        $sm->get(QuestionTable\QuestionViewNotBotLog::class),
                         $sm->get(StringService\StartsWith::class),
                         $sm->get(SuperglobalService\Server\HttpUserAgent\Bot::class)
                     );

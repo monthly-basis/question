@@ -2,9 +2,9 @@
 namespace MonthlyBasis\Question\Model\Service\Question\QuestionViewNotBotLog;
 
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
-use Laminas\Db\TableGateway\TableGateway;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
+use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 
@@ -12,7 +12,7 @@ class ConditionallyInsert
 {
     public function __construct(
         protected MemcachedService\Memcached $memcachedService,
-        protected TableGateway $questionViewNotBotLogTableGateway,
+        protected QuestionTable\QuestionViewNotBotLog $questionViewNotBotLogTable,
         protected StringService\StartsWith $startsWithService,
         protected SuperglobalService\Server\HttpUserAgent\Bot $botService,
     ) {
@@ -78,13 +78,14 @@ class ConditionallyInsert
          */
 
         try {
-            $this->questionViewNotBotLogTableGateway
-                ->insert([
+            $this->questionViewNotBotLogTable->insert(
+                values: [
                     'question_id'                 => $questionEntity->getQuestionId(),
                     'ip'                          => $_SERVER['REMOTE_ADDR'],
                     'server_http_accept_language' => $serverHttpAcceptLanguage,
                     'server_http_referer'         => $serverHttpReferer,
-                ]);
+                ]
+            );
         } catch (InvalidQueryException $invalidQueryException) {
             return false;
         }
