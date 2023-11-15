@@ -40,6 +40,7 @@ CREATE TABLE `question` (
     PRIMARY KEY (`question_id`),
     UNIQUE `slug` (`slug`),
     KEY `answer_count_cached` (`answer_count_cached`),
+    KEY `answer_count_cached_etc` (`answer_count_cached`, `moved_datetime`, `deleted_datetime`, `views_one_month` DESC),
     KEY `user_id` (`user_id`),
     KEY `user_id_deleted_datetime_created_datetime_question_id` (`user_id`, `deleted_datetime`, `created_datetime`, `question_id`),
     KEY `subject_etc` (`subject`,`moved_datetime`,`deleted_datetime`,`views_one_year` DESC),

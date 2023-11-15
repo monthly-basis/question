@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `answer_count_cached_etc` index
+```
+ALTER TABLE `question` ADD KEY `answer_count_cached_etc` (`answer_count_cached`, `moved_datetime`, `deleted_datetime`, `views_one_month` DESC);
+```
+
 ## v2.66.16
 
 ### Removed
