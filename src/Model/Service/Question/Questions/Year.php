@@ -31,7 +31,7 @@ class Year
                 new LaminasDb\Sql\Predicate\Between('created_datetime', $betweenMin, $betweenMax),
                 'deleted_datetime' => null,
             ])
-            ->order('views_not_bot_one_month DESC')
+            ->order('views_one_month DESC')
             ->limit(100)
             ->offset(0)
             ;
