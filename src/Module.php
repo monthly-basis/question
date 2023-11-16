@@ -568,17 +568,6 @@ class Module
                         $sm->get(QuestionTable\Question::class),
                     );
                 },
-                /**
-                 * @deprecated Use QuestionService\LogQuestionView\ConditionallyInsert instead
-                 */
-                QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert::class => function ($sm) {
-                    return new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
-                        $sm->get(MemcachedService\Memcached::class),
-                        $sm->get(QuestionTable\LogQuestionView::class),
-                        $sm->get(StringService\StartsWith::class),
-                        $sm->get(SuperglobalService\Server\HttpUserAgent\Bot::class)
-                    );
-                },
                 QuestionService\QuestionFromAnswer::class => function ($sm) {
                     return new QuestionService\QuestionFromAnswer(
                         $sm->get(QuestionFactory\Question\FromQuestionId::class)
