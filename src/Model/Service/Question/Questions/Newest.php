@@ -8,20 +8,18 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 class Newest
 {
     public function __construct(
-        QuestionFactory\Question $questionFactory,
-        QuestionTable\Question\DeletedDatetimeCreatedDatetime $deletedDatetimeCreatedDatetimeTable
+        protected QuestionFactory\Question $questionFactory,
+        protected QuestionTable\Question\DeletedDatetimeCreatedDatetime $deletedDatetimeCreatedDatetimeTable
     ) {
-        $this->questionFactory                     = $questionFactory;
-        $this->deletedDatetimeCreatedDatetimeTable = $deletedDatetimeCreatedDatetimeTable;
     }
 
     public function getNewestQuestions(
-        int $limit = 100
+        int $page = 1
     ): Generator {
         $generator = $this->deletedDatetimeCreatedDatetimeTable
             ->selectWhereDeletedDatetimeIsNullOrderByCreatedDatetimeDesc(
-                0,
-                $limit
+                ($page - 1) * 100,
+                100
             );
         foreach ($generator as $array) {
             yield $this->questionFactory->buildFromArray($array);

@@ -24,7 +24,7 @@ class NewestTest extends TestCase
         );
     }
 
-    public function test_getNewestQuestions()
+    public function test_getNewestQuestions_defaultPage_generator()
     {
         $this->deletedDatetimeCreatedDatetimeTableMock
             ->expects($this->once())
@@ -37,6 +37,27 @@ class NewestTest extends TestCase
             ->with([]);
 
         $generator = $this->newestService->getNewestQuestions();
+        $this->assertInstanceOf(
+            QuestionEntity\Question::class,
+            $generator->current()
+        );
+    }
+
+    public function test_getNewestQuestions_page7_generator()
+    {
+        $this->deletedDatetimeCreatedDatetimeTableMock
+            ->expects($this->once())
+            ->method('selectWhereDeletedDatetimeIsNullOrderByCreatedDatetimeDesc')
+            ->with(600, 100)
+            ->willReturn($this->yieldArrays());
+        $this->questionFactoryMock
+            ->expects($this->once())
+            ->method('buildFromArray')
+            ->with([]);
+
+        $generator = $this->newestService->getNewestQuestions(
+            page: 7
+        );
         $this->assertInstanceOf(
             QuestionEntity\Question::class,
             $generator->current()
