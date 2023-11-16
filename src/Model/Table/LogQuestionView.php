@@ -4,9 +4,9 @@ namespace MonthlyBasis\Question\Model\Table;
 use Laminas\Db\Sql\Sql;
 use MonthlyBasis\Laminas\Model\Db as LaminasDb;
 
-class QuestionViewNotBotLog extends LaminasDb\Table
+class LogQuestionView extends LaminasDb\Table
 {
-    protected string $table = 'question_view_not_bot_log';
+    protected string $table = 'log_question_view';
 
     public function __construct(
         protected Sql $sql

@@ -12,7 +12,7 @@ class ConditionallyInsert
 {
     public function __construct(
         protected MemcachedService\Memcached $memcachedService,
-        protected QuestionTable\QuestionViewNotBotLog $questionViewNotBotLogTable,
+        protected QuestionTable\LogQuestionView $logQuestionViewTable,
         protected StringService\StartsWith $startsWithService,
         protected SuperglobalService\Server\HttpUserAgent\Bot $botService,
     ) {
@@ -78,7 +78,7 @@ class ConditionallyInsert
          */
 
         try {
-            $this->questionViewNotBotLogTable->insert(
+            $this->logQuestionViewTable->insert(
                 values: [
                     'question_id'                 => $questionEntity->getQuestionId(),
                     'ip'                          => $_SERVER['REMOTE_ADDR'],

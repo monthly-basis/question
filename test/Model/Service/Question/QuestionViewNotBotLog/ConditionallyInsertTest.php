@@ -17,8 +17,8 @@ class ConditionallyInsertTest extends TestCase
         $this->memcachedServiceMock = $this->createMock(
             MemcachedService\Memcached::class
         );
-        $this->questionViewNotBotLogTableMock = $this->createMock(
-            QuestionTable\QuestionViewNotBotLog::class
+        $this->logQuestionViewTableMock = $this->createMock(
+            QuestionTable\LogQuestionView::class
         );
         $this->startsWithServiceMock = $this->createMock(
             StringService\StartsWith::class
@@ -29,7 +29,7 @@ class ConditionallyInsertTest extends TestCase
 
         $this->conditionallyInsertService = new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
             $this->memcachedServiceMock,
-            $this->questionViewNotBotLogTableMock,
+            $this->logQuestionViewTableMock,
             $this->startsWithServiceMock,
             $this->botServiceMock,
         );
@@ -58,7 +58,7 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->exactly(0))
             ->method('startsWith')
             ;
-        $this->questionViewNotBotLogTableMock
+        $this->logQuestionViewTableMock
             ->expects($this->exactly(0))
             ->method('insert')
             ;
@@ -94,7 +94,7 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->exactly(0))
             ->method('startsWith')
             ;
-        $this->questionViewNotBotLogTableMock
+        $this->logQuestionViewTableMock
             ->expects($this->exactly(0))
             ->method('insert')
             ;
@@ -132,7 +132,7 @@ class ConditionallyInsertTest extends TestCase
             ->expects($this->exactly(0))
             ->method('startsWith')
             ;
-        $this->questionViewNotBotLogTableMock
+        $this->logQuestionViewTableMock
             ->expects($this->exactly(0))
             ->method('insert')
             ;
@@ -175,12 +175,12 @@ class ConditionallyInsertTest extends TestCase
             ;
          */
         /*
-        $this->questionViewNotBotLogTableMock
+        $this->logQuestionViewTableMock
             ->expects($this->exactly(0))
             ->method('insert')
             ;
          */
-        $this->questionViewNotBotLogTableMock
+        $this->logQuestionViewTableMock
             ->expects($this->once())
             ->method('insert')
             ->with([
@@ -229,7 +229,7 @@ class ConditionallyInsertTest extends TestCase
             ->willReturn(true)
             ;
          */
-        $this->questionViewNotBotLogTableMock
+        $this->logQuestionViewTableMock
             ->expects($this->once())
             ->method('insert')
             ->with([
@@ -272,7 +272,7 @@ class ConditionallyInsertTest extends TestCase
             ->method('isBot')
             ->willReturn(false)
             ;
-        $this->questionViewNotBotLogTableMock
+        $this->logQuestionViewTableMock
             ->expects($this->once())
             ->method('insert')
             ->with([

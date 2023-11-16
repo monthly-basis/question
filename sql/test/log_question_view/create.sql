@@ -1,4 +1,4 @@
-CREATE TABLE `question_view_not_bot_log` (
+CREATE TABLE `log_question_view` (
     `question_view_not_bot_log_id` int(10) unsigned auto_increment,
     `question_id` int(10) unsigned NOT NULL,
     `ip` varchar(45) NOT NULL,

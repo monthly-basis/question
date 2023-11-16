@@ -563,7 +563,7 @@ class Module
                 QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert::class => function ($sm) {
                     return new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
                         $sm->get(MemcachedService\Memcached::class),
-                        $sm->get(QuestionTable\QuestionViewNotBotLog::class),
+                        $sm->get(QuestionTable\LogQuestionView::class),
                         $sm->get(StringService\StartsWith::class),
                         $sm->get(SuperglobalService\Server\HttpUserAgent\Bot::class)
                     );
@@ -958,6 +958,11 @@ class Module
                         $sm->get(QuestionDb\Sql::class)
                     );
                 },
+                QuestionTable\LogQuestionView::class => function ($sm) {
+                    return new QuestionTable\LogQuestionView(
+                        $sm->get(QuestionDb\Sql::class),
+                    );
+                },
                 QuestionTable\Post::class => function ($sm) {
                     return new QuestionTable\Post(
                         $sm->get(QuestionDb\Sql::class)
@@ -965,11 +970,6 @@ class Module
                 },
                 QuestionTable\Question::class => function ($sm) {
                     return new QuestionTable\Question(
-                        $sm->get(QuestionDb\Sql::class),
-                    );
-                },
-                QuestionTable\QuestionViewNotBotLog::class => function ($sm) {
-                    return new QuestionTable\QuestionViewNotBotLog(
                         $sm->get(QuestionDb\Sql::class),
                     );
                 },
