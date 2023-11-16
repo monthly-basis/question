@@ -44,10 +44,6 @@ class View extends AbstractActionController
 
         $relatedQuestions = $this->relatedService->getRelated(
             questionEntity: $questionEntity,
-            questionSearchMessageLimitOffset: 0,
-            questionSearchMessageLimitRowCount: 100,
-            outerLimitOffset: 0,
-            outerLimitRowCount: 10,
         );
         $answerEntities = $this->answersService->getAnswers(
             questionEntity: $questionEntity,
