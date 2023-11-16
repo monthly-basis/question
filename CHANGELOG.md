@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.67.0
+
+### Changed
+
+- Renamed table `question_view_not_bot_log` to `log_question_view`
+```
+RENAME TABLE `question_view_not_bot_log` to `log_question_view`;
+```
+
 ## v2.66.17
 
 ### Added
