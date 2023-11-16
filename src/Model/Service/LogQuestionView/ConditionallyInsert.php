@@ -1,5 +1,5 @@
 <?php
-namespace MonthlyBasis\Question\Model\Service\Question\QuestionViewNotBotLog;
+namespace MonthlyBasis\Question\Model\Service\LogQuestionView;
 
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
@@ -8,9 +8,6 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
 
-/**
- * @deprecated Use QuestionService\LogQuestionView\ConditionallyInsert instead
- */
 class ConditionallyInsert
 {
     public function __construct(

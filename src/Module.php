@@ -461,6 +461,14 @@ class Module
                         $sm->get(QuestionTable\AnswerSearchMessage::class),
                     );
                 },
+                QuestionService\LogQuestionView\ConditionallyInsert::class => function ($sm) {
+                    return new QuestionService\LogQuestionView\ConditionallyInsert(
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get(QuestionTable\LogQuestionView::class),
+                        $sm->get(StringService\StartsWith::class),
+                        $sm->get(SuperglobalService\Server\HttpUserAgent\Bot::class)
+                    );
+                },
                 QuestionService\Post\CanBeUndeleted::class => function ($sm) {
                     return new QuestionService\Post\CanBeUndeleted(
                         $sm->get(GroupService\LoggedInUserInGroupName::class),
@@ -560,6 +568,9 @@ class Module
                         $sm->get(QuestionTable\Question::class),
                     );
                 },
+                /**
+                 * @deprecated Use QuestionService\LogQuestionView\ConditionallyInsert instead
+                 */
                 QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert::class => function ($sm) {
                     return new QuestionService\Question\QuestionViewNotBotLog\ConditionallyInsert(
                         $sm->get(MemcachedService\Memcached::class),
