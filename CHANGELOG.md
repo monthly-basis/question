@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### Removed
+
+- `views_not_bot%` columns
+```
+ALTER TABLE `question` DROP COLUMN `views_not_bot_one_month`;
+ALTER TABLE `question` DROP COLUMN `views_not_bot_one_week`;
+ALTER TABLE `question` DROP COLUMN `views_not_bot_one_day`;
+ALTER TABLE `question` DROP COLUMN `views_not_bot_one_hour`;
+```
+
 ## v2.67.0
 
 ### Changed
