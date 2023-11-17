@@ -31,10 +31,9 @@ class Question extends LaminasDb\Table
                  , `question`.`headline`
                  , `question`.`message`
                  , `question`.`image_rru`
-                 , `question`.`image_rru_128x128`
-                 , `question`.`image_rru_256x256`
-                 , `question`.`image_rru_512x512`
-                 , `question`.`image_rru_1024x1024`
+                 , `question`.`image_rru_128x128_webp`
+                 , `question`.`image_rru_512x512_webp`
+                 , `question`.`image_rru_1024x1024_jpeg`
                  , `question`.`did_you_know`
                  , `question`.`views`
                  , `question`.`views_one_year`

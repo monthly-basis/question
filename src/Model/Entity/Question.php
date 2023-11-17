@@ -19,10 +19,9 @@ class Question extends QuestionEntity\Post
     protected string $headline;
     protected $history;
     public string $imageRru;
-    public string $imageRru128x128;
-    public string $imageRru256x256;
-    public string $imageRru512x512;
-    public string $imageRru1024x1024;
+    public string $imageRru128x128WebP;
+    public string $imageRru512x512WebP;
+    public string $imageRru1024x1024Jpeg;
     protected $message;
     protected DateTime $modifiedDateTime;
     protected string $modifiedReason;

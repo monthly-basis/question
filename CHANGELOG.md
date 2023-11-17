@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### Changed
+- `image_rru%` columns
+```
+ALTER TABLE `question` CHANGE `image_rru_128x128` `image_rru_128x128_webp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE `question` DROP COLUMN `image_rru_256x256`;
+ALTER TABLE `question` CHANGE `image_rru_512x512` `image_rru_512x512_webp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE `question` CHANGE `image_rru_1024x1024` `image_rru_1024x1024_jpeg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+```
+
 ### Removed
 
 - `views_not_bot%` columns
