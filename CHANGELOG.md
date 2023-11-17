@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.67.2
 
 ### Changed
 - `image_rru%` columns
