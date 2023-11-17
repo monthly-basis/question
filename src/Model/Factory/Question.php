@@ -39,17 +39,14 @@ class Question
         if (isset($array['image_rru'])) {
             $questionEntity->imageRru = $array['image_rru'];
         }
-        if (isset($array['image_rru_128x128'])) {
-            $questionEntity->imageRru128x128 = $array['image_rru_128x128'];
+        if (isset($array['image_rru_128x128_webp'])) {
+            $questionEntity->imageRru128x128WebP = $array['image_rru_128x128_webp'];
         }
-        if (isset($array['image_rru_256x256'])) {
-            $questionEntity->imageRru256x256 = $array['image_rru_256x256'];
+        if (isset($array['image_rru_512x512_webp'])) {
+            $questionEntity->imageRru512x512WebP = $array['image_rru_512x512_webp'];
         }
-        if (isset($array['image_rru_512x512'])) {
-            $questionEntity->imageRru512x512 = $array['image_rru_512x512'];
-        }
-        if (isset($array['image_rru_1024x1024'])) {
-            $questionEntity->imageRru1024x1024 = $array['image_rru_1024x1024'];
+        if (isset($array['image_rru_1024x1024_jpeg'])) {
+            $questionEntity->imageRru1024x1024Jpeg = $array['image_rru_1024x1024_jpeg'];
         }
         if (isset($array['message'])) {
             $questionEntity->setMessage($array['message']);

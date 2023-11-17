@@ -43,31 +43,30 @@ class QuestionTest extends TestCase
             ->method('getDisplayNameOrUsername')
             ;
         $array = [
-            'answer_count_cached' => 726,
-            'created_name'        => 'name',
-            'created_datetime'    => '2018-03-12 22:12:23',
-            'created_ip'          => '5.6.7.8',
-            'did_you_know'        => 'interesting blurb',
-            'deleted_datetime'    => '2018-09-17 21:42:45',
-            'headline'            => 'This is the headline.',
-            'image_rru'           => '/path/to/image.jpeg',
-            'image_rru_128x128'   => '/path/to/128x128.webp',
-            'image_rru_256x256'   => '/path/to/256x256.webp',
-            'image_rru_512x512'   => '/path/to/512x512.webp',
-            'image_rru_1024x1024' => '/path/to/1024x1024.jpeg',
-            'message'             => 'message',
-            'modified_datetime'   => '2022-07-13 20:25:11',
-            'modified_user_id'    => '54321',
-            'modified_reason'     => 'modified reason',
-            'moved_country'       => 'zaf',
-            'moved_datetime'      => '2022-08-04 00:31:03',
-            'moved_language'      => 'es',
-            'moved_question_id'   => '111',
-            'moved_user_id'       => '1',
-            'question_id'         => 1,
-            'slug'                => 'slug',
-            'subject'             => null,
-            'user_id'             => null,
+            'answer_count_cached'      => 726,
+            'created_name'             => 'name',
+            'created_datetime'         => '2018-03-12 22:12:23',
+            'created_ip'               => '5.6.7.8',
+            'did_you_know'             => 'interesting blurb',
+            'deleted_datetime'         => '2018-09-17 21:42:45',
+            'headline'                 => 'This is the headline.',
+            'image_rru'                => '/path/to/image.jpeg',
+            'image_rru_128x128_webp'   => '/path/to/128x128.webp',
+            'image_rru_512x512_webp'   => '/path/to/512x512.webp',
+            'image_rru_1024x1024_jpeg' => '/path/to/1024x1024.jpeg',
+            'message'                  => 'message',
+            'modified_datetime'        => '2022-07-13 20:25:11',
+            'modified_user_id'         => '54321',
+            'modified_reason'          => 'modified reason',
+            'moved_country'            => 'zaf',
+            'moved_datetime'           => '2022-08-04 00:31:03',
+            'moved_language'           => 'es',
+            'moved_question_id'        => '111',
+            'moved_user_id'            => '1',
+            'question_id'              => 1,
+            'slug'                     => 'slug',
+            'subject'                  => null,
+            'user_id'                  => null,
         ];
         $questionEntity = (new QuestionEntity\Question())
             ->setAnswerCountCached($array['answer_count_cached'])
@@ -88,12 +87,11 @@ class QuestionTest extends TestCase
             ->setQuestionId($array['question_id'])
             ->setSlug($array['slug'])
             ;
-        $questionEntity->didYouKnow = 'interesting blurb';
-        $questionEntity->imageRru = '/path/to/image.jpeg';
-        $questionEntity->imageRru128x128 = '/path/to/128x128.webp';
-        $questionEntity->imageRru256x256 = '/path/to/256x256.webp';
-        $questionEntity->imageRru512x512 = '/path/to/512x512.webp';
-        $questionEntity->imageRru1024x1024 = '/path/to/1024x1024.jpeg';
+        $questionEntity->didYouKnow            = 'interesting blurb';
+        $questionEntity->imageRru              = '/path/to/image.jpeg';
+        $questionEntity->imageRru128x128WebP   = '/path/to/128x128.webp';
+        $questionEntity->imageRru512x512WebP   = '/path/to/512x512.webp';
+        $questionEntity->imageRru1024x1024Jpeg = '/path/to/1024x1024.jpeg';
 
         $this->assertEquals(
             $questionEntity,
