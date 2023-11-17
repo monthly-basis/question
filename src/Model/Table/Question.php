@@ -23,11 +23,6 @@ class Question extends LaminasDb\Table
 
     public function getSelect(): string
     {
-        /*
-                 , `question`.`image_rru_128x128_webp`
-                 , `question`.`image_rru_512x512_webp`
-                 , `question`.`image_rru_1024x1024_jpeg`
-         */
         return '
             SELECT `question`.`question_id`
                  , `question`.`slug`
@@ -36,6 +31,9 @@ class Question extends LaminasDb\Table
                  , `question`.`headline`
                  , `question`.`message`
                  , `question`.`image_rru`
+                 , `question`.`image_rru_128x128_webp`
+                 , `question`.`image_rru_512x512_webp`
+                 , `question`.`image_rru_1024x1024_jpeg`
                  , `question`.`did_you_know`
                  , `question`.`views`
                  , `question`.`views_one_year`
