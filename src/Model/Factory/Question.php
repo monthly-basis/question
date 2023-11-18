@@ -36,9 +36,6 @@ class Question
         if (isset($array['did_you_know'])) {
             $questionEntity->didYouKnow = $array['did_you_know'];
         }
-        if (isset($array['image_rru'])) {
-            $questionEntity->imageRru = $array['image_rru'];
-        }
         if (isset($array['image_rru_128x128_webp'])) {
             $questionEntity->imageRru128x128WebP = $array['image_rru_128x128_webp'];
         }

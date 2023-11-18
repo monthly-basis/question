@@ -88,7 +88,6 @@ class QuestionTest extends TestCase
             ->setSlug($array['slug'])
             ;
         $questionEntity->didYouKnow            = 'interesting blurb';
-        $questionEntity->imageRru              = '/path/to/image.jpeg';
         $questionEntity->imageRru128x128WebP   = '/path/to/128x128.webp';
         $questionEntity->imageRru512x512WebP   = '/path/to/512x512.webp';
         $questionEntity->imageRru1024x1024Jpeg = '/path/to/1024x1024.jpeg';
