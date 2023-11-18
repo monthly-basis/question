@@ -50,7 +50,6 @@ class QuestionTest extends TestCase
             'did_you_know'             => 'interesting blurb',
             'deleted_datetime'         => '2018-09-17 21:42:45',
             'headline'                 => 'This is the headline.',
-            'image_rru'                => '/path/to/image.jpeg',
             'image_rru_128x128_webp'   => '/path/to/128x128.webp',
             'image_rru_512x512_webp'   => '/path/to/512x512.webp',
             'image_rru_1024x1024_jpeg' => '/path/to/1024x1024.jpeg',
