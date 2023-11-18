@@ -57,7 +57,6 @@ class Module
                     'getQuestionH2Html'             => QuestionHelper\Question\Html\H2::class,
                     'getQuestionH3Html'             => QuestionHelper\Question\Html\H3::class,
                     'getQuestionHeadlineOrSubject'  => QuestionHelper\Question\HeadlineOrSubject::class,
-                    'getQuestionHeadlineAndMessage' => QuestionHelper\Question\HeadlineAndMessage::class,
                     'getQuestionLastmod'            => QuestionHelper\Question\Sitemap\Lastmod::class,
                     'getQuestionMessageHtml'        => QuestionHelper\Question\Html\Message::class,
                     'getQuestionPMessageHtml'       => QuestionHelper\Question\Html\P\Message::class,
@@ -102,11 +101,6 @@ class Module
                     QuestionHelper\Question\HeadlineOrSubject::class => function($sm) {
                         return new QuestionHelper\Question\HeadlineOrSubject(
                             $sm->get(QuestionService\Question\HeadlineOrSubject::class)
-                        );
-                    },
-                    QuestionHelper\Question\HeadlineAndMessage::class => function($sm) {
-                        return new QuestionHelper\Question\HeadlineAndMessage(
-                            $sm->get(QuestionService\Question\HeadlineAndMessage::class)
                         );
                     },
                     QuestionHelper\Question\Author::class => function($sm) {
