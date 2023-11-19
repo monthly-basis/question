@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.67.5
 
 ### Added
 - `image_rru_1024x1024_png` column
