@@ -33,6 +33,7 @@ class Question extends LaminasDb\Table
                  , `question`.`image_rru_128x128_webp`
                  , `question`.`image_rru_512x512_webp`
                  , `question`.`image_rru_1024x1024_jpeg`
+                 , `question`.`image_rru_1024x1024_png`
                  , `question`.`did_you_know`
                  , `question`.`views`
                  , `question`.`views_one_year`
