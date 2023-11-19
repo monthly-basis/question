@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- `image_rru_1024x1024_png` column
+```
+ALTER TABLE `question` ADD COLUMN `image_rru_1024x1024_png` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `image_rru_1024x1024_jpeg`;
+```
+
 ## v2.67.2
 
 ### Changed
