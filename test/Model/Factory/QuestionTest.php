@@ -53,6 +53,7 @@ class QuestionTest extends TestCase
             'image_rru_128x128_webp'   => '/path/to/128x128.webp',
             'image_rru_512x512_webp'   => '/path/to/512x512.webp',
             'image_rru_1024x1024_jpeg' => '/path/to/1024x1024.jpeg',
+            'image_rru_1024x1024_png'  => '/path/to/1024x1024.png',
             'message'                  => 'message',
             'modified_datetime'        => '2022-07-13 20:25:11',
             'modified_user_id'         => '54321',
@@ -90,6 +91,7 @@ class QuestionTest extends TestCase
         $questionEntity->imageRru128x128WebP   = '/path/to/128x128.webp';
         $questionEntity->imageRru512x512WebP   = '/path/to/512x512.webp';
         $questionEntity->imageRru1024x1024Jpeg = '/path/to/1024x1024.jpeg';
+        $questionEntity->imageRru1024x1024Png  = '/path/to/1024x1024.png';
 
         $this->assertEquals(
             $questionEntity,

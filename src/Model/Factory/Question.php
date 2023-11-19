@@ -45,6 +45,9 @@ class Question
         if (isset($array['image_rru_1024x1024_jpeg'])) {
             $questionEntity->imageRru1024x1024Jpeg = $array['image_rru_1024x1024_jpeg'];
         }
+        if (isset($array['image_rru_1024x1024_png'])) {
+            $questionEntity->imageRru1024x1024Png = $array['image_rru_1024x1024_png'];
+        }
         if (isset($array['message'])) {
             $questionEntity->setMessage($array['message']);
         }
