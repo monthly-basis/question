@@ -19,9 +19,9 @@ class QuestionSearchMessage extends LaminasDb\Table
     public function rotate(): Result
     {
         $sql = '
-            rename table question_search_message to question_search_message_old;
-            rename table question_search_message_new to question_search_message;
-            drop table question_search_message_old;
+            RENAME TABLE `question_search_message` TO `question_search_message_old`;
+            RENAME TABLE `question_search_message_new` TO `question_search_message`;
+            DROP TABLE `question_search_message_old`;
         ';
         return $this->adapter->createStatement($sql)->execute();
     }
