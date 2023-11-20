@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Table;
 
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use MonthlyBasis\LaminasTest\TableTestCase;
@@ -147,6 +148,15 @@ class QuestionSearchMessageTest extends TableTestCase
                 'COUNT(*)' => 0,
             ],
             $result->current()
+        );
+    }
+
+    public function test_createTableQuestionSearchMessageNew()
+    {
+        $result = $this->questionSearchMessageTable->createTableQuestionSearchMessageNew();
+        $this->assertInstanceOf(
+            Result::class,
+            $result
         );
     }
 }
