@@ -19,19 +19,6 @@ class QuestionSearchMessage extends LaminasDb\Table
     public function rotate(): Result
     {
         $sql = '
-            SET SESSION `long_query_time` = 120;
-            SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-
-            drop table if exists question_search_message_new;
-            create table question_search_message_new like question_search_message;
-            INSERT INTO `question_search_message_new` (`question_id`, `message`)
-                SELECT `question_id`, `message` FROM `question`
-                 WHERE `moved_datetime` IS NULL
-                   AND `deleted_datetime` IS NULL
-                 ;
-
-            SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
-
             rename table question_search_message to question_search_message_old;
             rename table question_search_message_new to question_search_message;
             drop table question_search_message_old;

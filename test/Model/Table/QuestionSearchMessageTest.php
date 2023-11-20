@@ -22,6 +22,9 @@ class QuestionSearchMessageTest extends TableTestCase
             $this->getSql(),
             $this->getAdapter(),
         );
+        $this->questionSearchMessageNewTable = new QuestionTable\QuestionSearchMessageNew(
+            $this->getSql(),
+        );
 
         $this->setForeignKeyChecks(0);
         $this->dropAndCreateTables(['question', 'question_search_message']);
@@ -30,23 +33,23 @@ class QuestionSearchMessageTest extends TableTestCase
 
     public function test_rotate()
     {
-        $this->questionTable->insert(
+        $this->dropAndCreateTable('question_search_message_new');
+        $this->questionSearchMessageNewTable->insert(
             values: [
-                'message' => 'message of question with 0 views',
-                'views_one_month' => 0,
-                'moved_datetime' => '2022-10-31 13:56:24',
+                'question_id' => 1,
+                'message'     => 'message 1',
             ]
         );
-        $this->questionTable->insert(
+        $this->questionSearchMessageNewTable->insert(
             values: [
-                'message' => 'message of question with 1 view',
-                'views_one_month' => 0,
+                'question_id' => 2,
+                'message'     => 'message 2',
             ]
         );
-        $this->questionTable->insert(
+        $this->questionSearchMessageNewTable->insert(
             values: [
-                'message' => 'message of question with 100 views',
-                'views_one_month' => 100,
+                'question_id' => 3,
+                'message'     => 'message 3',
             ]
         );
         $this->questionSearchMessageTable->rotate();
@@ -58,7 +61,7 @@ class QuestionSearchMessageTest extends TableTestCase
         );
         $this->assertSame(
             [
-                'count' => 2,
+                'count' => 3,
             ],
             $result->current(),
         );
