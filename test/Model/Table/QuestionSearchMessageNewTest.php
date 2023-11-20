@@ -18,10 +18,10 @@ class QuestionSearchMessageNewTest extends TableTestCase
         $this->setForeignKeyChecks(1);
     }
 
-    public function test_createTableQuestionSearchMessageNew()
+    public function test_createLikeQuestionSearchMessage()
     {
         $this->dropTable('question_search_message_new');
-        $result = $this->questionSearchMessageNewTable->createTableQuestionSearchMessageNew();
+        $result = $this->questionSearchMessageNewTable->createLikeQuestionSearchMessage();
         $this->assertInstanceOf(
             Result::class,
             $result

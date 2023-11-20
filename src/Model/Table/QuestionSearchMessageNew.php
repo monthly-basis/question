@@ -17,7 +17,7 @@ class QuestionSearchMessageNew extends LaminasDb\Table
         $this->adapter = $sql->getAdapter();
     }
 
-    public function createTableQuestionSearchMessageNew(): Result
+    public function createLikeQuestionSearchMessage(): Result
     {
         $sql = '
             CREATE TABLE `question_search_message_new` LIKE `question_search_message`;
