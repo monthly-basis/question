@@ -1082,6 +1082,11 @@ class Module
                         $sm->get('question')
                     );
                 },
+                QuestionTable\QuestionSearchMessageNew::class => function ($sm) {
+                    return new QuestionTable\QuestionSearchMessageNew(
+                        $sm->get(QuestionDb\Sql::class),
+                    );
+                },
                 QuestionTable\QuestionSearchSimilar::class => function ($sm) {
                     return new QuestionTable\QuestionSearchSimilar(
                         $sm->get(QuestionDb\Sql::class),

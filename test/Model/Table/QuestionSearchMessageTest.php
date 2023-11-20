@@ -150,13 +150,4 @@ class QuestionSearchMessageTest extends TableTestCase
             $result->current()
         );
     }
-
-    public function test_createTableQuestionSearchMessageNew()
-    {
-        $result = $this->questionSearchMessageTable->createTableQuestionSearchMessageNew();
-        $this->assertInstanceOf(
-            Result::class,
-            $result
-        );
-    }
 }
