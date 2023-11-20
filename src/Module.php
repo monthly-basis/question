@@ -482,11 +482,6 @@ class Module
                         $sm->get(QuestionTable\Question\CreatedIp::class),
                     );
                 },
-                QuestionService\QuestionSearchMessage\Rotate::class => function ($sm) {
-                    return new QuestionService\QuestionSearchMessage\Rotate(
-                        $sm->get(QuestionTable\QuestionSearchMessage::class),
-                    );
-                },
                 QuestionService\QuestionSearchSimilar\Rotate::class => function ($sm) {
                     return new QuestionService\QuestionSearchSimilar\Rotate(
                         $sm->get(QuestionTable\QuestionSearchSimilar::class),
