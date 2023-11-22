@@ -120,16 +120,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.287.0",
+            "version": "3.288.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "06978bfc63111fccd78b364238bf214b4ade8d18"
+                "reference": "a1dfa12c7165de0b731ae8074c4ba1f3ae733f89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/06978bfc63111fccd78b364238bf214b4ade8d18",
-                "reference": "06978bfc63111fccd78b364238bf214b4ade8d18",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a1dfa12c7165de0b731ae8074c4ba1f3ae733f89",
+                "reference": "a1dfa12c7165de0b731ae8074c4ba1f3ae733f89",
                 "shasum": ""
             },
             "require": {
@@ -209,9 +209,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.287.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.288.1"
             },
-            "time": "2023-11-17T20:03:36+00:00"
+            "time": "2023-11-22T19:35:38+00:00"
         },
         {
             "name": "brick/varexporter",
@@ -2290,16 +2290,16 @@
         },
         {
             "name": "monthly-basis/laminas-test",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/laminas-test.git",
-                "reference": "a7aea341718f3a8cb36b100c5eb5af944e821d96"
+                "reference": "d2ec3297eb5ee98b2e59e7bc194190c5c5898555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/laminas-test/zipball/a7aea341718f3a8cb36b100c5eb5af944e821d96",
-                "reference": "a7aea341718f3a8cb36b100c5eb5af944e821d96",
+                "url": "https://api.github.com/repos/monthly-basis/laminas-test/zipball/d2ec3297eb5ee98b2e59e7bc194190c5c5898555",
+                "reference": "d2ec3297eb5ee98b2e59e7bc194190c5c5898555",
                 "shasum": ""
             },
             "require": {
@@ -2319,9 +2319,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/laminas-test/issues",
-                "source": "https://github.com/monthly-basis/laminas-test/tree/v2.2.2"
+                "source": "https://github.com/monthly-basis/laminas-test/tree/v2.2.3"
             },
-            "time": "2023-02-25T02:12:46+00:00"
+            "time": "2023-11-20T20:18:57+00:00"
         },
         {
             "name": "monthly-basis/memcached",
