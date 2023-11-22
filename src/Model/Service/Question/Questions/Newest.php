@@ -14,12 +14,13 @@ class Newest
     }
 
     public function getNewestQuestions(
-        int $page = 1
+        int $page = 1,
+        int $questionsPerPage = 100,
     ): Generator {
         $generator = $this->deletedDatetimeCreatedDatetimeTable
             ->selectWhereDeletedDatetimeIsNullOrderByCreatedDatetimeDesc(
-                ($page - 1) * 100,
-                100
+                limitOffset:   ($page - 1) * $questionsPerPage,
+                limitRowCount: $questionsPerPage,
             );
         foreach ($generator as $array) {
             yield $this->questionFactory->buildFromArray($array);
