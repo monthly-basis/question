@@ -30,6 +30,8 @@ class Question extends LaminasDb\Table
                  , `question`.`subject`
                  , `question`.`headline`
                  , `question`.`message`
+                 , `question`.`image_prompt`
+                 , `question`.`image_prompt_revised`
                  , `question`.`image_rru_128x128_webp`
                  , `question`.`image_rru_512x512_webp`
                  , `question`.`image_rru_1024x1024_jpeg`
