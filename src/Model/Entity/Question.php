@@ -18,6 +18,8 @@ class Question extends QuestionEntity\Post
     protected string $didYouKnow;
     protected string $headline;
     protected $history;
+    public string $imagePrompt;
+    public string $imagePromptRevised;
     public string $imageRru128x128WebP;
     public string $imageRru512x512WebP;
     public string $imageRru1024x1024Jpeg;
