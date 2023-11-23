@@ -50,6 +50,8 @@ class QuestionTest extends TestCase
             'did_you_know'             => 'interesting blurb',
             'deleted_datetime'         => '2018-09-17 21:42:45',
             'headline'                 => 'This is the headline.',
+            'image_prompt'             => 'Image prompt.',
+            'image_prompt_revised'     => 'Image prompt revised.',
             'image_rru_128x128_webp'   => '/path/to/128x128.webp',
             'image_rru_512x512_webp'   => '/path/to/512x512.webp',
             'image_rru_1024x1024_jpeg' => '/path/to/1024x1024.jpeg',
@@ -88,6 +90,8 @@ class QuestionTest extends TestCase
             ->setSlug($array['slug'])
             ;
         $questionEntity->didYouKnow            = 'interesting blurb';
+        $questionEntity->imagePrompt           = 'Image prompt.';
+        $questionEntity->imagePromptRevised    = 'Image prompt revised.';
         $questionEntity->imageRru128x128WebP   = '/path/to/128x128.webp';
         $questionEntity->imageRru512x512WebP   = '/path/to/512x512.webp';
         $questionEntity->imageRru1024x1024Jpeg = '/path/to/1024x1024.jpeg';
