@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- Image prompt column length
+```
+ALTER TABLE `question` CHANGE `image_prompt` `image_prompt` varchar(2047) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE `question` CHANGE `image_prompt_revised` `image_prompt_revised` varchar(2047) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+```
+
 ## v2.68.0
 
 ### Added
