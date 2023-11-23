@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.68.0
 
 ### Added
 - Added `image_prompt` and `image_prompt_revised` columns
