@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.68.1
 
 ### Changed
 - Image prompt column length
