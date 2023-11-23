@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Added `image_prompt` and `image_prompt_revised` columns
+```
+ALTER TABLE `question` ADD COLUMN `image_prompt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `message`;
+ALTER TABLE `question` ADD COLUMN `image_prompt_revised` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `image_prompt`;
+```
+
 ## v2.67.5
 
 ### Added
