@@ -15,7 +15,7 @@ class Year
 
     public function getQuestions(int $limit = 100): Generator
     {
-        $result = $this->questionTable->selectQuestionIdOrderByViewsOneYearDesc();
+        $result = $this->questionTable->selectQuestionIdOrderByViewsOneYearDesc($limit);
 
         foreach ($result as $array) {
             yield $this->fromQuestionIdFactory->buildFromQuestionId(
