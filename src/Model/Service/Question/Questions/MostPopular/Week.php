@@ -15,7 +15,7 @@ class Week
     ) {
     }
 
-    public function getQuestions(): Generator
+    public function getQuestions(int $limit = 100): Generator
     {
         $select = $this->sql
             ->select('question')
@@ -24,7 +24,7 @@ class Week
                 'deleted_datetime' => null,
             ])
             ->order('views_one_week DESC')
-            ->limit(100)
+            ->limit($limit)
             ;
         $result = $this->sql->prepareStatementForSqlObject($select)->execute();
 
