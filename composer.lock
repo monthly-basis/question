@@ -1653,16 +1653,16 @@
         },
         {
             "name": "laminas/laminas-test",
-            "version": "4.8.0",
+            "version": "4.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-test.git",
-                "reference": "e30ea4c4ba0eea38b803bfa1b80946aa7875bc9d"
+                "reference": "cc022a1c672ed79bbf348e7c9a0adf24ea29f4e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-test/zipball/e30ea4c4ba0eea38b803bfa1b80946aa7875bc9d",
-                "reference": "e30ea4c4ba0eea38b803bfa1b80946aa7875bc9d",
+                "url": "https://api.github.com/repos/laminas/laminas-test/zipball/cc022a1c672ed79bbf348e7c9a0adf24ea29f4e5",
+                "reference": "cc022a1c672ed79bbf348e7c9a0adf24ea29f4e5",
                 "shasum": ""
             },
             "require": {
@@ -1672,8 +1672,8 @@
                 "laminas/laminas-servicemanager": "^3.0.3",
                 "laminas/laminas-uri": "^2.5",
                 "laminas/laminas-view": "^2.13.1",
-                "php": "~8.1.0 || ~8.2.0",
-                "phpunit/phpunit": "^10.0.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "phpunit/phpunit": "^10.4",
                 "symfony/css-selector": "^6.0",
                 "symfony/dom-crawler": "^6.0"
             },
@@ -1723,7 +1723,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-02-03T14:56:57+00:00"
+            "time": "2023-11-24T12:42:28+00:00"
         },
         {
             "name": "laminas/laminas-uri",
