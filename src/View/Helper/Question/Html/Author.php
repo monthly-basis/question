@@ -46,7 +46,7 @@ class Author extends AbstractHelper
 
 
             $href = '/visitors?name=' . $createdNameReplacedAndUrlencoded;
-            return "<a href=\"$href\">$createdNameReplacedAndEscaped</a>";
+            return "<a href=\"$href\" rel=\"nofollow\">$createdNameReplacedAndEscaped</a>";
         }
 
         return null;
