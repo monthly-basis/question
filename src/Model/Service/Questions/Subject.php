@@ -25,7 +25,6 @@ class Subject
                 'question_id',
                 'user_id',
                 'subject',
-                'headline',
                 'message',
                 'views',
                 'answer_count_cached',
