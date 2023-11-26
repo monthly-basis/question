@@ -53,9 +53,7 @@ class Module
                     'getQuestionAuthorHtml'         => QuestionHelper\Question\Html\Author::class,
                     'getQuestionFactory'            => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'         => QuestionHelper\QuestionFromAnswer::class,
-                    'getQuestionH1Html'             => QuestionHelper\Question\Html\H1::class,
                     'getQuestionH2Html'             => QuestionHelper\Question\Html\H2::class,
-                    'getQuestionH3Html'             => QuestionHelper\Question\Html\H3::class,
                     'getQuestionLastmod'            => QuestionHelper\Question\Sitemap\Lastmod::class,
                     'getQuestionMessageHtml'        => QuestionHelper\Question\Html\Message::class,
                     'getQuestionPMessageHtml'       => QuestionHelper\Question\Html\P\Message::class,
@@ -117,18 +115,8 @@ class Module
                             $vhm->get(UserHelper\UserHtml::class),
                         );
                     },
-                    QuestionHelper\Question\Html\H1::class => function($sm) {
-                        return new QuestionHelper\Question\Html\H1(
-                            $sm->get(StringService\Escape::class)
-                        );
-                    },
                     QuestionHelper\Question\Html\H2::class => function($sm) {
                         return new QuestionHelper\Question\Html\H2(
-                            $sm->get(StringService\Escape::class)
-                        );
-                    },
-                    QuestionHelper\Question\Html\H3::class => function($sm) {
-                        return new QuestionHelper\Question\Html\H3(
                             $sm->get(StringService\Escape::class)
                         );
                     },
