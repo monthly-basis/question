@@ -37,6 +37,7 @@ class Question extends QuestionEntity\Post
     protected float $rating;
     protected string $slug;
     protected $subject;
+    public int $topAnswerIdCached;
 
     protected int $views;
     protected int $viewsOneYear;
