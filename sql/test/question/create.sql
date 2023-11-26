@@ -19,6 +19,7 @@ CREATE TABLE `question` (
     `views_one_month` int unsigned NOT NULL DEFAULT '0',
     `views_one_year` int unsigned NOT NULL DEFAULT '0',
     `answer_count_cached` int(10) unsigned NOT NULL DEFAULT '0',
+    `top_answer_id_cached` int(10) unsigned DEFAULT NULL,
     `imported` tinyint(1) unsigned NOT NULL DEFAULT '0',
     `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `created_name` varchar(255) COLLATE utf8mb4_0900_as_cs DEFAULT NULL, #@todo Rename column to `name`

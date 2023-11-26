@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Added
+
+- `question`.`top_answer_id_cached` column
+```
+ALTER TABLE `question` ADD COLUMN `top_answer_id_cached` int(10) unsigned DEFAULT NULL AFTER `answer_count_cached`;
+```
+
 ### Removed
 
 - `question`.`image_rru` column
