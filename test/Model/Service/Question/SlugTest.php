@@ -23,30 +23,7 @@ class SlugTest extends TestCase
         );
     }
 
-    public function test_getSlug_headlineIsSet_urlFriendlyHeadline()
-    {
-        $questionEntity = (new QuestionEntity\Question())
-            ->setHeadline('The Headline')
-            ;
-
-        $this->urlFriendlyServiceMock
-            ->expects($this->once())
-            ->method('getUrlFriendly')
-            ->with('The Headline')
-            ->willReturn('url-friendly-version-of-question-headline')
-            ;
-        $this->titleServiceMock
-            ->expects($this->exactly(0))
-            ->method('getTitle')
-            ;
-
-        $this->assertSame(
-            'url-friendly-version-of-question-headline',
-            $this->slugService->getSlug($questionEntity)
-        );
-    }
-
-    public function test_getSlug_headlineIsNotSet_urlFriendlyTitle()
+    public function test_getSlug_urlFriendlyTitle()
     {
         $questionEntity = new QuestionEntity\Question();
 
