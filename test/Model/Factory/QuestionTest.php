@@ -49,7 +49,6 @@ class QuestionTest extends TestCase
             'created_ip'               => '5.6.7.8',
             'did_you_know'             => 'interesting blurb',
             'deleted_datetime'         => '2018-09-17 21:42:45',
-            'headline'                 => 'This is the headline.',
             'image_prompt'             => 'Image prompt.',
             'image_prompt_revised'     => 'Image prompt revised.',
             'image_rru_128x128_webp'   => '/path/to/128x128.webp',
@@ -76,7 +75,6 @@ class QuestionTest extends TestCase
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
             ->setDeletedDateTime(new DateTime($array['deleted_datetime']))
-            ->setHeadline($array['headline'])
             ->setMessage($array['message'])
             ->setModifiedDateTime(new DateTime($array['modified_datetime']))
             ->setModifiedUserId(intval($array['modified_user_id']))
@@ -119,7 +117,6 @@ class QuestionTest extends TestCase
             'created_datetime'    => '2018-03-12 22:12:23',
             'created_ip'          => '5.6.7.8',
             'deleted_datetime'    => '2018-09-17 21:42:45',
-            'headline'            => 'This is the headline.',
             'message'             => 'message',
             'modified_datetime'   => '2022-07-13 20:25:11',
             'modified_user_id'    => '54321',
@@ -134,7 +131,6 @@ class QuestionTest extends TestCase
             ->setCreatedName($array['created_name'])
             ->setCreatedDateTime(new DateTime($array['created_datetime']))
             ->setCreatedIp($array['created_ip'])
-            ->setHeadline($array['headline'])
             ->setModifiedDateTime(new DateTime($array['modified_datetime']))
             ->setModifiedUserId(intval($array['modified_user_id']))
             ->setModifiedReason($array['modified_reason'])

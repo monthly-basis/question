@@ -72,9 +72,6 @@ class Question
         if (isset($array['deleted_reason'])) {
             $questionEntity->setDeletedReason($array['deleted_reason']);
         }
-        if (isset($array['headline'])) {
-            $questionEntity->setHeadline($array['headline']);
-        }
         if (isset($array['modified_datetime'])) {
             $questionEntity->setModifiedDateTime(new DateTime($array['modified_datetime']));
         }
