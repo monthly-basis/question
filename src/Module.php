@@ -412,6 +412,11 @@ class Module
                         $sm->get(StringService\StripTagsAndShorten::class)
                     );
                 },
+                QuestionService\Answer\TopAnswerOrNull::class => function ($sm) {
+                    return new QuestionService\Answer\TopAnswerOrNull(
+                        $sm->get(QuestionService\Answer\Answers::class)
+                    );
+                },
                 QuestionService\Answer\Undelete::class => function ($sm) {
                     return new QuestionService\Answer\Undelete(
                         $sm->get(QuestionTable\Answer\AnswerId::class)
