@@ -31,28 +31,27 @@ class SlugTest extends TableTestCase
         $result = $this->slugTable->selectWhereSlug('slug');
         $this->assertEmpty($result);
 
-        $this->questionTable->insertDeprecated(
-            1,
-            'subject',
-            'message',
-            'name',
-            '1.2.3.4',
-            'headline',
-            'slug',
+        $this->questionTable->insert(
+            values: [
+                'created_name' => 'created name',
+                'created_ip'   => '1.2.3.4',
+                'message'      => 'message',
+                'slug'         => 'slug',
+            ]
         );
         $result = $this->slugTable->selectWhereSlug('slug');
         $this->assertSame(
             [
-                'name',
+                'created name',
+                '1.2.3.4',
                 'message',
                 1,
-                'subject',
             ],
             [
                 $result->current()['created_name'],
+                $result->current()['created_ip'],
                 $result->current()['message'],
                 $result->current()['question_id'],
-                $result->current()['subject'],
             ]
         );
     }
