@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Removed
+
+- `question`.`image_rru` column
+```
+ALTER TABLE `question` DROP COLUMN `image_rru`;
+```
+
 ## v2.68.1
 
 ### Changed

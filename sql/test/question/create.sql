@@ -7,7 +7,6 @@ CREATE TABLE `question` (
     `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     `image_prompt` varchar(2047) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_prompt_revised` varchar(2047) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-    `image_rru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_rru_128x128_webp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_rru_512x512_webp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_rru_1024x1024_jpeg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
