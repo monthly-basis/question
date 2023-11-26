@@ -102,6 +102,9 @@ class Question
         if (isset($array['subject'])) {
             $questionEntity->setSubject($array['subject']);
         }
+        if (isset($array['top_answer_id_cached'])) {
+            $questionEntity->topAnswerIdCached = intval($array['top_answer_id_cached']);
+        }
         if (isset($array['user_id'])) {
             $questionEntity->setCreatedUserId((int) $array['user_id']);
 

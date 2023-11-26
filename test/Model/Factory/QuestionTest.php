@@ -67,6 +67,7 @@ class QuestionTest extends TestCase
             'question_id'              => 1,
             'slug'                     => 'slug',
             'subject'                  => null,
+            'top_answer_id_cached'     => 20231126,
             'user_id'                  => null,
         ];
         $questionEntity = (new QuestionEntity\Question())
@@ -94,6 +95,7 @@ class QuestionTest extends TestCase
         $questionEntity->imageRru512x512WebP   = '/path/to/512x512.webp';
         $questionEntity->imageRru1024x1024Jpeg = '/path/to/1024x1024.jpeg';
         $questionEntity->imageRru1024x1024Png  = '/path/to/1024x1024.png';
+        $questionEntity->topAnswerIdCached     = 20231126;
 
         $this->assertEquals(
             $questionEntity,
