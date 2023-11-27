@@ -18,7 +18,7 @@ class Similar
     public function __construct(
         protected MemcachedService\Memcached $memcachedService,
         protected QuestionFactory\Question $questionFactory,
-        protected QuestionTable\QuestionSearchSimilar $questionSearchSimilarTable,
+        protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable,
     ) {}
 
     public function getSimilar(
@@ -59,7 +59,7 @@ class Similar
         }
 
         try {
-            $result = $this->questionSearchSimilarTable
+            $result = $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
                     questionId: $questionId,

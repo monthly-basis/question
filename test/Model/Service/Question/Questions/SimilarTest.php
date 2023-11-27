@@ -22,14 +22,14 @@ class SimilarTest extends TestCase
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
-        $this->questionSearchSimilarTableMock = $this->createMock(
-            QuestionTable\QuestionSearchSimilar::class
+        $this->questionSearchMessageTableMock = $this->createMock(
+            QuestionTable\QuestionSearchMessage::class
         );
 
         $this->similarService = new QuestionService\Question\Questions\Similar(
             $this->memcachedServiceMock,
             $this->questionFactoryMock,
-            $this->questionSearchSimilarTableMock,
+            $this->questionSearchMessageTableMock,
         );
 
         $this->similarQuestions = [
@@ -71,7 +71,7 @@ class SimilarTest extends TestCase
                 ],
             ]
         );
-        $this->questionSearchSimilarTableMock
+        $this->questionSearchMessageTableMock
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
@@ -107,7 +107,7 @@ class SimilarTest extends TestCase
 
     public function test_getQuestionIds_tableModelThrowsException_emptyArray()
     {
-        $this->questionSearchSimilarTableMock
+        $this->questionSearchMessageTableMock
              ->expects($this->once())
              ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
              ->with('the message', 123)

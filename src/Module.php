@@ -679,7 +679,7 @@ class Module
                     return new QuestionService\Question\Questions\Similar(
                         $sm->get(MemcachedService\Memcached::class),
                         $sm->get(QuestionFactory\Question::class),
-                        $sm->get(QuestionTable\QuestionSearchSimilar::class),
+                        $sm->get(QuestionTable\QuestionSearchMessage::class),
                     );
                 },
                 QuestionService\Questions\Categories::class => function ($sm) {
