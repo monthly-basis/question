@@ -105,22 +105,27 @@ class SimilarTest extends TestCase
         $this->questionSearchSimilarTableMock
              ->expects($this->once())
              ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
-             ->with('the message')
+             ->with('the message', 123)
              ->will(
                  $this->throwException(new InvalidQueryException())
              )
              ;
 
-        $questionEntity = (new QuestionEntity\Question())->setQuestionId(123);
+        $questionEntity = new QuestionEntity\Question();
+        $questionEntity->questionId = 123;
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Similar::class);
         $method = $class->getMethod('getQuestionIds');
-        $method->invokeArgs(
+        $array = $method->invokeArgs(
             $this->similarService,
             [
-                $questionEntity,
+                $questionEntity->questionId,
                 'the message',
             ]
+        );
+        $this->assertSame(
+            [],
+            $array
         );
     }
 }

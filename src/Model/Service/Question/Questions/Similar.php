@@ -30,7 +30,7 @@ class Similar
         $query = strtolower($query);
 
         $questionIds = $this->getQuestionIds(
-            questionEntity: $questionEntity,
+            questionId: $questionEntity->questionId,
             query: $query,
         );
 
@@ -48,14 +48,14 @@ class Similar
     }
 
     protected function getQuestionIds(
-        QuestionEntity\Question $questionEntity,
+        int $questionId,
         string $query,
     ): array {
         try {
             $result = $this->questionSearchSimilarTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
-                    questionId: $questionEntity->questionId,
+                    questionId: $questionId,
                     limitOffset: 0,
                     limitRowCount: 10,
                 );
