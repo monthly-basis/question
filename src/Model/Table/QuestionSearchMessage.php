@@ -81,12 +81,15 @@ class QuestionSearchMessage extends LaminasDb\Table
      */
     public function selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
         string $query,
-        int $questionId,
-        int $questionSearchMessageLimitOffset,
-        int $questionSearchMessageLimitRowCount,
-        int $outerLimitOffset,
-        int $outerLimitRowCount
+        int $innerLimitOffset = 0,
+        int $innerLimitRowCount = 100,
+        int $outerLimitOffset = 0,
+        int $outerLimitRowCount = 10,
+        array $questionIdNotIn = [],
     ): Result {
+        $questionIdNotIn = array_map('intval', $questionIdNotIn);
+        $commaDelimitedQuestionIds = implode(', ', $questionIdNotIn);
+
         $sql = '
             SELECT `question_id`
               FROM (
@@ -94,28 +97,36 @@ class QuestionSearchMessage extends LaminasDb\Table
                               MATCH (`message`) AGAINST (:query) AS `score`
                          FROM `question_search_message`
                         WHERE MATCH (`message`) AGAINST (:query)
-                          AND `question_id` != :questionId
                         ORDER
                            BY `score` DESC
-                        LIMIT :questionSearchMessageLimitOffset, :questionSearchMessageLimitRowCount
+                        LIMIT :innerLimitOffset, :innerLimitRowCount
                    )
                 AS `question_search_message`
               LEFT
               JOIN `question`
              USING (`question_id`)
+        ';
+
+        if (!empty($commaDelimitedQuestionIds)) {
+            $sql .= "
+                WHERE `question_id` NOT IN ($commaDelimitedQuestionIds)
+            ";
+        }
+
+        $sql .= '
              ORDER
                 BY `question`.`views_one_year` DESC
                  , `question_search_message`.`score` DESC
              LIMIT :outerLimitOffset, :outerLimitRowCount
                  ;
         ';
+
         $parameters = [
-            'query'                              => $query,
-            'questionId'                         => $questionId,
-            'questionSearchMessageLimitOffset'   => $questionSearchMessageLimitOffset,
-            'questionSearchMessageLimitRowCount' => $questionSearchMessageLimitRowCount,
-            'outerLimitOffset'                   => $outerLimitOffset,
-            'outerLimitRowCount'                 => $outerLimitRowCount,
+            'query'              => $query,
+            'innerLimitOffset'   => $innerLimitOffset,
+            'innerLimitRowCount' => $innerLimitRowCount,
+            'outerLimitOffset'   => $outerLimitOffset,
+            'outerLimitRowCount' => $outerLimitRowCount,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }

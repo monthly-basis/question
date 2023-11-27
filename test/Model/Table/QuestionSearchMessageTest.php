@@ -128,12 +128,12 @@ class QuestionSearchMessageTest extends TableTestCase
     {
         $result = $this->questionSearchMessageTable
             ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
-                'the search query',
-                12345,
-                0,
-                100,
-                0,
-                100
+                query: 'the search query',
+                innerLimitOffset: 0,
+                innerLimitRowCount: 100,
+                outerLimitOffset: 0,
+                outerLimitRowCount: 10,
+                questionIdNotIn: [1, 2, 3],
             );
         $this->assertEmpty(
             iterator_to_array($result)
