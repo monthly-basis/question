@@ -25,7 +25,7 @@ class Related
     public function getRelated(
         QuestionEntity\Question $questionEntity,
         int $limit = 10,
-        int $queryWordCount = 30,
+        int $queryWordCount = 16,
         array $questionIdNotIn = [],
     ): Generator {
         $query = $questionEntity->message;
