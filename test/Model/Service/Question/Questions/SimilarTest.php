@@ -23,23 +23,19 @@ class SimilarTest extends TestCase
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
-        $this->headlineAndMessageServiceMock = $this->createMock(
-            QuestionService\Question\HeadlineAndMessage::class
-        );
         $this->questionSearchSimilarTableMock = $this->createMock(
             QuestionTable\QuestionSearchSimilar::class
         );
         $this->similarService = new QuestionService\Question\Questions\Similar(
             $this->configEntity,
             $this->questionFactoryMock,
-            $this->headlineAndMessageServiceMock,
             $this->questionSearchSimilarTableMock,
         );
 
         $this->questionEntity = (new QuestionEntity\Question())
-            ->setMessage('this is the message')
-            ->setQuestionId(123)
-            ;
+            ->setQuestionId(123);
+        $this->questionEntity->message = 'the message';
+
         $this->similarQuestions = [
             new QuestionEntity\Question(),
             new QuestionEntity\Question(),
@@ -62,14 +58,8 @@ class SimilarTest extends TestCase
     public function test_getSimilar_3found_2returned()
     {
         $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(123)
-            ;
-        $this->headlineAndMessageServiceMock
-            ->expects($this->once())
-            ->method('getHeadlineAndMessage')
-            ->with($questionEntity)
-            ->willReturn('headline and message')
-        ;
+            ->setQuestionId(123);
+        $questionEntity->message = 'the message';
 
         $resultMock = $this->createMock(
             Result::class
@@ -89,7 +79,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
-                'headline and message',
+                'the message',
                 123,
             )
             ->willReturn($resultMock)
@@ -128,12 +118,7 @@ class SimilarTest extends TestCase
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(123)
             ;
-        $this->headlineAndMessageServiceMock
-            ->expects($this->once())
-            ->method('getHeadlineAndMessage')
-            ->with($questionEntity)
-            ->willReturn('headline and message')
-        ;
+        $questionEntity->message = 'the message';
 
         $resultMock = $this->createMock(
             Result::class
@@ -162,7 +147,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
-                'headline and message',
+                'the message',
                 123,
             )
             ->willReturn($resultMock)
@@ -203,14 +188,8 @@ class SimilarTest extends TestCase
     public function test_getSimilar_12found_12returned()
     {
         $questionEntity = (new QuestionEntity\Question())
-            ->setQuestionId(123)
-            ;
-        $this->headlineAndMessageServiceMock
-            ->expects($this->once())
-            ->method('getHeadlineAndMessage')
-            ->with($questionEntity)
-            ->willReturn('headline and message')
-        ;
+            ->setQuestionId(123);
+        $questionEntity->message = 'the message';
 
         $resultMock = $this->createMock(
             Result::class
@@ -260,7 +239,7 @@ class SimilarTest extends TestCase
             ->expects($this->once())
             ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
             ->with(
-                'headline and message',
+                'the message',
                 123,
             )
             ->willReturn($resultMock)

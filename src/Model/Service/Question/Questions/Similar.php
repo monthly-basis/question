@@ -19,8 +19,7 @@ class Similar
     public function __construct(
         protected QuestionEntity\Config $configEntity,
         protected QuestionFactory\Question $questionFactory,
-        protected QuestionService\Question\HeadlineAndMessage $headlineAndMessageService,
-        protected QuestionTable\QuestionSearchSimilar $questionSearchSimilarTable
+        protected QuestionTable\QuestionSearchSimilar $questionSearchSimilarTable,
     ) {}
 
     public function getSimilar(
@@ -30,9 +29,7 @@ class Similar
         int $outerLimitOffset = 0,
         int $outerLimitRowCount = 20,
     ): Generator {
-        $query = $this->headlineAndMessageService->getHeadlineAndMessage(
-            $questionEntity
-        );
+        $query = $questionEntity->message;
         $query = strip_tags($query);
         $query = preg_replace('/\s+/s', ' ', $query);
         $words = explode(' ', $query, 21);
