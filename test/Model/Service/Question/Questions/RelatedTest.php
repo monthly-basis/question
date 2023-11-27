@@ -84,12 +84,14 @@ class RelatedTest extends TestCase
         );
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
+            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
                 'the message',
-                123,
+                0,
+                100,
                 0,
                 5,
+                [777, 888, 999],
             )
             ->willReturn($resultMock)
             ;
@@ -116,6 +118,7 @@ class RelatedTest extends TestCase
         $generator = $this->relatedService->getRelated(
             questionEntity: $questionEntity,
             limit: 5,
+            questionIdNotIn: [777, 888, 999],
         );
         $this->assertSame(
             5,
@@ -175,12 +178,14 @@ class RelatedTest extends TestCase
         );
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
+            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
                 'the message',
-                123,
+                0,
+                100,
                 0,
                 12,
+                [123],
             )
             ->willReturn($resultMock)
             ;
@@ -237,12 +242,14 @@ class RelatedTest extends TestCase
 
         $this->questionSearchMessageTableMock
             ->expects($this->once())
-            ->method('selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals')
+            ->method('selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc')
             ->with(
                 'the message',
-                123,
+                0,
+                100,
                 0,
                 10,
+                [123],
             )
              ->will(
                  $this->throwException(new InvalidQueryException()),

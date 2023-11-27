@@ -26,6 +26,7 @@ class Related
         QuestionEntity\Question $questionEntity,
         int $limit = 10,
         int $queryWordCount = 30,
+        array $questionIdNotIn = [],
     ): Generator {
         $query = $questionEntity->message;
         $query = strip_tags($query);
@@ -34,10 +35,14 @@ class Related
         $query = implode(' ', array_slice($words, 0, $queryWordCount));
         $query = strtolower($query);
 
+        if (empty($questionIdNotIn)) {
+            $questionIdNotIn[] = $questionEntity->questionId;
+        }
+
         $questionIds = $this->getQuestionIds(
-            $questionEntity->questionId,
             $query,
             $limit,
+            $questionIdNotIn,
         );
 
         foreach ($questionIds as $questionId) {
@@ -54,9 +59,9 @@ class Related
     }
 
     protected function getQuestionIds(
-        int $questionId,
         string $query,
         int $limit,
+        array $questionIdNotIn,
     ): array {
         $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
         if (null !== ($questionIds = $this->memcachedService->get($memcachedKey))) {
@@ -65,11 +70,11 @@ class Related
 
         try {
             $result = $this->questionSearchMessageTable
-                ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
+                ->selectQuestionIdWhereMatchAgainstOrderByViewsDescScoreDesc(
                     query: $query,
-                    questionId: $questionId,
-                    limitOffset: 0,
-                    limitRowCount: $limit,
+                    outerLimitOffset: 0,
+                    outerLimitRowCount: $limit,
+                    questionIdNotIn: $questionIdNotIn,
                 );
         } catch (InvalidQueryException) {
             return [];
