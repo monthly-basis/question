@@ -18,11 +18,6 @@ class RelatedTest extends TestCase
         $this->memcachedServiceMock = $this->createMock(
             MemcachedService\Memcached::class
         );
-        $configPath  = __DIR__ . '/../../../../../config/autoload/local.php';
-        $configArray = (require $configPath)['monthly-basis']['question'] ?? [];
-        $this->configEntity = new QuestionEntity\Config(
-            $configArray
-        );
         $this->questionFactoryMock = $this->createMock(
             QuestionFactory\Question::class
         );
@@ -31,7 +26,6 @@ class RelatedTest extends TestCase
         );
         $this->relatedService = new QuestionService\Question\Questions\Related(
             $this->memcachedServiceMock,
-            $this->configEntity,
             $this->questionFactoryMock,
             $this->questionSearchMessageTableMock,
         );

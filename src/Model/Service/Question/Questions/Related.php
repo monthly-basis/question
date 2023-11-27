@@ -15,11 +15,8 @@ use TypeError;
 
 class Related
 {
-    protected int $recursionIteration = 0;
-
     public function __construct(
         protected MemcachedService\Memcached $memcachedService,
-        protected QuestionEntity\Config $configEntity,
         protected QuestionFactory\Question $questionFactory,
         protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable
     ) {
