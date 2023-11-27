@@ -13,6 +13,7 @@ class TopAnswerOrNull
 
     public function getTopAnswerOrNull(
         QuestionEntity\Question $questionEntity,
+        int $minimumRating = 1,
     ): QuestionEntity\Answer|null {
         $answerEntities = $this->answersService->getAnswers(
             questionEntity: $questionEntity,
@@ -37,7 +38,7 @@ class TopAnswerOrNull
 
         $firstAnswerEntity = $answerEntities[0];
 
-        return ($firstAnswerEntity->rating > 0)
+        return ($firstAnswerEntity->rating >= $minimumRating)
             ? $firstAnswerEntity
             : null;
     }

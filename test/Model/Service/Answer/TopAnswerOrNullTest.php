@@ -35,7 +35,7 @@ class TopAnswerOrNullTest extends TestCase
         );
     }
 
-    public function test_getTopAnswerOrNull_answersWithNoRating_null()
+    public function test_getTopAnswerOrNull_answersWith0Rating_null()
     {
         $questionEntity = new QuestionEntity\Question();
 
@@ -84,6 +84,34 @@ class TopAnswerOrNullTest extends TestCase
         $this->assertSame(
             $answerEntity2,
             $this->topAnswerOrNullService->getTopAnswerOrNull($questionEntity)
+        );
+    }
+
+    public function test_getTopAnswerOrNull_0Rating0MinimumRating_answerEntity()
+    {
+        $questionEntity = new QuestionEntity\Question();
+
+        $answerEntity1 = new QuestionEntity\Answer();
+        $answerEntity1->rating = 0;
+        $answerEntity1->createdDateTime = new DateTime('2022-01-01 00:00:00');
+
+        $answerEntity2 = new QuestionEntity\Answer();
+        $answerEntity2->rating = 0;
+        $answerEntity2->createdDateTime = new DateTime('2020-01-01 00:00:00');
+
+        $this->answersServiceMock
+             ->expects($this->once())
+             ->method('getAnswers')
+             ->with($questionEntity)
+             ->willReturn([$answerEntity1, $answerEntity2])
+             ;
+
+        $this->assertSame(
+            $answerEntity2,
+            $this->topAnswerOrNullService->getTopAnswerOrNull(
+                questionEntity: $questionEntity,
+                minimumRating: 0,
+            )
         );
     }
 }
