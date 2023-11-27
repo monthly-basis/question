@@ -102,7 +102,6 @@ class QuestionSearchMessage extends LaminasDb\Table
                         LIMIT :innerLimitOffset, :innerLimitRowCount
                    )
                 AS `question_search_message`
-              LEFT
               JOIN `question`
              USING (`question_id`)
         ';
