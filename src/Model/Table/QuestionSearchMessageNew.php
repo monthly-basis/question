@@ -24,4 +24,12 @@ class QuestionSearchMessageNew extends LaminasDb\Table
         ';
         return $this->adapter->query($sql)->execute();
     }
+
+    public function dropTableIfExists(): Result
+    {
+        $sql = '
+            DROP TABLE IF EXISTS `question_search_message_new`;
+        ';
+        return $this->adapter->query($sql)->execute();
+    }
 }
