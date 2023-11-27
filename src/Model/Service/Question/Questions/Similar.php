@@ -39,11 +39,8 @@ class Similar
                 intval($questionId)
             );
 
-            try {
-                $questionEntity->getDeletedDatetime();
+            if (isset($questionEntity->deletedDateTime)) {
                 continue;
-            } catch (TypeError $typeError) {
-                // Do nothing.
             }
 
             yield $questionEntity;
@@ -58,7 +55,7 @@ class Similar
             $result = $this->questionSearchSimilarTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
-                    questionId: $questionEntity->getQuestionId(),
+                    questionId: $questionEntity->questionId,
                     limitOffset: 0,
                     limitRowCount: 10,
                 );
