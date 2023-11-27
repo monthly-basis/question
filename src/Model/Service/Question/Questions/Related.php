@@ -66,8 +66,6 @@ class Related
             return $questionIds;
         }
 
-        $questionIds = [];
-
         try {
             $result = $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
@@ -80,6 +78,7 @@ class Related
             return [];
         }
 
+        $questionIds = [];
         foreach ($result as $array) {
             $questionIds[] = intval($array['question_id']);
         }
