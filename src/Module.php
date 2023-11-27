@@ -678,7 +678,6 @@ class Module
                 },
                 QuestionService\Question\Questions\Similar::class => function ($sm) {
                     return new QuestionService\Question\Questions\Similar(
-                        $sm->get(QuestionEntity\Config::class),
                         $sm->get(QuestionFactory\Question::class),
                         $sm->get(QuestionTable\QuestionSearchSimilar::class),
                     );

@@ -14,20 +14,13 @@ use TypeError;
 
 class Similar
 {
-    protected int $recursionIteration = 0;
-
     public function __construct(
-        protected QuestionEntity\Config $configEntity,
         protected QuestionFactory\Question $questionFactory,
         protected QuestionTable\QuestionSearchSimilar $questionSearchSimilarTable,
     ) {}
 
     public function getSimilar(
         QuestionEntity\Question $questionEntity,
-        int $questionSearchMessageLimitOffset = 0,
-        int $questionSearchMessageLimitRowCount = 20,
-        int $outerLimitOffset = 0,
-        int $outerLimitRowCount = 20,
     ): Generator {
         $query = $questionEntity->message;
         $query = strip_tags($query);
@@ -36,14 +29,14 @@ class Similar
         $query = implode(' ', array_slice($words, 0, 16));
         $query = strtolower($query);
 
-        $result = $this->getPdoResult(
+        $questionIds = $this->getQuestionIds(
             questionEntity: $questionEntity,
             query: $query,
         );
 
-        foreach ($result as $array) {
+        foreach ($questionIds as $questionId) {
             $questionEntity = $this->questionFactory->buildFromQuestionId(
-                (int) $array['question_id']
+                intval($questionId)
             );
 
             try {
@@ -57,12 +50,12 @@ class Similar
         }
     }
 
-    protected function getPdoResult(
+    protected function getQuestionIds(
         QuestionEntity\Question $questionEntity,
         string $query,
-    ): Result {
+    ): array {
         try {
-            return $this->questionSearchSimilarTable
+            $result = $this->questionSearchSimilarTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                     query: $query,
                     questionId: $questionEntity->getQuestionId(),
@@ -70,15 +63,13 @@ class Similar
                     limitRowCount: 10,
                 );
         } catch (InvalidQueryException $invalidQueryException) {
-            sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);
-            $this->recursionIteration++;
-            if ($this->recursionIteration >= 5) {
-                throw new Exception('Unable to get PDO result.');
-            }
-            return $this->getPdoResult(
-                questionEntity: $questionEntity,
-                query: $query,
-            );
+            return [];
         }
+
+        $questionIds = [];
+        foreach ($result as $array) {
+            $questionIds[] = intval($array['question_id']);
+        }
+        return $questionIds;
     }
 }
