@@ -88,7 +88,7 @@ class Related
         $this->memcachedService->setForDays(
             $memcachedKey,
             $questionIds,
-            1
+            7,
         );
         return $questionIds;
     }
