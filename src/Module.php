@@ -513,9 +513,6 @@ class Module
                         $sm->get(QuestionTable\QuestionEditQueue::class)
                     );
                 },
-                QuestionService\Question\HeadlineAndMessage::class => function ($sm) {
-                    return new QuestionService\Question\HeadlineAndMessage();
-                },
                 QuestionService\Question\Insert\Deleted::class => function ($sm) {
                     return new QuestionService\Question\Insert\Deleted(
                         $sm->get(QuestionFactory\Question::class),
