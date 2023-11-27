@@ -16,6 +16,7 @@ use TypeError;
 class Similar
 {
     public function __construct(
+        protected MemcachedService\Memcached $memcachedService,
         protected QuestionFactory\Question $questionFactory,
         protected QuestionTable\QuestionSearchSimilar $questionSearchSimilarTable,
     ) {}
@@ -52,6 +53,11 @@ class Similar
         int $questionId,
         string $query,
     ): array {
+        $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
+        if (null !== ($questionIds = $this->memcachedService->get($memcachedKey))) {
+            return $questionIds;
+        }
+
         try {
             $result = $this->questionSearchSimilarTable
                 ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
@@ -68,6 +74,12 @@ class Similar
         foreach ($result as $array) {
             $questionIds[] = intval($array['question_id']);
         }
+
+        $this->memcachedService->setForDays(
+            $memcachedKey,
+            $questionIds,
+            1
+        );
         return $questionIds;
     }
 }
