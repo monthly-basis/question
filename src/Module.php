@@ -51,6 +51,7 @@ class Module
                     'getAnswerUrl'               => QuestionHelper\Answer\Url::class,
                     'getLinkToQuestionHtml'      => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionAuthor'          => QuestionHelper\Question\Author::class,
+                    'getQuestionAuthorOrNull'    => QuestionHelper\Question\AuthorOrNull::class,
                     'getQuestionAuthorHtml'      => QuestionHelper\Question\Html\Author::class,
                     'getQuestionFactory'         => QuestionHelper\Question\Factory::class,
                     'getQuestionFromAnswer'      => QuestionHelper\QuestionFromAnswer::class,
@@ -102,6 +103,12 @@ class Module
                     },
                     QuestionHelper\Question\Author::class => function($sm) {
                         return new QuestionHelper\Question\Author(
+                            $sm->get(UserFactory\User::class),
+                            $sm->get(UserService\DisplayNameOrUsername::class),
+                        );
+                    },
+                    QuestionHelper\Question\AuthorOrNull::class => function($sm) {
+                        return new QuestionHelper\Question\AuthorOrNull(
                             $sm->get(UserFactory\User::class),
                             $sm->get(UserService\DisplayNameOrUsername::class),
                         );
