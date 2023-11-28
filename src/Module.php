@@ -50,7 +50,12 @@ class Module
                     'getAnswerTitle'             => QuestionHelper\Answer\Title::class,
                     'getAnswerUrl'               => QuestionHelper\Answer\Url::class,
                     'getLinkToQuestionHtml'      => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
+
+                    /**
+                     * @deprecated Use Question\Helper\Question\AuthorOrNull instead
+                     */
                     'getQuestionAuthor'          => QuestionHelper\Question\Author::class,
+
                     'getQuestionAuthorOrNull'    => QuestionHelper\Question\AuthorOrNull::class,
                     'getQuestionAuthorHtml'      => QuestionHelper\Question\Html\Author::class,
                     'getQuestionFactory'         => QuestionHelper\Question\Factory::class,
@@ -101,6 +106,9 @@ class Module
                             $sm->get(QuestionService\Post\CanBeUndeleted::class)
                         );
                     },
+                    /**
+                     * @deprecated Use Question\Helper\Question\AuthorOrNull instead
+                     */
                     QuestionHelper\Question\Author::class => function($sm) {
                         return new QuestionHelper\Question\Author(
                             $sm->get(UserFactory\User::class),

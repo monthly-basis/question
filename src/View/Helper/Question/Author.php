@@ -6,6 +6,9 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\User\Model\Factory as UserFactory;
 use MonthlyBasis\User\Model\Service as UserService;
 
+/**
+ * @deprecated Use Question\Helper\Question\AuthorOrNull instead
+ */
 class Author extends AbstractHelper
 {
     public function __construct(
