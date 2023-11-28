@@ -44,6 +44,7 @@ class Module
                 'aliases' => [
                     'buildAnswerFromAnswerId'    => QuestionHelper\Answer\Factory\FromAnswerId::class,
                     'canBeUndeleted'             => QuestionHelper\Post\CanBeUndeleted::class,
+                    'getAnswerAuthorOrNull'      => QuestionHelper\Answer\AuthorOrNull::class,
                     'getAnswerFactory'           => QuestionHelper\Answer\Factory::class,
                     'getAnswerMessageHtml'       => QuestionHelper\Answer\Html\Message::class,
                     'getAnswerRootRelativeUrl'   => QuestionHelper\Answer\RootRelativeUrl::class,
@@ -71,6 +72,12 @@ class Module
                     'getTrendingQuestions'       => QuestionHelper\Questions\Trending::class,
                 ],
                 'factories' => [
+                    QuestionHelper\Answer\AuthorOrNull::class => function($sm) {
+                        return new QuestionHelper\Answer\AuthorOrNull(
+                            $sm->get(UserFactory\User::class),
+                            $sm->get(UserService\DisplayNameOrUsername::class),
+                        );
+                    },
                     QuestionHelper\Answer\Factory::class => function($sm) {
                         return new QuestionHelper\Answer\Factory(
                             $sm->get(QuestionFactory\Answer::class)
