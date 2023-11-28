@@ -127,5 +127,17 @@ class RootRelativeUrlTest extends TestCase
             '/my/custom/path/my-question-title',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
+
+        $reflectionClass = new \ReflectionClass(
+            QuestionService\Question\RootRelativeUrl::class
+        );
+        $reflectionProperty = $reflectionClass->getProperty('cache');
+        $reflectionPropertyValue = $reflectionProperty->getValue(
+            $this->rootRelativeUrlService
+        );
+        $this->assertSame(
+            '/my/custom/path/my-question-title',
+            $reflectionPropertyValue[12345]
+        );
     }
 }
