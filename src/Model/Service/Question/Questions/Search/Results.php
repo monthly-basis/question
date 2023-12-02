@@ -26,12 +26,14 @@ class Results
     public function getResults(
         string $query,
         int $page,
+        int $questionsPerPage = 100,
         int $queryWordCount = 30,
     ): array {
         $questionIds = $this->getQuestionIds(
-            $query,
-            $page,
-            $queryWordCount,
+            query: $query,
+            queryWordCount: $queryWordCount,
+            page: $page,
+            questionsPerPage: $questionsPerPage,
         );
 
         $questionEntities = [];
@@ -51,8 +53,9 @@ class Results
 
     protected function getQuestionIds(
         string $query,
-        int $page,
         int $queryWordCount = 30,
+        int $page,
+        int $questionsPerPage = 100,
     ): array {
         $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
         if (null !== ($questionIds = $this->memcachedService->get($memcachedKey))) {
@@ -67,7 +70,7 @@ class Results
 
         $questionIds = [];
 
-        $result = $this->getPdoResult($query, $page);
+        $result = $this->getPdoResult($query, $page, $questionsPerPage);
         foreach ($result as $array) {
             $questionIds[] = $array['question_id'];
         }
@@ -80,14 +83,18 @@ class Results
         return $questionIds;
     }
 
-    protected function getPdoResult(string $query, int $page): Result
+    protected function getPdoResult(
+        string $query,
+        int $page,
+        int $questionsPerPage = 100,
+    ): Result
     {
         try {
             return $this->questionSearchMessageTable
                 ->selectQuestionIdWhereMatchAgainstOrderByScoreDesc(
                     $query,
-                    ($page - 1) * 100,
-                    100,
+                    ($page - 1) * $questionsPerPage,
+                    $questionsPerPage,
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             sleep($this->configEntity['sleep-when-result-unavailable'] ?? 1);

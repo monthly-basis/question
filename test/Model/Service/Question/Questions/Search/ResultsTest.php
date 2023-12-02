@@ -46,8 +46,9 @@ class ResultsTest extends TestCase
     public function test_getResults()
     {
         $results = $this->resultsService->getResults(
-            'the search query',
-            7
+            query: 'the search query',
+            page: 7,
+            questionsPerPage: 100,
         );
         $this->assertEmpty($results);
     }
@@ -75,7 +76,7 @@ class ResultsTest extends TestCase
 
         $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results::class);
         $method = $class->getMethod('getPdoResult');
-        $method->invokeArgs($this->resultsService, ['the amazing search query', 7]);
+        $method->invokeArgs($this->resultsService, ['the amazing search query', 7, 100]);
     }
 
     public function test_getPdoResult_tableModelThrows5Exceptions_exceptionAfterRecursiveCalls()
@@ -106,7 +107,7 @@ class ResultsTest extends TestCase
         try {
             $class = new \ReflectionClass(QuestionService\Question\Questions\Search\Results::class);
             $method = $class->getMethod('getPdoResult');
-            $method->invokeArgs($this->resultsService, ['the amazing search query', 7]);
+            $method->invokeArgs($this->resultsService, ['the amazing search query', 7, 100]);
             $this->fail();
         } catch (Exception $exception) {
             $this->assertSame(
