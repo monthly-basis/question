@@ -50,7 +50,7 @@ class Submit
             $_POST['subject'],
             $_POST['message'] ?? null,
             $_POST['name'] ?? null,
-            $_SERVER['REMOTE_ADDR']
+            $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
         );
 
         return $this->questionFactory->buildFromQuestionId($questionId);

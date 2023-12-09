@@ -81,7 +81,7 @@ class ConditionallyInsert
             $this->logQuestionViewTable->insert(
                 values: [
                     'question_id'                 => $questionEntity->getQuestionId(),
-                    'ip'                          => $_SERVER['REMOTE_ADDR'],
+                    'ip'                          => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'],
                     'server_http_accept_language' => $serverHttpAcceptLanguage,
                     'server_http_referer'         => $serverHttpReferer,
                 ]

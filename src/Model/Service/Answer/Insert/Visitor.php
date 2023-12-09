@@ -22,7 +22,7 @@ class Visitor
             null,
             $_POST['message'],
             $_POST['name'],
-            $_SERVER['REMOTE_ADDR']
+            $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
         );
 
         return $this->answerFactory->buildFromAnswerId($answerId);

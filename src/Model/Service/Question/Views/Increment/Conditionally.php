@@ -18,7 +18,7 @@ class Conditionally
     public function conditionallyIncrementViews(
         QuestionEntity\Question $questionEntity
     ) {
-        $key = $questionEntity->getQuestionId() . '-' . $_SERVER['REMOTE_ADDR'];
+        $key = $questionEntity->getQuestionId() . '-' . ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']);
 
         if ($this->memcachedService->get($key)) {
             return;

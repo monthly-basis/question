@@ -23,7 +23,7 @@ class Deleted
             $_POST['subject'] ?? null,
             $_POST['message'],
             $_POST['name'] ?? null,
-            $_SERVER['REMOTE_ADDR'],
+            $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'],
             0,
             $reason,
         );

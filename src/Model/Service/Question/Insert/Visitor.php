@@ -22,7 +22,7 @@ class Visitor
         $array = [
             'message'      => $_POST['message'],
             'created_name' => $_POST['name'],
-            'created_ip'   => $_SERVER['REMOTE_ADDR'],
+            'created_ip'   => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'],
         ];
 
         if ($withSlug) {
