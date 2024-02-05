@@ -15,8 +15,8 @@ class YearTest extends TestCase
         $this->sqlMock = $this->createMock(
             LaminasDb\Sql\Sql::class
         );
-        $this->questionFactoryMock = $this->createMock(
-            QuestionFactory\Question::class
+        $this->fromQuestionIdFactoryMock = $this->createMock(
+            QuestionFactory\Question\FromQuestionId::class
         );
         $this->questionTableMock = $this->createMock(
             QuestionTable\Question::class
@@ -24,7 +24,7 @@ class YearTest extends TestCase
 
         $this->yearService = new QuestionService\Question\Questions\Year(
             $this->sqlMock,
-            $this->questionFactoryMock,
+            $this->fromQuestionIdFactoryMock,
             $this->questionTableMock
         );
     }

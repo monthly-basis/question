@@ -10,7 +10,7 @@ class Year
 {
     public function __construct(
         protected LaminasDb\Sql\Sql $sql,
-        protected QuestionFactory\Question $questionFactory,
+        protected QuestionFactory\Question\FromQuestionId $fromQuestionIdFactory,
         protected QuestionTable\Question $questionTable,
     ) {
     }
@@ -23,7 +23,7 @@ class Year
 
         $select = $this->sql
             ->select('question')
-            ->columns($this->questionTable->getSelectColumns())
+            ->columns(['question_id'])
             ->where([
                 new LaminasDb\Sql\Predicate\Between('created_datetime', $betweenMin, $betweenMax),
                 'deleted_datetime' => null,
@@ -35,7 +35,7 @@ class Year
         $result = $this->sql->prepareStatementForSqlObject($select)->execute();
 
         foreach ($result as $array) {
-            yield $this->questionFactory->buildFromArray($array);
+            yield $this->fromQuestionIdFactory->buildFromQuestionId($array['question_id']);
         }
     }
 }

@@ -756,7 +756,7 @@ class Module
                 QuestionService\Question\Questions\Year::class => function ($sm) {
                     return new QuestionService\Question\Questions\Year(
                         $sm->get('laminas-db-sql-sql'),
-                        $sm->get(QuestionFactory\Question::class),
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class),
                         $sm->get(QuestionTable\Question::class)
                     );
                 },
