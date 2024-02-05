@@ -26,7 +26,6 @@ class Year
             ->columns(['question_id'])
             ->where([
                 new LaminasDb\Sql\Predicate\Between('created_datetime', $betweenMin, $betweenMax),
-                'deleted_datetime' => null,
             ])
             ->order('views_one_month DESC')
             ->limit(100)
@@ -35,7 +34,11 @@ class Year
         $result = $this->sql->prepareStatementForSqlObject($select)->execute();
 
         foreach ($result as $array) {
-            yield $this->fromQuestionIdFactory->buildFromQuestionId($array['question_id']);
+            $questionEntity = $this->fromQuestionIdFactory->buildFromQuestionId($array['question_id']);
+            if (isset($questionEntity->deletedDateTime)) {
+                continue;
+            }
+            yield $questionEntity;
         }
     }
 }
