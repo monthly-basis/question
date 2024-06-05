@@ -9,9 +9,8 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 class Message extends AbstractHelper
 {
     public function __construct(
-        ContentModerationService\ToHtml $toHtmlService
+        protected ContentModerationService\ToHtml $toHtmlService
     ) {
-        $this->toHtmlService = $toHtmlService;
     }
 
     public function __invoke(

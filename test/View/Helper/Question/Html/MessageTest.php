@@ -2,13 +2,15 @@
 namespace MonthlyBasis\QuestionTest\View\Helper\Question\Html;
 
 use MonthlyBasis\ContentModeration\Model\Service as ContentModerationService;
-use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\View\Helper as QuestionHelper;
 use PHPUnit\Framework\TestCase;
 
 class MessageTest extends TestCase
 {
+    protected ContentModerationService\ToHtml $toHtmlServiceMock;
+    protected QuestionHelper\Question\Html\Message $messageHelper;
+
     protected function setUp(): void
     {
         $this->toHtmlServiceMock = $this->createMock(
