@@ -39,7 +39,7 @@ class Message extends AbstractHelper
         $numberOfMessageHtmlLines = count($messageHtmlLines);
 
         if ($numberOfMessageHtmlLines == 1) {
-            if (strlen($messageHtmlLines[0]) > 200) {
+            if (strlen($messageHtmlLines[0]) > 300) {
                 $messageHtml = "<$headingTagEscaped class=\"fw-n\">"
                     . $messageHtmlLines[0]
                     . "</$headingTagEscaped>";
