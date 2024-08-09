@@ -23,6 +23,7 @@ class Similar
 
     public function getSimilar(
         QuestionEntity\Question $questionEntity,
+        int $limit = 10,
     ): Generator {
         $query = $questionEntity->message;
         $query = strip_tags($query);
@@ -34,6 +35,7 @@ class Similar
         $questionIds = $this->getQuestionIds(
             questionId: $questionEntity->questionId,
             query: $query,
+            limit: $limit,
         );
 
         foreach ($questionIds as $questionId) {
@@ -52,6 +54,7 @@ class Similar
     protected function getQuestionIds(
         int $questionId,
         string $query,
+        int $limit,
     ): array {
         $memcachedKey = md5(__METHOD__ . serialize(func_get_args()));
         if (null !== ($questionIds = $this->memcachedService->get($memcachedKey))) {
@@ -64,7 +67,7 @@ class Similar
                     query: $query,
                     questionId: $questionId,
                     limitOffset: 0,
-                    limitRowCount: 10,
+                    limitRowCount: $limit,
                 );
         } catch (InvalidQueryException $invalidQueryException) {
             return [];

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace MonthlyBasis\QuestionTest\Model\Service;
 
 use Exception;
@@ -14,6 +17,13 @@ use PHPUnit\Framework\TestCase;
 
 class SimilarTest extends TestCase
 {
+    protected MemcachedService\Memcached $memcachedServiceMock;
+    protected QuestionFactory\Question $questionFactoryMock;
+    protected QuestionTable\QuestionSearchMessage $questionSearchMessageTableMock;
+    protected QuestionService\Question\Questions\Similar $similarService;
+    protected array $similarQuestions;
+    protected LaminasTestHydrator\CountableIterator $countableIteratorHydrator;
+
     protected function setUp(): void
     {
         $this->memcachedServiceMock = $this->createMock(
@@ -126,6 +136,7 @@ class SimilarTest extends TestCase
             [
                 $questionEntity->questionId,
                 'the message',
+                10,
             ]
         );
         $this->assertSame(
