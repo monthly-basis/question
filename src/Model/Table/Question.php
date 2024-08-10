@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\Question\Model\Table;
 
+use DateTime;
 use Generator;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
@@ -167,6 +168,35 @@ class Question extends LaminasDb\Table
             ->query($sql)
             ->execute($parameters)
             ->getGeneratedValue();
+    }
+
+    public function selectQuestionIdWhereCreatedDatetimeBetween(
+        DateTime $createdDateTimeStart,
+        DateTime $createdDateTimeEnd,
+        int $limitOffset,
+        int $limitRowCount,
+    ): Result {
+        $sql = '
+            SELECT `question_id`
+              FROM (
+                SELECT `question_id`
+                  FROM `question`
+                 WHERE `created_datetime` BETWEEN ? AND ?
+                   AND `moved_datetime` IS NULL
+                   AND `deleted_datetime` IS NULL
+                 ORDER
+                    BY `views_one_month` DESC
+                   ) AS `question_ids`
+             LIMIT ?, ?
+                 ;
+        ';
+        $parameters = [
+            $createdDateTimeStart->format('Y-m-d'),
+            $createdDateTimeEnd->format('Y-m-d'),
+            $limitOffset,
+            $limitRowCount,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function selectQuestionIdOrderByViewsOneHour(

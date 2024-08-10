@@ -1,6 +1,7 @@
 <?php
 namespace MonthlyBasis\QuestionTest\Model\Table;
 
+use DateTime;
 use Generator;
 use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use MonthlyBasis\Question\Model\Db as QuestionDb;
@@ -9,6 +10,9 @@ use MonthlyBasis\LaminasTest\TableTestCase;
 
 class QuestionTest extends TableTestCase
 {
+        protected QuestionTable\Question $questionTable;
+        protected QuestionTable\Question\QuestionId$questionIdTable;
+
     protected function setUp(): void
     {
         $this->setForeignKeyChecks(0);
@@ -163,6 +167,19 @@ class QuestionTest extends TableTestCase
                 'deleted_datetime' => $result->current()['deleted_datetime'],
             ],
         );
+    }
+
+    public function test_selectQuestionIdWhereCreatedDatetimeBetween()
+    {
+        $createdDateTimeStart = new DateTime('2024-06-01 00:00:00');
+        $createdDateTimeEnd = new DateTime('2024-06-30 23:59:59');
+        $result = $this->questionTable->selectQuestionIdWhereCreatedDatetimeBetween(
+            $createdDateTimeStart,
+            $createdDateTimeEnd,
+            0,
+            100,
+        );
+        $this->assertEmpty($result);
     }
 
     /**
