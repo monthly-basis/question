@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38fe15713ed10b0bce45f793a96d0848",
+    "content-hash": "18bb96f12ff6d2d1bcc6a0341f4ccaf2",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2078,21 +2078,22 @@
         },
         {
             "name": "monthly-basis/content-moderation",
-            "version": "v0.16.10",
+            "version": "v0.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/content-moderation.git",
-                "reference": "356098d4049469b11ec931613ff9b61e53dc86a3"
+                "reference": "cce55acd8be1d3ff09899d8210146e33fc1833d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/356098d4049469b11ec931613ff9b61e53dc86a3",
-                "reference": "356098d4049469b11ec931613ff9b61e53dc86a3",
+                "url": "https://api.github.com/repos/monthly-basis/content-moderation/zipball/cce55acd8be1d3ff09899d8210146e33fc1833d1",
+                "reference": "cce55acd8be1d3ff09899d8210146e33fc1833d1",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-mvc": "^3.0.1",
                 "laminas/laminas-test": "^4.0",
+                "monthly-basis/laminas-open-ai": "^0.0",
                 "monthly-basis/laminas-test": "^2.0",
                 "monthly-basis/string": "^3.0"
             },
@@ -2109,9 +2110,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/content-moderation/issues",
-                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.16.10"
+                "source": "https://github.com/monthly-basis/content-moderation/tree/v0.17.2"
             },
-            "time": "2023-09-29T16:43:52+00:00"
+            "time": "2024-08-10T16:50:02+00:00"
         },
         {
             "name": "monthly-basis/entity",
@@ -2290,6 +2291,42 @@
                 "source": "https://github.com/monthly-basis/laminas/tree/v0.0.11"
             },
             "time": "2023-08-09T01:13:55+00:00"
+        },
+        {
+            "name": "monthly-basis/laminas-open-ai",
+            "version": "v0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/laminas-open-ai.git",
+                "reference": "60b99e486a32211a780b5890810428453bf1c20f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/laminas-open-ai/zipball/60b99e486a32211a780b5890810428453bf1c20f",
+                "reference": "60b99e486a32211a780b5890810428453bf1c20f",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-test": "^4.0",
+                "monthly-basis/laminas-test": "^2.0",
+                "orhanerday/open-ai": "^4.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\LaminasOpenAi\\": "src/",
+                    "MonthlyBasis\\LaminasOpenAiTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/monthly-basis/laminas-open-ai/issues",
+                "source": "https://github.com/monthly-basis/laminas-open-ai/tree/v0.0.0"
+            },
+            "time": "2023-11-21T01:34:37+00:00"
         },
         {
             "name": "monthly-basis/laminas-test",
