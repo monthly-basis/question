@@ -7,14 +7,10 @@ use MonthlyBasis\Question\Model\Table as QuestionTable;
 
 class QuestionId
 {
-    protected Adapter $adapter;
-
     public function __construct(
-        Adapter $adapter,
-        QuestionTable\Question $questionTable
+        protected Adapter $adapter,
+        protected QuestionTable\Question $questionTable
     ) {
-        $this->adapter       = $adapter;
-        $this->questionTable = $questionTable;
     }
 
     public function selectWhereQuestionId(int $questionId): Result
