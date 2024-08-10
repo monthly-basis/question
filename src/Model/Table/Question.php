@@ -178,23 +178,16 @@ class Question extends LaminasDb\Table
     ): Result {
         $sql = '
             SELECT `question_id`
-              FROM (
-                SELECT `question_id`
-                  FROM `question`
-                 WHERE `created_datetime` BETWEEN ? AND ?
-                   AND `moved_datetime` IS NULL
-                   AND `deleted_datetime` IS NULL
-                 ORDER
-                    BY `views_one_month` DESC
-                   ) AS `question_ids`
-             LIMIT ?, ?
-                 ;
+              FROM `question`
+             WHERE `created_datetime` BETWEEN ? AND ?
+               AND `moved_datetime` IS NULL
+               AND `deleted_datetime` IS NULL
+             ORDER
+                BY `views_one_month` DESC
         ';
         $parameters = [
             $createdDateTimeStart->format('Y-m-d'),
             $createdDateTimeEnd->format('Y-m-d'),
-            $limitOffset,
-            $limitRowCount,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }

@@ -36,10 +36,15 @@ class YearMonth
             100,
         );
 
+        $iterator = 0;
         foreach ($result as $array) {
+            if ($iterator >= 100) {
+                break;
+            }
             yield $this->fromQuestionIdFactory->buildFromQuestionId(
                 $array['question_id']
             );
+            $iterator++;
         }
     }
 }
