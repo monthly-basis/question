@@ -3,7 +3,7 @@ CREATE TABLE `category_question` (
   `category_id` int unsigned NOT NULL,
   `question_id` int unsigned NOT NULL,
   `order` int unsigned NOT NULL,
-  `question_created_datetime` datetime DEFAULT NULL,
+  `question_created_datetime_cached` datetime DEFAULT NULL,
   `question_views_one_month_cached` int unsigned DEFAULT NULL,
   PRIMARY KEY (`category_question_id`),
   UNIQUE KEY `category_id_question_id` (`category_id`, `question_id`),
