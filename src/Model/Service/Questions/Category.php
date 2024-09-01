@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace MonthlyBasis\Question\Model\Service\Questions;
 
 use Generator;
@@ -26,7 +29,7 @@ class Category
             where: [
                 'category_id' => $categoryEntity->categoryId,
             ],
-            order: 'question_views_one_month_cached DESC',
+            order: 'question_created_datetime_cached DESC',
             limit: $questionsPerPage,
             offset: $questionsPerPage * ($page - 1),
         );
