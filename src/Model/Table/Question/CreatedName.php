@@ -1,7 +1,6 @@
 <?php
 namespace MonthlyBasis\Question\Model\Table\Question;
 
-use Generator;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
@@ -37,15 +36,11 @@ class CreatedName
         return $this->adapter->query($sql)->execute($parameters);
     }
 
-    /**
-     * @return Generator
-     * @yield array
-     */
     public function selectWhereCreatedName(
         string $createdName,
         int $limitOffset,
         int $limitRowCount
-    ): Generator {
+    ): Result {
         $sql = $this->questionTable->getSelect()
              . "
               FROM `question`
@@ -59,8 +54,6 @@ class CreatedName
         $parameters = [
             $createdName,
         ];
-        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
-            yield $array;
-        }
+        return $this->adapter->query($sql)->execute($parameters);
     }
 }
