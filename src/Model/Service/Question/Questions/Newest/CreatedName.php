@@ -19,13 +19,13 @@ class CreatedName
         string $createdName,
         int $page
     ): Generator {
-        $generator = $this->questionCreatedNameTable->selectWhereCreatedName(
+        $result = $this->questionCreatedNameTable->selectWhereCreatedName(
             $createdName,
             ($page - 1) * 100,
             100
         );
 
-        foreach ($generator as $array) {
+        foreach ($result as $array) {
             yield $this->questionFactory->buildFromArray($array);
         }
     }
