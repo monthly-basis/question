@@ -48,11 +48,13 @@ class CreatedName
                AND `question`.`deleted_datetime` IS NULL
              ORDER
                 BY `question`.`created_datetime` DESC
-             LIMIT $limitOffset, $limitRowCount
+             LIMIT ?, ?
                  ;
         ";
         $parameters = [
             $createdName,
+            $limitOffset,
+            $limitRowCount,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }
