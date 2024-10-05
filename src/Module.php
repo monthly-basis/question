@@ -15,6 +15,7 @@ use MonthlyBasis\Question\Model\Entity as QuestionEntity;
 use MonthlyBasis\Question\Model\Factory as QuestionFactory;
 use MonthlyBasis\Question\Model\Service as QuestionService;
 use MonthlyBasis\Question\Model\Table as QuestionTable;
+use MonthlyBasis\Question\Services as QuestionServices;
 use MonthlyBasis\Question\View\Helper as QuestionHelper;
 use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\Superglobal\Model\Service as SuperglobalService;
@@ -824,6 +825,11 @@ class Module
                     return new QuestionService\Users(
                         $sm->get(QuestionTable\Question\UserId::class),
                         $sm->get(UserFactory\User::class),
+                    );
+                },
+                QuestionServices\QuestionCategories\UpdateOrCreate::class => function ($sm) {
+                    return new QuestionServices\QuestionCategories\UpdateOrCreate(
+                        $sm->get(QuestionService\Question\Categories::class),
                     );
                 },
                 QuestionTable\Answer::class => function ($sm) {
