@@ -23,7 +23,7 @@ class SubCategory
         $questionCategoriesCollection = QuestionModels\QuestionCategories::select('question_id')
             ->where('category_id_1', $categoryEntity->categoryId)
             ->where('category_id_2', $subCategoryEntity->categoryId)
-            ->orderBy('question_created_datetime_cached')
+            ->orderBy('question_created_datetime_cached', 'desc')
             ->take(100)
             ->get();
 
