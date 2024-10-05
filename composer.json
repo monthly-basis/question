@@ -8,9 +8,11 @@
     "license": "MIT",
     "name": "monthly-basis/question",
     "require": {
+        "illuminate/database": "^11.26",
         "laminas/laminas-cli": "^1.7",
         "laminas/laminas-db": "^2.9",
         "laminas/laminas-test": "^4.0",
+        "laravel/serializable-closure": "^1.3",
         "monthly-basis/content-moderation": "^0.17",
         "monthly-basis/category": "^0.0",
         "monthly-basis/flash": "^2.0",
