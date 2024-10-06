@@ -721,6 +721,11 @@ class Module
                         $sm->get(QuestionFactory\Question\FromQuestionId::class),
                     );
                 },
+                QuestionService\Questions\Category\SubCategory\SubSubCategory::class => function ($sm) {
+                    return new QuestionService\Questions\Category\SubCategory\SubSubCategory(
+                        $sm->get(QuestionFactory\Question\FromQuestionId::class),
+                    );
+                },
                 QuestionService\Questions\CreatedName\Count::class => function ($sm) {
                     return new QuestionService\Questions\CreatedName\Count(
                         $sm->get(QuestionTable\Question\CreatedName::class),
