@@ -700,6 +700,12 @@ class Module
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
                     );
                 },
+                QuestionService\QuestionCategories\Category\SubCategories::class => function ($sm) {
+                    return new QuestionService\QuestionCategories\Category\SubCategories(
+                        $sm->get(CategoryFactory\FromCategoryId::class),
+                        $sm->get(QuestionTable\QuestionCategories::class),
+                    );
+                },
                 QuestionService\Questions\Categories::class => function ($sm) {
                     return new QuestionService\Questions\Categories(
                         $sm->get(QuestionService\Question\Categories::class),
