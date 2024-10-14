@@ -28,6 +28,7 @@ class QuestionCategories extends LaminasDb\Table
                  , COUNT(*) as `count`
               FROM `question_categories`
              WHERE `category_id_1` = ?
+               AND `category_id_2` IS NOT NULL
              GROUP
                 BY `category_id_2`
              ORDER
