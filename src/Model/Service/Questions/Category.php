@@ -21,14 +21,20 @@ class Category
         CategoryEntity\Category $categoryEntity,
         int $page = 1,
         int $questionsPerPage = 100,
+        int $excludeQuestionId = null,
     ): Generator {
+        $where = [
+            'category_id' => $categoryEntity->categoryId,
+        ];
+        if ($excludeQuestionId) {
+            $where['question_id != ?'] = $excludeQuestionId;
+        }
+
         $result = $this->categoryQuestionTable->select(
             columns: [
                 'question_id'
             ],
-            where: [
-                'category_id' => $categoryEntity->categoryId,
-            ],
+            where: $where,
             order: 'question_created_datetime_cached DESC',
             limit: $questionsPerPage,
             offset: $questionsPerPage * ($page - 1),
