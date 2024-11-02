@@ -121,16 +121,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.325.1",
+            "version": "3.325.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5ac57c98062f1c45d094c2baa94a7e557989465f"
+                "reference": "9e354a5e0cd1d563ec85245e3000e98e16a44fce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5ac57c98062f1c45d094c2baa94a7e557989465f",
-                "reference": "5ac57c98062f1c45d094c2baa94a7e557989465f",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9e354a5e0cd1d563ec85245e3000e98e16a44fce",
+                "reference": "9e354a5e0cd1d563ec85245e3000e98e16a44fce",
                 "shasum": ""
             },
             "require": {
@@ -213,9 +213,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.325.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.325.2"
             },
-            "time": "2024-10-31T18:15:14+00:00"
+            "time": "2024-11-01T18:08:38+00:00"
         },
         {
             "name": "brick/math",
@@ -3257,16 +3257,16 @@
         },
         {
             "name": "monthly-basis/user",
-            "version": "v3.9.1",
+            "version": "v3.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/user.git",
-                "reference": "d44892a40a2ce8d8cc872b32fe74b0f37a6b9242"
+                "reference": "6be560419275809804591db752d92752e6392658"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/user/zipball/d44892a40a2ce8d8cc872b32fe74b0f37a6b9242",
-                "reference": "d44892a40a2ce8d8cc872b32fe74b0f37a6b9242",
+                "url": "https://api.github.com/repos/monthly-basis/user/zipball/6be560419275809804591db752d92752e6392658",
+                "reference": "6be560419275809804591db752d92752e6392658",
                 "shasum": ""
             },
             "require": {
@@ -3295,9 +3295,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/user/issues",
-                "source": "https://github.com/monthly-basis/user/tree/v3.9.1"
+                "source": "https://github.com/monthly-basis/user/tree/v3.9.2"
             },
-            "time": "2024-06-16T04:58:22+00:00"
+            "time": "2024-11-01T01:57:36+00:00"
         },
         {
             "name": "monthly-basis/vote",
