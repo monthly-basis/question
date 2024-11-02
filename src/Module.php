@@ -714,7 +714,6 @@ class Module
                 QuestionService\Questions\Category::class => function ($sm) {
                     return new QuestionService\Questions\Category(
                         $sm->get(QuestionFactory\Question\FromQuestionId::class),
-                        $sm->get(QuestionTable\CategoryQuestion::class),
                     );
                 },
                 QuestionService\Questions\Category\Count::class => function ($sm) {
