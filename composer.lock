@@ -3188,16 +3188,16 @@
         },
         {
             "name": "monthly-basis/string",
-            "version": "v3.7.1",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/string.git",
-                "reference": "de7b515975cc504ffd7d3ea5998683a8d111fccf"
+                "reference": "8c65fe4ef15cb16a6d3ae7a8733d4f66801de192"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/string/zipball/de7b515975cc504ffd7d3ea5998683a8d111fccf",
-                "reference": "de7b515975cc504ffd7d3ea5998683a8d111fccf",
+                "url": "https://api.github.com/repos/monthly-basis/string/zipball/8c65fe4ef15cb16a6d3ae7a8733d4f66801de192",
+                "reference": "8c65fe4ef15cb16a6d3ae7a8733d4f66801de192",
                 "shasum": ""
             },
             "require": {
@@ -3216,9 +3216,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/string/issues",
-                "source": "https://github.com/monthly-basis/string/tree/v3.7.1"
+                "source": "https://github.com/monthly-basis/string/tree/v3.8.0"
             },
-            "time": "2024-08-04T20:25:46+00:00"
+            "time": "2024-11-03T14:21:53+00:00"
         },
         {
             "name": "monthly-basis/superglobal",
@@ -3500,20 +3500,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "bbd3eef89af8ba66a3aa7952b5439168fbcc529f"
+                "reference": "10ac0aa86b8062219ce21e8189123d611ca3ecd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bbd3eef89af8ba66a3aa7952b5439168fbcc529f",
-                "reference": "bbd3eef89af8ba66a3aa7952b5439168fbcc529f",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/10ac0aa86b8062219ce21e8189123d611ca3ecd9",
+                "reference": "10ac0aa86b8062219ce21e8189123d611ca3ecd9",
                 "shasum": ""
             },
             "require": {
-                "carbonphp/carbon-doctrine-types": "*",
+                "carbonphp/carbon-doctrine-types": "<100.0",
                 "ext-json": "*",
                 "php": "^8.1",
                 "psr/clock": "^1.0",
@@ -3602,7 +3602,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-19T06:22:39+00:00"
+            "time": "2024-11-03T16:02:24+00:00"
         },
         {
             "name": "nikic/php-parser",
