@@ -28,6 +28,7 @@ class Message extends AbstractHelper
         }
 
         $messageHtml = $this->toHtmlService->toHtml($message);
+        return $messageHtml;
 
         if (strlen($messageHtml) == 0) {
             $messageHtml = '';
