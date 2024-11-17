@@ -11,7 +11,6 @@ CREATE TABLE `question` (
     `image_rru_512x512_webp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_rru_1024x1024_jpeg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_rru_1024x1024_png` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-    `did_you_know` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     `views` int(10) unsigned NOT NULL DEFAULT '0',
     `views_one_hour` int unsigned NOT NULL DEFAULT '0',
     `views_one_day` int unsigned NOT NULL DEFAULT '0',

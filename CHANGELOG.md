@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+```
+ALTER TABLE `question` DROP COLUMN `did_you_know`;
+```
+
 ## v2.69.0
 
 ### Added
