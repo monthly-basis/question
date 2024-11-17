@@ -15,7 +15,6 @@ class Question extends QuestionEntity\Post
     protected $deletedDateTime;
     protected $deletedUserId;
     protected $deletedReason;
-    protected string $didYouKnow;
     protected string $headline;
     protected $history;
     public string $imagePrompt;
