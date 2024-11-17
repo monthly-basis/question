@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.79.0
 
 ```
 ALTER TABLE `question` DROP COLUMN `did_you_know`;
