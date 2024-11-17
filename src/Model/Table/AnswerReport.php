@@ -69,8 +69,7 @@ class AnswerReport
             SELECT `answer_report`.`answer_id`
                  , COUNT(*)
               FROM `answer_report`
-             WHERE `answer_report`.`reason` != 'Honor Code Violation'
-               AND `answer_report`.`report_status_id` = 0
+             WHERE `answer_report`.`report_status_id` = 0
              GROUP
                 BY `answer_report`.`answer_id`
              ORDER

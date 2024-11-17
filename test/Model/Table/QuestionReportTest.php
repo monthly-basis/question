@@ -78,12 +78,6 @@ class QuestionReportTest extends TableTestCase
         $result = $this->questionReportTable->insertIgnore(
             1,
             null,
-            'Honor Code Violation',
-            '1.2.3.4',
-        );
-        $result = $this->questionReportTable->insertIgnore(
-            1,
-            null,
             'reason',
             '5.6.7.8',
         );
