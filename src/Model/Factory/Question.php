@@ -33,9 +33,6 @@ class Question
         if (isset($array['created_name'])) {
             $questionEntity->setCreatedName($array['created_name']);
         }
-        if (isset($array['did_you_know'])) {
-            $questionEntity->didYouKnow = $array['did_you_know'];
-        }
         if (isset($array['image_prompt'])) {
             $questionEntity->imagePrompt = $array['image_prompt'];
         }

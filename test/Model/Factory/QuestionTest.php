@@ -47,7 +47,6 @@ class QuestionTest extends TestCase
             'created_name'             => 'name',
             'created_datetime'         => '2018-03-12 22:12:23',
             'created_ip'               => '5.6.7.8',
-            'did_you_know'             => 'interesting blurb',
             'deleted_datetime'         => '2018-09-17 21:42:45',
             'image_prompt'             => 'Image prompt.',
             'image_prompt_revised'     => 'Image prompt revised.',
@@ -88,7 +87,6 @@ class QuestionTest extends TestCase
             ->setQuestionId($array['question_id'])
             ->setSlug($array['slug'])
             ;
-        $questionEntity->didYouKnow            = 'interesting blurb';
         $questionEntity->imagePrompt           = 'Image prompt.';
         $questionEntity->imagePromptRevised    = 'Image prompt revised.';
         $questionEntity->imageRru128x128WebP   = '/path/to/128x128.webp';
