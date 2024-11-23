@@ -92,6 +92,7 @@ class QuestionSearchMessage extends LaminasDb\Table
 
         $sql = '
             SELECT `question_id`
+                 , `score`
               FROM (
                        SELECT `question_id`,
                               MATCH (`message`) AGAINST (:query) AS `score`
