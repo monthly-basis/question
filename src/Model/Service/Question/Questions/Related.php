@@ -29,6 +29,8 @@ class Related
         int $queryWordCount = 16,
         array $questionIdNotIn = [],
     ): Generator {
+        $this->questionEntity = $questionEntity;
+
         $questionIds = [];
         $result = $this->questionsRelatedTable->select(
             where: [
@@ -97,6 +99,11 @@ class Related
 
         $questionIds = [];
         foreach ($result as $array) {
+            $this->questionsRelatedTable->insert([
+                'question_id' => $this->questionEntity->questionId,
+                'related_question_id' => $array['question_id'],
+                'score' => $array['score'],
+            ]);
             $questionIds[] = intval($array['question_id']);
         }
 
