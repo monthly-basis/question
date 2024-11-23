@@ -978,6 +978,12 @@ class Module
                         $sm->get(QuestionDb\Sql::class),
                     );
                 },
+                QuestionTable\QuestionsRelated::class => function ($sm) {
+                    return new QuestionTable\QuestionsRelated(
+                        $sm->get(QuestionDb\Sql::class),
+                        $sm->get('question'),
+                    );
+                },
                 QuestionTable\Question\CreatedNameDeletedCreatedDatetime::class => function ($sm) {
                     return new QuestionTable\Question\CreatedNameDeletedCreatedDatetime(
                         $sm->get('question'),
