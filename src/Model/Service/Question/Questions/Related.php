@@ -40,7 +40,7 @@ class Related
             limit: $limit,
         );
         foreach ($result as $array) {
-            $questionIds[] = intval($array['question_id']);
+            $questionIds[] = intval($array['related_question_id']);
         }
 
         if (empty($questionIds)) {
