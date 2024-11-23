@@ -24,10 +24,14 @@ class RelatedTest extends TestCase
         $this->questionSearchMessageTableMock = $this->createMock(
             QuestionTable\QuestionSearchMessage::class
         );
+        $this->questionsRelatedTableMock = $this->createMock(
+            QuestionTable\QuestionsRelated::class
+        );
         $this->relatedService = new QuestionService\Question\Questions\Related(
             $this->memcachedServiceMock,
             $this->questionFactoryMock,
             $this->questionSearchMessageTableMock,
+            $this->questionsRelatedTableMock,
         );
 
         $this->questionEntity = (new QuestionEntity\Question())

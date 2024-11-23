@@ -674,6 +674,7 @@ class Module
                         $sm->get(MemcachedService\Memcached::class),
                         $sm->get(QuestionFactory\Question::class),
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
+                        $sm->get(QuestionTable\QuestionsRelated::class),
                     );
                 },
                 QuestionService\Question\Questions\Search\Results::class => function ($sm) {

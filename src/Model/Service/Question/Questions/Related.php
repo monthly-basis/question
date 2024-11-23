@@ -18,7 +18,8 @@ class Related
     public function __construct(
         protected MemcachedService\Memcached $memcachedService,
         protected QuestionFactory\Question $questionFactory,
-        protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable
+        protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable,
+        protected QuestionTable\QuestionsRelated $questionsRelatedTable
     ) {
     }
 
@@ -28,22 +29,36 @@ class Related
         int $queryWordCount = 16,
         array $questionIdNotIn = [],
     ): Generator {
-        $query = $questionEntity->message;
-        $query = strip_tags($query);
-        $query = preg_replace('/\s+/s', ' ', $query);
-        $words = explode(' ', $query, ($queryWordCount + 1));
-        $query = implode(' ', array_slice($words, 0, $queryWordCount));
-        $query = strtolower($query);
-
-        if (empty($questionIdNotIn)) {
-            $questionIdNotIn[] = $questionEntity->questionId;
+        $questionIds = [];
+        $result = $this->questionsRelatedTable->select(
+            where: [
+                'question_id' => $questionEntity->questionId,
+            ],
+            order: 'score DESC',
+            limit: $limit,
+        );
+        foreach ($result as $array) {
+            $questionIds[] = intval($array['question_id']);
         }
 
-        $questionIds = $this->getQuestionIds(
-            $query,
-            $limit,
-            $questionIdNotIn,
-        );
+        if (empty($questionIds)) {
+            $query = $questionEntity->message;
+            $query = strip_tags($query);
+            $query = preg_replace('/\s+/s', ' ', $query);
+            $words = explode(' ', $query, ($queryWordCount + 1));
+            $query = implode(' ', array_slice($words, 0, $queryWordCount));
+            $query = strtolower($query);
+
+            if (empty($questionIdNotIn)) {
+                $questionIdNotIn[] = $questionEntity->questionId;
+            }
+
+            $questionIds = $this->getQuestionIds(
+                $query,
+                $limit,
+                $questionIdNotIn,
+            );
+        }
 
         foreach ($questionIds as $questionId) {
             $questionEntity = $this->questionFactory->buildFromQuestionId(
