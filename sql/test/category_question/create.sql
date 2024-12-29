@@ -9,5 +9,5 @@ CREATE TABLE `category_question` (
   UNIQUE KEY `question_id_order` (`question_id`, `order`),
   KEY `category_id_question_created_datetime_cached` (`category_id`,`question_created_datetime_cached` DESC),
   FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
-  FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`)
+  FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
