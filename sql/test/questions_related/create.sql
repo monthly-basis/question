@@ -6,6 +6,6 @@ CREATE TABLE `questions_related` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `question_id_related_question_id` (`question_id`, `related_question_id`),
-  FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`),
+  FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE CASCADE,
   FOREIGN KEY (`related_question_id`) REFERENCES `question` (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
