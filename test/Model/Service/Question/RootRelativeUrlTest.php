@@ -8,6 +8,10 @@ use PHPUnit\Framework\TestCase;
 
 class RootRelativeUrlTest extends TestCase
 {
+    private QuestionEntity\Config $configEntity;
+    private QuestionService\Question\RootRelativeUrl $rootRelativeUrlService;
+    private QuestionService\Question\Slug $slugServiceMock;
+
     protected function setUp(): void
     {
         $configArray = [
