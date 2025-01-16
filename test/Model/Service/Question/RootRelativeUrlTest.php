@@ -49,7 +49,7 @@ class RootRelativeUrlTest extends TestCase
             ;
 
         $this->assertSame(
-            '/path/before/question-id/12345/my-question-title',
+            '/path/before/question-id/my-question-title/12345',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }
@@ -71,7 +71,7 @@ class RootRelativeUrlTest extends TestCase
             ;
 
         $this->assertSame(
-            '/questions/12345/my-question-title',
+            '/questions/my-question-title/12345',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }
@@ -97,7 +97,7 @@ class RootRelativeUrlTest extends TestCase
             ;
 
         $this->assertSame(
-            '/12345/my-question-title',
+            '/my-question-title/12345',
             $this->rootRelativeUrlService->getRootRelativeUrl($questionEntity)
         );
     }

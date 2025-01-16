@@ -26,6 +26,13 @@ class RootRelativeUrl
             ?? '/questions'
             ;
 
+        $includeSlug = $this->configEntity['question']['root-relative-url']['include-slug'] ?? true;
+
+        if ($includeSlug) {
+            $rootRelativeUrl .= '/'
+                . $this->slugService->getSlug($questionEntity);
+        }
+
         $includeQuestionId = $this->configEntity['question']['root-relative-url']['include-question-id'] ?? true;
 
         if ($includeQuestionId) {
@@ -33,12 +40,6 @@ class RootRelativeUrl
                 . $questionEntity->getQuestionId();
         }
 
-        $includeSlug = $this->configEntity['question']['root-relative-url']['include-slug'] ?? true;
-
-        if ($includeSlug) {
-            $rootRelativeUrl .= '/'
-                . $this->slugService->getSlug($questionEntity);
-        }
 
         $this->cache[$questionEntity->questionId] = $rootRelativeUrl;
         return $rootRelativeUrl;
