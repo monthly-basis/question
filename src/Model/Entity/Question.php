@@ -12,7 +12,7 @@ class Question extends QuestionEntity\Post
     protected $createdIp;
     protected $createdName;
     protected $createdUserId;
-    protected $deletedDateTime;
+    public DateTime $deletedDateTime;
     protected $deletedUserId;
     protected $deletedReason;
     protected string $headline;
