@@ -201,40 +201,22 @@ class Answer extends LaminasDb\Table
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
 
-    /**
-     * This method is currently not in use.
-     * Before using it again, make sure it is performant.
-     */
-    public function selectWhereUserId(
+    public function selectCountWhereQuestionIdAndUserId(
+        int $questionId,
         int $userId,
-        int $limitOffset,
-        int $limitRowCount
-    ): Generator {
-        $sql = $this->getSelect()
-             . '
+    ): Result {
+        $sql = '
+            SELECT COUNT(*)
               FROM `answer`
-
-              JOIN `question`
-             USING (`question_id`)
-
-             WHERE `answer`.`user_id` = ?
-               AND `answer`.`deleted_datetime` IS NULL
-               AND `question`.`deleted_datetime` IS NULL
-
-             ORDER
-                BY `question`.`views_one_month` DESC
-
-             LIMIT ?, ?
+             WHERE `question_id` = ?
+               AND `user_id` = ?
                  ;
         ';
         $parameters = [
+            $questionId,
             $userId,
-            $limitOffset,
-            $limitRowCount,
         ];
-        foreach ($this->getAdapter()->query($sql)->execute($parameters) as $array) {
-            yield $array;
-        }
+        return $this->getAdapter()->query($sql)->execute($parameters);
     }
 
     public function selectWhereUserIdOrderByCreatedDatetimeDesc(
