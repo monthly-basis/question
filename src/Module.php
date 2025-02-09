@@ -831,6 +831,11 @@ class Module
                         $sm->get(QuestionService\Question\IncrementViews::class),
                     );
                 },
+                QuestionService\UserAnsweredQuestion::class => function ($sm) {
+                    return new QuestionService\UserAnsweredQuestion(
+                        $sm->get(QuestionTable\Answer::class),
+                    );
+                },
                 QuestionService\Users::class => function ($sm) {
                     return new QuestionService\Users(
                         $sm->get(QuestionTable\Question\UserId::class),
