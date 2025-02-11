@@ -48,8 +48,6 @@ class QuestionTest extends TestCase
             'created_datetime'         => '2018-03-12 22:12:23',
             'created_ip'               => '5.6.7.8',
             'deleted_datetime'         => '2018-09-17 21:42:45',
-            'image_prompt'             => 'Image prompt.',
-            'image_prompt_revised'     => 'Image prompt revised.',
             'image_rru_128x128_webp'   => '/path/to/128x128.webp',
             'image_rru_512x512_webp'   => '/path/to/512x512.webp',
             'image_rru_1024x1024_jpeg' => '/path/to/1024x1024.jpeg',
@@ -87,8 +85,6 @@ class QuestionTest extends TestCase
             ->setQuestionId($array['question_id'])
             ->setSlug($array['slug'])
             ;
-        $questionEntity->imagePrompt           = 'Image prompt.';
-        $questionEntity->imagePromptRevised    = 'Image prompt revised.';
         $questionEntity->imageRru128x128WebP   = '/path/to/128x128.webp';
         $questionEntity->imageRru512x512WebP   = '/path/to/512x512.webp';
         $questionEntity->imageRru1024x1024Jpeg = '/path/to/1024x1024.jpeg';
