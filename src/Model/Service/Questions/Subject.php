@@ -44,7 +44,7 @@ class Subject
                 'deleted_datetime' => null,
             ])
             ->order([
-                'views_one_year DESC',
+                'views DESC',
             ])
             ->limit(100)
             ->offset(($page - 1) * 100)

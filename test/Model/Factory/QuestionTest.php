@@ -120,7 +120,6 @@ class QuestionTest extends TestCase
             'question_id'         => 1,
             'subject'             => 'subject',
             'user_id'             => null,
-            'views_one_year'      => 12345,
         ];
         $questionEntity = (new QuestionEntity\Question())
             ->setAnswerCountCached($array['answer_count_cached'])
@@ -135,7 +134,6 @@ class QuestionTest extends TestCase
             ->setQuestionId($array['question_id'])
             ->setSubject($array['subject'])
             ;
-        $questionEntity->viewsOneYear = 12345;
 
         $this->assertEquals(
             $questionEntity,

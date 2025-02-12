@@ -36,7 +36,6 @@ class Question extends LaminasDb\Table
                  , `question`.`image_rru_1024x1024_jpeg`
                  , `question`.`image_rru_1024x1024_png`
                  , `question`.`views`
-                 , `question`.`views_one_year`
                  , `question`.`answer_count_cached`
                  , `question`.`top_answer_id_cached`
                  , `question`.`created_datetime`
@@ -224,10 +223,10 @@ class Question extends LaminasDb\Table
         $sql = '
             SELECT `question_id`
               FROM `question`
-             WHERE `views_one_year` > 0
+             WHERE `views` > 0
                AND `deleted_datetime` IS NULL
              ORDER
-                BY `views_one_year` DESC
+                BY `views` DESC
              LIMIT ?
                  ;
         ';

@@ -115,7 +115,7 @@ class QuestionSearchMessage extends LaminasDb\Table
 
         $sql .= '
              ORDER
-                BY `question`.`views_one_year` DESC
+                BY `question`.`views` DESC
                  , `question_search_message`.`score` DESC
              LIMIT :outerLimitOffset, :outerLimitRowCount
                  ;
