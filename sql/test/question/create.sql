@@ -44,5 +44,5 @@ CREATE TABLE `question` (
     KEY `deleted_user_id_deleted_datetime` (`deleted_user_id`, `deleted_datetime`),
     KEY `message_255` (`message`(255)),
     KEY `views_one_day` (`views_one_day` DESC),
-    KEY `views_one_week` (`views_one_week` DESC),
+    KEY `views_one_week` (`views_one_week` DESC)
 ) CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
