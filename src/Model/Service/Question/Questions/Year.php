@@ -27,7 +27,7 @@ class Year
             ->where([
                 new LaminasDb\Sql\Predicate\Between('created_datetime', $betweenMin, $betweenMax),
             ])
-            ->order('views_one_month DESC')
+            ->order('views DESC')
             ->limit(100)
             ->offset(0)
             ;

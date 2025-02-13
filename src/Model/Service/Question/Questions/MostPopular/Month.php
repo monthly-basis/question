@@ -20,7 +20,7 @@ class Month
                 'question_id'
             ],
             order: [
-                'views_one_month DESC'
+                'views DESC'
             ],
             limit: $limit
         );

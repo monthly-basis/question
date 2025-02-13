@@ -179,7 +179,7 @@ class Question extends LaminasDb\Table
                AND `moved_datetime` IS NULL
                AND `deleted_datetime` IS NULL
              ORDER
-                BY `views_one_month` DESC
+                BY `views` DESC
         ';
         $parameters = [
             $createdDateTimeStart->format('Y-m-d'),
@@ -208,7 +208,6 @@ class Question extends LaminasDb\Table
                 BY `question`.`views_one_hour` DESC
                  , `question`.`views_one_day` DESC
                  , `question`.`views_one_week` DESC
-                 , `question`.`views_one_month` DESC
                  ;
         ';
         $parameters = [

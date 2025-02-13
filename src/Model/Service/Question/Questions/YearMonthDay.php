@@ -38,7 +38,7 @@ class YearMonthDay
                AND `moved_datetime` IS NULL
                AND `deleted_datetime` IS NULL
              ORDER
-                BY `views_one_month` DESC
+                BY `views` DESC
              LIMIT 100
         ';
         $parameters = [

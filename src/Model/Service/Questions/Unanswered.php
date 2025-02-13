@@ -21,7 +21,7 @@ class Unanswered
                 'moved_datetime'      => null,
                 'deleted_datetime'    => null,
             ],
-            order: 'views_one_month DESC',
+            order: 'views DESC',
             limit: 100,
         );
         foreach ($result as $array) {
