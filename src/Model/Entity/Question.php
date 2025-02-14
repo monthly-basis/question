@@ -37,7 +37,6 @@ class Question extends QuestionEntity\Post
     public int $topAnswerIdCached;
 
     protected int $views;
-    protected int $viewsOneYear;
 
     public function __get(string $name): mixed
     {
