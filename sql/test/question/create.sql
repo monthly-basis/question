@@ -11,7 +11,6 @@ CREATE TABLE `question` (
     `image_rru_1024x1024_png` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `views` int(10) unsigned NOT NULL DEFAULT '0',
     `views_one_hour` int unsigned NOT NULL DEFAULT '0',
-    `views_one_day` int unsigned NOT NULL DEFAULT '0',
     `answer_count_cached` int(10) unsigned NOT NULL DEFAULT '0',
     `top_answer_id_cached` int(10) unsigned DEFAULT NULL,
     `imported` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -41,6 +40,5 @@ CREATE TABLE `question` (
     KEY `moved_datetime_deleted_datetime_created_datetime` (`moved_datetime`,`deleted_datetime`,`created_datetime`),
     KEY `deleted_datetime_created_datetime` (`deleted_datetime`, `created_datetime`),
     KEY `deleted_user_id_deleted_datetime` (`deleted_user_id`, `deleted_datetime`),
-    KEY `message_255` (`message`(255)),
-    KEY `views_one_day` (`views_one_day` DESC)
+    KEY `message_255` (`message`(255))
 ) CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

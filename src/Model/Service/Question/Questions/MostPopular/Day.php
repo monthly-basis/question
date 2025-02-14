@@ -44,7 +44,7 @@ class Day
 
         $result = $this->questionTable->select(
             columns: ['question_id'],
-            order: 'views_one_day DESC',
+            order: 'views DESC',
             limit: $limit,
         );
 
