@@ -198,7 +198,7 @@ class Question extends LaminasDb\Table
                          FROM `question`
                         WHERE `question`.`deleted_datetime` IS NULL
                         ORDER
-                           BY `question`.`views_one_hour` DESC
+                           BY `question`.`views` DESC
                         LIMIT ?
                    ) AS `question_sub_query`
 

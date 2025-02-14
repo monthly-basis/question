@@ -10,7 +10,6 @@ CREATE TABLE `question` (
     `image_rru_1024x1024_jpeg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_rru_1024x1024_png` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `views` int(10) unsigned NOT NULL DEFAULT '0',
-    `views_one_hour` int unsigned NOT NULL DEFAULT '0',
     `answer_count_cached` int(10) unsigned NOT NULL DEFAULT '0',
     `top_answer_id_cached` int(10) unsigned DEFAULT NULL,
     `imported` tinyint(1) unsigned NOT NULL DEFAULT '0',
