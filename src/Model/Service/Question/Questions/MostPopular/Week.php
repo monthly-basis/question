@@ -23,7 +23,7 @@ class Week
             ->where([
                 'deleted_datetime' => null,
             ])
-            ->order('views_one_week DESC')
+            ->order('views DESC')
             ->limit($limit)
             ;
         $result = $this->sql->prepareStatementForSqlObject($select)->execute();

@@ -205,9 +205,7 @@ class Question extends LaminasDb\Table
               JOIN `question` USING (`question_id`)
 
              ORDER
-                BY `question`.`views_one_hour` DESC
-                 , `question`.`views_one_day` DESC
-                 , `question`.`views_one_week` DESC
+                BY `question`.`views` DESC
                  ;
         ';
         $parameters = [
