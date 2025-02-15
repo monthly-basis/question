@@ -51,7 +51,6 @@ class Module
                     'getAnswerRootRelativeUrl'   => QuestionHelper\Answer\RootRelativeUrl::class,
                     'getAnswerTitle'             => QuestionHelper\Answer\Title::class,
                     'getAnswerUrl'               => QuestionHelper\Answer\Url::class,
-                    'getLinkToQuestionHtml'      => QuestionHelper\Question\Subject\LinkToQuestionHtml::class,
                     'getQuestionAuthorOrNull'    => QuestionHelper\Question\AuthorOrNull::class,
                     'getQuestionAuthorHtml'      => QuestionHelper\Question\Html\Author::class,
                     'getQuestionFactory'         => QuestionHelper\Question\Factory::class,
@@ -169,14 +168,6 @@ class Module
                     QuestionHelper\Question\RootRelativeUrl::class => function($sm) {
                         return new QuestionHelper\Question\RootRelativeUrl(
                             $sm->get(QuestionService\Question\RootRelativeUrl::class)
-                        );
-                    },
-                    QuestionHelper\Question\Subject\LinkToQuestionHtml::class => function($sm) {
-                        return new QuestionHelper\Question\Subject\LinkToQuestionHtml(
-                            $sm->get(ContentModerationService\Replace\Spaces::class),
-                            $sm->get(QuestionService\Question\RootRelativeUrl::class),
-                            $sm->get(StringService\Escape::class)
-
                         );
                     },
                     QuestionHelper\Question\Title::class => function($sm) {
@@ -725,17 +716,6 @@ class Module
                         $sm->get(QuestionTable\Question\CreatedName::class),
                     );
                 },
-                QuestionService\Questions\Subject::class => function ($sm) {
-                    return new QuestionService\Questions\Subject(
-                        $sm->get(QuestionDb\Sql::class),
-                        $sm->get(QuestionFactory\Question::class)
-                    );
-                },
-                QuestionService\Questions\Subject\NumberOfPages::class => function ($sm) {
-                    return new QuestionService\Questions\Subject\NumberOfPages(
-                        $sm->get(QuestionTable\Question::class)
-                    );
-                },
                 QuestionService\Questions\Unanswered::class => function ($sm) {
                     return new QuestionService\Questions\Unanswered(
                         $sm->get(QuestionFactory\Question\FromQuestionId::class),
@@ -1045,18 +1025,6 @@ class Module
                 },
                 QuestionTable\Question\MessageDeletedDatetimeCreatedDatetime::class => function ($sm) {
                     return new QuestionTable\Question\MessageDeletedDatetimeCreatedDatetime(
-                        $sm->get('question'),
-                        $sm->get(QuestionTable\Question::class)
-                    );
-                },
-                QuestionTable\Question\Subject::class => function ($sm) {
-                    return new QuestionTable\Question\Subject(
-                        $sm->get('question'),
-                        $sm->get(QuestionTable\Question::class)
-                    );
-                },
-                QuestionTable\Question\SubjectDeletedDatetimeViewsBrowser::class => function ($sm) {
-                    return new QuestionTable\Question\SubjectDeletedDatetimeViewsBrowser(
                         $sm->get('question'),
                         $sm->get(QuestionTable\Question::class)
                     );

@@ -38,14 +38,12 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             null,
-            'this is the subject',
             'this is the message',
             'this is the name',
             '1.2.3.4'
         );
         $this->questionTable->insertDeprecated(
             null,
-            'this is another subject',
             'this is the message',
             'this is another name',
             '5.6.7.8'
@@ -58,14 +56,12 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
         $this->assertSame(
             [
                 2,
-                'this is another subject',
                 'this is the message',
                 'this is another name',
                 '5.6.7.8',
             ],
             [
                 $result->current()['question_id'],
-                $result->current()['subject'],
                 $result->current()['message'],
                 $result->current()['created_name'],
                 $result->current()['created_ip'],
@@ -77,14 +73,12 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             null,
-            'this is the subject',
             'this is the message',
             'this is the name',
             '1.2.3.4'
         );
         $this->questionTable->insertDeleted(
             0,
-            'this is another subject',
             'this is the message',
             'this is another name',
             '5.6.7.8',
@@ -99,14 +93,12 @@ class MessageDeletedDatetimeCreatedDatetimeTest extends TableTestCase
         $this->assertSame(
             [
                 1,
-                'this is the subject',
                 'this is the message',
                 'this is the name',
                 '1.2.3.4',
             ],
             [
                 $result->current()['question_id'],
-                $result->current()['subject'],
                 $result->current()['message'],
                 $result->current()['created_name'],
                 $result->current()['created_ip'],

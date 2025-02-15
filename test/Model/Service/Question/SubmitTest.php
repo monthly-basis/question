@@ -43,7 +43,7 @@ class SubmitTest extends TestCase
             );
         }
 
-        $_POST['subject'] = 'this is the subject';
+        $_POST['message'] = 'this is the message';
         $this->submitQuestionService->submit();
     }
 }

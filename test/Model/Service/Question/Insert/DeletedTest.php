@@ -30,7 +30,6 @@ class DeletedTest extends TestCase
     public function test_insert_defaultReason_questionEntity()
     {
         $_POST = [
-            'subject'     => 'subject',
             'message'     => 'message',
             'name'        => 'name',
         ];
@@ -43,7 +42,6 @@ class DeletedTest extends TestCase
             ->method('insertDeleted')
             ->with(
                 null,
-                'subject',
                 'message',
                 'name',
                 '1.2.3.4',
@@ -72,7 +70,6 @@ class DeletedTest extends TestCase
     public function test_insert_customReason_questionEntity()
     {
         $_POST = [
-            'subject'     => 'subject',
             'message'     => 'message',
             'name'        => 'name',
         ];
@@ -85,7 +82,6 @@ class DeletedTest extends TestCase
             ->method('insertDeleted')
             ->with(
                 null,
-                'subject',
                 'message',
                 'name',
                 '1.2.3.4',

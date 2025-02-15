@@ -58,7 +58,6 @@ class QuestionTest extends TestCase
             'moved_question_id'        => '111',
             'moved_user_id'            => '1',
             'question_id'              => 1,
-            'subject'                  => null,
             'top_answer_id_cached'     => 20231126,
             'user_id'                  => null,
         ];
@@ -108,7 +107,6 @@ class QuestionTest extends TestCase
             'modified_user_id'    => '54321',
             'modified_reason'     => 'modified reason',
             'question_id'         => 1,
-            'subject'             => 'subject',
             'user_id'             => null,
         ];
         $questionEntity = (new QuestionEntity\Question())
@@ -122,7 +120,6 @@ class QuestionTest extends TestCase
             ->setDeletedDateTime(new DateTime($array['deleted_datetime']))
             ->setMessage($array['message'])
             ->setQuestionId($array['question_id'])
-            ->setSubject($array['subject'])
             ;
 
         $this->assertEquals(
@@ -154,7 +151,6 @@ class QuestionTest extends TestCase
             'question_id'         => 1,
             'user_id'             => 12345,
             'created_name'        => null,
-            'subject'             => 'subject',
             'views'               => '123',
             'created_datetime'    => '2018-03-12 22:12:23',
         ];
@@ -165,7 +161,6 @@ class QuestionTest extends TestCase
             ->setCreatedName('i am foo')
             ->setCreatedUserId((int) $array['user_id'])
             ->setQuestionId((int) $array['question_id'])
-            ->setSubject($array['subject'])
             ->setViews((int) $array['views'])
             ;
         $this->assertEquals(
@@ -182,7 +177,6 @@ class QuestionTest extends TestCase
                 'question_id'         => 123,
                 'user_id'             => null,
                 'name'                => 'name',
-                'subject'             => 'subject',
                 'message'             => 'message',
                 'created_datetime'    => '2018-03-12 22:12:23',
                 'views'               => '123',

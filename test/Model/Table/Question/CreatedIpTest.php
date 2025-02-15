@@ -43,7 +43,6 @@ class CreatedIpTest extends TableTestCase
 
         $this->questionTable->insertDeleted(
             null,
-            'subject',
             'message',
             'name',
             '1.2.3.4',
@@ -65,7 +64,6 @@ class CreatedIpTest extends TableTestCase
 
         $this->questionTable->insertDeleted(
             null,
-            'subject',
             'message',
             'name',
             '255.255.255.255',
@@ -87,7 +85,6 @@ class CreatedIpTest extends TableTestCase
 
         $this->questionTable->insertDeleted(
             null,
-            'subject',
             'message',
             'name',
             '1.2.3.4',
@@ -109,7 +106,6 @@ class CreatedIpTest extends TableTestCase
 
         $this->questionTable->insertDeleted(
             null,
-            'subject 2',
             'message 2',
             'name',
             '1.2.3.4',

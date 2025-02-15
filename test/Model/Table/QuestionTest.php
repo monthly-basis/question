@@ -56,7 +56,6 @@ class QuestionTest extends TableTestCase
     {
         $generatedValue = $this->questionTable->insertDeprecated(
             1,
-            'subject',
             'message',
             'name',
             '1.2.3.4',
@@ -68,7 +67,6 @@ class QuestionTest extends TableTestCase
 
         $generatedValue = $this->questionTable->insertDeprecated(
             1,
-            null,
             'this is the message',
             'name',
             '1.2.3.4',
@@ -83,7 +81,6 @@ class QuestionTest extends TableTestCase
     {
         $questionId = $this->questionTable->insertDeleted(
             null,
-            'subject',
             'message',
             'name',
             '1.2.3.4',
@@ -107,12 +104,11 @@ class QuestionTest extends TableTestCase
 
         $questionId = $this->questionTable->insertDeleted(
             null,
-            null,
             'message',
             null,
             '1.2.3.4',
             0,
-            'insert deleted with null subject and null name',
+            'insert deleted with null name',
         );
         $this->assertSame(
             2,
@@ -181,7 +177,6 @@ class QuestionTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             3,
-            'this is the subject',
             'message',
             '1.2.3.4',
             'name',
@@ -199,19 +194,15 @@ class QuestionTest extends TableTestCase
             3,
             $array['user_id']
         );
-        $this->assertSame(
-            'this is the subject',
-            $array['subject']
-        );
     }
 
     public function testSelectWhereQuestionIdInAndDeletedDatetimeIsNull()
     {
         $this->questionTable->insertDeprecated(
-            1, 'name', 'subject', 'message', '1.2.3.4',
+            1, 'name', 'message', '1.2.3.4',
         );
         $this->questionTable->insertDeprecated(
-            2, 'name', 'subject', 'message', '5.6.7.8',
+            2, 'name', 'message', '5.6.7.8',
         );
         $generator = $this->questionTable->selectWhereQuestionIdInAndDeletedDatetimeIsNull(
             [1, 2, 3, 'string', 'injection' => 'attempt']
@@ -238,12 +229,11 @@ class QuestionTest extends TableTestCase
     public function test_updateWhereQuestionId()
     {
         $this->questionTable->insertDeprecated(
-            1, 'subject', 'message', 'name', '1.2.3.4',
+            1, 'message', 'name', '1.2.3.4',
         );
 
         $result = $this->questionTable->updateWhereQuestionId(
             'new name',
-            'modified subject',
             'modified message',
             10,
             'modified reason',
@@ -259,10 +249,6 @@ class QuestionTest extends TableTestCase
             $result->current()['created_name']
         );
         $this->assertSame(
-            'modified subject',
-            $result->current()['subject']
-        );
-        $this->assertSame(
             'modified message',
             $result->current()['message']
         );
@@ -272,7 +258,6 @@ class QuestionTest extends TableTestCase
         );
 
         $result = $this->questionTable->updateWhereQuestionId(
-            null,
             null,
             'modified message',
             10,

@@ -29,7 +29,6 @@ class QuestionIdTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             3,
-            'this is the subject',
             'message',
             '1.2.3.4',
             'name',
@@ -43,10 +42,6 @@ class QuestionIdTest extends TableTestCase
         $this->assertSame(
             3,
             $array['user_id']
-        );
-        $this->assertSame(
-            'this is the subject',
-            $array['subject']
         );
     }
 
@@ -64,7 +59,6 @@ class QuestionIdTest extends TableTestCase
         $this->questionTable->insertDeprecated(
             null,
             'name',
-            'subject',
             'message',
             'ip',
             'name',
@@ -114,7 +108,6 @@ class QuestionIdTest extends TableTestCase
         $this->questionTable->insertDeprecated(
             null,
             'name',
-            'subject',
             'message',
             'ip',
             'name',
@@ -162,14 +155,12 @@ class QuestionIdTest extends TableTestCase
         $this->questionTable->insertDeprecated(
             null,
             'name',
-            'subject',
             'message',
             'ip'
         );
         $this->questionTable->insertDeprecated(
             null,
             'name 2',
-            'subject 2',
             'message 2',
             'ip 2'
         );

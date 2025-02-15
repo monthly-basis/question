@@ -27,7 +27,6 @@ class Question extends LaminasDb\Table
         return '
             SELECT `question`.`question_id`
                  , `question`.`user_id`
-                 , `question`.`subject`
                  , `question`.`message`
                  , `question`.`views`
                  , `question`.`answer_count_cached`
@@ -57,7 +56,6 @@ class Question extends LaminasDb\Table
         return [
             'question_id',
             'user_id',
-            'subject',
             'message',
             'views',
             'answer_count_cached',
@@ -81,7 +79,6 @@ class Question extends LaminasDb\Table
 
     public function insertDeprecated(
         ?int $userId,
-        ?string $subject,
         ?string $message,
         ?string $createdName,
         string $createdIp,
@@ -90,18 +87,16 @@ class Question extends LaminasDb\Table
             INSERT
               INTO `question` (
                        `user_id`
-                     , `subject`
                      , `message`
                      , `created_datetime`
                      , `created_name`
                      , `created_ip`
                    )
-            VALUES (?, ?, ?, UTC_TIMESTAMP(), ?, ?)
+            VALUES (?, ?, UTC_TIMESTAMP(), ?, ?)
                  ;
         ';
         $parameters = [
             $userId,
-            $subject,
             $message,
             $createdName,
             $createdIp,
@@ -114,7 +109,6 @@ class Question extends LaminasDb\Table
 
     public function insertDeleted(
         int $userId = null,
-        string|null $subject,
         string $message,
         string|null $createdName,
         string $createdIp,
@@ -125,7 +119,6 @@ class Question extends LaminasDb\Table
             INSERT
               INTO `question` (
                        `user_id`
-                     , `subject`
                      , `message`
                      , `created_datetime`
                      , `created_name`
@@ -134,12 +127,11 @@ class Question extends LaminasDb\Table
                      , `deleted_user_id`
                      , `deleted_reason`
                    )
-            VALUES (?, ?, ?, UTC_TIMESTAMP(), ?, ?, UTC_TIMESTAMP(), ?, ?)
+            VALUES (?, ?, UTC_TIMESTAMP(), ?, ?, UTC_TIMESTAMP(), ?, ?)
                  ;
         ';
         $parameters = [
             $userId,
-            $subject,
             $message,
             $createdName,
             $createdIp,
@@ -323,7 +315,6 @@ class Question extends LaminasDb\Table
 
     public function updateWhereQuestionId(
         string|null $name,
-        string|null $subject,
         string $message,
         int $modifiedUserId,
         string $modifiedReason,
@@ -332,7 +323,6 @@ class Question extends LaminasDb\Table
         $sql = '
             UPDATE `question`
                SET `question`.`created_name` = ?
-                 , `question`.`subject` = ?
                  , `question`.`message` = ?
                  , `question`.`modified_datetime` = UTC_TIMESTAMP()
                  , `question`.`modified_user_id` = ?
@@ -342,7 +332,6 @@ class Question extends LaminasDb\Table
         ';
         $parameters = [
             $name,
-            $subject,
             $message,
             $modifiedUserId,
             $modifiedReason,

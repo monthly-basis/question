@@ -59,14 +59,12 @@ class QuestionHistoryTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             null,
-            'subject',
             'message',
             'created name',
             '1.2.3.4'
         );
         $this->questionTable->insertDeprecated(
             null,
-            'subject 2',
             'message 2',
             'created name 2',
             '5.6.7.8'
@@ -98,7 +96,6 @@ class QuestionHistoryTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             12345,
-            'this is the subject',
             'this is the message',
             'this is the name',
             '1.2.3.4'
@@ -128,7 +125,6 @@ class QuestionHistoryTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             12345,
-            'this is the subject',
             'this is the message',
             'this is the name',
             '1.2.3.4'
@@ -158,7 +154,6 @@ class QuestionHistoryTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             12345,
-            'this is the subject',
             'this is the message',
             'this is the name',
             '1.2.3.4'
@@ -203,7 +198,6 @@ class QuestionHistoryTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             12345,
-            'this is the subject',
             'this is the message',
             'this is the name',
             '1.2.3.4'

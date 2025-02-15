@@ -20,7 +20,6 @@ class Deleted
     ): QuestionEntity\Question {
         $questionId = $this->questionTable->insertDeleted(
             null,
-            $_POST['subject'] ?? null,
             $_POST['message'],
             $_POST['name'] ?? null,
             $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'],

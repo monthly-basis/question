@@ -28,7 +28,6 @@ class Question extends QuestionEntity\Post
     protected int $questionId;
     protected float $rating;
     protected string $slug;
-    protected $subject;
     public int $topAnswerIdCached;
 
     protected int $views;
@@ -151,11 +150,6 @@ class Question extends QuestionEntity\Post
     public function getSlug(): string
     {
         return $this->slug;
-    }
-
-    public function getSubject(): string
-    {
-        return $this->subject;
     }
 
     public function getViews(): int
@@ -286,12 +280,6 @@ class Question extends QuestionEntity\Post
     public function setSlug(string $slug): QuestionEntity\Question
     {
         $this->slug = $slug;
-        return $this;
-    }
-
-    public function setSubject(string $subject): QuestionEntity\Question
-    {
-        $this->subject = $subject;
         return $this;
     }
 

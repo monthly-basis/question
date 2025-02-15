@@ -35,7 +35,6 @@ class PostTest extends TableTestCase
 
         $this->questionTable->insertDeprecated(
             123,
-            'subject for question 1',
             'message for question 1',
             null,
             '255.255.255.255',
@@ -51,7 +50,6 @@ class PostTest extends TableTestCase
         );
         $this->questionTable->insertDeprecated(
             123,
-            'subject for question 2',
             'message for question 2',
             null,
             '255.255.255.255',
@@ -88,7 +86,6 @@ class PostTest extends TableTestCase
                 'answer_id'   => null,
                 'question_id' => 2,
                 'user_id'     => 123,
-                'subject'     => 'subject for question 2',
                 'message'     => 'message for question 2',
             ],
             $array,

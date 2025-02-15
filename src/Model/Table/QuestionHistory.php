@@ -22,7 +22,6 @@ class QuestionHistory
             SELECT `question_history`.`question_history_id`
                  , `question_history`.`question_id`
                  , `question_history`.`name`
-                 , `question_history`.`subject`
                  , `question_history`.`message`
                  , `question_history`.`modified_datetime`
                  , `question_history`.`modified_user_id`
@@ -42,7 +41,6 @@ class QuestionHistory
                  (
                       `question_id`
                     , `name`
-                    , `subject`
                     , `message`
                     , `modified_datetime`
                     , `modified_user_id`
@@ -50,7 +48,6 @@ class QuestionHistory
                  )
             SELECT `question`.`question_id`
                  , `question`.`created_name`
-                 , `question`.`subject`
                  , `question`.`message`
                  , `question`.`modified_datetime`
                  , `question`.`modified_user_id`

@@ -72,9 +72,6 @@ class Question
         if (isset($array['moved_question_id'])) {
             $questionEntity->setMovedQuestionId($array['moved_question_id']);
         }
-        if (isset($array['subject'])) {
-            $questionEntity->setSubject($array['subject']);
-        }
         if (isset($array['top_answer_id_cached'])) {
             $questionEntity->topAnswerIdCached = intval($array['top_answer_id_cached']);
         }

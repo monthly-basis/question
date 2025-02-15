@@ -41,14 +41,12 @@ class MessageTest extends TableTestCase
 
         $this->questionTable->insertDeprecated(
             1,
-            'subject',
             'foobarbaz',
             'name',
             '1.2.3.4'
         );
         $this->questionTable->insertDeprecated(
             1,
-            'subject',
             '&lt;b&gt;',
             'name',
             '1.2.3.4'
@@ -111,7 +109,6 @@ class MessageTest extends TableTestCase
     {
         $this->questionTable->insertDeprecated(
             1,
-            'subject',
             'foobarbaz',
             '1.2.3.4',
             'name',

@@ -21,19 +21,13 @@ class Submit
         $this->questionTable   = $questionTable;
     }
 
-    /**
-     * Submit.
-     *
-     * @param UserEntity\User $userEntity
-     * @return QuestionEntity\Question
-     */
     public function submit(
         UserEntity\User $userEntity = null
     ): QuestionEntity\Question {
         $errors = [];
 
-        if (empty($_POST['subject'])) {
-            $errors[] = 'Invalid subject.';
+        if (empty($_POST['message'])) {
+            $errors[] = 'Invalid message.';
         }
 
         if ($errors) {
@@ -47,7 +41,6 @@ class Submit
 
         $questionId = $this->questionTable->insertDeprecated(
             $userId ?? null,
-            $_POST['subject'],
             $_POST['message'] ?? null,
             $_POST['name'] ?? null,
             $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']

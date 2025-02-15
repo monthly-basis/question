@@ -42,7 +42,6 @@ class RootRelativeUrlTest extends TestCase
     {
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)')
             ;
 
         $this->slugServiceMock
@@ -64,7 +63,6 @@ class RootRelativeUrlTest extends TestCase
 
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)')
             ;
 
         $this->slugServiceMock
@@ -90,7 +88,6 @@ class RootRelativeUrlTest extends TestCase
 
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)')
             ;
 
         $this->slugServiceMock
@@ -117,7 +114,6 @@ class RootRelativeUrlTest extends TestCase
 
         $questionEntity = (new QuestionEntity\Question())
             ->setQuestionId(12345)
-            ->setSubject('My Amazing Question\'s Subject (Is Great)')
             ;
 
         $this->slugServiceMock
