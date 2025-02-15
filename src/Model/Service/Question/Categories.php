@@ -29,9 +29,11 @@ class Categories
         );
         $array = $result->current();
 
-        $categories[] = $this->fromCategoryIdFactory->buildFromCategoryId(
-            $array['category_id_1']
-        );
+        if (isset($array['category_id_1'])) {
+            $categories[] = $this->fromCategoryIdFactory->buildFromCategoryId(
+                $array['category_id_1']
+            );
+        }
         if (isset($array['category_id_2'])) {
             $categories[] = $this->fromCategoryIdFactory->buildFromCategoryId(
                 $array['category_id_2']
