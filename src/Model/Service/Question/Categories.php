@@ -27,15 +27,20 @@ class Categories
         $result = $this->questionCategoriesTable->selectWhereQuestionId(
             $questionEntity->questionId,
         );
+        $array = $result->current();
 
-        foreach ($result as $array) {
-            $categoryEntity = $this->fromCategoryIdFactory->buildFromCategoryId(
-                $array['category_id']
+        $categories[] = $this->fromCategoryIdFactory->buildFromCategoryId(
+            $array['category_id_1']
+        );
+        if (isset($array['category_id_2'])) {
+            $categories[] = $this->fromCategoryIdFactory->buildFromCategoryId(
+                $array['category_id_2']
             );
-            if (!$categoryEntity->active) {
-                continue;
-            }
-            $categories[] = $categoryEntity;
+        }
+        if (isset($array['category_id_3'])) {
+            $categories[] = $this->fromCategoryIdFactory->buildFromCategoryId(
+                $array['category_id_3']
+            );
         }
 
         $this->cache[$questionEntity->questionId] = $categories;
