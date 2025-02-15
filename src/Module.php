@@ -716,6 +716,12 @@ class Module
                         $sm->get(QuestionTable\Question\CreatedName::class),
                     );
                 },
+                QuestionService\Questions\Related\Store::class => function ($sm) {
+                    return new QuestionService\Questions\Related\Store(
+                        $sm->get(QuestionTable\QuestionSearchMessage::class),
+                        $sm->get(QuestionTable\QuestionsRelated::class),
+                    );
+                },
                 QuestionService\Questions\Unanswered::class => function ($sm) {
                     return new QuestionService\Questions\Unanswered(
                         $sm->get(QuestionFactory\Question\FromQuestionId::class),
