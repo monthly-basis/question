@@ -33,18 +33,6 @@ class Question
         if (isset($array['created_name'])) {
             $questionEntity->setCreatedName($array['created_name']);
         }
-        if (isset($array['image_rru_128x128_webp'])) {
-            $questionEntity->imageRru128x128WebP = $array['image_rru_128x128_webp'];
-        }
-        if (isset($array['image_rru_512x512_webp'])) {
-            $questionEntity->imageRru512x512WebP = $array['image_rru_512x512_webp'];
-        }
-        if (isset($array['image_rru_1024x1024_jpeg'])) {
-            $questionEntity->imageRru1024x1024Jpeg = $array['image_rru_1024x1024_jpeg'];
-        }
-        if (isset($array['image_rru_1024x1024_png'])) {
-            $questionEntity->imageRru1024x1024Png = $array['image_rru_1024x1024_png'];
-        }
         if (isset($array['message'])) {
             $questionEntity->setMessage($array['message']);
         }
