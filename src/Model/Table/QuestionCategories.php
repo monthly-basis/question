@@ -42,4 +42,23 @@ class QuestionCategories extends LaminasDb\Table
         ];
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
+
+    public function selectWhereQuestionId(
+        int $questionId,
+    ): Result {
+        $sql = '
+            SELECT `id`
+                 , `question_id`
+                 , `category_id_1`
+                 , `category_id_2`
+                 , `category_id_3`
+              FROM `question_categories`
+             WHERE `question_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $questionId,
+        ];
+        return $this->getAdapter()->query($sql)->execute($parameters);
+    }
 }

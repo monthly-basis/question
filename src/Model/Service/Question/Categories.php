@@ -11,7 +11,7 @@ class Categories
 
     public function __construct(
         protected CategoryFactory\FromCategoryId $fromCategoryIdFactory,
-        protected QuestionTable\CategoryQuestion $categoryQuestionTable,
+        protected QuestionTable\QuestionCategories $questionCategoriesTable,
     ) {
     }
 
@@ -24,16 +24,8 @@ class Categories
 
         $categories = [];
 
-        $result = $this->categoryQuestionTable->select(
-            columns: [
-                'category_id',
-            ],
-            where: [
-                'question_id' => $questionEntity->questionId,
-            ],
-            order: [
-                'order'
-            ],
+        $result = $this->questionCategoriesTable->selectWhereQuestionId(
+            $questionEntity->questionId,
         );
 
         foreach ($result as $array) {

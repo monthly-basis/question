@@ -14,13 +14,13 @@ class CategoriesTest extends TestCase
         $this->fromCategoryIdFactoryMock = $this->createMock(
             CategoryFactory\FromCategoryId::class
         );
-        $this->categoryQuestionTableMock   = $this->createMock(
-            QuestionTable\CategoryQuestion::class
+        $this->questionCategoriesTableMock   = $this->createMock(
+            QuestionTable\QuestionCategories::class
         );
 
         $this->categoriesService = new QuestionService\Question\Categories(
             $this->fromCategoryIdFactoryMock,
-            $this->categoryQuestionTableMock,
+            $this->questionCategoriesTableMock,
         );
     }
 
@@ -29,16 +29,11 @@ class CategoriesTest extends TestCase
         $questionEntity = new QuestionEntity\Question();
         $questionEntity->questionId = 12345;
 
-        $this->categoryQuestionTableMock
+        $this->questionCategoriesTableMock
             ->expects($this->once())
-            ->method('select')
+            ->method('selectWhereQuestionId')
             ->with(
-                ['category_id'],
-                null,
-                ['question_id' => 12345],
-                ['order'],
-                null,
-                null,
+                12345
             )
             ;
 

@@ -474,7 +474,7 @@ class Module
                 QuestionService\Question\Categories::class => function ($sm) {
                     return new QuestionService\Question\Categories(
                         $sm->get(CategoryFactory\FromCategoryId::class),
-                        $sm->get(QuestionTable\CategoryQuestion::class),
+                        $sm->get(QuestionTable\QuestionCategories::class),
                     );
                 },
                 QuestionService\Question\Deleted::class => function ($sm) {
