@@ -17,7 +17,6 @@ class Store
         QuestionEntity\Question $questionEntity,
         int $limit = 4,
         int $queryWordCount = 16,
-        array $questionIdNotIn = [],
     ): void {
         $query = $questionEntity->message;
         $query = strip_tags($query);
