@@ -81,7 +81,6 @@ class Ask extends AbstractActionController
                 values: [
                     'question_id' => $questionEntity->getQuestionId(),
                     'message'     => $message,
-                    'imported'    => 1,
                 ]
             );
             $this->incrementAnswerCountCachedService->incrementAnswerCountCached($questionEntity);

@@ -6,7 +6,6 @@ CREATE TABLE `question` (
     `views` int(10) unsigned NOT NULL DEFAULT '0',
     `answer_count_cached` int(10) unsigned NOT NULL DEFAULT '0',
     `top_answer_id_cached` int(10) unsigned DEFAULT NULL,
-    `imported` tinyint(1) unsigned NOT NULL DEFAULT '0',
     `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `created_name` varchar(255) COLLATE utf8mb4_0900_as_cs DEFAULT NULL, #@todo Rename column to `name`
     `created_ip` varchar(45) default null,
@@ -25,7 +24,6 @@ CREATE TABLE `question` (
     KEY `answer_count_cached` (`answer_count_cached`),
     KEY `user_id` (`user_id`),
     KEY `user_id_deleted_datetime_created_datetime_question_id` (`user_id`, `deleted_datetime`, `created_datetime`, `question_id`),
-    KEY `imported_moved_datetime_deleted_datetime_created_datetime` (`imported`, `moved_datetime`, `deleted_datetime`, `created_datetime`),
     KEY `created_name_deleted_datetime_created_datetime` (`created_name`, `deleted_datetime`, `created_datetime`),
     KEY `created_ip_created_datetime` (`created_ip`, `created_datetime`),
     KEY `created_ip_and_3_more_columns` (`created_ip`, `deleted_datetime`, `deleted_user_id`, `deleted_reason`),
