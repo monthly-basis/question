@@ -30,7 +30,6 @@ class Question extends LaminasDb\Table
                  , `question`.`message`
                  , `question`.`views`
                  , `question`.`answer_count_cached`
-                 , `question`.`top_answer_id_cached`
                  , `question`.`created_datetime`
                  , `question`.`created_name`
                  , `question`.`created_ip`

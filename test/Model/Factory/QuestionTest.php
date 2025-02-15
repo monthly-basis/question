@@ -58,7 +58,6 @@ class QuestionTest extends TestCase
             'moved_question_id'        => '111',
             'moved_user_id'            => '1',
             'question_id'              => 1,
-            'top_answer_id_cached'     => 20231126,
             'user_id'                  => null,
         ];
         $questionEntity = (new QuestionEntity\Question())
@@ -78,7 +77,6 @@ class QuestionTest extends TestCase
             ->setMovedUserId(intval($array['moved_user_id']))
             ->setQuestionId($array['question_id'])
             ;
-        $questionEntity->topAnswerIdCached     = 20231126;
 
         $this->assertEquals(
             $questionEntity,
