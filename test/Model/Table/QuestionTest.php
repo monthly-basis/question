@@ -60,29 +60,11 @@ class QuestionTest extends TableTestCase
             'message',
             'name',
             '1.2.3.4',
-            'slug',
         );
         $this->assertSame(
             1,
             $generatedValue
         );
-
-        try {
-            $this->questionTable->insertDeprecated(
-                1,
-                'subject',
-                'message',
-                'name',
-                '1.2.3.4',
-                'slug',
-            );
-            $this->fail();
-        } catch (InvalidQueryException $invalidQueryException) {
-            $this->assertSame(
-                'Statement could not be executed (23000 - 1062 - Duplicate entry \'slug\' for key \'question.slug\')',
-                $invalidQueryException->getMessage(),
-            );
-        }
 
         $generatedValue = $this->questionTable->insertDeprecated(
             1,
@@ -92,7 +74,7 @@ class QuestionTest extends TableTestCase
             '1.2.3.4',
         );
         $this->assertSame(
-            3,
+            2,
             $generatedValue
         );
     }

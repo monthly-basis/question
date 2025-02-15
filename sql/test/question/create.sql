@@ -1,6 +1,5 @@
 CREATE TABLE `question` (
     `question_id` int(10) unsigned auto_increment,
-    `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `user_id` int(10) unsigned default null, #@todo Rename column to `created_user_id`
     `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL,
     `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
@@ -23,7 +22,6 @@ CREATE TABLE `question` (
     `deleted_user_id` int(10) default null,
     `deleted_reason` varchar(255) default null,
     PRIMARY KEY (`question_id`),
-    UNIQUE `slug` (`slug`),
     KEY `answer_count_cached` (`answer_count_cached`),
     KEY `user_id` (`user_id`),
     KEY `user_id_deleted_datetime_created_datetime_question_id` (`user_id`, `deleted_datetime`, `created_datetime`, `question_id`),

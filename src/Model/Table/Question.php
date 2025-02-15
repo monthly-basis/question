@@ -26,7 +26,6 @@ class Question extends LaminasDb\Table
     {
         return '
             SELECT `question`.`question_id`
-                 , `question`.`slug`
                  , `question`.`user_id`
                  , `question`.`subject`
                  , `question`.`message`
@@ -57,7 +56,6 @@ class Question extends LaminasDb\Table
     {
         return [
             'question_id',
-            'slug',
             'user_id',
             'subject',
             'message',
@@ -87,24 +85,21 @@ class Question extends LaminasDb\Table
         ?string $message,
         ?string $createdName,
         string $createdIp,
-        string $slug = null,
     ): int {
         $sql = '
             INSERT
               INTO `question` (
-                       `slug`
-                     , `user_id`
+                       `user_id`
                      , `subject`
                      , `message`
                      , `created_datetime`
                      , `created_name`
                      , `created_ip`
                    )
-            VALUES (?, ?, ?, ?, UTC_TIMESTAMP(), ?, ?)
+            VALUES (?, ?, ?, UTC_TIMESTAMP(), ?, ?)
                  ;
         ';
         $parameters = [
-            $slug,
             $userId,
             $subject,
             $message,

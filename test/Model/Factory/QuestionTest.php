@@ -58,7 +58,6 @@ class QuestionTest extends TestCase
             'moved_question_id'        => '111',
             'moved_user_id'            => '1',
             'question_id'              => 1,
-            'slug'                     => 'slug',
             'subject'                  => null,
             'top_answer_id_cached'     => 20231126,
             'user_id'                  => null,
@@ -79,7 +78,6 @@ class QuestionTest extends TestCase
             ->setMovedQuestionId($array['moved_question_id'])
             ->setMovedUserId(intval($array['moved_user_id']))
             ->setQuestionId($array['question_id'])
-            ->setSlug($array['slug'])
             ;
         $questionEntity->topAnswerIdCached     = 20231126;
 

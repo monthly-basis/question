@@ -72,9 +72,6 @@ class Question
         if (isset($array['moved_question_id'])) {
             $questionEntity->setMovedQuestionId($array['moved_question_id']);
         }
-        if (isset($array['slug'])) {
-            $questionEntity->setSlug($array['slug']);
-        }
         if (isset($array['subject'])) {
             $questionEntity->setSubject($array['subject']);
         }
