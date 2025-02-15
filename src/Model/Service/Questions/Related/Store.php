@@ -15,7 +15,7 @@ class Store
 
     public function storeRelatedQuestions(
         QuestionEntity\Question $questionEntity,
-        int $limit = 10,
+        int $limit = 4,
         int $queryWordCount = 16,
         array $questionIdNotIn = [],
     ): void {
