@@ -29,7 +29,6 @@ class Question extends LaminasDb\Table
                  , `question`.`slug`
                  , `question`.`user_id`
                  , `question`.`subject`
-                 , `question`.`headline`
                  , `question`.`message`
                  , `question`.`views`
                  , `question`.`answer_count_cached`
@@ -61,7 +60,6 @@ class Question extends LaminasDb\Table
             'slug',
             'user_id',
             'subject',
-            'headline',
             'message',
             'views',
             'answer_count_cached',
@@ -89,7 +87,6 @@ class Question extends LaminasDb\Table
         ?string $message,
         ?string $createdName,
         string $createdIp,
-        string $headline = null,
         string $slug = null,
     ): int {
         $sql = '
@@ -98,20 +95,18 @@ class Question extends LaminasDb\Table
                        `slug`
                      , `user_id`
                      , `subject`
-                     , `headline`
                      , `message`
                      , `created_datetime`
                      , `created_name`
                      , `created_ip`
                    )
-            VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP(), ?, ?)
+            VALUES (?, ?, ?, ?, UTC_TIMESTAMP(), ?, ?)
                  ;
         ';
         $parameters = [
             $slug,
             $userId,
             $subject,
-            $headline,
             $message,
             $createdName,
             $createdIp,

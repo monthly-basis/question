@@ -39,7 +39,7 @@ class QuestionTest extends TableTestCase
     {
         $result = $this->questionTable->insert(
             values: [
-                'headline' => 'this is the headline',
+                'message' => 'this is the message',
             ],
         );
         $this->assertSame(
@@ -60,7 +60,6 @@ class QuestionTest extends TableTestCase
             'message',
             'name',
             '1.2.3.4',
-            'headline',
             'slug',
         );
         $this->assertSame(
@@ -75,7 +74,6 @@ class QuestionTest extends TableTestCase
                 'message',
                 'name',
                 '1.2.3.4',
-                'headline',
                 'slug',
             );
             $this->fail();
@@ -89,7 +87,7 @@ class QuestionTest extends TableTestCase
         $generatedValue = $this->questionTable->insertDeprecated(
             1,
             null,
-            'message for question with no headline and no slug',
+            'this is the message',
             'name',
             '1.2.3.4',
         );
@@ -144,7 +142,7 @@ class QuestionTest extends TableTestCase
     {
         $this->questionTable->insert(
             values: [
-                'headline' => 'the headline',
+                'message' => 'this is the message',
             ],
         );
         $result = $this->questionTable->select(
@@ -156,13 +154,13 @@ class QuestionTest extends TableTestCase
         $this->assertSame(
             [
                 'question_id'      => 1,
-                'headline'         => 'the headline',
+                'message'          => 'this is the message',
                 'moved_datetime'   => null,
                 'deleted_datetime' => null,
             ],
             [
                 'question_id'      => $result->current()['question_id'],
-                'headline'         => $result->current()['headline'],
+                'message'          => $result->current()['message'],
                 'moved_datetime'   => $result->current()['moved_datetime'],
                 'deleted_datetime' => $result->current()['deleted_datetime'],
             ],
@@ -258,7 +256,7 @@ class QuestionTest extends TableTestCase
     public function test_updateWhereQuestionId()
     {
         $this->questionTable->insertDeprecated(
-            1, 'name', 'subject', 'message', '1.2.3.4',
+            1, 'subject', 'message', 'name', '1.2.3.4',
         );
 
         $result = $this->questionTable->updateWhereQuestionId(

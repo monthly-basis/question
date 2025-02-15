@@ -104,16 +104,6 @@ class QuestionTest extends TestCase
             $this->questionEntity->getDeletedReason()
         );
 
-        $headline = 'headline';
-        $this->assertSame(
-            $this->questionEntity,
-            $this->questionEntity->setHeadline($headline)
-        );
-        $this->assertSame(
-            $headline,
-            $this->questionEntity->getHeadline()
-        );
-
         $modifiedDateTime = new DateTime();
         $this->assertSame(
             $this->questionEntity,
