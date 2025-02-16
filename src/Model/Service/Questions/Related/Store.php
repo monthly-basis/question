@@ -33,12 +33,28 @@ class Store
                 outerLimitRowCount: $limit,
             );
 
+        $connection = $this->questionsRelatedTable
+            ->getAdapter()
+            ->getDriver()
+            ->getConnection();
+
         foreach ($result as $array) {
-            $this->questionsRelatedTable->insert([
-                'question_id' => $questionEntity->questionId,
-                'related_question_id' => $array['question_id'],
-                'score' => $array['score'],
-            ]);
+            try {
+                $connection->beginTransaction();
+
+                $this->questionsRelatedTable->delete([
+                    'question_id' => $questionEntity->questionId,
+                ]);
+                $this->questionsRelatedTable->insert([
+                    'question_id' => $questionEntity->questionId,
+                    'related_question_id' => $array['question_id'],
+                    'score' => $array['score'],
+                ]);
+
+                $connection->commit();
+            } catch (\Exception) {
+                $connection->rollback();
+            }
         }
     }
 }
