@@ -30,8 +30,8 @@ class Store
             ->selectQuestionIdWhereMatchMessageAgainstAndQuestionIdNotEquals(
                 query: $query,
                 questionId: $questionEntity->questionId,
-                outerLimitOffset: 0,
-                outerLimitRowCount: $limit,
+                limitOffset: 0,
+                limitRowCount: $limit,
             );
 
         $connection = $this->questionsRelatedTable
