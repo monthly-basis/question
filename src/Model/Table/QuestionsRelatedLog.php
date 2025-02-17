@@ -50,4 +50,24 @@ class QuestionsRelatedLog extends LaminasDb\Table
         ];
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
+
+    public function selectOrderByMissesDesc(
+        int $limit,
+    ): Result {
+        $sql = '
+            SELECT `question_id`
+                 , `misses`
+                 , `retrieved_at`
+              FROM `questions_related_log`
+             ORDER
+                BY `misses` DESC
+                 , `question_id` DESC
+             LIMIT 0, ?
+                 ;
+        ';
+        $parameters = [
+            $questionId,
+        ];
+        return $this->getAdapter()->query($sql)->execute($parameters);
+    }
 }
