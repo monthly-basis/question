@@ -10,7 +10,8 @@ class Related
 {
     public function __construct(
         protected QuestionFactory\Question $questionFactory,
-        protected QuestionTable\QuestionsRelated $questionsRelatedTable
+        protected QuestionTable\QuestionsRelated $questionsRelatedTable,
+        protected QuestionTable\QuestionsRelatedLog $questionsRelatedLogTable,
     ) {
     }
 
@@ -36,6 +37,12 @@ class Related
             }
 
             $relatedQuestions[] = $questionEntity;
+        }
+
+        if (empty($relatedQuestions)) {
+            $this->questionsRelatedLogTable->insertOnDuplicateKeyUpdateCase(
+                $questionEntity->questionId
+            );
         }
 
         return $relatedQuestions;

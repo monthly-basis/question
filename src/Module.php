@@ -720,6 +720,7 @@ class Module
                     return new QuestionService\Questions\Related(
                         $sm->get(QuestionFactory\Question::class),
                         $sm->get(QuestionTable\QuestionsRelated::class),
+                        $sm->get(QuestionTable\QuestionsRelatedLog::class),
                     );
                 },
                 QuestionService\Questions\Related\Store::class => function ($sm) {
@@ -968,6 +969,11 @@ class Module
                     return new QuestionTable\QuestionsRelated(
                         $sm->get(QuestionDb\Sql::class),
                         $sm->get('question'),
+                    );
+                },
+                QuestionTable\QuestionsRelatedLog::class => function ($sm) {
+                    return new QuestionTable\QuestionsRelatedLog(
+                        $sm->get(QuestionDb\Sql::class),
                     );
                 },
                 QuestionTable\Question\CreatedNameDeletedCreatedDatetime::class => function ($sm) {
