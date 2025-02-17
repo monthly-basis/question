@@ -11,7 +11,7 @@ class QuestionsRelatedLog extends LaminasDb\Table
     protected string $table = 'questions_related_log';
 
     public function __construct(
-        protected \Laminas\Db\Sql\Sql $sql,
+        protected Adapter $adapter,
     ) {}
 
     public function insertOnDuplicateKeyUpdateCase(

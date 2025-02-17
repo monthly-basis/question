@@ -973,7 +973,7 @@ class Module
                 },
                 QuestionTable\QuestionsRelatedLog::class => function ($sm) {
                     return new QuestionTable\QuestionsRelatedLog(
-                        $sm->get(QuestionDb\Sql::class),
+                        $sm->get('question'),
                     );
                 },
                 QuestionTable\Question\CreatedNameDeletedCreatedDatetime::class => function ($sm) {
