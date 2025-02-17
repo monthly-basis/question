@@ -23,7 +23,7 @@ class QuestionsRelatedLog extends LaminasDb\Table
             VALUES (?, 1)
                 ON DUPLICATE KEY
             UPDATE `misses` = CASE
-                  WHEN `retrieved_at` IS NOT NULL THEN VALUES(`misses`)
+                  WHEN `retrieved_at` IS NOT NULL THEN `misses`
                   ELSE `misses` + 1
                END
                  ;
