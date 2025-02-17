@@ -727,6 +727,7 @@ class Module
                     return new QuestionService\Questions\Related\Store(
                         $sm->get(QuestionTable\QuestionSearchMessage::class),
                         $sm->get(QuestionTable\QuestionsRelated::class),
+                        $sm->get(QuestionTable\QuestionsRelatedLog::class),
                     );
                 },
                 QuestionService\Questions\Unanswered::class => function ($sm) {

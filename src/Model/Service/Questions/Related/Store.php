@@ -9,7 +9,8 @@ class Store
 {
     public function __construct(
         protected QuestionTable\QuestionSearchMessage $questionSearchMessageTable,
-        protected QuestionTable\QuestionsRelated $questionsRelatedTable
+        protected QuestionTable\QuestionsRelated $questionsRelatedTable,
+        protected QuestionTable\QuestionsRelatedLog $questionsRelatedLogTable,
     ) {
     }
 
@@ -56,5 +57,9 @@ class Store
                 $connection->rollback();
             }
         }
+
+        $this->questionsRelatedLogTable->updateSetRetrievedAtUtcTimestampWhereQuestionId(
+            $questionEntity->questionId
+        );
     }
 }

@@ -33,4 +33,19 @@ class QuestionsRelatedLog extends LaminasDb\Table
         ];
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
+
+    public function updateSetRetrievedAtUtcTimestampWhereQuestionId(
+        int $questionId,
+    ): Result {
+        $sql = '
+            UPDATE `questions_related_log`
+               SET `retrieved_at` = UTC_TIMESTAMP()
+             WHERE `question_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $questionId,
+        ];
+        return $this->getAdapter()->query($sql)->execute($parameters);
+    }
 }
