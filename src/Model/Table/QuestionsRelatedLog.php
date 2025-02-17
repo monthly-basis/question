@@ -34,13 +34,15 @@ class QuestionsRelatedLog extends LaminasDb\Table
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
 
-    public function updateSetRetrievedAtUtcTimestampWhereQuestionId(
+    public function insertOnDuplicateKeyUpdateRetrievedAt(
         int $questionId,
     ): Result {
         $sql = '
-            UPDATE `questions_related_log`
-               SET `retrieved_at` = UTC_TIMESTAMP()
-             WHERE `question_id` = ?
+            INSERT
+              INTO `questions_related_log` (`question_id`, `retrieved_at`)
+            VALUES (?, UTC_TIMESTAMP())
+                ON DUPLICATE KEY
+            UPDATE `retrieved_at` = UTC_TIMESTAMP()
                  ;
         ';
         $parameters = [

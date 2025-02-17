@@ -39,27 +39,27 @@ class Store
             ->getDriver()
             ->getConnection();
 
-        foreach ($result as $array) {
-            try {
-                $connection->beginTransaction();
+        try {
+            $connection->beginTransaction();
 
-                $this->questionsRelatedTable->delete([
-                    'question_id' => $questionEntity->questionId,
-                ]);
+            $this->questionsRelatedTable->delete([
+                'question_id' => $questionEntity->questionId,
+            ]);
+            foreach ($result as $array) {
                 $this->questionsRelatedTable->insert([
                     'question_id' => $questionEntity->questionId,
                     'related_question_id' => $array['question_id'],
                     'score' => $array['score'],
                 ]);
 
-                $connection->commit();
-            } catch (\Exception) {
-                $connection->rollback();
             }
-        }
+            $this->questionsRelatedLogTable->insertOnDuplicateKeyUpdateRetrievedAt(
+                $questionEntity->questionId
+            );
 
-        $this->questionsRelatedLogTable->updateSetRetrievedAtUtcTimestampWhereQuestionId(
-            $questionEntity->questionId
-        );
+            $connection->commit();
+        } catch (\Exception) {
+            $connection->rollback();
+        }
     }
 }
