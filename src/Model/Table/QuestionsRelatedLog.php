@@ -66,7 +66,7 @@ class QuestionsRelatedLog extends LaminasDb\Table
                  ;
         ';
         $parameters = [
-            $questionId,
+            $limit,
         ];
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
