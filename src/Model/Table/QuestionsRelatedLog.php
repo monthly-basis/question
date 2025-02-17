@@ -51,7 +51,7 @@ class QuestionsRelatedLog extends LaminasDb\Table
         return $this->getAdapter()->query($sql)->execute($parameters);
     }
 
-    public function selectOrderByMissesDesc(
+    public function selectWhereRetrievedAtIsNullOrderByMissesDesc(
         int $limit,
     ): Result {
         $sql = '
@@ -59,6 +59,7 @@ class QuestionsRelatedLog extends LaminasDb\Table
                  , `misses`
                  , `retrieved_at`
               FROM `questions_related_log`
+             WHERE `retrieved_at` IS NULL
              ORDER
                 BY `misses` DESC
                  , `question_id` DESC
