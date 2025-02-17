@@ -17,9 +17,7 @@ class Related
     public function getRelatedQuestions(
         QuestionEntity\Question $questionEntity,
         int $limit = 4,
-    ): Generator {
-        $questionIds = [];
-
+    ): array {
         $result = $this->questionsRelatedTable->select(
             where: [
                 'question_id' => $questionEntity->questionId,
@@ -27,6 +25,7 @@ class Related
             order: 'score DESC',
             limit: $limit,
         );
+        $relatedQuestions = [];
         foreach ($result as $array) {
             $questionEntity = $this->questionFactory->buildFromQuestionId(
                 intval($array['related_question_id'])
@@ -36,7 +35,9 @@ class Related
                 continue;
             }
 
-            yield $questionEntity;
+            $relatedQuestions[] = $questionEntity;
         }
+
+        return $relatedQuestions;
     }
 }
