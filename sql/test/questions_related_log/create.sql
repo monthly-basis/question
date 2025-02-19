@@ -1,7 +1,7 @@
 CREATE TABLE `questions_related_log` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `question_id` int unsigned NOT NULL,
-  `misses` int unsigned NOT NULL,
+  `misses` int unsigned DEFAULT NULL,
   `retrieved_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `question_id` (`question_id`),
