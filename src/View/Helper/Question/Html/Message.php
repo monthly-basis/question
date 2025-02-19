@@ -39,9 +39,9 @@ class Message extends AbstractHelper
 
         if ($numberOfMessageHtmlLines == 1) {
             if (strlen($messageHtmlLines[0]) > 300) {
-                $messageHtml = "<$headingTagEscaped class=\"fw-n\">"
+                $messageHtml = "<p>"
                     . $messageHtmlLines[0]
-                    . "</$headingTagEscaped>";
+                    . "</p>";
                 return $messageHtml;
             } else {
                 $messageHtml = "<$headingTagEscaped>"

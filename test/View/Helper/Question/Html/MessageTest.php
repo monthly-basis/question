@@ -87,7 +87,7 @@ $messageHtml = <<<MESSAGE_HTML
 A message with only 1 line longer than 300 characters and therefore a fw-n class should be applied because we want the font weight to be normal. I need to type even more text to make this string more than 300 characters. Almost there, still in the early 200's. Okay and as I type this we get to over 300.
 MESSAGE_HTML;
 $expectedHtml = <<<EXPECTED_HTML
-<h1 class="fw-n">A message with only 1 line longer than 300 characters and therefore a fw-n class should be applied because we want the font weight to be normal. I need to type even more text to make this string more than 300 characters. Almost there, still in the early 200's. Okay and as I type this we get to over 300.</h1>
+<p>A message with only 1 line longer than 300 characters and therefore a fw-n class should be applied because we want the font weight to be normal. I need to type even more text to make this string more than 300 characters. Almost there, still in the early 200's. Okay and as I type this we get to over 300.</p>
 EXPECTED_HTML;
 
         $questionEntity = (new QuestionEntity\Question())
